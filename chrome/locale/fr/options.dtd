@@ -1,0 +1,21 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- fr localization - Linkificator's module
+   - author: MarkaPola -->
+
+<!ENTITY settings.activated                 "Activé">
+<!ENTITY settings.hotkey                    "Raccourci clavier pour changer l'état de linkificator">
+<!ENTITY settings.regexp                    "Utilise les expressions régulières pour les domaines">
+<!ENTITY settings.useWhitelist              "Transformer seulement les liens textuels des domaines suivants">
+<!ENTITY settings.whitelist                 "Liste blanche">
+<!ENTITY settings.useBlacklist              "Ne pas transformer les liens textuels des domaines suivants">
+<!ENTITY settings.blacklist                 "Liste noire">
+<!ENTITY settings.listdescription           "Separer les domaines avec un espace">
+<!ENTITY settings.overrideTextColor         "Remplacer la couleur du texte">
+<!ENTITY settings.textColor                 "Couleur du texte">
+<!ENTITY settings.overrideBackgroundColor   "Remplacer la couleur du fond">
+<!ENTITY settings.backgroundColor           "Couleur du fond">
+<!ENTITY settings.advanced                  "Réglages avancés...">

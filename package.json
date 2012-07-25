@@ -1,0 +1,84 @@
+{
+    "name": "linkificator", 
+    "fullName": "Linkificator", 
+    "license": "MPL 2.0", 
+    "author": "MarkaPola",
+    "contributors": ["Icons from www.fasticon.com"],
+    "version": "0.6.0", 
+    "id": "linkificator@markapola", 
+    "description": "Converts text links into clickable links...",
+    "preferences": [{
+       "type": "bool",
+       "value": true,
+       "name": "activated",
+       "title": "&settings.activated;"
+    },
+    {
+       "type": "string",
+       "value": "control-shift-y",
+       "name": "hotkey",
+       "title": "&settings.hotkey;"
+    },
+    {
+       "type": "bool",
+       "value": true,
+       "name": "useRegExp",
+       "title": "&settings.regexp;"
+    },
+    {
+       "type": "bool",
+       "value": false,
+       "name": "useWhitelist",
+       "title": "&settings.useWhitelist;"
+    },
+    {
+       "type": "string",
+       "value": "",
+       "name": "whitelist",
+       "title": "&settings.whitelist;",
+       "description": "&settings.listdescription;"
+    },
+    {
+       "type": "bool",
+       "value": true,
+       "name": "useBlacklist",
+       "title": "&settings.useBlacklist;"
+    },
+    {
+       "type": "string",
+       "value": "localhost www\\\\.google\\\\..*",
+       "name": "blacklist",
+       "title": "&settings.blacklist;",
+       "description": "&settings.listdescription;"
+    },
+    {
+       "type": "bool",
+       "value": false,
+       "name": "overrideTextColor",
+       "title": "&settings.overrideTextColor;"
+    },
+    {
+       "type": "color",
+       "name": "linkColor",
+       "value": "#006620",
+       "title": "&settings.textColor;"
+    },
+    {
+       "type": "bool",
+       "value": false,
+       "name": "overrideBackgroundColor",
+       "title": "&settings.overrideBackgroundColor;"
+    },
+    {
+       "type": "color",
+       "name": "backgroundColor",
+       "value": "#fff9ab",
+       "title": "&settings.backgroundColor;"
+    },
+    {
+       "type": "control",
+       "name": "advancedSettings",
+       "label": "&settings.advanced;...",
+       "title": ""
+    }]
+}

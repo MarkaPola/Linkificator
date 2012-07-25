@@ -1,0 +1,21 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- en-US localization - Linkificator's module
+   - author: MarkaPola -->
+
+<!ENTITY settings.activated                 "Activated">
+<!ENTITY settings.hotkey                    "Hot key to toggle linkificator state">
+<!ENTITY settings.regexp                    "Use regular expressions for domains">
+<!ENTITY settings.useWhitelist              "Only linkify for domains in Whitelist">
+<!ENTITY settings.whitelist                 "Whitelisted Domains">
+<!ENTITY settings.useBlacklist              "Never linkify for domains in Blacklist">
+<!ENTITY settings.blacklist                 "Blacklisted Domains">
+<!ENTITY settings.listdescription           "Separate domains with a space">
+<!ENTITY settings.overrideTextColor         "Override text color">
+<!ENTITY settings.textColor                 "Linkified text color">
+<!ENTITY settings.overrideBackgroundColor   "Override background color">
+<!ENTITY settings.backgroundColor           "Linkified background color">
+<!ENTITY settings.advanced                  "Advanced settings...">

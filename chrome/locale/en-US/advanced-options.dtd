@@ -1,0 +1,13 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- en-US localization - Linkificator's module
+   - author: MarkaPola -->
+
+<!ENTITY advanced-settings.title                 "Linkificator Advanced Options">
+<!ENTITY advanced-settings.protocols             "Protocols">
+<!ENTITY advanced-settings.subdomains            "Subdomains">
+<!ENTITY advanced-settings.excludedElements      "Excluded Elements">
+<!ENTITY advanced-settings.reset-button          "Reset to Default">
