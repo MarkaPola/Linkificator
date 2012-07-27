@@ -75,11 +75,11 @@ function Parser (properties) {
     var IP_host = IP + port;
     var domain_host = domain + port;
 
-    var subpath = "(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))"
+    var subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
 
     var URL = "(?:" + protocol + "[^/]" + authentication + "?" + subpath + 
-              "|" + full_authentication + "(?:" + subdomain + "|" + domain_host + "|" + IP_host + ")" + subpath + "?" +
-              "|" + authentication + "?(?:" + subdomain + "|" + domain_host + "/|" + IP_host + "/)" + subpath + "?)";
+              "|" + full_authentication + "(?:" + subdomain + subpath + "|(?:" + domain_host + "|" + IP_host + ")" + subpath + "?)" +
+              "|" + authentication + "?(?:" + subdomain + subpath + "|(?:" + domain_host + "|" + IP_host + ")/" + subpath + "?))";
               
     var mail = "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))";
     var protocol_mail = "(?:(mailto):" + mail + ")";
