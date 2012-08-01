@@ -8,6 +8,7 @@
 
 <!ENTITY settings.activated                 "Activé">
 <!ENTITY settings.hotkey                    "Raccourci clavier pour changer l'état de linkificator">
+<!ENTITY settings.widget                    "Affiche le widget dans la barre des modules">
 <!ENTITY settings.regexp                    "Utilise les expressions régulières pour les domaines">
 <!ENTITY settings.useWhitelist              "Transformer seulement les liens textuels des domaines suivants">
 <!ENTITY settings.whitelist                 "Liste blanche">

@@ -10,6 +10,7 @@
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.hotkey" title="&settings.hotkey;" type="string"/>
+  <setting pref="extensions.linkificator@markapola.displayWidget" title="&settings.widget;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.useRegExp" title="&settings.regexp;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.useWhitelist" title="&settings.useWhitelist;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.whitelist" title="&settings.whitelist;" type="string">&settings.listdescription;</setting>

@@ -8,6 +8,7 @@
 
 pref("extensions.linkificator@markapola.activated", true);
 pref("extensions.linkificator@markapola.hotkey", "control-shift-y");
+pref("extensions.linkificator@markapola.displayWidget", true);
 pref("extensions.linkificator@markapola.useRegExp", true);
 pref("extensions.linkificator@markapola.useWhitelist", false);
 pref("extensions.linkificator@markapola.whitelist", "");

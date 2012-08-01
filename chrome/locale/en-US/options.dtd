@@ -8,6 +8,7 @@
 
 <!ENTITY settings.activated                 "Activated">
 <!ENTITY settings.hotkey                    "Hot key to toggle linkificator state">
+<!ENTITY settings.widget                    "Display widget in the Add-on Bar">
 <!ENTITY settings.regexp                    "Use regular expressions for domains">
 <!ENTITY settings.useWhitelist              "Only linkify for domains in Whitelist">
 <!ENTITY settings.whitelist                 "Whitelisted Domains">

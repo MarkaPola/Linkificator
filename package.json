@@ -21,6 +21,12 @@
     },
     {
        "type": "bool",
+       "value": "true",
+       "name": "displayWidget",
+       "title": "&settings.widget;"
+    },
+    {
+       "type": "bool",
        "value": true,
        "name": "useRegExp",
        "title": "&settings.regexp;"
