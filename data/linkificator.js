@@ -68,7 +68,7 @@ function Parser (properties) {
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
     
-	const domain_element = "[^\\s()<>[\\]{}/.:]+";
+	const domain_element = "[^0-9\\s()<>[\\]{}/.:][^\\s()<>[\\]{}/.:]*";
     const domain = "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
     const subdomain = "(?:(" + buildPattern(properties.subdomains) + ")\\.)";
     const port = "(?::[\\d]{1,5})?";
@@ -78,9 +78,9 @@ function Parser (properties) {
 
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
 
-    const URL = "(?:" + protocol + authentication + "?" + domain + subpath + "?" +
-        "|" + full_authentication + "(?:" + subdomain + domain + "|" + domain_host + "|" + IP_host + ")" + subpath + "?" +
-        "|" + authentication + "?(?:" + subdomain + domain + "|(?:" + domain_host + "|" + IP_host + ")/)" + subpath + "?)";
+    const URL = "(?:" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?" +
+        "|" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?" +
+        "|" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + domain_host + "|" + IP_host + ")/)" + subpath + "?)";
               
     const mail = "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))";
     const protocol_mail = "(?:(mailto):" + mail + ")";
