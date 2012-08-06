@@ -6,10 +6,11 @@
 <!-- fr localization - Linkificator's module
    - author: MarkaPola -->
 
+<!ENTITY settings.sync                      "Synchroniser les réglages">
 <!ENTITY settings.activated                 "Activé">
 <!ENTITY settings.hotkey                    "Raccourci clavier pour changer l'état de linkificator">
-<!ENTITY settings.widget                    "Affiche le widget dans la barre des modules">
-<!ENTITY settings.regexp                    "Utilise les expressions régulières pour les domaines">
+<!ENTITY settings.widget                    "Afficher le widget dans la barre des modules">
+<!ENTITY settings.regexp                    "Utiliser les expressions régulières pour les domaines">
 <!ENTITY settings.useWhitelist              "Transformer seulement les liens textuels des domaines suivants">
 <!ENTITY settings.whitelist                 "Liste blanche">
 <!ENTITY settings.useBlacklist              "Ne pas transformer les liens textuels des domaines suivants">

@@ -8,6 +8,7 @@
 
 <!DOCTYPE vbox SYSTEM "chrome://linkificator/locale/options.dtd">
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <setting pref="extensions.linkificator@markapola.sync" title="&settings.sync;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.hotkey" title="&settings.hotkey;" type="string"/>
   <setting pref="extensions.linkificator@markapola.displayWidget" title="&settings.widget;" type="bool"/>
