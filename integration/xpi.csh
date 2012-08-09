@@ -8,6 +8,8 @@ if (! -f package.json) then
 	exit 1;
 endif
 
+cp -f ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension/{application.ini,bootstrap.js} app-extension
+
 python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension
 
 zip -r linkificator.xpi chrome chrome.manifest options.xul defaults/preferences/prefs.js
