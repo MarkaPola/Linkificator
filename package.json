@@ -9,12 +9,6 @@
     "description": "Converts text links into clickable links...",
     "preferences": [{
        "type": "bool",
-       "value": false,
-       "name": "sync",
-       "title": "&settings.sync;"
-    },
-    {
-       "type": "bool",
        "value": true,
        "name": "activated",
        "title": "&settings.activated;"
@@ -92,5 +86,11 @@
        "name": "advancedSettings",
        "label": "&settings.advanced;...",
        "title": ""
+    },
+    {
+       "type": "bool",
+       "value": false,
+       "name": "sync",
+       "title": "&settings.sync;"
     }]
 }

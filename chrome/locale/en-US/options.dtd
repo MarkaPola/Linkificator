@@ -6,7 +6,6 @@
 <!-- en-US localization - Linkificator's module
    - author: MarkaPola -->
 
-<!ENTITY settings.sync                      "Sync settings">
 <!ENTITY settings.activated                 "Activated">
 <!ENTITY settings.hotkey                    "Hot key to toggle linkificator state">
 <!ENTITY settings.widget                    "Display widget in the Add-on Bar">
@@ -21,3 +20,4 @@
 <!ENTITY settings.overrideBackgroundColor   "Override background color">
 <!ENTITY settings.backgroundColor           "Linkified background color">
 <!ENTITY settings.advanced                  "Advanced settings...">
+<!ENTITY settings.sync                      "Sync settings">

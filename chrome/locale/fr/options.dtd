@@ -6,7 +6,6 @@
 <!-- fr localization - Linkificator's module
    - author: MarkaPola -->
 
-<!ENTITY settings.sync                      "Synchroniser les réglages">
 <!ENTITY settings.activated                 "Activé">
 <!ENTITY settings.hotkey                    "Raccourci clavier pour changer l'état de linkificator">
 <!ENTITY settings.widget                    "Afficher le widget dans la barre des modules">
@@ -21,3 +20,4 @@
 <!ENTITY settings.overrideBackgroundColor   "Remplacer la couleur du fond">
 <!ENTITY settings.backgroundColor           "Couleur du fond">
 <!ENTITY settings.advanced                  "Réglages avancés...">
+<!ENTITY settings.sync                      "Synchroniser les réglages">
