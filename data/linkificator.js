@@ -154,6 +154,19 @@ function Linkify (node, parser, startTime, style) {
     var sibling = node.nextSibling;
     var text = node.nodeValue;
 
+	function openURL (event) {
+		if (event.button == 2 || event.altKey || event.ctrlKey || event.metaKey)
+			// no custom action, propagate this event
+			return true;
+
+		event.stopPropagation();
+		event.preventDefault();
+
+		self.port.emit('open-url', {button: event.button == 0 ? 'left' : 'middle', url: this.href});
+
+		return false;
+	}
+
     function linkify (isOver) {
 		let matched = false, iterations = 0;
 
@@ -174,6 +187,10 @@ function Linkify (node, parser, startTime, style) {
 			anchor.setAttribute('class', 'linkificator-ext');
 			if (style.length != 0) {
 				anchor.setAttribute('style', style);
+			}
+			if (url.indexOf("about:") == 0) {
+				// attach special action to enable about: page opening on mouse click
+				anchor.addEventListener('mouseup', openURL, false);
 			}
 
 			anchor.appendChild(document.createTextNode(match.text));
