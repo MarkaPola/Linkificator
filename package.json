@@ -4,7 +4,7 @@
     "license": "MPL 2.0", 
     "author": "MarkaPola",
     "contributors": ["Icons from www.fasticon.com"],
-    "version": "0.6.4", 
+    "version": "0.8.0", 
     "id": "linkificator@markapola", 
     "description": "Converts text links into clickable links...",
     "preferences": [{
@@ -86,5 +86,11 @@
        "name": "advancedSettings",
        "label": "&settings.advanced;...",
        "title": ""
+    },
+    {
+       "type": "bool",
+       "value": false,
+       "name": "sync",
+       "title": "&settings.sync;"
     }]
 }

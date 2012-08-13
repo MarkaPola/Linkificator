@@ -20,3 +20,4 @@
 <!ENTITY settings.overrideBackgroundColor   "Override background color">
 <!ENTITY settings.backgroundColor           "Linkified background color">
 <!ENTITY settings.advanced                  "Advanced settings...">
+<!ENTITY settings.sync                      "Sync settings">
