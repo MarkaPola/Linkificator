@@ -7,6 +7,14 @@
    - author: MarkaPola -->
 
 <!ENTITY advanced-settings.title                 "Linkificator Advanced Options">
+
+<!ENTITY advanced-settings.tab-links             "Links">
+<!ENTITY advanced-settings.tab-configuration     "Configuration">
+
+<!ENTITY advanced-settings.link-types            "Generate links for:">
+<!ENTITY advanced-settings.email-address         "Email addresses">
+<!ENTITY advanced-settings.about-protocol        "about: protocol">
+
 <!ENTITY advanced-settings.protocols             "Protocols">
 <!ENTITY advanced-settings.subdomains            "Subdomains">
 <!ENTITY advanced-settings.excludedElements      "Excluded Elements">

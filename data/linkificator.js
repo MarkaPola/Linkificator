@@ -23,10 +23,10 @@ function Parser (properties) {
         var result = "";
         
         for (let index = 0; index < data.length; ++index) {
+			if (result.length) {
+				result += "|";
+			}
             result += data[index].pattern;
-            if (index != data.length-1) {
-                result += "|";
-            }
         }
         
         return result;
@@ -42,6 +42,9 @@ function Parser (properties) {
         return result;
     }
     
+    var protocol_matcher = buildMatcher (properties.protocols);
+    var subdomain_matcher = buildMatcher (properties.subdomains);
+
     function getTerm (items, data) {
 		for (let index = 0; index < items.length; ++index) {
 			if (items[index].regex.test(data)) {
@@ -49,7 +52,7 @@ function Parser (properties) {
 			}
 		}
 
-		return true;
+		return data;
     }
     function getProtocol (data) {
         return getTerm (protocol_matcher, data);
@@ -58,6 +61,100 @@ function Parser (properties) {
         return getTerm (subdomain_matcher, data);
     }
     
+	// Helper Functions to manage various patterns used to match the different URL formats
+	function SubPattern (text, captures, matcher) {
+		var index = 0;
+
+		return {
+			set start (value) { index = value; },
+			get count () { return captures; },
+			get pattern () { return text; },
+
+			test: function (regex) {
+				return matcher.test(regex, index);
+			},
+			getURL: function (regex) {
+				return matcher.match(regex, index);
+			}
+		}
+	}
+
+	function Pattern (prefix, count) {
+		var index = count+2;
+		var pattern = prefix + "(";
+		var subpatterns = [];
+
+		var first = true;
+
+		var URLregex;
+		var result = null;
+
+		return {
+			push: function (subpattern) {
+				subpattern.start = index;
+				index += subpattern.count;
+				if (first) {
+					first = false;
+				} else {
+					pattern += "|";
+				}
+				pattern += subpattern.pattern;
+				subpatterns.push(subpattern);
+			},
+
+			compile: function () {
+				pattern += ")";
+				URLregex = RegExp (pattern, 'i');
+			},
+
+			match: function (text) {
+				let index = 0;
+				let data = text;
+				let valid = false;
+
+				while (!valid) {
+					if (!(result = URLregex.exec (data)))
+						break;
+
+					for (let i = 0; i < subpatterns.length; ++i) {
+						if (valid = subpatterns[i].test(result)) {
+							break;
+						}
+					}
+					if (!valid) {
+						index += result.index+result[0].length;
+						data = data.substr (result.index+result[0].length);
+					}
+				}
+
+				if (result) {
+					return {
+						get regex () { return result; },
+						get text () { return result[count+1]; },
+						get index () {
+							let total = index + result.index;
+							for (let i = 1; i <= count; ++i) {
+								total += result[i].length;
+							}
+							return total;
+						},
+						get length () { return result[count+1].length; },
+						get url () {
+							for (let i = 0; i < subpatterns.length; ++i) {
+								let data = subpatterns[i].getURL(result);
+								if (data) return data;
+							}
+							// in normal condition, not reached
+							return "";
+						}
+					}
+				} else {
+					return null;
+				}
+			}
+		}
+	}
+
     // regexps are based on various RFC, mainly 1738, 822, 1036 and 2732
     const IPv4 = "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)";
     const IPv6 = "(?:\\[(?:(?:(?:[0-9a-f]{1,4}:){7}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){6}:[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){5}:(?:[0-9a-f]{1,4}:)?[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){4}:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){3}:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){2}:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){6}(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:(?:[0-9a-f]{1,4}:){0,5}:(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:::(?:[0-9a-f]{1,4}:){0,5}(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:[0-9a-f]{1,4}::(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})|(?:::(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){1,7}:))\\])";
@@ -80,19 +177,96 @@ function Parser (properties) {
 
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
 
-    const URL = "(?:" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?" +
-        "|" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?" +
-        "|" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
-              
-    const mail = "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))";
-    const protocol_mail = "(?:(mailto):" + mail + ")";
-    
-    const url_pattern = "(^|[\\s()<>«“]+)(" + protocol_mail + "|" + URL + "|" + mail + ")";
+	var mail_pattern = SubPattern("((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))", 1,
+								  {
+									  test: function (regex, index) {
+										  return properties.support.email && regex[index] !== undefined;
+									  },
+									  match: function (regex, index) {
+										  if (regex[index])
+											  return "mailto:" + regex[index];
+										  else
+											  return null;
+									  }
+								  });
+	var full_mail_pattern = SubPattern("(?:(mailto):" + mail_pattern.pattern + ")", 1+mail_pattern.count,
+									   {
+										   test: function (regex, index) {
+											   return properties.support.email && regex[index] !== undefined;
+										   },
+										   match: function (regex, index) {
+											   if (regex[index])
+												   return "mailto:" + regex[index+1];
+											   else
+												   return null;
+										   }
+									   });
 
-    var URLregex = RegExp (url_pattern, 'i');
-    var protocol_matcher = buildMatcher (properties.protocols);
-    var subdomain_matcher = buildMatcher (properties.subdomains);
-    
+	var full_protocol_pattern = SubPattern("(" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?)", 2,
+										   {
+											   test: function (regex, index) {
+												   return regex[index] !== undefined;
+											   },
+											   match: function (regex, index) {
+												   let protocol_index = index+1;
+												   if (regex[index])
+													   // url includes the protocol
+													   return regex[index].replace(regex[protocol_index], getProtocol(regex[protocol_index]));
+												   else
+													   return null;
+											   }
+										   });
+	var auth_domain_pattern = SubPattern("(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?)", 2,
+										   {
+											   test: function (regex, index) {
+												   return regex[index] !== undefined;
+											   },
+											   match: function (regex, index) {
+												   let subdomain_index = index+1;
+												   if (regex[index]) {
+													   if (regex[subdomain_index]) {
+														   // protocol less url with known subdomain
+														   // Deduce protocol from the subdomain
+														   return getDomainProtocol(regex[subdomain_index]) + regex[index];
+													   } else {
+														   // protocol less url, assume http
+														   return "http://" + regex[index];
+													   }
+												   } else {
+													   return null;
+												   }
+											   }
+										   });
+	var domain_pattern = SubPattern("(" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)", 2,
+										   {
+											   test: function (regex, index) {
+												   return regex[index] !== undefined;
+											   },
+											   match: function (regex, index) {
+												   let subdomain_index = index+1;
+												   if (regex[index]) {
+													   if (regex[subdomain_index]) {
+														   // protocol less url with known subdomain
+														   // Deduce protocol from the subdomain
+														   return getDomainProtocol(regex[subdomain_index]) + regex[index];
+													   } else {
+														   // protocol less url, assume http
+														   return "http://" + regex[index];
+													   }
+												   } else {
+													   return null;
+												   }
+											   }
+										   });
+
+	var pattern = Pattern ("(^|[\\s()<>«“]+)", 1);
+	pattern.push(full_mail_pattern);
+	pattern.push(full_protocol_pattern);
+	pattern.push(auth_domain_pattern);
+	pattern.push(domain_pattern);
+	pattern.push(mail_pattern);
+	pattern.compile();
+
     return {
         textNodes: function () {
 			if (!document.body) {
@@ -112,38 +286,9 @@ function Parser (properties) {
 			return document.evaluate (query, document.body, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
         },
         
-        match: function (text) {
-            result = URLregex.exec (text);
-            if (result) {
-                return {
-                    get regex() { return result; },
-                    get text() { return result[2]; },
-                    get index() { return result.index + result[1].length; },
-                    get length() { return result[2].length; }
-                }
-            } else {
-                return null;
-            }
-        },
-        
-        getURL: function (match) {
-            if (match.regex[3]) {
-                // this is a fully defined email, including protocol
-                return match.regex[2];
-            } else if (match.regex[8]) {
-                // protocol less email address
-                return "mailto:" + match.regex[2];
-            } else if (match.regex[5]) {
-                // url includes the protocol
-                return match.regex[2].replace(match.regex[5], getProtocol(match.regex[5]));
-            } else if (match.regex[6] || match.regex[7]) {
-                // protocol less url. Deduce protocol from the subdomain
-                return getDomainProtocol(match.regex[6]?match.regex[6]:match.regex[7]) + match.regex[2];
-            } else {
-                // protocol less url, assume http
-                return "http://" + match.regex[2];
-            }
-        }
+		match: function (text) {
+			return pattern.match(text);
+		}
     }
 }
 
@@ -180,7 +325,7 @@ function Linkify (node, parser, startTime, style) {
 			
 			parent.insertBefore (document.createTextNode(text.substring(0, match.index)), sibling);
 
-            let url = parser.getURL(match);
+            let url = match.url;
             let anchor = document.createElement('a');
 			anchor.setAttribute('title', 'Linkificator: ' + url);
 			anchor.setAttribute('href', url);
@@ -230,7 +375,7 @@ function Linkify (node, parser, startTime, style) {
     }
 }
 
-self.on('message', function (properties) {
+self.port.on('parse', function (properties) {
 	var style = (function (style) {
 		let format = "";
 

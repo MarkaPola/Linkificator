@@ -22,27 +22,48 @@
 
 	<script type="application/x-javascript" src="chrome://linkificator/content/advanced-options.js" />
 
-  <vbox>
-	<groupbox style="width: 400px">
-	  <caption label="&advanced-settings.protocols;" />
-	  <hbox>
-		<textbox id="advanced-settings.protocol-list" style="width: 270px" onchange="AdvancedSettings.change('protocols');" />
-		<button id="advanced-settings.protocol-reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('protocols');" />
-	  </hbox>
-	</groupbox>
-	<groupbox style="margin-top: 10px">
-	  <caption label="&advanced-settings.subdomains;" />
-	  <hbox>
-		<textbox id="advanced-settings.subdomain-list" style="width: 270px" onchange="AdvancedSettings.change('subdomains');" />
-		<button id="advanced-settings.subdomain-reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('subdomains');" />
-	  </hbox>
-	</groupbox>
-	<groupbox style="margin-top: 10px">
-	  <caption label="&advanced-settings.excludedElements;" />
-	  <hbox>
-		<textbox id="advanced-settings.excludedElement-list" style="width: 270px" onchange="AdvancedSettings.change('excludedElements');" />
-		<button id="advanced-settings.excludedElement-reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('excludedElements');" />
-	  </hbox>
-	</groupbox>
-  </vbox>
+  <tabbox>
+    <tabs>
+      <tab label="&advanced-settings.tab-links;" />
+      <tab label="&advanced-settings.tab-configuration;" />
+    </tabs>
+
+    <tabpanels>
+      <tabpanel id="advanced-settings.links" >
+        <vbox>
+          <groupbox style="width: 400px">
+            <caption label="&advanced-settings.link-types;" />
+            <checkbox id="advanced-settings.link-type.email" label="&advanced-settings.email-address;" />
+            <checkbox id="advanced-settings.link-type.about" label="&advanced-settings.about-protocol;" />
+          </groupbox>
+        </vbox>
+      </tabpanel>
+
+      <tabpanel id="advanced-settings.configuration" >
+        <vbox>
+          <groupbox style="width: 400px">
+    	    <caption label="&advanced-settings.protocols;" />
+      	    <hbox>
+    		  <textbox id="advanced-settings.protocol.list" style="width: 270px" onchange="AdvancedSettings.change('protocols');" />
+    		  <button id="advanced-settings.protocol.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('protocols');" />
+    	    </hbox>
+    	  </groupbox>
+    	  <groupbox style="margin-top: 10px">
+    	    <caption label="&advanced-settings.subdomains;" />
+    	    <hbox>
+    		  <textbox id="advanced-settings.subdomain.list" style="width: 270px" onchange="AdvancedSettings.change('subdomains');" />
+    		  <button id="advanced-settings.subdomain.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('subdomains');" />
+    	    </hbox>
+    	  </groupbox>
+    	  <groupbox style="margin-top: 10px">
+    	    <caption label="&advanced-settings.excludedElements;" />
+    	    <hbox>
+    		  <textbox id="advanced-settings.excludedElement.list" style="width: 270px" onchange="AdvancedSettings.change('excludedElements');" />
+    		  <button id="advanced-settings.excludedElement.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('excludedElements');" />
+    	    </hbox>
+    	  </groupbox>
+        </vbox>
+	  </tabpanel>
+    </tabpanels>
+  </tabbox>
 </dialog>
