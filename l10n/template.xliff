@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version='1.2'
+       xmlns='urn:oasis:names:tc:xliff:document:1.2'
+	   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+       xsi:schemaLocation='urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2.xsd'>
+  <file original='locale/%lang.properties' datatype='javapropertyresourcebundle'
+		xml:space='preserve' source-language='en' target-language='%target'
+		product-name='Linkificator' product-version='0.8.0'>
+	<body>
+	  <group id='stats'>
+		<trans-unit id='stats.links[zero]'>
+		  <source>0 links processed</source>
+		  <target state='new'>0 links processed</target>
+		</trans-unit>
+		<trans-unit id='stats.links[one]'>
+		  <source>1 link processed</source>
+		  <target state='new'>1 link processed</target>
+		</trans-unit>
+		<trans-unit id='stats.links'>
+		  <source>%d links processed</source>
+		  <target state='new'>%d links processed</target>
+		</trans-unit>
+		<trans-unit id='stats.time'>
+		  <source>in %d ms</source>
+		  <target state='new'>in %d ms</target>
+		</trans-unit>
+		<trans-unit id='stats.excluded'>
+		  <source>page excluded</source>
+		  <target state='new'>page excluded</target>
+		</trans-unit>
+		<trans-unit id='stats.not_processed'>
+		  <source>page not processed</source>
+		  <target state='new'>page not processed</target>
+		</trans-unit>
+	  </group>
+	</body>
+  </file>
+  <file original='chrome/locale/%lang/options.dtd' datatype='xmldtd'
+		xml:space='preserve' source-language='en' target-language='%target'
+		product-name='Linkificator' product-version='0.8.0'>
+	<group id='settings'>
+	  <trans-unit id='settings.activated'>
+		<source>Activated</source>
+		<target state='new'>Activated</target>
+	  </trans-unit>
+	  <trans-unit id='settings.hotkey'>
+		<source>Hot key to toggle linkificator state</source>
+		<target state='new'>Hot key to toggle linkificator state</target>
+	  </trans-unit>
+	  <trans-unit id='settings.widget'>
+		<source>Display widget in the Add-on Bar</source>
+		<target state='new'>Display widget in the Add-on Bar</target>
+	  </trans-unit>
+	  <trans-unit id='settings.regexp'>
+		<source>Use regular expressions for domains</source>
+		<target state='new'>Use regular expressions for domains</target>
+	  </trans-unit>
+	  <trans-unit id='settings.useWhitelist'>
+		<source>Only linkify for domains in Whitelist</source>
+		<target state='new'>Only linkify for domains in Whitelist</target>
+	  </trans-unit>
+	  <trans-unit id='settings.whitelist'>
+		<source>Whitelisted Domains</source>
+		<target state='new'>Whitelisted Domains</target>
+	  </trans-unit>
+	  <trans-unit id='settings.useBlacklist'>
+		<source>Never linkify for domains in Blacklist</source>
+		<target state='new'>Never linkify for domains in Blacklist</target>
+	  </trans-unit>
+	  <trans-unit id='settings.blacklist'>
+		<source>Blacklisted Domains</source>
+		<target state='new'>Blacklisted Domains</target>
+	  </trans-unit>
+	  <trans-unit id='settings.listdescription'>
+		<source>Separate domains with a space</source>
+		<target state='new'>Separate domains with a space</target>
+	  </trans-unit>
+	  <trans-unit id='settings.overrideTextColor'>
+		<source>Override text color</source>
+		<target state='new'>Override text color</target>
+	  </trans-unit>
+	  <trans-unit id='settings.textColor'>
+		<source>Linkified text color</source>
+		<target state='new'>Linkified text color</target>
+	  </trans-unit>
+	  <trans-unit id='settings.overrideBackgroundColor'>
+		<source>Override background color</source>
+		<target state='new'>Override background color</target>
+	  </trans-unit>
+	  <trans-unit id='settings.backgroundColor'>
+		<source>Linkified background color</source>
+		<target state='new'>Linkified background color</target>
+	  </trans-unit>
+	  <trans-unit id='settings.advanced'>
+		<source>Advanced settings...</source>
+		<target state='new'>Advanced settings...</target>
+	  </trans-unit>
+	  <trans-unit id='settings.sync'>
+		<source>Sync settings</source>
+		<target state='new'>Sync settings</target>
+	  </trans-unit>
+	</group>
+  </file>
+  <file original='chrome/locale/%lang/advanced-options.dtd' datatype='xmldtd'
+		xml:space='preserve' source-language='en' target-language='%target'
+		product-name='Linkificator' product-version='0.8.0'>
+	<group id='advanced-settings'>
+	  <trans-unit id='advanced-settings.title'>
+		<source>Linkificator Advanced Options</source>
+		<target state='new'>Linkificator Advanced Options</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.tab-links'>
+		<source>Links</source>
+		<target state='new'>Links</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.tab-configuration'>
+		<source>Configuration</source>
+		<target state='new'>Configuration</target>
+	  </trans-unit>
+	</group>
+	<group id='advanced-settings.links'>
+	  <trans-unit id='advanced-settings.link-types'>
+		<source>Generate links for:</source>
+		<target state='new'>Generate links for:</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.email-address'>
+		<source>Email addresses</source>
+		<target state='new'>Email addresses</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.about-protocol'>
+		<source>about: protocol</source>
+		<target state='new'>about: protocol</target>
+	  </trans-unit>
+	</group>
+	<group id='advanced-settings.configuration'>
+	  <trans-unit id='advanced-settings.protocols'>
+		<source>Protocols</source>
+		<target state='new'>Protocols</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.subdomains'>
+		<source>Subdomains</source>
+		<target state='new'>Subdomains</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.excludedElements'>
+		<source>Excluded Elements</source>
+		<target state='new'>Excluded Elements</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.reset-button'>
+		<source>Reset to Default</source>
+		<target state='new'>Reset to Default</target>
+	  </trans-unit>
+	</group>
+  </file>
+  <file original='app-extension/install.rdf' datatype='xml'
+		xml:space='preserve' source-language='en' target-language='%target'
+		product-name='Linkificator' product-version='0.8.0'>
+	  <trans-unit id='em:description'>
+		<source>Converts text links into clickable links...</source>
+		<target state='new'>Converts text links into clickable links...</target>
+	  </trans-unit>
+  </file>
+</xliff>
