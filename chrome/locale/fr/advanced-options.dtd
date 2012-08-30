@@ -6,16 +6,32 @@
 <!-- fr localization - Linkificator's module
    - author: MarkaPola -->
 
-<!ENTITY advanced-settings.title                 "Linkificator Options Avancées">
+<!ENTITY advanced-settings.title                                "Linkificator Options Avancées">
 
-<!ENTITY advanced-settings.tab-links             "Liens">
-<!ENTITY advanced-settings.tab-configuration     "Configuration">
+<!ENTITY advanced-settings.tab-links                            "Liens">
+<!ENTITY advanced-settings.tab-custom-rules                     "Règles Utilisateur">
+<!ENTITY advanced-settings.tab-configuration                    "Configuration">
 
-<!ENTITY advanced-settings.link-types            "Générer des liens pour:">
-<!ENTITY advanced-settings.email-address         "Adresses de courriel">
-<!ENTITY advanced-settings.about-protocol        "Protocole about:">
+<!ENTITY advanced-settings.links.link-types                     "Générer des liens pour:">
+<!ENTITY advanced-settings.links.email-address                  "Adresses de courriel">
+<!ENTITY advanced-settings.links.about-protocol                 "Protocole about:">
 
-<!ENTITY advanced-settings.protocols             "Protocoles">
-<!ENTITY advanced-settings.subdomains            "Sous-domaines">
-<!ENTITY advanced-settings.excludedElements      "Elements exclus">
-<!ENTITY advanced-settings.reset-button          "Remettre par défaut">
+<!ENTITY advanced-settings.configuration.protocols              "Protocoles">
+<!ENTITY advanced-settings.configuration.subdomains             "Sous-domaines">
+<!ENTITY advanced-settings.configuration.excludedElements       "Elements exclus">
+<!ENTITY advanced-settings.configuration.reset-button           "Remettre par défaut">
+
+<!ENTITY advanced-settings.custom-rules.before-standard         "Avant les règles prédéfinies">
+<!ENTITY advanced-settings.custom-rules.after-standard          "Après les règles prédéfinies">
+<!ENTITY advanced-settings.custom-rules.add-button              "Ajouter une règle">
+<!ENTITY advanced-settings.custom-rules.edit-button.tooltip     "Editer">
+<!ENTITY advanced-settings.custom-rules.delete-button.tooltip   "Supprimer">
+
+<!ENTITY advanced-settings.panel.name                           "Nom">
+<!ENTITY advanced-settings.panel.name.placeholder               "Identification de la règle">
+<!ENTITY advanced-settings.panel.pattern                        "Modèle">
+<!ENTITY advanced-settings.panel.pattern.placeholder            "Expression régulière">
+<!ENTITY advanced-settings.panel.url                            "URL">
+<!ENTITY advanced-settings.panel.url.placeholder                "Expression régulière">
+<!ENTITY advanced-settings.panel.ok-button                      "OK">
+<!ENTITY advanced-settings.panel.cancel-button                  "Annuler">

@@ -5,64 +5,150 @@
 - http://mozilla.org/MPL/2.0/. -->
 
 <!-- advanced options UI - Linkificator's module
-   - author: MarkaPola -->
+- author: MarkaPola -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://linkificator/skin/advanced-options.css" type="text/css"?>
 
 <!DOCTYPE dialog SYSTEM "chrome://linkificator/locale/advanced-options.dtd">
 
 <dialog
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="advanced-settings"
 	windowtype="linkificator:advanced-settings"
 	title="&advanced-settings.title;"
 	buttons="accept, cancel"
-	style="-moz-appearance: window !important;"
 	onload="AdvancedSettings.init();"
-	ondialogaccept="AdvancedSettings.validate();" >
+	onunload="AdvancedSettings.release();"
+	ondialogaccept="AdvancedSettings.validate();">
 
-	<script type="application/x-javascript" src="chrome://linkificator/content/advanced-options.js" />
+  <script src="chrome://linkificator/content/advanced-options.js" type="application/x-javascript"/>
 
-  <tabbox>
+  <tabbox id="advanced-settings.tabbox" style="width: 450px">
     <tabs>
-      <tab label="&advanced-settings.tab-links;" />
-      <tab label="&advanced-settings.tab-configuration;" />
+      <tab label="&advanced-settings.tab-links;"/>
+	  <tab label="&advanced-settings.tab-custom-rules;"/>
+      <tab label="&advanced-settings.tab-configuration;"/>
     </tabs>
 
     <tabpanels>
-      <tabpanel id="advanced-settings.links" >
-        <vbox>
-          <groupbox style="width: 400px">
-            <caption label="&advanced-settings.link-types;" />
-            <checkbox id="advanced-settings.link-type.email" label="&advanced-settings.email-address;" />
-            <checkbox id="advanced-settings.link-type.about" label="&advanced-settings.about-protocol;" />
+      <tabpanel id="advanced-settings.links" orient="vertical">
+		<vbox>
+          <groupbox orient="horizontal" flex="1">
+			<caption label="&advanced-settings.links.link-types;"/>
+			<vbox>
+              <checkbox id="advanced-settings.link-type.email"
+						label="&advanced-settings.links.email-address;"/>
+              <checkbox id="advanced-settings.link-type.about"
+						label="&advanced-settings.links.about-protocol;"/>
+			</vbox>
           </groupbox>
-        </vbox>
+		</vbox>
       </tabpanel>
 
-      <tabpanel id="advanced-settings.configuration" >
-        <vbox>
-          <groupbox style="width: 400px">
-    	    <caption label="&advanced-settings.protocols;" />
-      	    <hbox>
-    		  <textbox id="advanced-settings.protocol.list" style="width: 270px" onchange="AdvancedSettings.change('protocols');" />
-    		  <button id="advanced-settings.protocol.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('protocols');" />
+	  <tabpanel id="advanced-settings.custom-rules" orient="vertical">
+		<popupset>
+		  <panel id="advanced-settings.custom-rules.panel" type="arrow" noautohide="true"
+				 position="bottomcenter topleft" orient="vertical" style="width: 400px">
+			<vbox flex="1">
+			  <hbox>
+				<label value="&advanced-settings.panel.name;:"
+					   control="advanced-settings.custom-rules.panel.name"/>
+				<spacer flex="1"/>
+				<textbox id="advanced-settings.custom-rules.panel.name"
+						 placeholder="&advanced-settings.panel.name.placeholder;"
+						 style="width: 270px"/>
+			  </hbox>
+			  <hbox>
+				<label value="&advanced-settings.panel.pattern;:"
+					   control="advanced-settings.custom-rules.panel.pattern"/>
+				<spacer flex="1"/>
+				<textbox id="advanced-settings.custom-rules.panel.pattern"
+						 placeholder="&advanced-settings.panel.pattern.placeholder;"
+						 style="width: 270px"/>
+			  </hbox>
+			  <hbox>
+				<label value="&advanced-settings.panel.url;:"
+					   control="advanced-settings.custom-rules.panel.url"/>
+				<spacer flex="1"/>
+				<textbox id="advanced-settings.custom-rules.panel.url"
+						 placeholder="&advanced-settings.panel.url.placeholder;"
+						 style="width: 270px"/>
+			  </hbox>
+			  <hbox pack="end" style="margin-top: 10px">
+				<button id="advanced-settings.custom-rules.panel.ok" default="true"
+						label="&advanced-settings.panel.ok-button;"/>
+				<button id="advanced-settings.custom-rules.panel.cancel"
+						label="&advanced-settings.panel.cancel-button;"
+						/>
+			  </hbox>
+			</vbox>
+		  </panel>
+
+		  <tooltip id="advanced-settings.custom-rules.tooltip" orient="vertical">
+			<label/>
+			<label/>
+		  </tooltip>
+		</popupset>
+
+		<richlistitem id="advanced-settings.custom-rules.itemTemplate" hidden="true">
+		  <hbox flex="1" align="center">
+			<checkbox checked="true"/>
+			<label tooltip="advanced-settings.custom-rules.tooltip" flex="1"/>
+			<toolbarbutton class="advanced-settings.custom-rules.edit-button"
+						   tooltiptext="&advanced-settings.custom-rules.edit-button.tooltip;..."
+						   popup="advanced-settings.custom-rules.panel"/>
+			<toolbarbutton class="advanced-settings.custom-rules.delete-button"
+						   tooltiptext="&advanced-settings.custom-rules.delete-button.tooltip;"/>
+		  </hbox>
+		</richlistitem>
+
+		<hbox>
+		  <menulist id="advanced-settings.custom-rules.list-selection">
+			<menupopup>
+			  <menuitem label="&advanced-settings.custom-rules.before-standard;"/>
+			  <menuitem label="&advanced-settings.custom-rules.after-standard;"/>
+			</menupopup>
+		  </menulist>
+		  <spacer flex="1"/>
+		  <button id="advanced-settings.custom-rules.add"
+				  label="&advanced-settings.custom-rules.add-button;..."
+				  popup="advanced-settings.custom-rules.panel"/>
+		</hbox>
+		<deck id="advanced-settings.custom-rules.deck" selectedIndex="0" flex="1">
+		  <richlistbox id="advanced-settings.custom-rules.before-list" flex="1"/>
+		  <richlistbox id="advanced-settings.custom-rules.after-list" flex="1"/>
+		</deck>
+	  </tabpanel>
+
+      <tabpanel id="advanced-settings.configuration" orient="vertical">
+          <groupbox>
+    	    <caption label="&advanced-settings.configuration.protocols;"/>
+      	    <hbox align="center">
+    		  <textbox id="advanced-settings.protocol.list" style="width: 280px"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.protocol.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
     	  <groupbox style="margin-top: 10px">
-    	    <caption label="&advanced-settings.subdomains;" />
-    	    <hbox>
-    		  <textbox id="advanced-settings.subdomain.list" style="width: 270px" onchange="AdvancedSettings.change('subdomains');" />
-    		  <button id="advanced-settings.subdomain.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('subdomains');" />
+    	    <caption label="&advanced-settings.configuration.subdomains;"/>
+    	    <hbox align="center">
+    		  <textbox id="advanced-settings.subdomain.list" style="width: 280px"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.subdomain.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
     	  <groupbox style="margin-top: 10px">
-    	    <caption label="&advanced-settings.excludedElements;" />
-    	    <hbox>
-    		  <textbox id="advanced-settings.excludedElement.list" style="width: 270px" onchange="AdvancedSettings.change('excludedElements');" />
-    		  <button id="advanced-settings.excludedElement.reset" label="&advanced-settings.reset-button;" oncommand="AdvancedSettings.reset('excludedElements');" />
+    	    <caption label="&advanced-settings.configuration.excludedElements;"/>
+    	    <hbox align="center">
+    		  <textbox id="advanced-settings.excludedElement.list" style="width: 280px"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.excludedElement.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
-        </vbox>
 	  </tabpanel>
     </tabpanels>
   </tabbox>

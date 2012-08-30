@@ -1,0 +1,37 @@
+
+/*
+ * This Source Code is subject to the terms of the Mozilla Public License
+ * version 2.0 (the "License"). You can obtain a copy of the License at
+ * http://mozilla.org/MPL/2.0/.
+ */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+#advanced-settings {
+	-moz-appearance: window !important;
+}
+
+.advanced-settings\.custom-rules\.edit-button {
+	border-style: none !important;
+	-moz-user-focus: normal;
+	list-style-image: url("edit.png");
+	-moz-appearance: none;
+	-moz-image-region: rect(0px, 14px, 14px, 0px);
+}
+
+.advanced-settings\.custom-rules\.edit-button:hover {
+	-moz-image-region: rect(0px, 28px, 14px, 14px);
+}
+
+.advanced-settings\.custom-rules\.delete-button {
+	border-style: none !important;
+	-moz-user-focus: normal;
+	list-style-image: url("close.png");
+	-moz-appearance: none;
+	-moz-image-region: rect(0px, 14px, 14px, 0px);
+}
+
+.advanced-settings\.custom-rules\.delete-button:hover {
+	-moz-image-region: rect(0px, 28px, 14px, 14px);
+}

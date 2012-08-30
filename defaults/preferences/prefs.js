@@ -20,6 +20,7 @@ pref("extensions.linkificator@markapola.overrideBackgroundColor", false);
 pref("extensions.linkificator@markapola.backgroundColor", "#fff9ab");
 pref("extensions.linkificator@markapola.supportEmail", true);
 pref("extensions.linkificator@markapola.supportAbout", false);
+pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afterList\":[]}");
 pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;ftp~ftp#2;news~news#0;nntp~nntp#2;telnet~telnet#2;irc~irc#2;file~file#3");
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
@@ -38,6 +39,7 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.overrideBackgro
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.backgroundColor", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportEmail", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportAbout", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.customRules", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.protocols", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.subdomains", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.excludedElements", false);
