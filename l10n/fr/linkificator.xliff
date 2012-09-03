@@ -35,6 +35,32 @@
 	  </group>
 	</body>
   </file>
+  <file original='chrome/locale/%lang/global.properties' datatype='javapropertyresourcebundle'
+		xml:space='preserve' source-language='en' target-language='%target'
+		product-name='Linkificator' product-version='0.9.0'>
+	<group id='rule-validation'>
+	  <trans-unit id='advanced-settings.rules-validation.title'>
+		<source>Custom Rule Validation</source>
+		<target state='new'>Validation règle utilisateur</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.empty-field'>
+		<source>Fields must not be empty</source>
+		<target state='new'>Les champs ne doivent pas être vides</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-re'>
+		<source>Errors on regular expressions</source>
+		<target state='new'>Erreurs dans les espressions régulières</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-pattern'>
+		<source>Pattern is not a valid regular expression</source>
+		<target state='new'>L'expression régulière pour le modèle est invalide</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-url'>
+		<source>URL is not a valid regular expression</source>
+		<target state='new'>L'expression régulière pour l'URL est invalide</target>
+	  </trans-unit>
+	</group>
+  </file>
   <file original='chrome/locale/%lang/options.dtd' datatype='xmldtd'
 		xml:space='preserve' source-language='en' target-language='fr'
 		product-name='Linkificator' product-version='0.8.0'>
@@ -113,9 +139,21 @@
 		<source>Links</source>
 		<target state='translated'>Liens</target>
 	  </trans-unit>
+	  <trans-unit id='advanced-settings.tab-custom-rules'>
+		<source>Custom Rules</source>
+		<target state='new'>Règles Utilisateur</target>
+	  </trans-unit>
 	  <trans-unit id='advanced-settings.tab-configuration'>
 		<source>Configuration</source>
 		<target state='translated'>Configuration</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.ok-button'>
+		<source>OK</source>
+		<target state='new'>OK</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.ok-button'>
+		<source>Cancel</source>
+		<target state='new'>Annuler</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.links'>
@@ -132,22 +170,70 @@
 		<target state='translated'>Protocole about:</target>
 	  </trans-unit>
 	</group>
+	<group id='advanced-settings.custom-rules'>
+	  <trans-unit id='advanced-settings.custom-rules.before-standard'>
+		<source>Before predefined rules</source>
+		<target state='new'>Avant les règles prédéfinies</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.after-standard'>
+		<source>After predefined rules</source>
+		<target state='new'>Après les règles prédéfinies</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.add-button'>
+		<source>Add Rule</source>
+		<target state='new'>Ajouter une règle</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.edit-button.tooltip'>
+		<source>Edit</source>
+		<target state='new'>Editer</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.delete-button.tooltip'>
+		<source>Delete</source>
+		<target state='new'>Supprimer</target>
+	  </trans-unit>
+	</group>
 	<group id='advanced-settings.configuration'>
-	  <trans-unit id='advanced-settings.protocols'>
+	  <trans-unit id='advanced-settings.configuration.protocols'>
 		<source>Protocols</source>
 		<target state='translated'>Protocoles</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.subdomains'>
+	  <trans-unit id='advanced-settings.configuration.subdomains'>
 		<source>Subdomains</source>
 		<target state='translated'>Sous-domaines</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.excludedElements'>
+	  <trans-unit id='advanced-settings.configuration.excludedElements'>
 		<source>Excluded Elements</source>
 		<target state='translated'>Elements exclus</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.reset-button'>
+	  <trans-unit id='advanced-settings.configuration.reset-button'>
 		<source>Reset to Default</source>
 		<target state='translated'>Remettre par défaut</target>
+	  </trans-unit>
+	</group>
+	<group id='advanced-settings.custom-rules.panel'>
+	  <trans-unit id='advanced-settings.custom-rules.panel.name.label'>
+		<source>Name</source>
+		<target state='new'>Nom</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.name.placeholder'>
+		<source>Rule identification</source>
+		<target state='new'>Identification de la règle</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.pattern.label'>
+		<source>Pattern</source>
+		<target state='new'>Modèle</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.pattern.placeholder'>
+		<source>Regular expression</source>
+		<target state='new'>Expression régulière</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.url.label'>
+		<source>URL</source>
+		<target state='new'>URL</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.url.placeholder'>
+		<source>Regular expression</source>
+		<target state='new'>Expression régulière</target>
 	  </trans-unit>
 	</group>
   </file>

@@ -52,34 +52,34 @@
 				 position="bottomcenter topleft" orient="vertical" style="width: 400px">
 			<vbox flex="1">
 			  <hbox>
-				<label value="&advanced-settings.panel.name;:"
+				<label value="&advanced-settings.custom-rules.panel.name.label;:"
 					   control="advanced-settings.custom-rules.panel.name"/>
 				<spacer flex="1"/>
 				<textbox id="advanced-settings.custom-rules.panel.name"
-						 placeholder="&advanced-settings.panel.name.placeholder;"
+						 placeholder="&advanced-settings.custom-rules.panel.name.placeholder;"
 						 style="width: 270px"/>
 			  </hbox>
 			  <hbox>
-				<label value="&advanced-settings.panel.pattern;:"
+				<label value="&advanced-settings.custom-rules.panel.pattern.label;:"
 					   control="advanced-settings.custom-rules.panel.pattern"/>
 				<spacer flex="1"/>
 				<textbox id="advanced-settings.custom-rules.panel.pattern"
-						 placeholder="&advanced-settings.panel.pattern.placeholder;"
+						 placeholder="&advanced-settings.custom-rules.panel.pattern.placeholder;"
 						 style="width: 270px"/>
 			  </hbox>
 			  <hbox>
-				<label value="&advanced-settings.panel.url;:"
+				<label value="&advanced-settings.custom-rules.panel.url.label;:"
 					   control="advanced-settings.custom-rules.panel.url"/>
 				<spacer flex="1"/>
 				<textbox id="advanced-settings.custom-rules.panel.url"
-						 placeholder="&advanced-settings.panel.url.placeholder;"
+						 placeholder="&advanced-settings.custom-rules.panel.url.placeholder;"
 						 style="width: 270px"/>
 			  </hbox>
 			  <hbox pack="end" style="margin-top: 10px">
 				<button id="advanced-settings.custom-rules.panel.ok" default="true"
-						label="&advanced-settings.panel.ok-button;"/>
+						label="&advanced-settings.ok-button;"/>
 				<button id="advanced-settings.custom-rules.panel.cancel"
-						label="&advanced-settings.panel.cancel-button;"
+						label="&advanced-settings.cancel-button;"
 						/>
 			  </hbox>
 			</vbox>
@@ -125,27 +125,27 @@
           <groupbox>
     	    <caption label="&advanced-settings.configuration.protocols;"/>
       	    <hbox align="center">
-    		  <textbox id="advanced-settings.protocol.list" style="width: 280px"/>
+    		  <textbox id="advanced-settings.configuration.protocol.list" style="width: 280px"/>
 			  <spacer flex="1"/>
-    		  <button id="advanced-settings.protocol.reset"
+    		  <button id="advanced-settings.configuration.protocol.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
     	  <groupbox style="margin-top: 10px">
     	    <caption label="&advanced-settings.configuration.subdomains;"/>
     	    <hbox align="center">
-    		  <textbox id="advanced-settings.subdomain.list" style="width: 280px"/>
+    		  <textbox id="advanced-settings.configuration.subdomain.list" style="width: 280px"/>
 			  <spacer flex="1"/>
-    		  <button id="advanced-settings.subdomain.reset"
+    		  <button id="advanced-settings.configuration.subdomain.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
     	  <groupbox style="margin-top: 10px">
     	    <caption label="&advanced-settings.configuration.excludedElements;"/>
     	    <hbox align="center">
-    		  <textbox id="advanced-settings.excludedElement.list" style="width: 280px"/>
+    		  <textbox id="advanced-settings.configuration.excludedElement.list" style="width: 280px"/>
 			  <spacer flex="1"/>
-    		  <button id="advanced-settings.excludedElement.reset"
+    		  <button id="advanced-settings.configuration.excludedElement.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>

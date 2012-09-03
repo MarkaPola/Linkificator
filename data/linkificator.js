@@ -62,24 +62,68 @@ function Parser (properties) {
     }
     
 	// Helper Functions to manage various patterns used to match the different URL formats
-	function SubPattern (text, captures, matcher) {
-		var index = 0;
 
-		return {
-			set start (value) { index = value; },
-			get count () { return captures; },
-			get pattern () { return text; },
+	// Count all captures of a regular expression. Assume the regex is syntactically valid.
+	function captureCount (regex) {
+		let count = 0;
+		let inSet = false;
 
-			test: function (regex) {
-				return matcher.test(regex, index);
-			},
-			getURL: function (regex) {
-				return matcher.match(regex, index);
+		for (let index = 0; index < regex.length; ++index) {
+			if (regex.charAt(index) == '\\') {
+				++index;
+				continue;
 			}
+			if (regex.charAt(index) == '[') {
+				inSet = true;
+				continue;
+			}
+			if (regex.charAt(index) == ']') {
+				inSet = false;
+				continue;
+			}
+			if (regex.charAt(index) == '(' && !inSet) {
+				if (regex.indexOf("?:", index) != index+1)
+					count += 1;
+			}
+		}
+
+		return count;
+	}
+
+	// Base class to manage pattern matching a family of URLs (like e-mail or http)
+	function PatternRule (text) {
+		if (text === undefined) return;
+
+		this._regex = text;
+		this._captures = captureCount(text);
+		this._index = 0;
+	}
+	PatternRule.prototype = {
+		set start (value) {
+			this._index = value;
+		},
+		get count () {
+			return this._captures;
+		},
+		get pattern () {
+			return this._regex;
+		},
+		set pattern (text) {
+			this._regex = text;
+			this._captures = captureCount(text);
+		},
+
+		test: function (regex) {
+			return false;
+		},
+		getURL: function (regex) {
+			return null;
 		}
 	}
 
-	function Pattern (prefix, count) {
+	// to handle all pattern matching rules
+	function Pattern (prefix) {
+		var count = captureCount(prefix);
 		var index = count+2;
 		var pattern = prefix + "(";
 		var subpatterns = [];
@@ -177,96 +221,83 @@ function Parser (properties) {
 
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
 
-	var mail_pattern = SubPattern("((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))", 1,
-								  {
-									  test: function (regex, index) {
-										  return properties.support.email && regex[index] !== undefined;
-									  },
-									  match: function (regex, index) {
-										  if (regex[index])
-											  return "mailto:" + regex[index];
-										  else
-											  return null;
-									  }
-								  });
-	var full_mail_pattern = SubPattern("(?:(mailto):" + mail_pattern.pattern + ")", 1+mail_pattern.count,
-									   {
-										   test: function (regex, index) {
-											   return properties.support.email && regex[index] !== undefined;
-										   },
-										   match: function (regex, index) {
-											   if (regex[index])
-												   return "mailto:" + regex[index+1];
-											   else
-												   return null;
-										   }
-									   });
+	// define sub-classes from PatternRule for the various URI formats
+	///// e-mail without protocol specification
+	function MailRule () {
+		PatternRule.call(this, "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))");
+	}
+	MailRule.prototype = new PatternRule;
+	MailRule.prototype.test = function(regex) {
+		return properties.support.email && regex[this._index] !== undefined;
+	};
+	MailRule.prototype.getURL = function(regex) {
+		if (regex[this._index])
+			return "mailto:" + regex[this._index];
+		else
+			return null; 
+	};
+	///// full e-mail, including protocol specification
+	function FullMailRule () {
+		MailRule.call(this);
+		// update pattern
+		this.pattern = "(?:mailto:" + this.pattern + ")";
+	}
+	FullMailRule.prototype = new MailRule;
 
-	var full_protocol_pattern = SubPattern("(" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?)", 2,
-										   {
-											   test: function (regex, index) {
-												   return regex[index] !== undefined;
-											   },
-											   match: function (regex, index) {
-												   let protocol_index = index+1;
-												   if (regex[index])
-													   // url includes the protocol
-													   return regex[index].replace(regex[protocol_index], getProtocol(regex[protocol_index]));
-												   else
-													   return null;
-											   }
-										   });
-	var auth_domain_pattern = SubPattern("(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?)", 2,
-										   {
-											   test: function (regex, index) {
-												   return regex[index] !== undefined;
-											   },
-											   match: function (regex, index) {
-												   let subdomain_index = index+1;
-												   if (regex[index]) {
-													   if (regex[subdomain_index]) {
-														   // protocol less url with known subdomain
-														   // Deduce protocol from the subdomain
-														   return getDomainProtocol(regex[subdomain_index]) + regex[index];
-													   } else {
-														   // protocol less url, assume http
-														   return "http://" + regex[index];
-													   }
-												   } else {
-													   return null;
-												   }
-											   }
-										   });
-	var domain_pattern = SubPattern("(" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)", 2,
-										   {
-											   test: function (regex, index) {
-												   return regex[index] !== undefined;
-											   },
-											   match: function (regex, index) {
-												   let subdomain_index = index+1;
-												   if (regex[index]) {
-													   if (regex[subdomain_index]) {
-														   // protocol less url with known subdomain
-														   // Deduce protocol from the subdomain
-														   return getDomainProtocol(regex[subdomain_index]) + regex[index];
-													   } else {
-														   // protocol less url, assume http
-														   return "http://" + regex[index];
-													   }
-												   } else {
-													   return null;
-												   }
-											   }
-										   });
+	///// Full protocol (including protocol specification except e-mail one)
+	function FullProtocolRule () {
+		PatternRule.call(this, "(" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?)");
+	}
+	FullProtocolRule.prototype = new PatternRule;
+	FullProtocolRule.prototype.test = function(regex) {
+		return regex[this._index] !== undefined;
+	};
+	FullProtocolRule.prototype.getURL = function(regex) {
+		let protocol_index = this._index+1;
+		if (regex[this._index])
+			// url includes the protocol
+			return regex[this._index].replace(regex[protocol_index], getProtocol(regex[protocol_index]));
+		else
+			return null;
+	};
+	///// url including authentication but without protocol
+	function AuthenticatedDomainRule () {
+		PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?)");
+	}
+	AuthenticatedDomainRule.prototype = new PatternRule;
+	AuthenticatedDomainRule.prototype.test = function(regex) {
+		return regex[this._index] !== undefined;
+	};
+	AuthenticatedDomainRule.prototype.getURL = function(regex) {
+		let subdomain_index = this._index+1;
+		if (regex[this._index]) {
+			if (regex[subdomain_index]) {
+				// protocol less url with known subdomain
+				// Deduce protocol from the subdomain
+				return getDomainProtocol(regex[subdomain_index]) + regex[this._index];
+			} else {
+				// protocol less url, assume http
+				return "http://" + regex[this._index];
+			}
+		} else {
+			return null;
+		}
+	};
+	///// protocol-less url with optional authentication
+	function DomainRule () {
+		AuthenticatedDomainRule.call(this);
+		this.pattern = "(" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
+	}
+	DomainRule.prototype = new AuthenticatedDomainRule;
 
-	var pattern = Pattern ("(^|[\\s()<>«“]+)", 1);
-	pattern.push(full_mail_pattern);
-	pattern.push(full_protocol_pattern);
-	pattern.push(auth_domain_pattern);
-	pattern.push(domain_pattern);
-	pattern.push(mail_pattern);
+	var pattern = Pattern ("(^|[\\s()<>«“]+)");
+	pattern.push(new FullMailRule);
+	pattern.push(new FullProtocolRule);
+	pattern.push(new AuthenticatedDomainRule);
+	pattern.push(new DomainRule);
+	pattern.push(new MailRule);
 	pattern.compile();
-
+	
     return {
         textNodes: function () {
 			if (!document.body) {
@@ -314,7 +345,7 @@ function Linkify (node, parser, startTime, style) {
 
     function linkify (isOver) {
 		let matched = false, iterations = 0;
-
+		
         for (let match = null;
              !isOver(iterations) && (match = parser.match(text));
              ++iterations, ++count) {
@@ -343,7 +374,7 @@ function Linkify (node, parser, startTime, style) {
 			
 			text = text.substr(match.index + match.length);
 		}
-
+		
 		if (matched) {
 			node = document.createTextNode(text);
 			parent.insertBefore(node, sibling);

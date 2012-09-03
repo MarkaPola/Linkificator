@@ -35,6 +35,32 @@
 	  </group>
 	</body>
   </file>
+  <file original='chrome/locale/%lang/global.properties' datatype='javapropertyresourcebundle'
+		xml:space='preserve' source-language='en' target-language='en-US'
+		product-name='Linkificator' product-version='0.9.0'>
+	<group id='rule-validation'>
+	  <trans-unit id='advanced-settings.rules-validation.title'>
+		<source>Custom Rule Validation</source>
+		<target state='translated'>Custom Rule Validation</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.empty-field'>
+		<source>Fields must not be empty</source>
+		<target state='translated'>Fields must not be empty</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-re'>
+		<source>Errors on regular expressions</source>
+		<target state='translated'>Errors on regular expressions</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-pattern'>
+		<source>Pattern is not a valid regular expression</source>
+		<target state='translated'>Pattern is not a valid regular expression</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.rules-validation.invalid-url'>
+		<source>URL is not a valid regular expression</source>
+		<target state='translated'>URL is not a valid regular expression</target>
+	  </trans-unit>
+	</group>
+  </file>
   <file original='chrome/locale/%lang/options.dtd' datatype='xmldtd'
 		xml:space='preserve' source-language='en' target-language='en-US'
 		product-name='Linkificator' product-version='0.8.0'>
@@ -113,9 +139,21 @@
 		<source>Links</source>
 		<target state='translated'>Links</target>
 	  </trans-unit>
+	  <trans-unit id='advanced-settings.tab-custom-rules'>
+		<source>Custom Rules</source>
+		<target state='translated'>Custom Rules</target>
+	  </trans-unit>
 	  <trans-unit id='advanced-settings.tab-configuration'>
 		<source>Configuration</source>
 		<target state='translated'>Configuration</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.ok-button'>
+		<source>OK</source>
+		<target state='translated'>OK</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.ok-button'>
+		<source>Cancel</source>
+		<target state='translated'>Cancel</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.links'>
@@ -123,31 +161,79 @@
 		<source>Generate links for:</source>
 		<target state='translated'>Generate links for:</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.email-address'>
+	  <trans-unit id='advanced-settings.links.email-address'>
 		<source>Email addresses</source>
 		<target state='translated'>Email addresses</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.about-protocol'>
+	  <trans-unit id='advanced-settings.links.about-protocol'>
 		<source>about: protocol</source>
 		<target state='translated'>about: protocol</target>
 	  </trans-unit>
 	</group>
+	<group id='advanced-settings.custom-rules'>
+	  <trans-unit id='advanced-settings.custom-rules.before-standard'>
+		<source>Before predefined rules</source>
+		<target state='translated'>Before predefined rules</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.after-standard'>
+		<source>After predefined rules</source>
+		<target state='translated'>After predefined rules</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.add-button'>
+		<source>Add Rule</source>
+		<target state='translated'>Add Rule</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.edit-button.tooltip'>
+		<source>Edit</source>
+		<target state='translated'>Edit</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.delete-button.tooltip'>
+		<source>Delete</source>
+		<target state='translated'>Delete</target>
+	  </trans-unit>
+	</group>
 	<group id='advanced-settings.configuration'>
-	  <trans-unit id='advanced-settings.protocols'>
+	  <trans-unit id='advanced-settings.configuration.protocols'>
 		<source>Protocols</source>
 		<target state='translated'>Protocols</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.subdomains'>
+	  <trans-unit id='advanced-settings.configuration.subdomains'>
 		<source>Subdomains</source>
 		<target state='translated'>Subdomains</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.excludedElements'>
+	  <trans-unit id='advanced-settings.configuration.configuration.excludedElements'>
 		<source>Excluded Elements</source>
 		<target state='translated'>Excluded Elements</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.reset-button'>
+	  <trans-unit id='advanced-settings.configuration.reset-button'>
 		<source>Reset to Default</source>
 		<target state='translated'>Reset to Default</target>
+	  </trans-unit>
+	</group>
+	<group id='advanced-settings.custom-rules.panel'>
+	  <trans-unit id='advanced-settings.custom-rules.panel.name.label'>
+		<source>Name</source>
+		<target state='translated'>Name</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.name.placeholder'>
+		<source>Rule identification</source>
+		<target state='translated'>Rule identification</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.pattern.label'>
+		<source>Pattern</source>
+		<target state='translated'>Pattern</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.pattern.placeholder'>
+		<source>Regular expression</source>
+		<target state='translated'>Regular expression</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.url.label'>
+		<source>URL</source>
+		<target state='translated'>URL</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.custom-rules.panel.url.placeholder'>
+		<source>Regular expression</source>
+		<target state='translated'>Regular expression</target>
 	  </trans-unit>
 	</group>
   </file>

@@ -85,12 +85,6 @@ function CustomRule (rule) {
 	}
 }
 CustomRule.prototype = {
-	name: null,
-	pattern: null,
-	url: null,
-
-	active: true,
-
 	validate: function () {
 		let errorMessage = "";
 
@@ -141,8 +135,6 @@ function Tooltip (tooltip) {
 	this._tooltip = $(tooltip);
 }
 Tooltip.prototype = {
-	_tooltip: null,
-
 	update: function (rule) {
 		if (rule) {
 			this._tooltip.firstChild.setAttribute('value', rule.pattern);
@@ -171,17 +163,6 @@ function Panel (panel, start, complete) {
 	$('advanced-settings.custom-rules.panel.cancel').addEventListener('command', this.hide.bind(this));
 }
 Panel.prototype = {
-	_rule: null,
-	
-	_init: null,
-	_complete: null,
-
-	_panel: null,
-
-	_name: null,
-	_pattern: null,
-	_url: null,
-
 	init: function (event) {
 		this._rule = this._init();
 		this._name.value = this._rule.name;
@@ -237,13 +218,6 @@ function ListItem (template, tooltip, rule, remove) {
 	this._label.nextSibling.nextSibling.addEventListener('command', this._delete.bind(this));
 }
 ListItem.prototype = {
-	_richlistitem: null,
-	_checkbox: null,
-	_label: null,
-
-	_tooltip: null,
-	_rule: null,
-
 	_setCheckbox: function (event) {
 		this._rule.active = this._checkbox.checked;
 	},
@@ -291,9 +265,6 @@ function ListBox (listbox, itemTemplate, tooltip) {
 	this._tooltip = new Tooltip(tooltip);
 }
 ListBox.prototype = {
-	_richlistbox: null,
-	_template: null,
-
 	get selectedIndex () {
 		return this._richlistbox.selectedIndex;
 	},
@@ -459,9 +430,9 @@ function CustomRules (properties) {
 
 //************** Configuration ************************
 function Configuration (properties) {
-	var protocols = $('advanced-settings.protocol.list');
-	var subdomains = $('advanced-settings.subdomain.list');
-	var excludedElements = $('advanced-settings.excludedElement.list');
+	var protocols = $('advanced-settings.configuration.protocol.list');
+	var subdomains = $('advanced-settings.configuration.subdomain.list');
+	var excludedElements = $('advanced-settings.configuration.excludedElement.list');
 
 	var changed = {};
 
@@ -500,14 +471,14 @@ function Configuration (properties) {
 	}
 
 	// manage events
-	$('advanced-settings.protocol.list').addEventListener('change', changeProtocols);
-	$('advanced-settings.protocol.reset').addEventListener('command', resetProtocols);
+	protocols.addEventListener('change', changeProtocols);
+	$('advanced-settings.configuration.protocol.reset').addEventListener('command', resetProtocols);
 
-	$('advanced-settings.subdomain.list').addEventListener('change', changeSubdomains);
-	$('advanced-settings.subdomain.reset').addEventListener('command', resetSubdomains);
+	subdomains.addEventListener('change', changeSubdomains);
+	$('advanced-settings.configuration.subdomain.reset').addEventListener('command', resetSubdomains);
 
-	$('advanced-settings.excludedElement.list').addEventListener('change', changeExcludedElements);
-	$('advanced-settings.excludedElement.reset').addEventListener('command', resetExcludedElements);
+	excludedElements.addEventListener('change', changeExcludedElements);
+	$('advanced-settings.configuration.excludedElement.reset').addEventListener('command', resetExcludedElements);
 
 	return {
 		retrieve: function (properties) {
@@ -515,14 +486,14 @@ function Configuration (properties) {
 		},
 
 		release: function () {
-			$('advanced-settings.protocol.list').removeEventListener('change', changeProtocols);
-			$('advanced-settings.protocol.reset').removeEventListener('command', resetProtocols);
+			protocols.removeEventListener('change', changeProtocols);
+			$('advanced-settings.configuration.protocol.reset').removeEventListener('command', resetProtocols);
 
-			$('advanced-settings.subdomain.list').removeEventListener('change', changeSubdomains);
-			$('advanced-settings.subdomain.reset').removeEventListener('command', resetSubdomains);
+			subdomains.removeEventListener('change', changeSubdomains);
+			$('advanced-settings.configuration.subdomain.reset').removeEventListener('command', resetSubdomains);
 
-			$('advanced-settings.excludedElement.list').removeEventListener('change', changeExcludedElements);
-			$('advanced-settings.excludedElement.reset').removeEventListener('command', resetExcludedElements);
+			excludedElements.removeEventListener('change', changeExcludedElements);
+			$('advanced-settings.configuration.excludedElement.reset').removeEventListener('command', resetExcludedElements);
 		}
 	}
 }
