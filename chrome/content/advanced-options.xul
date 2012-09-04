@@ -35,12 +35,23 @@
       <tabpanel id="advanced-settings.links" orient="vertical">
 		<vbox>
           <groupbox orient="horizontal" flex="1">
-			<caption label="&advanced-settings.links.link-types;"/>
+			<caption label="&advanced-settings.links.predefined-rules;"/>
 			<vbox>
-              <checkbox id="advanced-settings.link-type.email"
-						label="&advanced-settings.links.email-address;"/>
-              <checkbox id="advanced-settings.link-type.about"
-						label="&advanced-settings.links.about-protocol;"/>
+              <checkbox id="advanced-settings.link-type.predefined-rules.email-address"
+						label="&advanced-settings.links.predefined-rules.email-address;"/>
+              <checkbox id="advanced-settings.link-type.predefined-rules.about-protocol"
+						label="&advanced-settings.links.predefined-rules.about-protocol;"/>
+              <checkbox id="advanced-settings.link-type.predefined-rules.standard-urls"
+						label="&advanced-settings.links.predefined-rules.standard-urls;"/>
+			</vbox>
+          </groupbox>
+          <groupbox orient="horizontal" flex="1" style="margin-top: 10px">
+			<caption label="&advanced-settings.links.custom-rules;"/>
+			<vbox>
+              <checkbox id="advanced-settings.link-type.custom-rules.before-predefined"
+						label="&advanced-settings.links.custom-rules.before-predefined;"/>
+              <checkbox id="advanced-settings.link-type.custom-rules.after-predefined"
+						label="&advanced-settings.links.custom-rules.after-predefined;"/>
 			</vbox>
           </groupbox>
 		</vbox>
@@ -106,8 +117,8 @@
 		<hbox>
 		  <menulist id="advanced-settings.custom-rules.list-selection">
 			<menupopup>
-			  <menuitem label="&advanced-settings.custom-rules.before-standard;"/>
-			  <menuitem label="&advanced-settings.custom-rules.after-standard;"/>
+			  <menuitem label="&advanced-settings.custom-rules.before-predefined;"/>
+			  <menuitem label="&advanced-settings.custom-rules.after-predefined;"/>
 			</menupopup>
 		  </menulist>
 		  <spacer flex="1"/>

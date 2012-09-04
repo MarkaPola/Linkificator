@@ -12,12 +12,16 @@
 <!ENTITY advanced-settings.tab-custom-rules                        "Règles Utilisateur">
 <!ENTITY advanced-settings.tab-configuration                       "Configuration">
 
-<!ENTITY advanced-settings.links.link-types                        "Générer des liens pour:">
-<!ENTITY advanced-settings.links.email-address                     "Adresses de courriel">
-<!ENTITY advanced-settings.links.about-protocol                    "Protocole about:">
+<!ENTITY advanced-settings.links.predefined-rules                  "Appliquer les règles prédéfinies pour :">
+<!ENTITY advanced-settings.links.predefined-rules.email-address    "Adresses de courriel">
+<!ENTITY advanced-settings.links.predefined-rules.about-protocol   "Protocole about:">
+<!ENTITY advanced-settings.links.predefined-rules.standard-urls    "URL standards">
+<!ENTITY advanced-settings.links.custom-rules                      "Appliquer les règles utilisateur pour :">
+<!ENTITY advanced-settings.links.custom-rules.before-predefined    "Liste Avant les règles prédéfinies">
+<!ENTITY advanced-settings.links.custom-rules.after-predefined     "Liste Après les règles prédéfinies">
 
-<!ENTITY advanced-settings.custom-rules.before-standard            "Avant les règles prédéfinies">
-<!ENTITY advanced-settings.custom-rules.after-standard             "Après les règles prédéfinies">
+<!ENTITY advanced-settings.custom-rules.before-predefined          "Avant les règles prédéfinies">
+<!ENTITY advanced-settings.custom-rules.after-predefined           "Après les règles prédéfinies">
 <!ENTITY advanced-settings.custom-rules.add-button                 "Ajouter une règle">
 <!ENTITY advanced-settings.custom-rules.edit-button.tooltip        "Editer">
 <!ENTITY advanced-settings.custom-rules.delete-button.tooltip      "Supprimer">

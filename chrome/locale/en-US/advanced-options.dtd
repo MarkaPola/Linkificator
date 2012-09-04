@@ -12,12 +12,16 @@
 <!ENTITY advanced-settings.tab-custom-rules                        "Custom Rules">
 <!ENTITY advanced-settings.tab-configuration                       "Configuration">
 
-<!ENTITY advanced-settings.links.link-types                        "Generate links for:">
-<!ENTITY advanced-settings.links.email-address                     "Email addresses">
-<!ENTITY advanced-settings.links.about-protocol                    "about: protocol">
+<!ENTITY advanced-settings.links.predefined-rules                  "Appy Predefined Rules for:">
+<!ENTITY advanced-settings.links.predefined-rules.email-address    "Email addresses">
+<!ENTITY advanced-settings.links.predefined-rules.about-protocol   "about: protocol">
+<!ENTITY advanced-settings.links.predefined-rules.standard-urls    "Standard URLs">
+<!ENTITY advanced-settings.links.custom-rules                      "Apply Custom Rules for:">
+<!ENTITY advanced-settings.links.custom-rules.before-predefined    "Before predefined rules list">
+<!ENTITY advanced-settings.links.custom-rules.after-predefined     "After predefined rules list">
 
-<!ENTITY advanced-settings.custom-rules.before-standard            "Before predefined rules">
-<!ENTITY advanced-settings.custom-rules.after-standard             "After predefined rules">
+<!ENTITY advanced-settings.custom-rules.before-predefined          "Before predefined rules">
+<!ENTITY advanced-settings.custom-rules.after-predefined           "After predefined rules">
 <!ENTITY advanced-settings.custom-rules.add-button                 "Add Rule">
 <!ENTITY advanced-settings.custom-rules.edit-button.tooltip        "Edit">
 <!ENTITY advanced-settings.custom-rules.delete-button.tooltip      "Delete">

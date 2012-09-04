@@ -50,17 +50,29 @@ var Utils = {
 
 //************** Links ************************
 function Links (properties) {
-	var supportEmail = $('advanced-settings.link-type.email');
-	var supportAbout = $('advanced-settings.link-type.about');
+	var supportEmail = $('advanced-settings.link-type.predefined-rules.email-address');
+	var supportAbout = $('advanced-settings.link-type.predefined-rules.about-protocol');
+	var supportStandard = $('advanced-settings.link-type.predefined-rules.standard-urls');
+	var supportCustomRulesBefore = $('advanced-settings.link-type.custom-rules.before-predefined');
+	var supportCustomRulesAfter = $('advanced-settings.link-type.custom-rules.after-predefined');
 
     supportEmail.checked = properties.support.email;
     supportAbout.checked = properties.support.about;
+	supportStandard.checked = properties.support.standard;
+	supportCustomRulesBefore.checked = properties.customRules.support.before;
+	supportCustomRulesAfter.checked = properties.customRules.support.after;
 
  	return {
 		retrieve: function (properties) {
 			properties.changed.support = {};
 			properties.changed.support.email = supportEmail.checked;
 			properties.changed.support.about = supportAbout.checked;
+			properties.changed.support.standard = supportStandard.checked;
+
+			properties.changed.customRules = {};
+			properties.changed.customRules.support = {};
+			properties.changed.customRules.support.before = supportCustomRulesBefore.checked;
+			properties.changed.customRules.support.after = supportCustomRulesAfter.checked;
 		},
 
 		release: function () {
@@ -310,13 +322,13 @@ ListBox.prototype = {
 	},
 
 	update: function (rule) {
-		ListItem.updateRule (this._richlistbox.selectedItem, rule);
+		ListItem.prototype.updateRule (this._richlistbox.selectedItem, rule);
 	},
 
 	release: function () {
 		// release each listitem
 		for (let index = this._richlistbox.getRowCount()-1; index >= 0; index--) {
-			ListItem.releaseNode(ListItem.this._richlistbox.getItemAtIndex(index));
+			ListItem.prototype.releaseNode(ListItem.this._richlistbox.getItemAtIndex(index));
 		}
 	}
 }
@@ -343,11 +355,13 @@ function CustomRules (properties) {
 	if (properties.ui.customRules != undefined) {
 		let settings = properties.ui.customRules;
 
-		deck.slectedIndex = settings.selectedList;
+		deck.selectedIndex = settings.selectedList;
 		$('advanced-settings.custom-rules.list-selection').selectedIndex = settings.selectedList;
 		currentList = settings.selectedList == 0 ? beforeList : afterList;
 
-		currentList.selectedIndex = settings.selectedItem;
+		if (settings.selectedItem != -1) {
+			currentList.selectedIndex = settings.selectedItem;
+		}
 	} else {
 		deck.selectedIndex = 1;
 		$('advanced-settings.custom-rules.list-selection').selectedIndex = 1;
@@ -407,7 +421,6 @@ function CustomRules (properties) {
 			let customRules = {};
 			customRules.beforeList = getRules(beforeList);
 			customRules.afterList = getRules(afterList);
-			properties.changed.customRules = {};
 			properties.changed.customRules.rules = JSON.stringify(customRules);
 			
 			// keep some UI settings

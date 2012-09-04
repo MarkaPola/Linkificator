@@ -157,17 +157,33 @@
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.links'>
-	  <trans-unit id='advanced-settings.link-types'>
-		<source>Generate links for:</source>
-		<target state='translated'>Générer des liens pour:</target>
+	  <trans-unit id='advanced-settings.links.predefined-rules'>
+		<source>Appy Predefined Rules for:</source>
+		<target state='translated'>Appliquer les règles prédéfinies pour :</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.email-address'>
+	  <trans-unit id='advanced-settings.predefined-rules.email-address'>
 		<source>Email addresses</source>
 		<target state='translated'>Adresses de courriel</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.about-protocol'>
+	  <trans-unit id='advanced-settings.predefined-rules.about-protocol'>
 		<source>about: protocol</source>
 		<target state='translated'>Protocole about:</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.predefined-rules.standard-urls'>
+		<source>Standard URLs</source>
+		<target state='translated'>URL standards</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.links.custom-rules'>
+		<source>Apply Custom Rules for:</source>
+		<target state='translated'>Appliquer les règles utilisateur pour :</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.links.custom-rules.before-predefined'>
+		<source>Before predefined rules list</source>
+		<target state='translated'>Liste Avant les règles prédéfinies</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.links.custom-rules.after-predefined'>
+		<source>After predefined rules list</source>
+		<target state='translated'>Liste Après les règles prédéfinies</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.custom-rules'>

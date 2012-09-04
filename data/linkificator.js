@@ -36,7 +36,7 @@ function Parser (properties) {
         var result = [];
         
         for (let index = 0; index < data.length; ++index) {
-            result.push ({regex: RegExp("^"+data[index].pattern+"$","i"), term: data[index].term});
+            result.push ({regex: new RegExp("^"+data[index].pattern+"$","i"), term: data[index].term});
         }
         
         return result;
@@ -148,7 +148,7 @@ function Parser (properties) {
 
 			compile: function () {
 				pattern += ")";
-				URLregex = RegExp (pattern, 'i');
+				URLregex = new RegExp(pattern, 'i');
 			},
 
 			match: function (text) {
@@ -157,8 +157,9 @@ function Parser (properties) {
 				let valid = false;
 
 				while (!valid) {
-					if (!(result = URLregex.exec (data)))
+					if (!(result = URLregex.exec (data))) {
 						break;
+					}
 
 					for (let i = 0; i < subpatterns.length; ++i) {
 						if (valid = subpatterns[i].test(result)) {
@@ -250,15 +251,18 @@ function Parser (properties) {
 	}
 	FullProtocolRule.prototype = new PatternRule;
 	FullProtocolRule.prototype.test = function(regex) {
-		return regex[this._index] !== undefined;
+		//return properties.support.standard && regex[this._index] !== undefined;
+		return regex[this._index] !== undefined 
+			&& (properties.support.standard || (properties.support.about && regex[this._index+1] == "about:"));
 	};
 	FullProtocolRule.prototype.getURL = function(regex) {
-		let protocol_index = this._index+1;
-		if (regex[this._index])
+		if (regex[this._index]) {
+			let protocol_index = this._index+1;
 			// url includes the protocol
 			return regex[this._index].replace(regex[protocol_index], getProtocol(regex[protocol_index]));
-		else
+		} else {
 			return null;
+		}
 	};
 	///// url including authentication but without protocol
 	function AuthenticatedDomainRule () {
@@ -266,11 +270,11 @@ function Parser (properties) {
 	}
 	AuthenticatedDomainRule.prototype = new PatternRule;
 	AuthenticatedDomainRule.prototype.test = function(regex) {
-		return regex[this._index] !== undefined;
+		return properties.support.standard && regex[this._index] !== undefined;
 	};
 	AuthenticatedDomainRule.prototype.getURL = function(regex) {
-		let subdomain_index = this._index+1;
 		if (regex[this._index]) {
+			let subdomain_index = this._index+1;
 			if (regex[subdomain_index]) {
 				// protocol less url with known subdomain
 				// Deduce protocol from the subdomain
@@ -289,13 +293,46 @@ function Parser (properties) {
 		this.pattern = "(" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
 	}
 	DomainRule.prototype = new AuthenticatedDomainRule;
+	
+	///// Custom rules handling
+	function CustomRule (rule) {
+		this._rule = rule;
+		this._pattern = new RegExp(rule.pattern, 'i');
+
+		PatternRule.call(this, "("+rule.pattern+")");
+	}
+	CustomRule.prototype = new PatternRule;
+	CustomRule.prototype.test = function(regex) {
+		return regex[this._index] !== undefined;
+	};
+	CustomRule.prototype.getURL = function(regex) {
+		if (regex[this._index]) {
+			return regex[this._index].replace(this._pattern, this._rule.url);
+		} else {
+			return null;
+		}
+	};
+	
+	function buildCustomRules (pattern, rules) {
+		for (let index = 0; index < rules.length; ++index) {
+			let rule = rules[index];
+
+			if (!rule.active) continue;
+
+			pattern.push(new CustomRule(rule));
+		}
+	}
 
 	var pattern = Pattern ("(^|[\\s()<>«“]+)");
+	if (properties.customRules.support.before)
+		buildCustomRules(pattern, properties.customRules.rules.beforeList);
 	pattern.push(new FullMailRule);
 	pattern.push(new FullProtocolRule);
 	pattern.push(new AuthenticatedDomainRule);
 	pattern.push(new DomainRule);
 	pattern.push(new MailRule);
+	if (properties.customRules.support.after)
+		buildCustomRules(pattern, properties.customRules.rules.afterList);
 	pattern.compile();
 	
     return {
@@ -422,7 +459,7 @@ self.port.on('parse', function (properties) {
 	})(properties.style);
 	
     var startTime = new Date();
-    
+	
     var parser = Parser (properties);
     // get list of text nodes
     var elements = parser.textNodes();
