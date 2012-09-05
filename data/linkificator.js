@@ -42,8 +42,8 @@ function Parser (properties) {
         return result;
     }
     
-    var protocol_matcher = buildMatcher (properties.protocols);
-    var subdomain_matcher = buildMatcher (properties.subdomains);
+    var protocol_matcher = buildMatcher (properties.predefinedRules.protocols);
+    var subdomain_matcher = buildMatcher (properties.predefinedRules.subdomains);
 
     function getTerm (items, data) {
 		for (let index = 0; index < items.length; ++index) {
@@ -205,7 +205,7 @@ function Parser (properties) {
     const IPv6 = "(?:\\[(?:(?:(?:[0-9a-f]{1,4}:){7}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){6}:[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){5}:(?:[0-9a-f]{1,4}:)?[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){4}:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){3}:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){2}:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){6}(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:(?:[0-9a-f]{1,4}:){0,5}:(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:::(?:[0-9a-f]{1,4}:){0,5}(?:(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b).){3}(?:b(?:(?:25[0-5])|(?:1d{2})|(?:2[0-4]d)|(?:d{1,2}))b))|(?:[0-9a-f]{1,4}::(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})|(?:::(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})|(?:(?:[0-9a-f]{1,4}:){1,7}:))\\])";
     const IP = "(?:" + IPv4 + "|" + IPv6 + ")";
 
-    const protocol = "(" + buildPattern(properties.protocols) + ")";
+    const protocol = "(" + buildPattern(properties.predefinedRules.protocols) + ")";
 
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
@@ -213,7 +213,7 @@ function Parser (properties) {
 	const domain_element = "[^0-9\\s()<>[\\]{}/.:][^\\s()<>[\\]{}/.:]*";
     const domain = "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
     const full_domain = "(?:" + domain_element + "(?:\\." + domain_element + ")+)";
-    const subdomain = "(?:(" + buildPattern(properties.subdomains) + ")\\.)";
+    const subdomain = "(?:(" + buildPattern(properties.predefinedRules.subdomains) + ")\\.)";
     const port = "(?::[\\d]{1,5})?";
 
     const IP_host = IP + port;
@@ -223,13 +223,26 @@ function Parser (properties) {
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
 
 	// define sub-classes from PatternRule for the various URI formats
+	function AboutRule () {
+		PatternRule.call(this, "(about:[\\w?=-]+)");
+	}
+	AboutRule.prototype = new PatternRule;
+	AboutRule.prototype.test = function(regex) {
+		return properties.predefinedRules.support.about && regex[this._index] !== undefined;
+	};
+	AboutRule.prototype.getURL = function(regex) {
+		if (regex[this._index])
+			return regex[this._index];
+		else
+			return null; 
+	};
 	///// e-mail without protocol specification
 	function MailRule () {
 		PatternRule.call(this, "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))");
 	}
 	MailRule.prototype = new PatternRule;
 	MailRule.prototype.test = function(regex) {
-		return properties.support.email && regex[this._index] !== undefined;
+		return properties.predefinedRules.support.email && regex[this._index] !== undefined;
 	};
 	MailRule.prototype.getURL = function(regex) {
 		if (regex[this._index])
@@ -251,9 +264,9 @@ function Parser (properties) {
 	}
 	FullProtocolRule.prototype = new PatternRule;
 	FullProtocolRule.prototype.test = function(regex) {
-		//return properties.support.standard && regex[this._index] !== undefined;
-		return regex[this._index] !== undefined 
-			&& (properties.support.standard || (properties.support.about && regex[this._index+1] == "about:"));
+		return properties.predefinedRules.support.standard && regex[this._index] !== undefined;
+		/*return regex[this._index] !== undefined 
+			&& (properties.predefinedRules.support.standard || (properties.predefinedRules.support.about && regex[this._index+1] == "about:"));*/
 	};
 	FullProtocolRule.prototype.getURL = function(regex) {
 		if (regex[this._index]) {
@@ -270,7 +283,7 @@ function Parser (properties) {
 	}
 	AuthenticatedDomainRule.prototype = new PatternRule;
 	AuthenticatedDomainRule.prototype.test = function(regex) {
-		return properties.support.standard && regex[this._index] !== undefined;
+		return properties.predefinedRules.support.standard && regex[this._index] !== undefined;
 	};
 	AuthenticatedDomainRule.prototype.getURL = function(regex) {
 		if (regex[this._index]) {
@@ -326,6 +339,8 @@ function Parser (properties) {
 	var pattern = Pattern ("(^|[\\s()<>«“]+)");
 	if (properties.customRules.support.before)
 		buildCustomRules(pattern, properties.customRules.rules.beforeList);
+	if (properties.predefinedRules.support.about)
+		pattern.push(new AboutRule);
 	pattern.push(new FullMailRule);
 	pattern.push(new FullProtocolRule);
 	pattern.push(new AuthenticatedDomainRule);
@@ -342,10 +357,10 @@ function Parser (properties) {
 				return null;
 			}
 
-			let query = "//text()[not(ancestor::" + properties.excludedElements.join(" or ancestor::") + ") and (";
-            if (properties.subdomains) {
-				for (let index = 0; index < properties.subdomains.length; ++index) {
-					let subdomain = properties.subdomains[index].filter;
+			let query = "//text()[not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::") + ") and (";
+            if (properties.predefinedRules.subdomains) {
+				for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
+					let subdomain = properties.predefinedRules.subdomains[index].filter;
 					query += "contains(translate(., '" + subdomain.toUpperCase() + "', '" + subdomain.toLowerCase() + "'), '" + subdomain.toLowerCase() + "') or ";
 				}
 			}
@@ -366,6 +381,20 @@ function Linkify (node, parser, startTime, style) {
     var parent = node.parentNode;
     var sibling = node.nextSibling;
     var text = node.nodeValue;
+
+	const PAGES = ["about", "addons", "apps", "cache", "compartments", "config", "crashes",
+				   "memory", "newtab", "permissions", "plugins", "preferences", "privatebrowsing",
+				   "sessionrestore", "support", "sync-log", "sync-progress", "sync-tabs"];
+	function isAboutURL (url) {
+		let about = "about:";
+		if (url.indexOf(about) == 0) {
+			let page = url.substr(about.length);
+
+			return PAGES.some(function(item) {return item == page;});
+		} else {
+			return false;
+		}
+	}
 
 	function openURL (event) {
 		if (event.button == 2 || event.altKey || event.ctrlKey || event.metaKey)
@@ -401,7 +430,7 @@ function Linkify (node, parser, startTime, style) {
 			if (style.length != 0) {
 				anchor.setAttribute('style', style);
 			}
-			if (url.indexOf("about:") == 0) {
+			if (isAboutURL(url)) {
 				// attach special action to enable about: page opening on mouse click
 				anchor.addEventListener('mouseup', openURL, false);
 			}

@@ -12,9 +12,16 @@
   <setting pref="extensions.linkificator@markapola.hotkey" title="&settings.hotkey;" type="string"/>
   <setting pref="extensions.linkificator@markapola.displayWidget" title="&settings.widget;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.useRegExp" title="&settings.regexp;" type="bool"/>
-  <setting pref="extensions.linkificator@markapola.useWhitelist" title="&settings.useWhitelist;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.filterMode" title="&settings.filterMode;" type="menulist">
+	<menulist sizetopopup="always">
+      <menupopup>
+		<menuitem value="none" label="&settings.none;"/>
+		<menuitem value="white" label="&settings.useWhitelist;"/>
+		<menuitem value="black" label="&settings.useBlacklist;"/>
+      </menupopup>
+	</menulist>
+  </setting>
   <setting pref="extensions.linkificator@markapola.whitelist" title="&settings.whitelist;" type="string">&settings.listdescription;</setting>
-  <setting pref="extensions.linkificator@markapola.useBlacklist" title="&settings.useBlacklist;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.blacklist" title="&settings.blacklist;" type="string">&settings.listdescription;</setting>
   <setting pref="extensions.linkificator@markapola.overrideTextColor" title="&settings.overrideTextColor;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.linkColor" title="&settings.textColor;" type="color"/>

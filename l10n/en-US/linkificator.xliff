@@ -81,6 +81,14 @@
 		<source>Use regular expressions for domains</source>
 		<target state='translated'>Use regular expressions for domains</target>
 	  </trans-unit>
+	  <trans-unit id='settings.filterMode'>
+		<source>Domain filtering mode</source>
+		<target state='translated'>Domain filtering mode</target>
+	  </trans-unit>
+	  <trans-unit id='settings.none'>
+		<source>None</source>
+		<target state='translated'>None</target>
+	  </trans-unit>
 	  <trans-unit id='settings.useWhitelist'>
 		<source>Only linkify for domains in Whitelist</source>
 		<target state='translated'>Only linkify for domains in Whitelist</target>

@@ -49,30 +49,28 @@ var Utils = {
 
 
 //************** Links ************************
-function Links (properties) {
+function Links (preferences, properties) {
 	var supportEmail = $('advanced-settings.link-type.predefined-rules.email-address');
 	var supportAbout = $('advanced-settings.link-type.predefined-rules.about-protocol');
 	var supportStandard = $('advanced-settings.link-type.predefined-rules.standard-urls');
 	var supportCustomRulesBefore = $('advanced-settings.link-type.custom-rules.before-predefined');
 	var supportCustomRulesAfter = $('advanced-settings.link-type.custom-rules.after-predefined');
 
-    supportEmail.checked = properties.support.email;
-    supportAbout.checked = properties.support.about;
-	supportStandard.checked = properties.support.standard;
-	supportCustomRulesBefore.checked = properties.customRules.support.before;
-	supportCustomRulesAfter.checked = properties.customRules.support.after;
+    supportEmail.checked = preferences.getBoolPref('supportEmail');
+    supportAbout.checked = preferences.getBoolPref('supportAbout');
+	supportStandard.checked = preferences.getBoolPref('supportStandardURLs');
+
+	supportCustomRulesBefore.checked = preferences.getBoolPref('supportCustomRulesBefore');
+	supportCustomRulesAfter.checked = preferences.getBoolPref('supportCustomRulesAfter');
 
  	return {
-		retrieve: function (properties) {
-			properties.changed.support = {};
-			properties.changed.support.email = supportEmail.checked;
-			properties.changed.support.about = supportAbout.checked;
-			properties.changed.support.standard = supportStandard.checked;
+		retrieve: function () {
+			preferences.setBoolPref('supportEmail', supportEmail.checked);
+			preferences.setBoolPref('supportAbout', supportAbout.checked);
+			preferences.setBoolPref('supportStandardURLs', supportStandard.checked);
 
-			properties.changed.customRules = {};
-			properties.changed.customRules.support = {};
-			properties.changed.customRules.support.before = supportCustomRulesBefore.checked;
-			properties.changed.customRules.support.after = supportCustomRulesAfter.checked;
+			preferences.setBoolPref('supportCustomRulesBefore', supportCustomRulesBefore.checked);
+			preferences.setBoolPref('supportCustomRulesAfter', supportCustomRulesAfter.checked);
 		},
 
 		release: function () {
@@ -333,7 +331,7 @@ ListBox.prototype = {
 	}
 }
 
-function CustomRules (properties) {
+function CustomRules (preferences, properties) {
 	var beforeList = new ListBox('advanced-settings.custom-rules.before-list',
 								 'advanced-settings.custom-rules.itemTemplate',
 								 'advanced-settings.custom-rules.tooltip');
@@ -346,7 +344,7 @@ function CustomRules (properties) {
 	var currentList = afterList;
 
 	// fill lists
-	let customRules = JSON.parse(properties.customRules.rules);
+	let customRules = JSON.parse(preferences.getCharPref('customRules'));
 	beforeList.load(customRules.beforeList);
 	afterList.load(customRules.afterList);
 
@@ -416,12 +414,12 @@ function CustomRules (properties) {
 	}
 
 	return {
-		retrieve: function (properties) {
+		retrieve: function () {
 			// build object to be serialized by JSON
 			let customRules = {};
 			customRules.beforeList = getRules(beforeList);
 			customRules.afterList = getRules(afterList);
-			properties.changed.customRules.rules = JSON.stringify(customRules);
+			preferences.setCharPref('customRules', JSON.stringify(customRules));
 			
 			// keep some UI settings
 			properties.ui.customRules = {};
@@ -442,7 +440,7 @@ function CustomRules (properties) {
 
 
 //************** Configuration ************************
-function Configuration (properties) {
+function Configuration (preferences, defaults, properties) {
 	var protocols = $('advanced-settings.configuration.protocol.list');
 	var subdomains = $('advanced-settings.configuration.subdomain.list');
 	var excludedElements = $('advanced-settings.configuration.excludedElement.list');
@@ -450,15 +448,14 @@ function Configuration (properties) {
 	var changed = {};
 
 	// attach default values to nodes
-	var defaults = properties.configuration.defaults;
-	protocols.setAttribute ('value', defaults.protocols);
-	subdomains.setAttribute ('value', defaults.subdomains);
-	excludedElements.setAttribute ('value', defaults.excludedElements);
+	protocols.setAttribute ('value', defaults.getCharPref('protocols'));
+	subdomains.setAttribute ('value', defaults.getCharPref('subdomains'));
+	excludedElements.setAttribute ('value', defaults.getCharPref('excludedElements'));
 
 	// set actual values
-	protocols.value = properties.configuration.protocols;
-	subdomains.value = properties.configuration.subdomains;
-	excludedElements.value = properties.configuration.excludedElements;
+	protocols.value = preferences.getCharPref('protocols');
+	subdomains.value = preferences.getCharPref('subdomains');
+	excludedElements.value = preferences.getCharPref('excludedElements');
 
 	function changeProtocols (event) {
 		changed.protocols = protocols.value;
@@ -494,8 +491,10 @@ function Configuration (properties) {
 	$('advanced-settings.configuration.excludedElement.reset').addEventListener('command', resetExcludedElements);
 
 	return {
-		retrieve: function (properties) {
-			properties.changed.configuration = changed;
+		retrieve: function () {
+			preferences.setCharPref('protocols', protocols.value);
+			preferences.setCharPref('subdomains', subdomains.value);
+			preferences.setCharPref('excludedElements', excludedElements.value);
 		},
 
 		release: function () {
@@ -514,6 +513,8 @@ function Configuration (properties) {
 
 var AdvancedSettings = (function () {
 	var properties = null;
+	var preferences = null;
+	var defaults = null;
 
 	var links = null;
 	var customRules = null;
@@ -521,16 +522,20 @@ var AdvancedSettings = (function () {
 
 	return {
 		init: function () {
+try{
 			properties = window.arguments[0].wrappedJSObject;
+			preferences = Services.prefs.getBranch('extensions.linkificator@markapola.');
+	        defaults = Services.prefs.getDefaultBranch('extensions.linkificator@markapola.');
 
-			links = Links(properties);
-			customRules = CustomRules(properties);
-			configuration = Configuration(properties);
+			links = Links(preferences, properties);
+			customRules = CustomRules(preferences, properties);
+			configuration = Configuration(preferences, defaults, properties);
 
 			// set previously selected tab
 			if (properties.ui.selectedTab != undefined) {
 				$('advanced-settings.tabbox').selectedIndex = properties.ui.selectedTab;
 			}
+}catch(e){alert("INIT: "+e);}
 		},
 
 		release: function () {
@@ -543,9 +548,9 @@ var AdvancedSettings = (function () {
 			// retrieve changed values
 			properties.changed = {};
 
-			links.retrieve(properties);
-			customRules.retrieve(properties);
-			configuration.retrieve(properties);
+			links.retrieve();
+			customRules.retrieve();
+			configuration.retrieve();
 
 			// keep some UI settings
 			properties.ui.selectedTab = $('advanced-settings.tabbox').selectedIndex;
