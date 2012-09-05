@@ -10,9 +10,11 @@
 <!ENTITY settings.hotkey                    "Raccourci clavier pour changer l'état de linkificator">
 <!ENTITY settings.widget                    "Afficher le widget dans la barre des modules">
 <!ENTITY settings.regexp                    "Utiliser les expressions régulières pour les domaines">
-<!ENTITY settings.useWhitelist              "Transformer seulement les liens textuels des domaines suivants">
+<!ENTITY settings.filterMode                "Mode de filtrage des domaines">
+<!ENTITY settings.none                      "Aucun">
+<!ENTITY settings.useWhitelist              "Traiter les domaines de la liste blanche">
 <!ENTITY settings.whitelist                 "Liste blanche">
-<!ENTITY settings.useBlacklist              "Ne pas transformer les liens textuels des domaines suivants">
+<!ENTITY settings.useBlacklist              "Ne pas traiter les domaines de la liste noire">
 <!ENTITY settings.blacklist                 "Liste noire">
 <!ENTITY settings.listdescription           "Separer les domaines avec un espace">
 <!ENTITY settings.overrideTextColor         "Remplacer la couleur du texte">
