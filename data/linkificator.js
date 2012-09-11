@@ -357,7 +357,8 @@ function Parser (properties) {
 				return null;
 			}
 
-			let query = "//text()[not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::") + ") and (";
+			let query = "//text()[not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
+				+ ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
             if (properties.predefinedRules.subdomains) {
 				for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
 					let subdomain = properties.predefinedRules.subdomains[index].filter;
