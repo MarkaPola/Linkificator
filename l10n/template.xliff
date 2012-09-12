@@ -5,7 +5,7 @@
        xsi:schemaLocation='urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2.xsd'>
   <file original='locale/%lang.properties' datatype='javapropertyresourcebundle'
 		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='0.9.0'>
+		product-name='Linkificator' product-version='0.9.1'>
 	<body>
 	  <group id='stats'>
 		<trans-unit id='stats.links[zero]'>
@@ -37,7 +37,7 @@
   </file>
   <file original='chrome/locale/%lang/global.properties' datatype='javapropertyresourcebundle'
 		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='0.9.0'>
+		product-name='Linkificator' product-version='0.9.1'>
 	<group id='rule-validation'>
 	  <trans-unit id='advanced-settings.rules-validation.title'>
 		<source>Custom Rule Validation</source>
@@ -63,7 +63,7 @@
   </file>
   <file original='chrome/locale/%lang/options.dtd' datatype='xmldtd'
 		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='0.9.0'>
+		product-name='Linkificator' product-version='0.9.1'>
 	<group id='settings'>
 	  <trans-unit id='settings.activated'>
 		<source>Activated</source>
@@ -137,7 +137,7 @@
   </file>
   <file original='chrome/locale/%lang/advanced-options.dtd' datatype='xmldtd'
 		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='0.9.0'>
+		product-name='Linkificator' product-version='0.9.1'>
 	<group id='advanced-settings'>
 	  <trans-unit id='advanced-settings.title'>
 		<source>Linkificator Advanced Options</source>
@@ -263,7 +263,7 @@
   </file>
   <file original='app-extension/install.rdf' datatype='xml'
 		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='0.9.0'>
+		product-name='Linkificator' product-version='0.9.1'>
 	  <trans-unit id='em:description'>
 		<source>Converts text links into clickable links...</source>
 		<target state='new'>Converts text links into clickable links...</target>
