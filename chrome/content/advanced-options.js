@@ -125,24 +125,29 @@ Tooltip.prototype = {
 };
 
 
-function Panel (panel, start, complete) {
+function Panel (panel, callbacks) {
 	this._panel = $(panel);
 
-	this._init = start;
-	this._complete = complete;
+	this._callbacks = callbacks;
 
 	this._name = $("advanced-settings.custom-rules.panel.name");
 	this._pattern = $("advanced-settings.custom-rules.panel.pattern");
 	this._url = $("advanced-settings.custom-rules.panel.url");
 	
-	this._panel.addEventListener('popupshowing', this.init.bind(this));
+	this._handlers = {
+		init: this.init.bind(this),
+		validate: this.validate.bind(this),
+		hide: this.hide.bind(this)
+	};
 
-	$('advanced-settings.custom-rules.panel.ok').addEventListener('command', this.validate.bind(this));
-	$('advanced-settings.custom-rules.panel.cancel').addEventListener('command', this.hide.bind(this));
+	this._panel.addEventListener('popupshowing', this._handlers.init);
+
+	$('advanced-settings.custom-rules.panel.ok').addEventListener('command', this._handlers.validate);
+	$('advanced-settings.custom-rules.panel.cancel').addEventListener('command', this._handlers.hide);
 }
 Panel.prototype = {
 	init: function (event) {
-		this._rule = this._init();
+		this._rule = this._callbacks.start();
 		this._name.value = this._rule.name;
 		this._pattern.value = this._rule.pattern;
 		this._url.value = this._rule.url;
@@ -156,7 +161,7 @@ Panel.prototype = {
 
 		if (this._rule.validate()) {
 			this.hide();
-			this._complete(this._rule);
+			this._callbacks.complete(this._rule);
 		}
 	},
 
@@ -166,16 +171,16 @@ Panel.prototype = {
 
 	release: function () {
 		// remove event listeners
-		this._panel.removeEventListener('popupshowing', this.init.bind(this));
-		$('advanced-settings.custom-rules.panel.ok').removeEventListener('command', this.validate.bind(this));
-		$('advanced-settings.custom-rules.panel.cancel').addEventListener('command', this.hide.bind(this));
+		this._panel.removeEventListener('popupshowing', this._handlers.init);
+		$('advanced-settings.custom-rules.panel.ok').removeEventListener('command', this._handlers.validate);
+		$('advanced-settings.custom-rules.panel.cancel').addEventListener('command', this._handlers.hide);
 	}
 };
 
-function ListItem (template, tooltip, rule, remove) {
+function ListItem (template, tooltip, rule, callbacks) {
 	this._tooltip = tooltip;
 	this._rule = rule;
-	this._remove = remove;
+	this._callbacks = callbacks;
 
 	// create DOM element from template
 	this._richlistitem = template.cloneNode(true);
@@ -188,23 +193,42 @@ function ListItem (template, tooltip, rule, remove) {
 	this._label = this._checkbox.nextSibling;
 	this._label.setAttribute('value', this._rule.name);
 
+	this._handlers = {
+		drag: this._drag.bind(this),
+		drop: this._drop.bind(this),
+		setCheckbox: this._setCheckbox.bind(this),
+		updateTooltip: this._updateTooltip.bind(this),
+		remove: this._remove.bind(this)
+	};
+
+	// drap&drop handling
+	this._label.addEventListener('dragstart', this._handlers.drag);
+	this._label.addEventListener('drop', this._handlers.drop);
+
 	// checkbox handling
-	this._checkbox.addEventListener('command', this._setCheckbox.bind(this));
+	this._checkbox.addEventListener('command', this._handlers.setCheckbox);
 	// tooltip handling
-	this._label.addEventListener('mouseover', this._updateTooltip.bind(this));
+	this._label.addEventListener('mouseover', this._handlers.updateTooltip);
 	// delete button handling
-	this._label.nextSibling.nextSibling.addEventListener('command', this._delete.bind(this));
+	this._label.nextSibling.nextSibling.addEventListener('command', this._handlers.remove);
 }
 ListItem.prototype = {
+	_drag: function (event) {
+		this._callbacks.drag(event, this);
+	},
+	_drop: function (event) {
+		this._callbacks.drop(event, this);
+	},
+
 	_setCheckbox: function (event) {
 		this._rule.active = this._checkbox.checked;
 	},
 	_updateTooltip: function (event) {
 		this._tooltip.update(this._rule);
 	},
-	_delete: function (event) {
+	_remove: function (event) {
 		this.release();
-		this._remove(this);
+		this._callbacks.remove(this);
 	},
 
 	get node () {
@@ -220,9 +244,12 @@ ListItem.prototype = {
 
 	release: function () {
 		// remove event listeners
-		this._checkbox.removeEventListener('command', this._setCheckbox.bind(this));
-		this._label.removeEventListener('mouseover', this._updateTooltip.bind(this));
-		this._label.nextSibling.nextSibling.removeEventListener('command', this._delete.bind(this));
+		this._label.removeEventListener('dragstart', this._handlers.drag);
+		this._label.removeEventListener('drop', this._handlers.drop);
+
+		this._checkbox.removeEventListener('command', this._handlers.setCheckbox);
+		this._label.removeEventListener('mouseover', this._handlers.updateTooltip);
+		this._label.nextSibling.nextSibling.removeEventListener('command', this._handlers.remove);
 	},
 
 	getRule: function (node) {
@@ -231,18 +258,83 @@ ListItem.prototype = {
 	updateRule: function (node, rule) {
 		node._data.update();
 	},
+
 	releaseNode: function (node) {
 		node._data.release();
 	}
 }
+
+function DragManager (event, listbox, item) {
+	this._source = event.target;
+	this._listbox = listbox;
+	this._item = item;
+
+	event.dataTransfer.setData("application/x-custom-rule", JSON.stringify(item.rule));
+	event.dataTransfer.effectAllowed = "move";
+
+	this._handlers = {
+		drop: this._drop.bind(this),
+		release: this.release.bind(this)
+	};
+
+	// bind all needed drag and drop events
+	let list = listbox.node;
+	list.addEventListener('dragover', this._dropAllowed);
+	list.addEventListener('drop', this._handlers.drop);
+
+	event.target.addEventListener('dragend', this._handlers.release);
+}
+DragManager.prototype = {
+	_dropAllowed: function (event) {
+		event.preventDefault();
+	},
+	_drop: function (event) {
+	    this.drop(event, null);
+	},
+
+	drop: function (event, target) {
+	    event.stopPropagation();
+		event.preventDefault();
+
+		if (target === this._item) {
+			// nothing to do, cancel drag&drop operation
+			event.dataTransfer.effectAllowed = "none";
+		} else {
+			this._listbox.remove(this._item);
+			if (target) {
+				this._listbox.insertBefore(this._item, target);
+			} else {
+				this._listbox.append(this._item);
+			}
+		}
+	},
+
+	release: function (event) {
+		let list = this._listbox.node;
+		list.removeEventListener('dragover', this._dropAllowed);
+		list.removeEventListener('drop', this._handlers.drop);
+
+		this._source.removeEventListener('dragend', this._handlers.release);
+	}
+};
 
 function ListBox (listbox, itemTemplate, tooltip) {
 	this._richlistbox = $(listbox);
 	this._template = $(itemTemplate);
 
 	this._tooltip = new Tooltip(tooltip);
+
+	this._callbacks = {
+		drag: this.drag.bind(this),
+		drop: this.drop.bind(this),
+		remove: this.remove.bind(this)
+	};
 }
 ListBox.prototype = {
+	get node () {
+		return this._richlistbox;
+	},
+
 	get selectedIndex () {
 		return this._richlistbox.selectedIndex;
 	},
@@ -273,7 +365,7 @@ ListBox.prototype = {
 	},
 
 	add: function (rule) {
-		let item = new ListItem(this._template, this._tooltip, rule, this.remove.bind(this));
+		let item = new ListItem(this._template, this._tooltip, rule, this._callbacks);
 
 		if (this._richlistbox.selectedIndex != -1) {
 			this._richlistbox.insertBefore(item.node, this._richlistbox.selectedItem);
@@ -283,6 +375,19 @@ ListBox.prototype = {
 		this._richlistbox.ensureElementIsVisible(item.node);
 	},
 
+	drag: function (event, item) {
+		this._dragManager = new DragManager(event, this, item);
+	},
+	drop: function (event, item) {
+		this._dragManager.drop(event, item);
+	},
+
+	insertBefore: function (newItem, refItem) {
+		this._richlistbox.insertBefore(newItem.node, refItem.node);
+	},
+	append: function (listitem) {
+		this._richlistbox.appendChild(listitem.node);
+	},
 	remove: function (listitem) {
 		this._richlistbox.removeChild(listitem.node);
 	},
@@ -292,6 +397,8 @@ ListBox.prototype = {
 	},
 
 	release: function () {
+		this._dragManager.release();
+
 		// release each listitem
 		for (let index = this._richlistbox.getRowCount()-1; index >= 0; index--) {
 			ListItem.prototype.releaseNode(ListItem.this._richlistbox.getItemAtIndex(index));
@@ -307,7 +414,7 @@ function CustomRules (preferences, defaults, properties) {
 								 'advanced-settings.custom-rules.itemTemplate',
 								 'advanced-settings.custom-rules.tooltip');
 
-	var panel = new Panel('advanced-settings.custom-rules.panel', start, finalize);
+	var panel = new Panel('advanced-settings.custom-rules.panel', {start: start, complete: finalize});
 
 	var currentList = afterList;
 

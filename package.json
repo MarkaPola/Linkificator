@@ -4,7 +4,7 @@
     "license": "MPL 2.0", 
     "author": "MarkaPola",
     "contributors": ["Icons from www.fasticon.com"],
-    "version": "0.9.1",
+    "version": "0.9.2",
     "id": "linkificator@markapola", 
     "description": "Converts text links into clickable links..."
 }
