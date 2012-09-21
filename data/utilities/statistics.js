@@ -17,51 +17,31 @@ function Statistics () {
     }
     
 	function getStats (count, time) {
-		if (count == undefined)
-			return {links: 0, time: 0};
-		else if (count == -1)
-			return {links: -1};
-		else
-			return {links: getInt(count), time: getInt(time)};
+		return {links: getInt(count), time: getInt(time)};
 	}
 
     return {
         get countLabel () { return "linkificator-count"; },
         get timeLabel () { return "linkificator-time"; },
         
-		store: function (document, count, time) {
-			if (document.body) {
-				let total = parseInt(document.body.getAttribute(this.countLabel));
-				if (isNaN(total)) total = 0;
-				total += count;
+		store: function (count, time) {
+			let body = window.document.body;
 
-				document.body.setAttribute(this.countLabel, total);
-				document.body.setAttribute(this.timeLabel, time);
-				
-				return getStats(total, time);
-			} else {
-				return getStats(count,time);
-			}
+			let total = parseInt(body.getAttribute(this.countLabel));
+			if (isNaN(total)) total = 0;
+			total += count;
+
+			body.setAttribute(this.countLabel, total);
+			body.setAttribute(this.timeLabel, time);
+			
+			return getStats(total, time);
 		},
 
-        'new': function () {
-			switch (arguments.length) {
-				case 1:
-				let document = arguments[0];
-				if (document.body) {
-					return getStats (document.body.getAttribute(this.countLabel),
-									 document.body.getAttribute(this.timeLabel));
-				} else {
-					return getStats(0,0);
-				}
-				break;
-			case 2:
-				return getStats (arguments[0], arguments[1]);
-				break;
-			case 0:
-			default:
-				return getStats(-1);
-			}
+        get: function () {
+			let body = window.document.body;
+
+			return getStats (body.getAttribute(this.countLabel),
+							 body.getAttribute(this.timeLabel));
         }
     }
 }

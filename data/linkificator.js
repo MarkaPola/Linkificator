@@ -12,7 +12,7 @@ var statistics = Statistics();
 // catch backward/forward button event to handle widget update
 function postStatistics(event) {
 	if (event.persisted)
-		self.postMessage(statistics.new(document));
+		self.postMessage(statistics.get());
 }
 window.addEventListener('pageshow', postStatistics, false);
 
@@ -131,7 +131,6 @@ function Parser (properties) {
 		var first = true;
 
 		var URLregex;
-		var result = null;
 
 		return {
 			push: function (subpattern) {
@@ -155,6 +154,7 @@ function Parser (properties) {
 				let index = 0;
 				let data = text;
 				let valid = false;
+				let result = null;
 
 				while (!valid) {
 					if (!(result = URLregex.exec (data))) {
@@ -350,24 +350,19 @@ function Parser (properties) {
 		buildCustomRules(pattern, properties.customRules.rules.afterList);
 	pattern.compile();
 	
-    return {
-        textNodes: function () {
-			if (!document.body) {
-				// do not process document without a body tag
-				return null;
-			}
+	var query =  "//text()[ancestor::body and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
+		+ ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
+    if (properties.predefinedRules.subdomains) {
+		for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
+			let subdomain = properties.predefinedRules.subdomains[index].filter;
+			query += "contains(translate(., '" + subdomain.toUpperCase() + "', '" + subdomain.toLowerCase() + "'), '" + subdomain.toLowerCase() + "') or ";
+		}
+	}
+	query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
 
-			let query = "//text()[not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
-				+ ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
-            if (properties.predefinedRules.subdomains) {
-				for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
-					let subdomain = properties.predefinedRules.subdomains[index].filter;
-					query += "contains(translate(., '" + subdomain.toUpperCase() + "', '" + subdomain.toLowerCase() + "'), '" + subdomain.toLowerCase() + "') or ";
-				}
-			}
-			query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
-			
-			return document.evaluate (query, document.body, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+    return {
+        textNodes: function (document) {
+			return document.evaluate (query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         },
         
 		match: function (text) {
@@ -411,7 +406,8 @@ function Linkify (node, parser, startTime, style) {
 	}
 
     function linkify (isOver) {
-		let matched = false, iterations = 0;
+		var matched = false;
+		var iterations = 0;
 		
         for (let match = null;
              !isOver(iterations) && (match = parser.match(text));
@@ -454,7 +450,7 @@ function Linkify (node, parser, startTime, style) {
         execute: function () {
             // return false until text node is fully linkified
             return linkify (function(iterations){return iterations == 3;});
-    },
+		},
 	
         finish: function () {
             linkify (function(iterations){return false;});
@@ -462,7 +458,7 @@ function Linkify (node, parser, startTime, style) {
         
         complete: function () {
             // store statistics as part of DOM for later retrieval
-			let stats = statistics.store(document, count, Date.now() - startTime.getTime());
+			let stats = statistics.store(count, Date.now() - startTime.getTime());
             
             self.postMessage (stats);
         },
@@ -487,22 +483,40 @@ self.port.on('parse', function (properties) {
 
 		return format;
 	})(properties.style);
-	
-    var startTime = new Date();
+
+    var startTime = new Date;
 	
     var parser = Parser (properties);
-    // get list of text nodes
-    var elements = parser.textNodes();
-	if (!elements) {
-		self.postMessage(statistics.new(0, 0));
-		return;
-	}
 
-	var node = elements.iterateNext();
-	while (node)
-	{
-		let thread = Thread(Linkify(node, parser, startTime, style));
-        thread.start();
-		node = elements.iterateNext();
+	// iterate over all frames
+	function parse (document) {
+		if (!document) return;
+		
+		// get list of text nodes
+		var elements = parser.textNodes(document);
+
+		let size = elements.snapshotLength;
+		if (size == 0) {
+			self.postMessage (statistics.store(0, Date.now() - startTime.getTime()));
+		} else {
+			for (let index = 0; index < size; ++index) {
+				let thread = Thread(Linkify(elements.snapshotItem(index), parser, startTime, style));
+				thread.start();
+			}
+		}
 	}
+	function iterate (frames) {
+		if (!frames) return;
+
+		for (let index = 0; index < frames.length; index++) {
+			let frame = frames[index];
+			
+			parse(frame.document);
+			iterate(frame.frames);
+		}
+	}
+	
+	parse(window.document);
+	// let a change for frames to be loaded
+	setTimeout(function(){iterate(window.frames);}, 300);
 });

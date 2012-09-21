@@ -12,4 +12,4 @@
 
 var statistics = Statistics();
 
-self.postMessage (statistics.new(document));
+self.postMessage (statistics.get());
