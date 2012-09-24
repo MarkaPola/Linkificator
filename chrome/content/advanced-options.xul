@@ -43,7 +43,7 @@
 				   name="extensions.linkificator@markapola.excludedElements"/>
 	</preferences>
 
-	<tabbox id="advanced-settings.tabbox" style="width: 450px">
+	<tabbox id="advanced-settings.tabbox">
       <tabs>
 		<tab label="&advanced-settings.tab-links;"/>
 		<tab label="&advanced-settings.tab-custom-rules;"/>
@@ -84,31 +84,31 @@
 		<tabpanel id="advanced-settings.custom-rules" orient="vertical">
 		  <popupset>
 			<panel id="advanced-settings.custom-rules.panel" type="arrow" noautohide="true"
-				   position="bottomcenter topleft" orient="vertical" style="width: 400px">
+				   position="bottomcenter topleft" orient="vertical">
 			  <vbox flex="1">
 				<hbox>
 				  <label value="&advanced-settings.custom-rules.panel.name.label;:"
 						 control="advanced-settings.custom-rules.panel.name"/>
 				  <spacer flex="1"/>
-				  <textbox id="advanced-settings.custom-rules.panel.name"
-						   placeholder="&advanced-settings.custom-rules.panel.name.placeholder;"
-						   style="width: 270px"/>
+				  <textbox class="advanced-settings.custom-rules.panel.textbox"
+						   id="advanced-settings.custom-rules.panel.name"
+						   placeholder="&advanced-settings.custom-rules.panel.name.placeholder;"/>
 				</hbox>
 				<hbox>
 				  <label value="&advanced-settings.custom-rules.panel.pattern.label;:"
 						 control="advanced-settings.custom-rules.panel.pattern"/>
 				  <spacer flex="1"/>
-				  <textbox id="advanced-settings.custom-rules.panel.pattern"
-						   placeholder="&advanced-settings.custom-rules.panel.pattern.placeholder;"
-						   style="width: 270px"/>
+				  <textbox class="advanced-settings.custom-rules.panel.textbox"
+						   id="advanced-settings.custom-rules.panel.pattern"
+						   placeholder="&advanced-settings.custom-rules.panel.pattern.placeholder;"/>
 				</hbox>
 				<hbox>
 				  <label value="&advanced-settings.custom-rules.panel.url.label;:"
 						 control="advanced-settings.custom-rules.panel.url"/>
 				  <spacer flex="1"/>
-				  <textbox id="advanced-settings.custom-rules.panel.url"
-						   placeholder="&advanced-settings.custom-rules.panel.url.placeholder;"
-						   style="width: 270px"/>
+				  <textbox class="advanced-settings.custom-rules.panel.textbox"
+						   id="advanced-settings.custom-rules.panel.url"
+						   placeholder="&advanced-settings.custom-rules.panel.url.placeholder;"/>
 				</hbox>
 				<hbox pack="end" style="margin-top: 10px">
 				  <button id="advanced-settings.custom-rules.panel.ok" default="true"
@@ -160,9 +160,9 @@
           <groupbox>
     	    <caption label="&advanced-settings.configuration.protocols;"/>
       	    <hbox align="center">
-    		  <textbox id="advanced-settings.configuration.protocol.list" 
-					   preference="pref.protocols"
-					   style="width: 280px"/>
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.protocol.list" 
+					   preference="pref.protocols"/>
 			  <spacer flex="1"/>
     		  <button id="advanced-settings.configuration.protocol.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
@@ -171,9 +171,9 @@
     	  <groupbox style="margin-top: 10px">
     	    <caption label="&advanced-settings.configuration.subdomains;"/>
     	    <hbox align="center">
-    		  <textbox id="advanced-settings.configuration.subdomain.list"
-					   preference="pref.subdomains"
-					   style="width: 280px"/>
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.subdomain.list"
+					   preference="pref.subdomains"/>
 			  <spacer flex="1"/>
     		  <button id="advanced-settings.configuration.subdomain.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
@@ -182,9 +182,9 @@
     	  <groupbox style="margin-top: 10px">
     	    <caption label="&advanced-settings.configuration.excludedElements;"/>
     	    <hbox align="center">
-    		  <textbox id="advanced-settings.configuration.excludedElement.list"
-					   preference="pref.excludedElements"
-					   style="width: 280px"/>
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.excludedElement.list"
+					   preference="pref.excludedElements"/>
 			  <spacer flex="1"/>
     		  <button id="advanced-settings.configuration.excludedElement.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>

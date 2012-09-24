@@ -192,9 +192,11 @@ function ListItem (template, tooltip, rule, callbacks) {
 	this._checkbox.setAttribute('checked', this._rule.active);
 	this._label = this._checkbox.nextSibling;
 	this._label.setAttribute('value', this._rule.name);
+	this._edit = this._label.nextSibling;
+	this._delete = this._edit.nextSibling;
 
 	this._handlers = {
-		drag: this._drag.bind(this),
+		dragstart: this._dragstart.bind(this),
 		drop: this._drop.bind(this),
 		setCheckbox: this._setCheckbox.bind(this),
 		updateTooltip: this._updateTooltip.bind(this),
@@ -202,19 +204,26 @@ function ListItem (template, tooltip, rule, callbacks) {
 	};
 
 	// drap&drop handling
-	this._label.addEventListener('dragstart', this._handlers.drag);
+	this._label.addEventListener('dragstart', this._handlers.dragstart);
 	this._label.addEventListener('drop', this._handlers.drop);
+	this._checkbox.addEventListener('dragover', this._dragover);
+	this._edit.addEventListener('dragover', this._dragover);
+	this._delete.addEventListener('dragover', this._dragover);
 
 	// checkbox handling
 	this._checkbox.addEventListener('command', this._handlers.setCheckbox);
 	// tooltip handling
 	this._label.addEventListener('mouseover', this._handlers.updateTooltip);
 	// delete button handling
-	this._label.nextSibling.nextSibling.addEventListener('command', this._handlers.remove);
+	this._delete.addEventListener('command', this._handlers.remove);
 }
 ListItem.prototype = {
-	_drag: function (event) {
-		this._callbacks.drag(event, this);
+	_dragstart: function (event) {
+		return this._callbacks.dragstart(event, this);
+	},
+	_dragover: function (event) {
+		event.stopPropagation();
+		return true;
 	},
 	_drop: function (event) {
 		this._callbacks.drop(event, this);
@@ -246,10 +255,13 @@ ListItem.prototype = {
 		// remove event listeners
 		this._label.removeEventListener('dragstart', this._handlers.drag);
 		this._label.removeEventListener('drop', this._handlers.drop);
+		this._checkbox.removeEventListener('dragover', this._dragover);
+		this._edit.removeEventListener('dragover', this._dragover);
+		this._delete.removeEventListener('dragover', this._dragover);
 
 		this._checkbox.removeEventListener('command', this._handlers.setCheckbox);
 		this._label.removeEventListener('mouseover', this._handlers.updateTooltip);
-		this._label.nextSibling.nextSibling.removeEventListener('command', this._handlers.remove);
+		this._delete.removeEventListener('command', this._handlers.remove);
 	},
 
 	getRule: function (node) {
@@ -271,6 +283,7 @@ function DragManager (event, listbox, item) {
 
 	event.dataTransfer.setData("application/x-custom-rule", JSON.stringify(item.rule));
 	event.dataTransfer.effectAllowed = "move";
+	event.dataTransfer.setDragImage(item.node, 30, 10);
 
 	this._handlers = {
 		drop: this._drop.bind(this),
@@ -279,13 +292,13 @@ function DragManager (event, listbox, item) {
 
 	// bind all needed drag and drop events
 	let list = listbox.node;
-	list.addEventListener('dragover', this._dropAllowed);
+	list.addEventListener('dragover', this._dragover);
 	list.addEventListener('drop', this._handlers.drop);
 
 	event.target.addEventListener('dragend', this._handlers.release);
 }
 DragManager.prototype = {
-	_dropAllowed: function (event) {
+	_dragover: function (event) {
 		event.preventDefault();
 	},
 	_drop: function (event) {
@@ -311,7 +324,7 @@ DragManager.prototype = {
 
 	release: function (event) {
 		let list = this._listbox.node;
-		list.removeEventListener('dragover', this._dropAllowed);
+		list.removeEventListener('dragover', this._dragover);
 		list.removeEventListener('drop', this._handlers.drop);
 
 		this._source.removeEventListener('dragend', this._handlers.release);
@@ -325,7 +338,7 @@ function ListBox (listbox, itemTemplate, tooltip) {
 	this._tooltip = new Tooltip(tooltip);
 
 	this._callbacks = {
-		drag: this.drag.bind(this),
+		dragstart: this.dragstart.bind(this),
 		drop: this.drop.bind(this),
 		remove: this.remove.bind(this)
 	};
@@ -375,8 +388,9 @@ ListBox.prototype = {
 		this._richlistbox.ensureElementIsVisible(item.node);
 	},
 
-	drag: function (event, item) {
+	dragstart: function (event, item) {
 		this._dragManager = new DragManager(event, this, item);
+		return true;
 	},
 	drop: function (event, item) {
 		this._dragManager.drop(event, item);

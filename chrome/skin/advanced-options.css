@@ -12,6 +12,10 @@
 	-moz-appearance: window !important;
 }
 
+#advanced-settings\.tabbox {
+	width: 450px;
+}
+
 .advanced-settings\.custom-rules\.edit-button {
 	border-style: none !important;
 	-moz-user-focus: normal;
@@ -34,4 +38,15 @@
 
 .advanced-settings\.custom-rules\.delete-button:hover {
 	-moz-image-region: rect(0px, 28px, 14px, 14px);
+}
+
+#advanced-settings\.custom-rules\.panel {
+	width: 400px;
+}
+.advanced-settings\.custom-rules\.panel\.textbox {
+	width: 270px;
+}
+
+.advanced-settings\.configuration\.textbox {
+	width: 280px;
 }
