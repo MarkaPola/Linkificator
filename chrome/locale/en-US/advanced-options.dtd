@@ -19,6 +19,7 @@
 <!ENTITY advanced-settings.links.custom-rules                      "Apply Custom Rules for:">
 <!ENTITY advanced-settings.links.custom-rules.before-predefined    "Before predefined rules list">
 <!ENTITY advanced-settings.links.custom-rules.after-predefined     "After predefined rules list">
+<!ENTITY advanced-settings.links.extra-features.inline-elements    "Handle inline elements">
 
 <!ENTITY advanced-settings.custom-rules.before-predefined          "Before predefined rules">
 <!ENTITY advanced-settings.custom-rules.after-predefined           "After predefined rules">
@@ -29,6 +30,7 @@
 <!ENTITY advanced-settings.configuration.protocols                 "Protocols">
 <!ENTITY advanced-settings.configuration.subdomains                "Subdomains">
 <!ENTITY advanced-settings.configuration.excludedElements          "Excluded Elements">
+<!ENTITY advanced-settings.configuration.inlineElements            "Inline Elements">
 <!ENTITY advanced-settings.configuration.reset-button              "Reset to Default">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label           "Name">

@@ -265,8 +265,6 @@ function Parser (properties) {
 	FullProtocolRule.prototype = new PatternRule;
 	FullProtocolRule.prototype.test = function(regex) {
 		return properties.predefinedRules.support.standard && regex[this._index] !== undefined;
-		/*return regex[this._index] !== undefined 
-			&& (properties.predefinedRules.support.standard || (properties.predefinedRules.support.about && regex[this._index+1] == "about:"));*/
 	};
 	FullProtocolRule.prototype.getURL = function(regex) {
 		if (regex[this._index]) {
@@ -360,114 +358,273 @@ function Parser (properties) {
 	}
 	query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
 
+	var query2 =  "(//" + properties.extraFeatures.inlineElements.join("|//") + ")[ancestor::body and not(ancestor::" + properties.extraFeatures.inlineElements.join(" or ancestor::") + ") and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
+		+ ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
+
     return {
         textNodes: function (document) {
 			return document.evaluate (query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         },
-        
+
+        splittedTextNodes: function (document) {
+			return document.evaluate (query2, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+        },
+
 		match: function (text) {
 			return pattern.match(text);
 		}
     }
 }
 
-function Linkify (node, parser, startTime, style) {
-	var count = 0;
-    var document = node.ownerDocument;
-    var parent = node.parentNode;
-    var sibling = node.nextSibling;
-    var text = node.nodeValue;
+function Linkify (document, startTime, style, completed) {
+	if (document) {
+		let ref = this;
+		ref.count = 0;
+		ref.document = document;
+		ref.style = style;
 
-	const PAGES = ["about", "addons", "apps", "cache", "compartments", "config", "crashes",
-				   "memory", "newtab", "permissions", "plugins", "preferences", "privatebrowsing",
-				   "sessionrestore", "support", "sync-log", "sync-progress", "sync-tabs"];
-	function isAboutURL (url) {
-		let about = "about:";
-		if (url.indexOf(about) == 0) {
-			let page = url.substr(about.length);
+		return {
+			execute: function () {
+				// return false until text node is fully linkified
+				return ref.linkify.call (ref, function(iterations){return iterations == 3;});
+			},
+			
+			finish: function () {
+				ref.linkify.call (ref, function(iterations){return false;});
+			},
+			
+			complete: function () {
+				// store statistics as part of DOM for later retrieval
+				let stats = statistics.store(ref.count, Date.now() - startTime.getTime());
+				
+				self.postMessage (stats);
 
-			return PAGES.some(function(item) {return item.indexOf(page) == 0;});
-		} else {
+				if (completed)
+					completed();
+			},
+			
+			abort: function () {
+				// nothing to do
+			}
+		}
+	}
+}
+Linkify.prototype = {
+	newAnchor: function (url) {
+		const PAGES = ["about", "addons", "apps", "cache", "compartments", "config", "crashes",
+					   "memory", "newtab", "permissions", "plugins", "preferences", "privatebrowsing",
+					   "sessionrestore", "support", "sync-log", "sync-progress", "sync-tabs"];
+		function isAboutURL (url) {
+			let about = "about:";
+			if (url.indexOf(about) == 0) {
+				let page = url.substr(about.length);
+				
+				return PAGES.some(function(item) {return item.indexOf(page) == 0;});
+			} else {
+				return false;
+			}
+		}
+
+		function openURL (event) {
+			if (event.button == 2 || event.altKey || event.ctrlKey || event.metaKey)
+				// no custom action, propagate this event
+				return true;
+
+			event.stopPropagation();
+			event.preventDefault();
+
+			self.port.emit('open-url', {button: event.button == 0 ? 'left' : 'middle', url: this.href});
+
 			return false;
 		}
-	}
 
-	function openURL (event) {
-		if (event.button == 2 || event.altKey || event.ctrlKey || event.metaKey)
-			// no custom action, propagate this event
-			return true;
-
-		event.stopPropagation();
-		event.preventDefault();
-
-		self.port.emit('open-url', {button: event.button == 0 ? 'left' : 'middle', url: this.href});
-
-		return false;
-	}
-
-    function linkify (isOver) {
-		var matched = false;
-		var iterations = 0;
-		
-        for (let match = null;
-             !isOver(iterations) && (match = parser.match(text));
-             ++iterations, ++count) {
-    		if (!matched) {
-				matched = true;
-				parent.removeChild(node);
-			}
-			
-			parent.insertBefore (document.createTextNode(text.substring(0, match.index)), sibling);
-
-            let url = match.url;
-            let anchor = document.createElement('a');
-			anchor.setAttribute('title', 'Linkificator: ' + url);
-			anchor.setAttribute('href', url);
-			anchor.setAttribute('class', 'linkificator-ext');
-			if (style.length != 0) {
-				anchor.setAttribute('style', style);
-			}
-			if (isAboutURL(url)) {
-				// attach special action to enable about: page opening on mouse click
-				anchor.addEventListener('mouseup', openURL, false);
-			}
-
-			anchor.appendChild(document.createTextNode(match.text));
-			parent.insertBefore(anchor, sibling);
-			
-			text = text.substr(match.index + match.length);
+        let anchor = this.document.createElement('a');
+		anchor.setAttribute('title', 'Linkificator: ' + url);
+		anchor.setAttribute('href', url);
+		anchor.setAttribute('class', 'linkificator-ext');
+		if (this.style.length != 0) {
+			anchor.setAttribute('style', this.style);
 		}
-		
-		if (matched) {
-			node = document.createTextNode(text);
-			parent.insertBefore(node, sibling);
+		if (isAboutURL(url)) {
+			// attach special action to enable about: page opening on mouse click
+			anchor.addEventListener('mouseup', openURL, false);
 		}
-		
-        return !isOver(iterations);
+
+		return anchor;
 	}
-	
-    return {
-        execute: function () {
-            // return false until text node is fully linkified
-            return linkify (function(iterations){return iterations == 3;});
-		},
-	
-        finish: function () {
-            linkify (function(iterations){return false;});
-        },
-        
-        complete: function () {
-            // store statistics as part of DOM for later retrieval
-			let stats = statistics.store(count, Date.now() - startTime.getTime());
-            
-            self.postMessage (stats);
-        },
-        
-        abort: function () {
-            // nothing to do
-        }
-    }
 }
+
+// To linkify text nodes.
+function LinkifyNode (node, properties, parser, startTime, style, completed) {
+	if (node) {
+		this.parser = parser;
+
+		this.node = node;
+		this.parent = node.parentNode;
+		this.sibling = node.nextSibling;
+		this.text = node.nodeValue;
+
+		return Linkify.call(this, node.ownerDocument, startTime, style, completed);
+	}
+}
+LinkifyNode.prototype = new Linkify;
+LinkifyNode.prototype.linkify = function (isOver) {
+	var matched = false;
+	var iterations = 0;
+	
+    for (let match = null;
+         !isOver(iterations) && (match = this.parser.match(this.text));
+         ++iterations, ++this.count) {
+    	if (!matched) {
+			matched = true;
+			this.parent.removeChild(this.node);
+		}
+		
+		this.parent.insertBefore(this.document.createTextNode(this.text.substring(0, match.index)), this.sibling);
+
+		let anchor = this.newAnchor(match.url);
+		anchor.appendChild(this.document.createTextNode(match.text));
+		this.parent.insertBefore(anchor, this.sibling);
+		
+		this.text = this.text.substr(match.index + match.length);
+	}
+	
+	if (matched) {
+		this.node = this.document.createTextNode(this.text);
+		this.parent.insertBefore(this.node, this.sibling);
+	}
+	
+    return !isOver(iterations);
+}
+
+// To linkify URLs splitted on multiple text nodes
+function LinkifySplittedText (node, properties, parser, startTime, style, completed) {
+	if (node) {
+		this.parser = parser;
+
+		// parse current node to list "root" nodes of splitted urls
+		function TextNode () {
+			this._text = "";
+			this._nodes = [];
+		}
+		TextNode.prototype = {
+			get text () {
+				return this._text;
+			},
+			add: function (node) {
+				this._nodes.push({index: this._text.length, node: node});
+				this._text += node.nodeValue;
+			},
+			match: function (start, end) {
+				return this._nodes.filter(
+					function (element, index, array) {
+						let max = element.index + element.node.nodeValue.length;
+						return (start >= element.index && start <= max)
+							|| (end >= element.index && end <= max)
+							|| (start < element.index && end > max);
+					});
+			}
+		};
+
+		function TextNodes () {
+			Array.call(this);
+			this.new();
+		}
+		TextNodes.prototype = Object.create(new Array, {
+			current: {
+				get: function() { return this[this.length-1];}
+			},
+			'new': {
+				value: function(){this.push(new TextNode);}
+			}
+		});
+
+		this.textNodes = (function parse (node) {
+			const inline = new RegExp(properties.extraFeatures.inlineElements.join("|"),"i");
+			var textNodes = new TextNodes;
+			
+			function walk (node) {
+				var list = node.childNodes;
+
+				for (let index = 0; index < list.length; ++index) {
+					let child = list.item(index);
+					if (child.nodeType == 3) // Text node
+						textNodes.current.add(child);
+					else if (child.nodeName.search(inline) != -1)
+						walk(child);
+					else {
+						textNodes.new();
+						continue;
+					}
+				}
+			}
+			walk(node);
+
+			return textNodes;
+		})(node);
+		this.index = 0;
+
+		return Linkify.call(this, node.ownerDocument, startTime, style, completed);
+	}
+}
+LinkifySplittedText.prototype = new Linkify;
+LinkifySplittedText.prototype.linkify = function (isOver) {
+	var iterations = 0;
+
+	for (; !isOver(iterations) && this.index < this.textNodes.length; ++iterations, ++this.index) {
+		let textNode = this.textNodes[this.index];
+
+		let start = 0;
+		let match = null;
+
+		while (match = this.parser.match(textNode.text.substring(start))) {
+			let pos = start + match.index;
+			start =  pos + match.length;
+			let url = match.url;
+
+			// retrieve list of nodes impacted by url
+			let list = textNode.match(pos, pos+match.length);
+			// ignore not splitted url
+			if (list.length < 2) continue;
+
+			this.count++;
+
+			// first node must be splitted
+			let element = list[0];
+			let node = element.node;
+			let parent = node.parentNode;
+			parent.insertBefore(this.document.createTextNode(node.nodeValue.substring(0, pos-element.index)), node);
+			let a = this.newAnchor(url);
+			a.appendChild(this.document.createTextNode(node.nodeValue.substring(pos-element.index)));
+			node.parentNode.replaceChild(a, node);
+
+			// all other nodes, except last one must be simply anchored to <a> node
+			//  which replace initial node
+			for (let i = 1; i < list.length-1; ++i) {
+				let a = this.newAnchor(url);
+				let node = list[i].node;
+				a.appendChild(node.cloneNode(true));
+				node.parentNode.replaceChild(a, node);
+			}
+
+			// last node must also be splitted
+			element = list[list.length-1];
+			node = element.node;
+			parent = node.parentNode;
+			a = this.newAnchor(url);
+			a.appendChild(this.document.createTextNode(node.nodeValue.substring(0, start-element.index)));
+			parent.insertBefore(a, node);
+			let newNode = this.document.createTextNode(node.nodeValue.substring(start-element.index));
+			parent.replaceChild(newNode, node);
+			// update descriptor for future treatments
+			element.index = start;
+			element.node = newNode;
+		}
+	}
+	
+    return !isOver(iterations);
+}
+
 
 self.port.on('parse', function (properties) {
 	var style = (function (style) {
@@ -486,23 +643,45 @@ self.port.on('parse', function (properties) {
 
     var startTime = new Date;
 	
-    var parser = Parser (properties);
-
+    var parser = Parser(properties);
+	
 	// iterate over all frames
 	function parse (document) {
-		if (!document) return;
-		
-		// get list of text nodes
-		var elements = parser.textNodes(document);
+		var count = 0;
 
-		let size = elements.snapshotLength;
-		if (size == 0) {
-			self.postMessage (statistics.store(0, Date.now() - startTime.getTime()));
-		} else {
-			for (let index = 0; index < size; ++index) {
-				let thread = Thread(Linkify(elements.snapshotItem(index), parser, startTime, style));
-				thread.start();
+		// function called on completion of splitted text node parsing
+		// When all nodes are parsed, start linkification of "standard" text nodes
+		function completed () {
+			count -= 1;
+			if (count <= 0) {
+				// second pass: handle not splitted urls
+				parseDocument(document, parser.textNodes, LinkifyNode);
 			}
+		}
+
+		function parseDocument (document, getNodes, linkify, completed) {
+			// get list of text nodes
+			var elements = getNodes(document);
+
+			let size = elements.snapshotLength;
+			count = size;
+			if (size == 0) {
+				self.postMessage (statistics.store(0, Date.now() - startTime.getTime()));
+				if (completed)
+					completed();
+			} else {
+				for (let index = 0; index < size; ++index) {
+					let thread = Thread(new linkify(elements.snapshotItem(index), properties, parser, startTime, style, completed));
+					thread.start();
+				}
+			}
+		}
+
+		if (properties.extraFeatures.support.inlineElements) {
+			// start parsing by splitted text nodes
+			parseDocument(document, parser.splittedTextNodes, LinkifySplittedText, completed);
+		} else {
+			parseDocument(document, parser.textNodes, LinkifyNode);
 		}
 	}
 	function iterate (frames) {
@@ -511,7 +690,8 @@ self.port.on('parse', function (properties) {
 		for (let index = 0; index < frames.length; index++) {
 			let frame = frames[index];
 			
-			parse(frame.document);
+			if (frame.document)
+				parse(frame.document);
 			iterate(frame.frames);
 		}
 	}

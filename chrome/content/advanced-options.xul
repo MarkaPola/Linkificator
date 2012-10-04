@@ -30,6 +30,8 @@
 				   name="extensions.linkificator@markapola.supportAbout"/>
       <preference  type="bool" id="pref.supportStandardURLs"
 				   name="extensions.linkificator@markapola.supportStandardURLs"/>
+      <preference  type="bool" id="pref.supportInlineElements"
+				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.supportCustomRulesBefore"
 				   name="extensions.linkificator@markapola.supportCustomRulesBefore"/>
       <preference  type="bool" id="pref.supportCustomRulesAfter"
@@ -41,6 +43,8 @@
 				   name="extensions.linkificator@markapola.subdomains"/>
       <preference  type="string" id="pref.excludedElements"
 				   name="extensions.linkificator@markapola.excludedElements"/>
+      <preference  type="string" id="pref.inlineElements"
+				   name="extensions.linkificator@markapola.inlineElements"/>
 	</preferences>
 
 	<tabbox id="advanced-settings.tabbox">
@@ -67,7 +71,7 @@
 						  label="&advanced-settings.links.predefined-rules.standard-urls;"/>
 			  </vbox>
 			</groupbox>
-			<groupbox orient="horizontal" flex="1" style="margin-top: 10px">
+			<groupbox orient="horizontal" flex="1">
 			  <caption label="&advanced-settings.links.custom-rules;"/>
 			  <vbox>
 				<checkbox id="advanced-settings.link-type.custom-rules.before-predefined"
@@ -76,6 +80,14 @@
 				<checkbox id="advanced-settings.link-type.custom-rules.after-predefined"
 						  preference="pref.supportCustomRulesAfter"
 						  label="&advanced-settings.links.custom-rules.after-predefined;"/>
+			  </vbox>
+			</groupbox>
+			<groupbox orient="horizontal" flex="1" style="margin-top: 10px">
+			  <!--caption label="&advanced-settings.links.extra-features;"/-->
+			  <vbox>
+				<checkbox id="advanced-settings.link-type.extra-features.inline-elements"
+						  preference="pref.supportInlineElements"
+						  label="&advanced-settings.links.extra-features.inline-elements;"/>
 			  </vbox>
 			</groupbox>
 		  </vbox>
@@ -168,7 +180,7 @@
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
-    	  <groupbox style="margin-top: 10px">
+    	  <groupbox>
     	    <caption label="&advanced-settings.configuration.subdomains;"/>
     	    <hbox align="center">
     		  <textbox class="advanced-settings.configuration.textbox"
@@ -179,7 +191,7 @@
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>
-    	  <groupbox style="margin-top: 10px">
+    	  <groupbox>
     	    <caption label="&advanced-settings.configuration.excludedElements;"/>
     	    <hbox align="center">
     		  <textbox class="advanced-settings.configuration.textbox"
@@ -187,6 +199,17 @@
 					   preference="pref.excludedElements"/>
 			  <spacer flex="1"/>
     		  <button id="advanced-settings.configuration.excludedElement.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
+    	    </hbox>
+    	  </groupbox>
+    	  <groupbox>
+    	    <caption label="&advanced-settings.configuration.inlineElements;"/>
+    	    <hbox align="center">
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.inlineElement.list"
+					   preference="pref.inlineElements"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.configuration.inlineElement.reset"
 					  label="&advanced-settings.configuration.reset-button;"/>
     	    </hbox>
     	  </groupbox>

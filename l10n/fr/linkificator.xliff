@@ -193,6 +193,10 @@
 		<source>After predefined rules list</source>
 		<target state='translated'>Liste Après les règles prédéfinies</target>
 	  </trans-unit>
+	  <trans-unit id='advanced-settings.links.extra-features.inline-elements'>
+		<source>Handle inline elements</source>
+		<target state='translated'>Traite les elements en ligne</target>
+	  </trans-unit>
 	</group>
 	<group id='advanced-settings.custom-rules'>
 	  <trans-unit id='advanced-settings.custom-rules.before-standard'>
@@ -228,6 +232,10 @@
 	  <trans-unit id='advanced-settings.configuration.excludedElements'>
 		<source>Excluded Elements</source>
 		<target state='translated'>Elements exclus</target>
+	  </trans-unit>
+	  <trans-unit id='advanced-settings.configuration.inlineElements'>
+		<source>Inline Elements</source>
+		<target state='translated'>Elements en ligne</target>
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.configuration.reset-button'>
 		<source>Reset to Default</source>

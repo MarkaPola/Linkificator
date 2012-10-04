@@ -9,8 +9,8 @@
 // javascript does not support parallel executions
 // to avoid any CPU total comsumption and UI freezes, this utility help execute tasks in the background
 
-// argutments to Thread function are:
-// action: object which MUST expose, at least, the following two functions without any arguments:
+// arguments to Thread function are:
+// action: object which MUST expose, at least, the following argumentless functions:
 //   * execute: will execute a part of the work and must return true if work is completed
 //   * finish: will execute all remaining tasks to complete the work
 //   * abort: thread was aborted, remaining work must not be done

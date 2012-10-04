@@ -539,6 +539,9 @@ function Configuration (preferences, defaults, properties) {
 	function resetExcludedElements (event) {
 		preferences.clearUserPref('excludedElements');
 	}
+	function resetInlineElements (event) {
+		preferences.clearUserPref('inlineElements');
+	}
 
 	// manage events
 	$('advanced-settings.configuration.protocol.reset').addEventListener('command', resetProtocols);
@@ -546,6 +549,7 @@ function Configuration (preferences, defaults, properties) {
 	$('advanced-settings.configuration.subdomain.reset').addEventListener('command', resetSubdomains);
 
 	$('advanced-settings.configuration.excludedElement.reset').addEventListener('command', resetExcludedElements);
+	$('advanced-settings.configuration.inlineElement.reset').addEventListener('command', resetInlineElements);
 
 	return {
 		retrieve: function () {
@@ -558,6 +562,7 @@ function Configuration (preferences, defaults, properties) {
 			$('advanced-settings.configuration.subdomain.reset').removeEventListener('command', resetSubdomains);
 
 			$('advanced-settings.configuration.excludedElement.reset').removeEventListener('command', resetExcludedElements);
+			$('advanced-settings.configuration.inlineElement.reset').removeEventListener('command', resetInlineElements);
 		}
 	}
 }
