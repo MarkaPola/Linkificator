@@ -159,14 +159,14 @@
 		<source>OK</source>
 		<target state='new'>OK</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.ok-button'>
+	  <trans-unit id='advanced-settings.cancel-button'>
 		<source>Cancel</source>
 		<target state='new'>Annuler</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.links'>
 	  <trans-unit id='advanced-settings.links.predefined-rules'>
-		<source>Appy Predefined Rules for:</source>
+		<source>Apply Predefined Rules for:</source>
 		<target state='translated'>Appliquer les règles prédéfinies pour :</target>
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.predefined-rules.email-address'>
@@ -195,7 +195,7 @@
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.links.extra-features.inline-elements'>
 		<source>Handle inline elements</source>
-		<target state='translated'>Traite les elements en ligne</target>
+		<target state='translated'>Traiter les éléments en ligne</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.custom-rules'>
@@ -231,11 +231,11 @@
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.configuration.excludedElements'>
 		<source>Excluded Elements</source>
-		<target state='translated'>Elements exclus</target>
+		<target state='translated'>Eléments exclus</target>
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.configuration.inlineElements'>
 		<source>Inline Elements</source>
-		<target state='translated'>Elements en ligne</target>
+		<target state='translated'>Eléments en ligne</target>
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.configuration.reset-button'>
 		<source>Reset to Default</source>

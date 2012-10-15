@@ -12,7 +12,7 @@
 <!ENTITY advanced-settings.tab-custom-rules                        "Custom Rules">
 <!ENTITY advanced-settings.tab-configuration                       "Configuration">
 
-<!ENTITY advanced-settings.links.predefined-rules                  "Appy Predefined Rules for:">
+<!ENTITY advanced-settings.links.predefined-rules                  "Apply Predefined Rules for:">
 <!ENTITY advanced-settings.links.predefined-rules.email-address    "Email addresses">
 <!ENTITY advanced-settings.links.predefined-rules.about-protocol   "about: protocol">
 <!ENTITY advanced-settings.links.predefined-rules.standard-urls    "Standard URLs">

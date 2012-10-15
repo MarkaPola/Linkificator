@@ -19,7 +19,7 @@
 <!ENTITY advanced-settings.links.custom-rules                      "Appliquer les règles utilisateur pour :">
 <!ENTITY advanced-settings.links.custom-rules.before-predefined    "Liste Avant les règles prédéfinies">
 <!ENTITY advanced-settings.links.custom-rules.after-predefined     "Liste Après les règles prédéfinies">
-<!ENTITY advanced-settings.links.extra-features.inline-elements    "Traite les elements en ligne">
+<!ENTITY advanced-settings.links.extra-features.inline-elements    "Traiter les éléments en ligne">
 
 <!ENTITY advanced-settings.custom-rules.before-predefined          "Avant les règles prédéfinies">
 <!ENTITY advanced-settings.custom-rules.after-predefined           "Après les règles prédéfinies">
@@ -29,8 +29,8 @@
 
 <!ENTITY advanced-settings.configuration.protocols                 "Protocoles">
 <!ENTITY advanced-settings.configuration.subdomains                "Sous-domaines">
-<!ENTITY advanced-settings.configuration.excludedElements          "Elements exclus">
-<!ENTITY advanced-settings.configuration.inlineElements            "Elements en ligne">
+<!ENTITY advanced-settings.configuration.excludedElements          "Eléments exclus">
+<!ENTITY advanced-settings.configuration.inlineElements            "Eléments en ligne">
 <!ENTITY advanced-settings.configuration.reset-button              "Remettre par défaut">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label           "Nom">

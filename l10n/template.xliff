@@ -159,15 +159,15 @@
 		<source>OK</source>
 		<target state='new'>OK</target>
 	  </trans-unit>
-	  <trans-unit id='advanced-settings.ok-button'>
+	  <trans-unit id='advanced-settings.cancel-button'>
 		<source>Cancel</source>
 		<target state='new'>Cancel</target>
 	  </trans-unit>
 	</group>
 	<group id='advanced-settings.links'>
 	  <trans-unit id='advanced-settings.links.predefined-rules'>
-		<source>Appy Predefined Rules for:</source>
-		<target state='new'>Appy Predefined Rules for:</target>
+		<source>Apply Predefined Rules for:</source>
+		<target state='new'>Apply Predefined Rules for:</target>
 	  </trans-unit>
 	  <trans-unit id='advanced-settings.links.predefined-rules.email-address'>
 		<source>Email addresses</source>
