@@ -25,7 +25,7 @@ function Statistics () {
         get timeLabel () { return "linkificator-time"; },
         
 		store: function (count, time) {
-			let body = window.document.body;
+			let body = window.top.document.body;
 
 			let total = parseInt(body.getAttribute(this.countLabel));
 			if (isNaN(total)) total = 0;

@@ -645,7 +645,6 @@ self.port.on('parse', function (properties) {
 	
     var parser = Parser(properties);
 	
-	// iterate over all frames
 	function parse (document) {
 		var count = 0;
 
@@ -684,19 +683,6 @@ self.port.on('parse', function (properties) {
 			parseDocument(document, parser.textNodes, LinkifyNode);
 		}
 	}
-	function iterate (frames) {
-		if (!frames) return;
-
-		for (let index = 0; index < frames.length; index++) {
-			let frame = frames[index];
-			
-			if (frame.document)
-				parse(frame.document);
-			iterate(frame.frames);
-		}
-	}
 	
 	parse(window.document);
-	// let a change for frames to be loaded
-	setTimeout(function(){iterate(window.frames);}, 300);
 });
