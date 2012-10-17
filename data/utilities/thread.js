@@ -58,14 +58,7 @@ function Thread (action, interval) {
 			interval: 10,
 	        action: null,
 			worker: null,
-			waiter: null,
 			completed: false,
-			
-			terminate: function () {
-				clearInterval(this.worker);
-				clearTimeout(this.waiter);
-				this.completed = true;
-			}
 	};
 	if (interval)
 		thread.interval = interval;
@@ -75,27 +68,28 @@ function Thread (action, interval) {
 		if (thread.completed)
 			return;
 		
-		// execute action at interval
-		thread.worker = setInterval (function() {
-			if (thread.action.execute()) {
-    			thread.terminate();
-                thread.action.complete();    		    
-			}},
-									 interval);
+		if (thread.action.execute()) {
+            thread.completed = true;
+			thread.action.complete();
+		} else {
+			thread.worker = setTimeout(execute, interval);
+		}
 	}
 	
 	function finish (timeout) {
 		if (thread.completed)
 			return;
-		
+
+		clearTimeout(thread.worker);
+
 		let terminate = function() {
-			thread.terminate();
+			thread.completed = true;
 			thread.action.finish();
             thread.action.complete();
 		};
 		
 		if (timeout) {
-			thread.waiter = setTimeout (terminate, timeout);
+			thread.worker = setTimeout(terminate, timeout);
 		} else {	
 			terminate();
 		}
@@ -105,7 +99,9 @@ function Thread (action, interval) {
 		if (thread.completed)
 			return;
 		
-		thread.terminate();
+		clearTimeout(thread.worker);
+
+		thread.completed = true;
         thread.action.abort();
 	}
 	

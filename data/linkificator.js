@@ -12,7 +12,7 @@ var statistics = Statistics();
 // catch backward/forward button event to handle widget update
 function postStatistics(event) {
 	if (event.persisted)
-		self.postMessage(statistics.get());
+		self.port.emit('complete', statistics.get());
 }
 window.addEventListener('pageshow', postStatistics, false);
 
@@ -397,7 +397,7 @@ function Linkify (document, startTime, style, completed) {
 				// store statistics as part of DOM for later retrieval
 				let stats = statistics.store(ref.count, Date.now() - startTime.getTime());
 				
-				self.postMessage (stats);
+				self.port.emit('complete', stats);
 
 				if (completed)
 					completed();
@@ -666,7 +666,7 @@ self.port.on('parse', function (properties) {
 			let size = elements.snapshotLength;
 			count = size;
 			if (size == 0) {
-				self.postMessage (statistics.store(0, Date.now() - startTime.getTime()));
+				self.port.emit('complete', statistics.store(0, Date.now() - startTime.getTime()));
 				if (completed)
 					completed();
 			} else {

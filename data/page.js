@@ -12,4 +12,4 @@
 
 var statistics = Statistics();
 
-self.postMessage (statistics.get());
+self.port.emit('complete', statistics.get());
