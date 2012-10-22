@@ -376,7 +376,7 @@ function Parser (properties) {
     }
 }
 
-function Linkify (document, startTime, style, completed) {
+function Linkify (document, context, style, completed) {
 	if (document) {
 		let ref = this;
 		ref.count = 0;
@@ -395,7 +395,8 @@ function Linkify (document, startTime, style, completed) {
 			
 			complete: function () {
 				// store statistics as part of DOM for later retrieval
-				let stats = statistics.store(ref.count, Date.now() - startTime.getTime());
+				context.links += ref.count;
+				let stats = statistics.store(context.links, Date.now()-context.startTime);
 				
 				self.port.emit('complete', stats);
 
@@ -455,7 +456,7 @@ Linkify.prototype = {
 }
 
 // To linkify text nodes.
-function LinkifyNode (node, properties, parser, startTime, style, completed) {
+function LinkifyNode (node, context, properties, parser, style, completed) {
 	if (node) {
 		this.parser = parser;
 
@@ -464,7 +465,7 @@ function LinkifyNode (node, properties, parser, startTime, style, completed) {
 		this.sibling = node.nextSibling;
 		this.text = node.nodeValue;
 
-		return Linkify.call(this, node.ownerDocument, startTime, style, completed);
+		return Linkify.call(this, node.ownerDocument, context, style, completed);
 	}
 }
 LinkifyNode.prototype = new Linkify;
@@ -498,7 +499,7 @@ LinkifyNode.prototype.linkify = function (isOver) {
 }
 
 // To linkify URLs splitted on multiple text nodes
-function LinkifySplittedText (node, properties, parser, startTime, style, completed) {
+function LinkifySplittedText (node, context, properties, parser, style, completed) {
 	if (node) {
 		this.parser = parser;
 
@@ -564,7 +565,7 @@ function LinkifySplittedText (node, properties, parser, startTime, style, comple
 		})(node);
 		this.index = 0;
 
-		return Linkify.call(this, node.ownerDocument, startTime, style, completed);
+		return Linkify.call(this, node.ownerDocument, context, style, completed);
 	}
 }
 LinkifySplittedText.prototype = new Linkify;
@@ -626,7 +627,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 }
 
 
-self.port.on('parse', function (properties) {
+self.port.on('parse', function (properties, context) {
 	var style = (function (style) {
 		let format = "";
 
@@ -641,8 +642,6 @@ self.port.on('parse', function (properties) {
 		return format;
 	})(properties.style);
 
-    var startTime = new Date;
-	
     var parser = Parser(properties);
 	
 	function parse (document) {
@@ -665,12 +664,12 @@ self.port.on('parse', function (properties) {
 			let size = elements.snapshotLength;
 			count = size;
 			if (size == 0) {
-				self.port.emit('complete', statistics.store(0, Date.now() - startTime.getTime()));
+				self.port.emit('complete', statistics.store(context.links, Date.now()-context.startTime));
 				if (completed)
 					completed();
 			} else {
 				for (let index = 0; index < size; ++index) {
-					let thread = Thread(new linkify(elements.snapshotItem(index), properties, parser, startTime, style, completed));
+					let thread = Thread(new linkify(elements.snapshotItem(index), context, properties, parser, style, completed));
 					thread.start();
 				}
 			}

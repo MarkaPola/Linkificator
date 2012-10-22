@@ -25,16 +25,16 @@ function Statistics () {
         get timeLabel () { return "linkificator-time"; },
         
 		store: function (count, time) {
-			let body = window.top.document.body;
+			try {
+				let body = window.top.document.body;
 
-			let total = parseInt(body.getAttribute(this.countLabel));
-			if (isNaN(total)) total = 0;
-			total += count;
-
-			body.setAttribute(this.countLabel, total);
-			body.setAttribute(this.timeLabel, time);
-			
-			return getStats(total, time);
+				body.setAttribute(this.countLabel, count);
+				body.setAttribute(this.timeLabel, time);
+			} catch (e) {
+				// possible exception if cross-site scripting occurs
+				// in this case, statistics cannot not be stored
+			}
+			return getStats(count, time);
 		},
 
         get: function () {
