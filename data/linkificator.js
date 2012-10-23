@@ -685,3 +685,7 @@ self.port.on('parse', function (properties, context) {
 	
 	parse(window.document);
 });
+
+self.port.on('get-stats', function () {
+	self.port.emit('complete', statistics.get());
+});

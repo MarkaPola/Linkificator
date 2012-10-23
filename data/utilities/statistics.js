@@ -38,10 +38,14 @@ function Statistics () {
 		},
 
         get: function () {
-			let body = window.document.body;
+			let body = window.top.document.body;
 
-			return getStats (body.getAttribute(this.countLabel),
-							 body.getAttribute(this.timeLabel));
+			if (body.hasAttribute(this.countLabel)) {
+				return getStats(body.getAttribute(this.countLabel),
+								body.getAttribute(this.timeLabel));
+			} else {
+				return getStats(-2, 0);
+			}
         }
     }
 }

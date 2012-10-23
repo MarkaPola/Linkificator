@@ -12,4 +12,6 @@
 
 var statistics = Statistics();
 
-self.port.emit('complete', statistics.get());
+self.port.on('get-stats', function () {
+	self.port.emit('complete', statistics.get());
+});
