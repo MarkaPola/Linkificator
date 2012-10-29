@@ -9,14 +9,6 @@
 
 var statistics = Statistics();
 
-// catch backward/forward button event to handle widget update
-function postStatistics(event) {
-	if (event.persisted)
-		self.port.emit('complete', statistics.get());
-}
-window.addEventListener('pageshow', postStatistics, false);
-
-
 function Parser (properties) {
 
     function buildPattern (data) {
