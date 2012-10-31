@@ -15,12 +15,12 @@ var statistics = Statistics();
 // catch backward/forward button events to handle widget update
 function postStatistics (event) {
 	if (event.persisted) {
-		self.port.emit('complete', statistics.get());
+		self.port.emit('to-page', statistics.get());
 	}
 }
 
 function reset (event) {
-	self.port.emit('reset');
+	self.port.emit('from-page');
 }
 
 	

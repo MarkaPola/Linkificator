@@ -368,7 +368,7 @@ function Parser (properties) {
     }
 }
 
-function Linkify (document, context, style, completed) {
+function Linkify (document, style, completed) {
 	if (document) {
 		let ref = this;
 		ref.count = 0;
@@ -386,11 +386,7 @@ function Linkify (document, context, style, completed) {
 			},
 			
 			complete: function () {
-				// store statistics as part of DOM for later retrieval
-				context.links += ref.count;
-				let stats = statistics.store(context.links, Date.now()-context.startTime);
-				
-				self.port.emit('complete', stats);
+				self.port.emit('complete', ref.count);
 
 				if (completed)
 					completed();
@@ -448,7 +444,7 @@ Linkify.prototype = {
 }
 
 // To linkify text nodes.
-function LinkifyNode (node, context, properties, parser, style, completed) {
+function LinkifyNode (node, properties, parser, style, completed) {
 	if (node) {
 		this.parser = parser;
 
@@ -457,7 +453,7 @@ function LinkifyNode (node, context, properties, parser, style, completed) {
 		this.sibling = node.nextSibling;
 		this.text = node.nodeValue;
 
-		return Linkify.call(this, node.ownerDocument, context, style, completed);
+		return Linkify.call(this, node.ownerDocument, style, completed);
 	}
 }
 LinkifyNode.prototype = new Linkify;
@@ -491,7 +487,7 @@ LinkifyNode.prototype.linkify = function (isOver) {
 }
 
 // To linkify URLs splitted on multiple text nodes
-function LinkifySplittedText (node, context, properties, parser, style, completed) {
+function LinkifySplittedText (node, properties, parser, style, completed) {
 	if (node) {
 		this.parser = parser;
 
@@ -557,7 +553,7 @@ function LinkifySplittedText (node, context, properties, parser, style, complete
 		})(node);
 		this.index = 0;
 
-		return Linkify.call(this, node.ownerDocument, context, style, completed);
+		return Linkify.call(this, node.ownerDocument, style, completed);
 	}
 }
 LinkifySplittedText.prototype = new Linkify;
@@ -619,7 +615,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 }
 
 
-self.port.on('parse', function (properties, context) {
+self.port.on('parse', function (properties) {
 	var style = (function (style) {
 		let format = "";
 
@@ -656,12 +652,12 @@ self.port.on('parse', function (properties, context) {
 			let size = elements.snapshotLength;
 			count = size;
 			if (size == 0) {
-				self.port.emit('complete', statistics.store(context.links, Date.now()-context.startTime));
+				self.port.emit('complete', 0);
 				if (completed)
 					completed();
 			} else {
 				for (let index = 0; index < size; ++index) {
-					let thread = Thread(new linkify(elements.snapshotItem(index), context, properties, parser, style, completed));
+					let thread = Thread(new linkify(elements.snapshotItem(index), properties, parser, style, completed));
 					thread.start();
 				}
 			}
@@ -676,8 +672,4 @@ self.port.on('parse', function (properties, context) {
 	}
 	
 	parse(window.document);
-});
-
-self.port.on('get-stats', function () {
-	self.port.emit('complete', statistics.get());
 });

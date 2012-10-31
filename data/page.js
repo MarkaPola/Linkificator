@@ -12,6 +12,10 @@
 
 var statistics = Statistics();
 
+self.port.on('set-stats', function (data) {
+	statistics.store(data.links, data.time);
+});
+
 self.port.on('get-stats', function () {
 	self.port.emit('complete', statistics.get());
 });
