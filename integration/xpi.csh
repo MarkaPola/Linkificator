@@ -8,7 +8,11 @@ if (! -f package.json) then
 	exit 1;
 endif
 
-cp -f ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension/{application.ini,bootstrap.js} app-extension
+set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
+if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
+	set APP_EXTENSION = ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension
+endif
+cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 
 python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension
 
