@@ -28,7 +28,7 @@
   <setting pref="extensions.linkificator@markapola.overrideBackgroundColor" title="&settings.overrideBackgroundColor;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.backgroundColor" title="&settings.backgroundColor;" type="color"/>
   <setting pref="extensions.linkificator@markapola.advancedSettings" title="" type="control">
-    <button label="&settings.advanced;..." oncommand="Services.obs.notifyObservers(null, 'linkificator@markapola-cmdPressed', 'advancedSettings');"/>
+    <button label="&settings.advanced;" oncommand="Services.obs.notifyObservers(null, 'linkificator@markapola-cmdPressed', 'advancedSettings');"/>
   </setting>
   <setting pref="extensions.linkificator@markapola.sync" title="&settings.sync;" type="bool"/>
 </vbox>

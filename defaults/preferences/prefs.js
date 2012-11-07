@@ -27,8 +27,9 @@ pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afte
 pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;ftp~ftp#2;news~news#0;nntp~nntp#2;telnet~telnet#2;irc~irc#2;file~file#3");
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
-pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt");
+pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt;span");
 pref("extensions.linkificator@markapola.sync", false);
+pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":3}");
 // sync management, deactivated by default
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkey", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);

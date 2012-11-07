@@ -368,7 +368,7 @@ function Parser (properties) {
     }
 }
 
-function Linkify (document, style, completed) {
+function Linkify (document, properties, style, completed) {
 	if (document) {
 		let ref = this;
 		ref.count = 0;
@@ -378,7 +378,7 @@ function Linkify (document, style, completed) {
 		return {
 			execute: function () {
 				// return false until text node is fully linkified
-				return ref.linkify.call (ref, function(iterations){return iterations == 3;});
+				return ref.linkify.call (ref, function(iterations){return iterations == properties.processing.iterations;});
 			},
 			
 			finish: function () {
@@ -453,7 +453,7 @@ function LinkifyNode (node, properties, parser, style, completed) {
 		this.sibling = node.nextSibling;
 		this.text = node.nodeValue;
 
-		return Linkify.call(this, node.ownerDocument, style, completed);
+		return Linkify.call(this, node.ownerDocument, properties, style, completed);
 	}
 }
 LinkifyNode.prototype = new Linkify;
@@ -553,7 +553,7 @@ function LinkifySplittedText (node, properties, parser, style, completed) {
 		})(node);
 		this.index = 0;
 
-		return Linkify.call(this, node.ownerDocument, style, completed);
+		return Linkify.call(this, node.ownerDocument, properties, style, completed);
 	}
 }
 LinkifySplittedText.prototype = new Linkify;
@@ -657,7 +657,8 @@ self.port.on('parse', function (properties) {
 					completed();
 			} else {
 				for (let index = 0; index < size; ++index) {
-					let thread = Thread(new linkify(elements.snapshotItem(index), properties, parser, style, completed));
+					let thread = Thread(new linkify(elements.snapshotItem(index), properties, parser, style, completed),
+										properties.processing.interval);
 					thread.start();
 				}
 			}
