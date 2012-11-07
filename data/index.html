@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
   <head>
-	<meta http-equiv="Content-Type" Content="text/html;charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 	<meta name="author" content="MarkaPola"/> 
+	<link rel="license" href="http://mozilla.org/MPL/2.0/"/>
 	<link rel="icon" type="image/ico" href="./welcome/favicon.png"/>
-    <title>Linkificator 1.0.0</title>
+    <title>Linkificator 1.0.1</title>
  
    <style type="text/css">
 	 .large-text {
 	 font-size: 120%;
+	 }
+
+	 .version-changes {
+	 position: relative;
+	 left: 5%;
 	 }
 
 	 .feature-list-title {
@@ -36,7 +42,7 @@
 
   <body>
 	<img id="linkificator-icon" src="./welcome/linkificator.png"/>
-	<h1>Linkificator 1.0.0</h1>
+	<h1>Linkificator 1.0.1</h1>
 	<em class="large-text">New version installed.</em>
 	<br><br>
 	<div>
@@ -45,15 +51,31 @@
 	  Please visit the <a href="https://addons.mozilla.org/en-US/firefox/addon/linkificator/?src=ss">Add-on page</a> for more informations.
 	</div>
 	<br>
-	<p class="feature-list-title">New features</p>
-	<ul>
-	  <li>Inline elements, like &lt;big&gt; or &lt;strong&gt;, are now recognized and correctly handled during URLs parsing</li>
-	  <li>Existing pages are now automatically parsed when add-on is installed or re-enabled. It is no longer required to manually reload the page</li>
-	</ul>
-	<p class="feature-list-title">Enhancements and bug fixes</p>
-	<ul>
-	  <li>Multi-frames documents are now correctly handled in all cases</li>
-	  <li>plain text documents are now recognized and parsed</li>
-	</ul>
+	<h1>History of changes</h1>
+	<div>
+	  <h2>Version 1.0.1</h2>
+	  <div class="version-changes">
+		<p class="feature-list-title">Enhancements and bug fixes</p>
+		<ul>
+		  <li>Tag &lt;span&gt; is now handled has an inline element</li>
+		  <li>Enhance localization messages</li>
+		</ul>
+	  </div>
+	</div>
+	<div>
+	  <h2>Version 1.0.0</h2>
+	  <div class="version-changes">
+		<p class="feature-list-title">New features</p>
+		<ul>
+		  <li>Inline elements, like &lt;big&gt; or &lt;strong&gt;, are now recognized and correctly handled during URLs parsing</li>
+		  <li>Existing pages are now automatically parsed when add-on is installed or re-enabled. It is no longer required to manually reload the page</li>
+		</ul>
+		<p class="feature-list-title">Enhancements and bug fixes</p>
+		<ul>
+		  <li>Multi-frames documents are now correctly handled in all cases</li>
+		  <li>plain text documents are now recognized and parsed</li>
+		</ul>
+	  </div>
+	</div>
   </body>
 </html>
