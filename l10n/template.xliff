@@ -37,6 +37,80 @@
 		  <target state='new'>undetermined</target>
 		</trans-unit>
 	  </group>
+	  <group id='settings'>
+		<trans-unit id='activated_title'>
+		  <source>Activated</source>
+		  <target state='new'>Activated</target>
+		</trans-unit>
+		<trans-unit id='hotkey_title'>
+		  <source>Hot key to toggle linkificator state</source>
+		  <target state='new'>Hot key to toggle linkificator state</target>
+		</trans-unit>
+		<trans-unit id='displayWidget_title'>
+		  <source>Display widget in the Add-on Bar</source>
+		  <target state='new'>Display widget in the Add-on Bar</target>
+		</trans-unit>
+		<trans-unit id='useRegExp_title'>
+		  <source>Use regular expressions for domains</source>
+		  <target state='new'>Use regular expressions for domains</target>
+		</trans-unit>
+		<trans-unit id='filterMode_title'>
+		  <source>Domain filtering mode</source>
+		  <target state='new'>Domain filtering mode</target>
+		</trans-unit>
+		<trans-unit id='filterMode_options.None'>
+		  <source>None</source>
+		  <target state='new'>None</target>
+		</trans-unit>
+		<trans-unit id='filterMode_options.Only linkify for domains in Whitelist'>
+		  <source>Only linkify for domains in Whitelist</source>
+		  <target state='new'>Only linkify for domains in Whitelist</target>
+		</trans-unit>
+		<trans-unit id='filterMode_options.Never linkify for domains in Blacklist'>
+		  <source>Never linkify for domains in Blacklist</source>
+		  <target state='new'>Never linkify for domains in Blacklist</target>
+		</trans-unit>
+		<trans-unit id='whitelist_title'>
+		  <source>Whitelisted Domains</source>
+		  <target state='new'>Whitelisted Domains</target>
+		</trans-unit>
+		<trans-unit id='whitelist_description'>
+		  <source>Separate domains with a space</source>
+		  <target state='new'>Separate domains with a space</target>
+		</trans-unit>
+		<trans-unit id='blacklist_title'>
+		  <source>Blacklisted Domains</source>
+		  <target state='new'>Blacklisted Domains</target>
+		</trans-unit>
+		<trans-unit id='blacklist_description'>
+		  <source>Separate domains with a space</source>
+		  <target state='new'>Separate domains with a space</target>
+		</trans-unit>
+		<trans-unit id='overrideTextColor_title'>
+		  <source>Override text color</source>
+		  <target state='new'>Override text color</target>
+		</trans-unit>
+		<trans-unit id='linkColor_title'>
+		  <source>Linkified text color</source>
+		  <target state='new'>Linkified text color</target>
+		</trans-unit>
+		<trans-unit id='overrideBackgroundColor_title'>
+		  <source>Override background color</source>
+		  <target state='new'>Override background color</target>
+		</trans-unit>
+		<trans-unit id='backgroundColor_title'>
+		  <source>Linkified background color</source>
+		  <target state='new'>Linkified background color</target>
+		</trans-unit>
+		<trans-unit id='advancedSettings_label'>
+		  <source>Advanced settings...</source>
+		  <target state='new'>Advanced settings...</target>
+		</trans-unit>
+		<trans-unit id='sync_title'>
+		  <source>Sync settings</source>
+		  <target state='new'>Sync settings</target>
+		</trans-unit>
+	  </group>
 	</body>
   </file>
   <file original='chrome/locale/%lang/global.properties' datatype='javapropertyresourcebundle'
@@ -62,80 +136,6 @@
 	  <trans-unit id='advanced-settings.rules-validation.invalid-url'>
 		<source>URL is not a valid regular expression</source>
 		<target state='new'>URL is not a valid regular expression</target>
-	  </trans-unit>
-	</group>
-  </file>
-  <file original='chrome/locale/%lang/options.dtd' datatype='xmldtd'
-		xml:space='preserve' source-language='en' target-language='%target'
-		product-name='Linkificator' product-version='1.0.0'>
-	<group id='settings'>
-	  <trans-unit id='settings.activated'>
-		<source>Activated</source>
-		<target state='new'>Activated</target>
-	  </trans-unit>
-	  <trans-unit id='settings.hotkey'>
-		<source>Hot key to toggle linkificator state</source>
-		<target state='new'>Hot key to toggle linkificator state</target>
-	  </trans-unit>
-	  <trans-unit id='settings.widget'>
-		<source>Display widget in the Add-on Bar</source>
-		<target state='new'>Display widget in the Add-on Bar</target>
-	  </trans-unit>
-	  <trans-unit id='settings.regexp'>
-		<source>Use regular expressions for domains</source>
-		<target state='new'>Use regular expressions for domains</target>
-	  </trans-unit>
-	  <trans-unit id='settings.filterMode'>
-		<source>Domain filtering mode</source>
-		<target state='new'>Domain filtering mode</target>
-	  </trans-unit>
-	  <trans-unit id='settings.none'>
-		<source>None</source>
-		<target state='new'>None</target>
-	  </trans-unit>
-	  <trans-unit id='settings.useWhitelist'>
-		<source>Only linkify for domains in Whitelist</source>
-		<target state='new'>Only linkify for domains in Whitelist</target>
-	  </trans-unit>
-	  <trans-unit id='settings.whitelist'>
-		<source>Whitelisted Domains</source>
-		<target state='new'>Whitelisted Domains</target>
-	  </trans-unit>
-	  <trans-unit id='settings.useBlacklist'>
-		<source>Never linkify for domains in Blacklist</source>
-		<target state='new'>Never linkify for domains in Blacklist</target>
-	  </trans-unit>
-	  <trans-unit id='settings.blacklist'>
-		<source>Blacklisted Domains</source>
-		<target state='new'>Blacklisted Domains</target>
-	  </trans-unit>
-	  <trans-unit id='settings.listdescription'>
-		<source>Separate domains with a space</source>
-		<target state='new'>Separate domains with a space</target>
-	  </trans-unit>
-	  <trans-unit id='settings.overrideTextColor'>
-		<source>Override text color</source>
-		<target state='new'>Override text color</target>
-	  </trans-unit>
-	  <trans-unit id='settings.textColor'>
-		<source>Linkified text color</source>
-		<target state='new'>Linkified text color</target>
-	  </trans-unit>
-	  <trans-unit id='settings.overrideBackgroundColor'>
-		<source>Override background color</source>
-		<target state='new'>Override background color</target>
-	  </trans-unit>
-	  <trans-unit id='settings.backgroundColor'>
-		<source>Linkified background color</source>
-		<target state='new'>Linkified background color</target>
-	  </trans-unit>
-	  <trans-unit id='settings.advanced'>
-		<source>Advanced settings...</source>
-		<target state='new'>Advanced settings...</target>
-	  </trans-unit>
-	  <trans-unit id='settings.sync'>
-		<source>Sync settings</source>
-		<target state='new'>Sync settings</target>
 	  </trans-unit>
 	</group>
   </file>
