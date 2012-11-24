@@ -202,7 +202,7 @@ function Parser (properties) {
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
     
-	const domain_element = "[^0-9\\s()<>[\\]{}/.:][^\\s()<>[\\]{}/.:]*";
+	const domain_element = "(?:[^-\\s()<>[\\]{}/.:](?:[^\\s()<>[\\]{}/.:]{1,}[^-\\s()<>[\\]{}/.:]|[^-\\s()<>[\\]{}/.:])?)";
     const domain = "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
     const full_domain = "(?:" + domain_element + "(?:\\." + domain_element + ")+)";
     const subdomain = "(?:(" + buildPattern(properties.predefinedRules.subdomains) + ")\\.)";
@@ -252,7 +252,7 @@ function Parser (properties) {
 
 	///// Full protocol (including protocol specification except e-mail one)
 	function FullProtocolRule () {
-		PatternRule.call(this, "(" + protocol + authentication + "?" + "(?:" + domain_host + "|" + IP_host + ")" + subpath + "?)");
+		PatternRule.call(this, "(" + protocol + authentication + "?(?:" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
 	}
 	FullProtocolRule.prototype = new PatternRule;
 	FullProtocolRule.prototype.test = function(regex) {
@@ -269,7 +269,7 @@ function Parser (properties) {
 	};
 	///// url including authentication but without protocol
 	function AuthenticatedDomainRule () {
-		PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + subpath + "?)");
+		PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
 	}
 	AuthenticatedDomainRule.prototype = new PatternRule;
 	AuthenticatedDomainRule.prototype.test = function(regex) {
@@ -293,7 +293,7 @@ function Parser (properties) {
 	///// protocol-less url with optional authentication
 	function DomainRule () {
 		AuthenticatedDomainRule.call(this);
-		this.pattern = "(" + authentication + "?(?:" + subdomain + domain_host + "|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
+		this.pattern = "(" + authentication + "?(?:" + subdomain + domain_host + "/?|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
 	}
 	DomainRule.prototype = new AuthenticatedDomainRule;
 	
