@@ -149,7 +149,7 @@ function Parser (properties) {
 				let result = null;
 
 				while (!valid) {
-					if (!(result = URLregex.exec (data))) {
+					if (!(result = URLregex.exec(data))) {
 						break;
 					}
 
@@ -212,7 +212,7 @@ function Parser (properties) {
     const domain_host = domain + port;
     const full_domain_host = full_domain + port;
 
-    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])"
+    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])";
 
 	// define sub-classes from PatternRule for the various URI formats
 	function AboutRule () {
@@ -504,6 +504,10 @@ function LinkifySplittedText (node, properties, parser, style, completed) {
 				this._nodes.push({index: this._text.length, node: node});
 				this._text += node.nodeValue;
 			},
+			reset: function () {
+				this._text = "";
+				this._nodes = [];
+			},
 			match: function (start, end) {
 				return this._nodes.filter(
 					function (element, index, array) {
@@ -515,44 +519,41 @@ function LinkifySplittedText (node, properties, parser, style, completed) {
 			}
 		};
 
-		function TextNodes () {
-			Array.call(this);
-			this.new();
-		}
-		TextNodes.prototype = Object.create(new Array, {
-			current: {
-				get: function() { return this[this.length-1];}
-			},
-			'new': {
-				value: function(){this.push(new TextNode);}
-			}
-		});
-
 		this.textNodes = (function parse (node) {
-			const inline = new RegExp(properties.extraFeatures.inlineElements.join("|"),"i");
-			var textNodes = new TextNodes;
-			
+			const inline = new RegExp("^("+properties.extraFeatures.inlineElements.join("|")+")$","i");
+			const requiredChars = new RegExp(properties.requiredCharacters.join("|"),"i");
+
+			var nodes = new Array;			
+			var textNode = new TextNode;
+			var inlineFound = false;
+
 			function walk (node) {
 				var list = node.childNodes;
 
 				for (let index = 0; index < list.length; ++index) {
 					let child = list.item(index);
-					if (child.nodeType == 3) // Text node
-						textNodes.current.add(child);
-					else if (child.nodeName.search(inline) != -1)
+					if (child.nodeType == 3) {// Text node
+						textNode.add(child);
+					} else if (child.nodeName.search(inline) != -1) {
+						inlineFound = true;
 						walk(child);
-					else {
-						textNodes.new();
-						continue;
+					} else {
+						if (inlineFound && textNode.text.search(requiredChars) != -1) {
+							inlineFound = false;
+							nodes.push(textNode);
+							textNode = new TextNode;
+						} else {
+							textNode.reset();
+						}
 					}
 				}
 			}
 			walk(node);
 
-			return textNodes;
+			return nodes;
 		})(node);
 		this.index = 0;
-
+		
 		return Linkify.call(this, node.ownerDocument, properties, style, completed);
 	}
 }
@@ -565,7 +566,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 
 		let start = 0;
 		let match = null;
-
+		
 		while (match = this.parser.match(textNode.text.substring(start))) {
 			let pos = start + match.index;
 			start =  pos + match.length;
@@ -611,7 +612,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 		}
 	}
 	
-    return !isOver(iterations);
+    return this.index == this.textNodes.length;
 }
 
 
