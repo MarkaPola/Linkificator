@@ -16,7 +16,20 @@ cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 
 python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension
 
-zip -r linkificator.xpi chrome chrome.manifest options.xul defaults/preferences/prefs.js
+#
+# patch options.xul for a correct UI behavior
+#
+set TDIR = ${TMP}/$$
+if (! -d $TDIR) mkdir $TDIR
+unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
+cat ${TDIR}/options.orig.xul | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
+zip -r -j linkificator.xpi ${TDIR}/options.xul
+rm -rf ${TDIR}
+
+#
+# Add chrome extensions and custom version of preferences
+#
+zip -r linkificator.xpi chrome chrome.manifest defaults/preferences/prefs.js
 
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 
