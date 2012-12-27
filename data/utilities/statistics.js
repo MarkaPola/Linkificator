@@ -21,24 +21,49 @@ function Statistics () {
 	}
 
     return {
+        get statusLabel () { return "linkificator-status"; },
         get countLabel () { return "linkificator-count"; },
         get timeLabel () { return "linkificator-time"; },
         
-		store: function (count, time) {
-			try {
-				let body = window.top.document.body;
+		start: function (document) {
+			let body = document.body;
 
-				body.setAttribute(this.countLabel, count);
-				body.setAttribute(this.timeLabel, time);
-			} catch (e) {
-				// possible exception if cross-site scripting occurs
-				// in this case, statistics cannot not be stored
+			if (body.hasAttribute(this.statusLabel)) {
+				return false;
+			} else {
+				body.setAttribute(this.statusLabel, "in-process");
+				body.setAttribute(this.countLabel, 0);
+				body.setAttribute(this.timeLabel, 0);
+
+				return true;
 			}
-			return getStats(count, time);
+		},
+		inProcess: function(document) {
+			let body = document.body;
+
+			return body.hasAttribute(this.statusLabel)
+				&& body.getAttribute(this.statusLabel) == "in-process";
+		},
+		complete: function (document) {
+			document.body.setAttribute(this.statusLabel, "complete");
+		},
+		isComplete:  function(document) {
+			let body = document.body;
+
+			return body.hasAttribute(this.statusLabel)
+				&& body.getAttribute(this.statusLabel) == "complete";
 		},
 
-        get: function () {
-			let body = window.top.document.body;
+		store: function (document, count, time) {
+			let body = document.body;
+			let links = getInt(body.getAttribute(this.countLabel));
+
+			body.setAttribute(this.countLabel, links+count);
+			body.setAttribute(this.timeLabel, Date.now()-time);
+		},
+
+        get: function (document) {
+			let body = document.body;
 
 			if (body.hasAttribute(this.countLabel)) {
 				return getStats(body.getAttribute(this.countLabel),

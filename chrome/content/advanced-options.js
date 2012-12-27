@@ -331,13 +331,14 @@ DragManager.prototype = {
 	}
 };
 
-function ListBox (listbox, itemTemplate, tooltip) {
+function ListBox (listbox, itemTemplate, tooltip, callbacks) {
 	this._richlistbox = $(listbox);
 	this._template = $(itemTemplate);
+	this._callbacks = callbacks;
 
 	this._tooltip = new Tooltip(tooltip);
 
-	this._callbacks = {
+	this._handlers = {
 		dragstart: this.dragstart.bind(this),
 		drop: this.drop.bind(this),
 		remove: this.remove.bind(this)
@@ -378,7 +379,7 @@ ListBox.prototype = {
 	},
 
 	add: function (rule) {
-		let item = new ListItem(this._template, this._tooltip, rule, this._callbacks);
+		let item = new ListItem(this._template, this._tooltip, rule, this._handlers);
 
 		if (this._richlistbox.selectedIndex != -1) {
 			this._richlistbox.insertBefore(item.node, this._richlistbox.selectedItem);
@@ -404,6 +405,7 @@ ListBox.prototype = {
 	},
 	remove: function (listitem) {
 		this._richlistbox.removeChild(listitem.node);
+		this._callbacks.remove(listitem.rule);
 	},
 
 	update: function (rule) {
@@ -421,12 +423,16 @@ ListBox.prototype = {
 }
 
 function CustomRules (preferences, defaults, properties) {
+	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
+	
 	var beforeList = new ListBox('advanced-settings.custom-rules.before-list',
 								 'advanced-settings.custom-rules.itemTemplate',
-								 'advanced-settings.custom-rules.tooltip');
+								 'advanced-settings.custom-rules.tooltip',
+								 {remove: remove});
 	var afterList = new ListBox('advanced-settings.custom-rules.after-list',
 								 'advanced-settings.custom-rules.itemTemplate',
-								 'advanced-settings.custom-rules.tooltip');
+								 'advanced-settings.custom-rules.tooltip',
+								 {remove: remove});
 
 	var panel = new Panel('advanced-settings.custom-rules.panel', {start: start, complete: finalize});
 
@@ -489,27 +495,45 @@ function CustomRules (preferences, defaults, properties) {
 		} else {
 			currentList.update (rule);
 		}
+		if (instantApply) {
+			// update preferences
+			preferences.setCharPref('customRules', serializeRules());
+		}
 	}
 
-	// build array of rules
-	function getRules (list) {
-		let count = list.getRowCount();
-		let array = new Array(count);
-		for (let index = 0; index < count; ++index) {
-			array[index] = list.getRuleAtIndex(index);
+	// current rule suppression
+	function remove (rule) {
+		if (instantApply) {
+			// update preferences
+			preferences.setCharPref('customRules', serializeRules());
+		}
+	}
+		
+	// custom rules to be serialized by JSON
+	function serializeRules () {
+		// build array of rules
+		function getRules (list) {
+			let count = list.getRowCount();
+			let array = new Array(count);
+			for (let index = 0; index < count; ++index) {
+				array[index] = list.getRuleAtIndex(index);
+			}
+			
+			return array;
 		}
 
-		return array;
+		let customRules = {};
+		customRules.beforeList = getRules(beforeList);
+		customRules.afterList = getRules(afterList);
+		return JSON.stringify(customRules);
 	}
 
 	return {
 		retrieve: function () {
-			// build object to be serialized by JSON
-			let customRules = {};
-			customRules.beforeList = getRules(beforeList);
-			customRules.afterList = getRules(afterList);
-			preferences.setCharPref('customRules', JSON.stringify(customRules));
-			
+			if (! instantApply) {
+				preferences.setCharPref('customRules', serializeRules());
+			}
+
 			// keep some UI settings
 			properties.ui.customRules = {};
 			properties.ui.customRules.selectedList = deck.selectedIndex;
