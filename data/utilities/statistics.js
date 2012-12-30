@@ -69,7 +69,7 @@ function Statistics () {
 				return getStats(body.getAttribute(this.countLabel),
 								body.getAttribute(this.timeLabel));
 			} else {
-				return getStats(-2, 0);
+				return getStats(0, 0);
 			}
         }
     }
