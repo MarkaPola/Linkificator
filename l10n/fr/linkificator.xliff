@@ -42,9 +42,13 @@
 		  <source>Activated</source>
 		  <target state='new'>Activé</target>
 		</trans-unit>
-		<trans-unit id='hotkey_title'>
+		<trans-unit id='hotkeyToggle_title'>
 		  <source>Hot key to toggle linkificator state</source>
 		  <target state='new'>Raccourci clavier pour changer l'état de linkificator</target>
+		</trans-unit>
+		<trans-unit id='hotkeyParse_title'>
+		  <source>Hot key to re-linkify current tab</source>
+		  <target state='new'>Raccourci clavier pour traiter de nouveau l'onglet courant</target>
 		</trans-unit>
 		<trans-unit id='displayWidget_title'>
 		  <source>Display widget in the Add-on Bar</source>
@@ -109,6 +113,24 @@
 		<trans-unit id='sync_title'>
 		  <source>Sync settings</source>
 		  <target state='new'>Synchroniser les réglages</target>
+		</trans-unit>
+	  </group>
+	  <group id='widget-panel'>
+		<trans-unit id='panel.options'>
+		  <source>Options...</source>
+		  <target state='new'>Options...</target>
+		</trans-unit>
+		<trans-unit id='panel.enable'>
+		  <source>Enable</source>
+		  <target state='new'>Activer</target>
+		</trans-unit>
+		<trans-unit id='panel.disable'>
+		  <source>Disable</source>
+		  <target state='new'>Désactiver</target>
+		</trans-unit>
+		<trans-unit id='panel.linkify'>
+		  <source>Linkify current page</source>
+		  <target state='new'>Traiter la page courante</target>
 		</trans-unit>
 	  </group>
 	</body>

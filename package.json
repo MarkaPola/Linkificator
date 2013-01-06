@@ -17,8 +17,14 @@
     {
        "type": "string",
        "value": "control-shift-y",
-       "name": "hotkey",
+       "name": "hotkeyToggle",
        "title": "Hot key to toggle linkificator state"
+    },
+    {
+       "type": "string",
+       "value": "control-shift-u",
+       "name": "hotkeyParse",
+       "title": "Hot key to re-linkify current tab"
     },
     {
        "type": "bool",
