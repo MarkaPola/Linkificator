@@ -7,7 +7,8 @@
  * author: MarkaPola */
 
 pref("extensions.linkificator@markapola.activated", true);
-pref("extensions.linkificator@markapola.hotkey", "control-shift-y");
+pref("extensions.linkificator@markapola.hotkeyToggle", "control-shift-y");
+pref("extensions.linkificator@markapola.hotkeyParse", "control-shift-u");
 pref("extensions.linkificator@markapola.displayWidget", true);
 pref("extensions.linkificator@markapola.useRegExp", true);
 pref("extensions.linkificator@markapola.filterMode", "black");
@@ -31,7 +32,8 @@ pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;stron
 pref("extensions.linkificator@markapola.sync", false);
 pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":3}");
 // sync management, deactivated by default
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkey", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyToggle", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyParse", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.useRegExp", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.filterMode", false);
