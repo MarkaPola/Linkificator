@@ -15,6 +15,28 @@
        "title": "Activated"
     },
     {
+       "type": "bool",
+       "value": "true",
+       "name": "displayWidget",
+       "title": "Display widget in the Add-on Bar"
+    },
+    {
+       "type": "menulist",
+       "value": "toggle",
+       "name": "widgetRightClick",
+       "title": "On Widget right-click",
+       "options": [
+          {
+             "value": "toggle",
+             "label": "Toggle linkificator state"
+          },
+          {
+             "value": "linkify",
+             "label": "Linkify current page"
+          }
+       ]
+    },
+    {
        "type": "string",
        "value": "control-shift-y",
        "name": "hotkeyToggle",
@@ -24,13 +46,7 @@
        "type": "string",
        "value": "control-shift-u",
        "name": "hotkeyParse",
-       "title": "Hot key to re-linkify current tab"
-    },
-    {
-       "type": "bool",
-       "value": "true",
-       "name": "displayWidget",
-       "title": "Display widget in the Add-on Bar"
+       "title": "Hot key to re-linkify current page"
     },
     {
        "type": "bool",

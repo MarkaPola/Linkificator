@@ -42,6 +42,22 @@
 		  <source>Activated</source>
 		  <target state='new'>Activated</target>
 		</trans-unit>
+		<trans-unit id='displayWidget_title'>
+		  <source>Display widget in the Add-on Bar</source>
+		  <target state='new'>Display widget in the Add-on Bar</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_title'>
+		  <source>On Widget right-click</source>
+		  <target state='new'>On Widget right-click</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Toggle linkificator state'>
+		  <source>Toggle linkificator state</source>
+		  <target state='new'>Toggle linkificator state</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Linkify current page'>
+		  <source>Linkify current page</source>
+		  <target state='new'>Linkify current page</target>
+		</trans-unit>
 		<trans-unit id='hotkeyToggle_title'>
 		  <source>Hot key to toggle linkificator state</source>
 		  <target state='new'>Hot key to toggle linkificator state</target>
@@ -49,10 +65,6 @@
 		<trans-unit id='hotkeyParse_title'>
 		  <source>Hot key to re-linkify current tab</source>
 		  <target state='new'>Hot key to re-linkify current tab</target>
-		</trans-unit>
-		<trans-unit id='displayWidget_title'>
-		  <source>Display widget in the Add-on Bar</source>
-		  <target state='new'>Display widget in the Add-on Bar</target>
 		</trans-unit>
 		<trans-unit id='useRegExp_title'>
 		  <source>Use regular expressions for domains</source>

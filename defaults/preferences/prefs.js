@@ -7,6 +7,7 @@
  * author: MarkaPola */
 
 pref("extensions.linkificator@markapola.activated", true);
+pref("extensions.linkificator@markapola.widgetRightClick", "toggle");
 pref("extensions.linkificator@markapola.hotkeyToggle", "control-shift-y");
 pref("extensions.linkificator@markapola.hotkeyParse", "control-shift-u");
 pref("extensions.linkificator@markapola.displayWidget", true);

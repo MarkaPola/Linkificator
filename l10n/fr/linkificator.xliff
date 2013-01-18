@@ -42,17 +42,29 @@
 		  <source>Activated</source>
 		  <target state='new'>Activé</target>
 		</trans-unit>
-		<trans-unit id='hotkeyToggle_title'>
-		  <source>Hot key to toggle linkificator state</source>
-		  <target state='new'>Raccourci clavier pour changer l'état de linkificator</target>
-		</trans-unit>
-		<trans-unit id='hotkeyParse_title'>
-		  <source>Hot key to re-linkify current tab</source>
-		  <target state='new'>Raccourci clavier pour traiter de nouveau l'onglet courant</target>
-		</trans-unit>
 		<trans-unit id='displayWidget_title'>
 		  <source>Display widget in the Add-on Bar</source>
 		  <target state='new'>Afficher le widget dans la barre des modules</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_title'>
+		  <source>On Widget right-click</source>
+		  <target state='new'>Clic droit sur le widget</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Toggle linkificator state'>
+		  <source>Toggle linkificator state</source>
+		  <target state='new'>Changer l'état de Linkificator</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Linkify current page'>
+		  <source>Linkify current page</source>
+		  <target state='new'>Traiter la page courante</target>
+		</trans-unit>
+		<trans-unit id='hotkeyToggle_title'>
+		  <source>Hot key to toggle linkificator state</source>
+		  <target state='new'>Raccourci clavier pour changer l'état de Linkificator</target>
+		</trans-unit>
+		<trans-unit id='hotkeyParse_title'>
+		  <source>Hot key to re-linkify current tab</source>
+		  <target state='new'>Raccourci clavier pour traiter la page courante</target>
 		</trans-unit>
 		<trans-unit id='useRegExp_title'>
 		  <source>Use regular expressions for domains</source>

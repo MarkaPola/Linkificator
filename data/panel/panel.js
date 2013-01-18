@@ -14,9 +14,18 @@ var linkify = document.getElementById("linkificator-linkify");
 var isActive = true;
 var l10n = null;
 
+// Reset stored coordinates to avoid hover style on panel show
+function reset (event) {
+	let element = event.target;
+	element.mouseX = undefined;
+	element.mouseY = undefined;
+}
+
 options.addEventListener('click', function(event) {
 	self.port.emit('options');
+	
 	event.preventDefault();
+	reset(event);
 }, true);
 
 toggle.addEventListener('click', function(event) {
@@ -29,6 +38,7 @@ linkify.addEventListener('click', function(event) {
 		self.port.emit('re-parse');
 	}
 	event.preventDefault();
+	reset(event);
 }, true);
 
 
