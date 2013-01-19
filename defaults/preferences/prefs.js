@@ -33,6 +33,7 @@ pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;stron
 pref("extensions.linkificator@markapola.sync", false);
 pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":3}");
 // sync management, deactivated by default
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetRightClick", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyToggle", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyParse", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
