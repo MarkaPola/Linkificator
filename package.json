@@ -28,11 +28,11 @@
        "options": [
           {
              "value": "toggle",
-             "label": "Toggle linkificator state"
+             "label": "Toggle"
           },
           {
              "value": "linkify",
-             "label": "Linkify current page"
+             "label": "Linkify"
           }
        ]
     },

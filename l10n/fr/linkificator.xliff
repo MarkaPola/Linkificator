@@ -50,13 +50,13 @@
 		  <source>On Widget right-click</source>
 		  <target state='new'>Clic droit sur le widget</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Toggle linkificator state'>
+		<trans-unit id='widgetRightClick_options.Toggle>
 		  <source>Toggle linkificator state</source>
 		  <target state='new'>Changer l'état de Linkificator</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Linkify current page'>
-		  <source>Linkify current page</source>
-		  <target state='new'>Traiter la page courante</target>
+		<trans-unit id='widgetRightClick_options.Linkify>
+		  <source>Update current page</source>
+		  <target state='new'>Actualiser la page courante</target>
 		</trans-unit>
 		<trans-unit id='hotkeyToggle_title'>
 		  <source>Hot key to toggle linkificator state</source>
@@ -141,8 +141,8 @@
 		  <target state='new'>Désactiver</target>
 		</trans-unit>
 		<trans-unit id='panel.linkify'>
-		  <source>Linkify current page</source>
-		  <target state='new'>Traiter la page courante</target>
+		  <source>Update</source>
+		  <target state='new'>Actualiser</target>
 		</trans-unit>
 	  </group>
 	</body>

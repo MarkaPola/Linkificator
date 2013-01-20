@@ -50,13 +50,13 @@
 		  <source>On Widget right-click</source>
 		  <target state='new'>On Widget right-click</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Toggle linkificator state'>
+		<trans-unit id='widgetRightClick_options.Toggle>
 		  <source>Toggle linkificator state</source>
 		  <target state='new'>Toggle linkificator state</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Linkify current page'>
-		  <source>Linkify current page</source>
-		  <target state='new'>Linkify current page</target>
+		<trans-unit id='widgetRightClick_options.Linkify>
+		  <source>Update current page</source>
+		  <target state='new'>Update current page</target>
 		</trans-unit>
 		<trans-unit id='hotkeyToggle_title'>
 		  <source>Hot key to toggle linkificator state</source>
@@ -141,8 +141,8 @@
 		  <target state='new'>Disable</target>
 		</trans-unit>
 		<trans-unit id='panel.linkify'>
-		  <source>Linkify current page</source>
-		  <target state='new'>Linkify current page</target>
+		  <source>Update</source>
+		  <target state='new'>Update</target>
 		</trans-unit>
 	  </group>
 	</body>
