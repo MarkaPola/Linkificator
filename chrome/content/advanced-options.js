@@ -231,12 +231,20 @@ ListItem.prototype = {
 
 	_setCheckbox: function (event) {
 		this._rule.active = this._checkbox.checked;
+
+		this._callbacks.update(this);
 	},
 	_updateTooltip: function (event) {
 		this._tooltip.update(this._rule);
 	},
+	_update: function () {
+		this._label.setAttribute('value', this._rule.name);
+
+		this._callbacks.update(this);
+	},
 	_remove: function (event) {
 		this.release();
+
 		this._callbacks.remove(this);
 	},
 
@@ -245,10 +253,6 @@ ListItem.prototype = {
 	},
 	get rule () {
 		return this._rule;
-	},
-
-	update: function () {
-		this._label.setAttribute('value', this._rule.name);
 	},
 
 	release: function () {
@@ -268,7 +272,7 @@ ListItem.prototype = {
 		return node._data._rule;
 	},
 	updateRule: function (node, rule) {
-		node._data.update();
+		node._data._update();
 	},
 
 	releaseNode: function (node) {
@@ -341,6 +345,7 @@ function ListBox (listbox, itemTemplate, tooltip, callbacks) {
 	this._handlers = {
 		dragstart: this.dragstart.bind(this),
 		drop: this.drop.bind(this),
+		update: this.update.bind(this),
 		remove: this.remove.bind(this)
 	};
 }
@@ -372,13 +377,13 @@ ListBox.prototype = {
 		return ListItem.prototype.getRule(this._richlistbox.getItemAtIndex(index));
 	},
 
-	load: function (rules) {
+	loadRules: function (rules) {
 		for (let index = 0; index < rules.length; ++index) {
-			this.add (new CustomRule(rules[index]));
+			this.addRule (new CustomRule(rules[index]));
 		}
 	},
 
-	add: function (rule) {
+	addRule: function (rule) {
 		let item = new ListItem(this._template, this._tooltip, rule, this._handlers);
 
 		if (this._richlistbox.selectedIndex != -1) {
@@ -387,6 +392,12 @@ ListBox.prototype = {
 			this._richlistbox.appendChild(item.node);
 		}
 		this._richlistbox.ensureElementIsVisible(item.node);
+
+		this._callbacks.update(item);
+	},
+
+	updateRule: function (rule) {
+		ListItem.prototype.updateRule (this._richlistbox.selectedItem, rule);
 	},
 
 	dragstart: function (event, item) {
@@ -399,17 +410,21 @@ ListBox.prototype = {
 
 	insertBefore: function (newItem, refItem) {
 		this._richlistbox.insertBefore(newItem.node, refItem.node);
+
+		this._callbacks.update(newItem.rule);
 	},
 	append: function (listitem) {
 		this._richlistbox.appendChild(listitem.node);
+
+		this._callbacks.update(listitem.rule);
+	},
+	update: function (listitem) {
+		this._callbacks.update(listitem.rule);
 	},
 	remove: function (listitem) {
 		this._richlistbox.removeChild(listitem.node);
-		this._callbacks.remove(listitem.rule);
-	},
 
-	update: function (rule) {
-		ListItem.prototype.updateRule (this._richlistbox.selectedItem, rule);
+		this._callbacks.remove(listitem.rule);
 	},
 
 	release: function () {
@@ -423,16 +438,18 @@ ListBox.prototype = {
 }
 
 function CustomRules (preferences, defaults, properties) {
+	var inInit = true;
+
 	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
 	
 	var beforeList = new ListBox('advanced-settings.custom-rules.before-list',
 								 'advanced-settings.custom-rules.itemTemplate',
 								 'advanced-settings.custom-rules.tooltip',
-								 {remove: remove});
+								 {remove: remove, update: update});
 	var afterList = new ListBox('advanced-settings.custom-rules.after-list',
 								 'advanced-settings.custom-rules.itemTemplate',
 								 'advanced-settings.custom-rules.tooltip',
-								 {remove: remove});
+								 {remove: remove, update: update});
 
 	var panel = new Panel('advanced-settings.custom-rules.panel', {start: start, complete: finalize});
 
@@ -440,8 +457,8 @@ function CustomRules (preferences, defaults, properties) {
 
 	// fill lists
 	let customRules = JSON.parse(preferences.getCharPref('customRules'));
-	beforeList.load(customRules.beforeList);
-	afterList.load(customRules.afterList);
+	beforeList.loadRules(customRules.beforeList);
+	afterList.loadRules(customRules.afterList);
 
 	// list selection
 	var deck = $('advanced-settings.custom-rules.deck');
@@ -458,8 +475,11 @@ function CustomRules (preferences, defaults, properties) {
 	} else {
 		deck.selectedIndex = 1;
 		$('advanced-settings.custom-rules.list-selection').selectedIndex = 1;
+		
+		properties.ui.customRules = {};
+		properties.ui.customRules.selectedList = deck.selectedIndex;
 	}
-
+	
 	function selectList (event) {
 		currentList = this.selectedIndex == 0 ? beforeList : afterList;
 		deck.selectedIndex = this.selectedIndex;
@@ -491,16 +511,20 @@ function CustomRules (preferences, defaults, properties) {
 	var currentAction = 'edit';
 	function finalize (rule) {
 		if (currentAction == 'add') {
-			currentList.add (rule);
+			currentList.addRule (rule);
 		} else {
-			currentList.update (rule);
+			currentList.updateRule (rule);
 		}
-		if (instantApply) {
+	}
+
+	// current rule update
+	function update (rule) {
+		if (!inInit && instantApply) {
 			// update preferences
 			preferences.setCharPref('customRules', serializeRules());
 		}
 	}
-
+	
 	// current rule suppression
 	function remove (rule) {
 		if (instantApply) {
@@ -528,19 +552,20 @@ function CustomRules (preferences, defaults, properties) {
 		return JSON.stringify(customRules);
 	}
 
+	inInit = false;
+
 	return {
 		retrieve: function () {
 			if (! instantApply) {
 				preferences.setCharPref('customRules', serializeRules());
 			}
-
-			// keep some UI settings
-			properties.ui.customRules = {};
-			properties.ui.customRules.selectedList = deck.selectedIndex;
-			properties.ui.customRules.selectedItem = currentList.selectedIndex;
 		},
 
 		release: function () {
+			// keep some UI settings
+			properties.ui.customRules.selectedList = deck.selectedIndex;
+			properties.ui.customRules.selectedItem = currentList.selectedIndex;
+
 			panel.release();
 			beforeList.release();
 			afterList.release();
@@ -600,6 +625,8 @@ var AdvancedSettings = (function () {
 	var customRules = null;
 	var configuration = null;
 
+	var tabbox = $('advanced-settings.tabbox');
+
 	return {
 		init: function () {
 			properties = window.arguments[0].wrappedJSObject;
@@ -612,11 +639,14 @@ var AdvancedSettings = (function () {
 
 			// set previously selected tab
 			if (properties.ui.selectedTab != undefined) {
-				$('advanced-settings.tabbox').selectedIndex = properties.ui.selectedTab;
+				tabbox.selectedIndex = properties.ui.selectedTab;
 			}
 		},
 
 		release: function () {
+			// keep some UI settings
+			properties.ui.selectedTab = tabbox.selectedIndex;
+
 			customRules.release();
 			configuration.release();
 
@@ -624,14 +654,8 @@ var AdvancedSettings = (function () {
 		},
 
 		validate: function () {
-			// retrieve changed values
-			properties.changed = {};
-
 			customRules.retrieve();
 			configuration.retrieve();
-
-			// keep some UI settings
-			properties.ui.selectedTab = $('advanced-settings.tabbox').selectedIndex;
 
 			return true;
 		}

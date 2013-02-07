@@ -45,15 +45,15 @@ linkify.addEventListener('click', function(event) {
 self.port.on('initialize', function(data) {
 	l10n = data;
 
-	options.innerHTML = l10n.options;
-	toggle.innerHTML = l10n.disable;
-	linkify.innerHTML = l10n.linkify;
+	options.textContent = l10n.options;
+	toggle.textContent = l10n.disable;
+	linkify.textContent = l10n.linkify;
 });
 
 self.port.on('configure', function (config) {
 	isActive = config.active;
 
-	toggle.innerHTML = isActive ? l10n.disable : l10n.enable;
+	toggle.textContent = isActive ? l10n.disable : l10n.enable;
 	linkify.setAttribute("class", config.status == 'processed' ? "linkificator-active" : "linkificator-inactive");
 });
 
