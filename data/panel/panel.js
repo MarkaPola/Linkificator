@@ -9,6 +9,7 @@
 
 var options = document.getElementById("linkificator-options");
 var toggle = document.getElementById("linkificator-toggle");
+var filter = document.getElementById("linkificator-filter");
 var linkify = document.getElementById("linkificator-linkify");
 
 var isActive = true;
@@ -33,6 +34,11 @@ toggle.addEventListener('click', function(event) {
 	event.preventDefault();
 }, true);
 
+filter.addEventListener('click', function(event) {
+	self.port.emit('filter');
+	event.preventDefault();
+}, true);
+
 linkify.addEventListener('click', function(event) {
 	if (isActive) {
 		self.port.emit('re-parse');
@@ -42,11 +48,12 @@ linkify.addEventListener('click', function(event) {
 }, true);
 
 
-self.port.on('initialize', function(data) {
+self.port.on('initialize', function (data) {
 	l10n = data;
 
 	options.textContent = l10n.options;
 	toggle.textContent = l10n.disable;
+	filter.textContent = l10n.exclude;
 	linkify.textContent = l10n.linkify;
 });
 
@@ -54,6 +61,8 @@ self.port.on('configure', function (config) {
 	isActive = config.active;
 
 	toggle.textContent = isActive ? l10n.disable : l10n.enable;
+	filter.textContent = config.status == 'filtered' ? l10n.include : l10n.exclude;
+	filter.setAttribute("class", config.status == 'filtered' || config.status == 'processed' ? "linkificator-active" : "linkificator-inactive");
 	linkify.setAttribute("class", config.status == 'processed' ? "linkificator-active" : "linkificator-inactive");
 });
 

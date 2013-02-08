@@ -695,6 +695,30 @@ function execute (action, properties) {
 	parse();
 }
 
+function undo () {
+	var document = window.document;
+
+	var state = State(document, 'undo');
+	if (!state) {
+		return;
+	}
+
+	// get list of anchors with class 'linkificator-ext'
+	var query = "//a[@class='linkificator-ext']";
+	var anchors = document.evaluate(query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+	var size = anchors.snapshotLength;
+	// remove anchor: attach anchor's childs to the parent
+	for (let index = 0; index < size; ++index) {
+		let anchor = anchors.snapshotItem(index);
+		let parent = anchor.parentNode;
+		while (anchor.firstChild) {
+			parent.insertBefore(anchor.removeChild(anchor.firstChild), anchor);
+		}
+		parent.removeChild(anchor);
+	}
+
+	state.reset();
+}
 
 self.port.on('parse', function (properties) {
 	execute('parse', properties);
@@ -702,6 +726,10 @@ self.port.on('parse', function (properties) {
 
 self.port.on('re-parse', function (properties) {
 	execute('re-parse', properties);
+});
+
+self.port.on('undo', function (properties) {
+	undo();
 });
 
 self.port.on('get-statistics', function () {

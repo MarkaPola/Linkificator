@@ -21,6 +21,11 @@ function State (document, action) {
 		return null;
 	}
 
+	if (action == 'undo' && (!body.hasAttribute(statusLabel) || body.getAttribute(statusLabel) != "complete")) {
+		// parsing is not yet started or is in process
+		return null;
+	}
+
 	body.setAttribute(statusLabel, "in-process");
 
 	return {
@@ -35,6 +40,12 @@ function State (document, action) {
 		isComplete:  function() {
 			return body.hasAttribute(statusLabel)
 				&& body.getAttribute(statusLabel) == "complete";
+		},
+
+		reset: function () {
+			if (body.hasAttribute(statusLabel)) {
+				body.removeAttribute(statusLabel);
+			}
 		}
 	}
 }
