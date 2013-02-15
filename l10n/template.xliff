@@ -50,21 +50,41 @@
 		  <source>On Widget right-click</source>
 		  <target state='new'>On Widget right-click</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Toggle>
+		<trans-unit id='widgetRightClick_options.None'>
+		  <source>None</source>
+		  <target state='new'>None</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Toggle'>
 		  <source>Toggle linkificator state</source>
 		  <target state='new'>Toggle linkificator state</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Linkify>
+		<trans-unit id='widgetRightClick_options.Manage'>
+		  <source>Toggle current page processing</source>
+		  <target state='new'>Toggle current page processing</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Linkify'>
 		  <source>Update current page</source>
 		  <target state='new'>Update current page</target>
 		</trans-unit>
-		<trans-unit id='hotkeyToggle_title'>
-		  <source>Hot key to toggle linkificator state</source>
-		  <target state='new'>Hot key to toggle linkificator state</target>
+		<trans-unit id='hotkeyName_title'>
+		  <source>Hot key to</source>
+		  <target state='new'>Hot key to</target>
 		</trans-unit>
-		<trans-unit id='hotkeyParse_title'>
-		  <source>Hot key to re-linkify current tab</source>
-		  <target state='new'>Hot key to re-linkify current tab</target>
+		<trans-unit id='hotkeyName_options.Toggle'>
+		  <source>Toggle linkificator state</source>
+		  <target state='new'>Toggle linkificator state</target>
+		</trans-unit>
+		<trans-unit id='hotkeyName_options.Manage'>
+		  <source>Toggle current page processing</source>
+		  <target state='new'>Toggle current page processing</target>
+		</trans-unit>
+		<trans-unit id='hotkeyName_options.Linkify'>
+		  <source>Update current page</source>
+		  <target state='new'>Update current page</target>
+		</trans-unit>
+		<trans-unit id='hotkeyValue_title'>
+		  <source>Hot key combination</source>
+		  <target state='new'>Hot key combination</target>
 		</trans-unit>
 		<trans-unit id='useRegExp_title'>
 		  <source>Use regular expressions for domains</source>

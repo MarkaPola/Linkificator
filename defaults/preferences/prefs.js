@@ -8,7 +8,10 @@
 
 pref("extensions.linkificator@markapola.activated", true);
 pref("extensions.linkificator@markapola.widgetRightClick", "toggle");
+pref("extensions.linkificator@markapola.hotkeyName", "hotkeyToggle");
+pref("extensions.linkificator@markapola.hotkeyValue", "control-shift-y");
 pref("extensions.linkificator@markapola.hotkeyToggle", "control-shift-y");
+pref("extensions.linkificator@markapola.hotkeyManage", "control-shift-x");
 pref("extensions.linkificator@markapola.hotkeyParse", "control-shift-u");
 pref("extensions.linkificator@markapola.displayWidget", true);
 pref("extensions.linkificator@markapola.useRegExp", true);
@@ -35,6 +38,7 @@ pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterati
 // sync management, deactivated by default
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetRightClick", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyToggle", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyManage", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyParse", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.useRegExp", false);

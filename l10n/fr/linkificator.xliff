@@ -50,21 +50,41 @@
 		  <source>On Widget right-click</source>
 		  <target state='new'>Clic droit sur le widget</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Toggle>
+		<trans-unit id='widgetRightClick_options.None'>
+		  <source>None</source>
+		  <target state='new'>Aucune action</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Toggle'>
 		  <source>Toggle linkificator state</source>
 		  <target state='new'>Changer l'état de Linkificator</target>
 		</trans-unit>
-		<trans-unit id='widgetRightClick_options.Linkify>
+		<trans-unit id='widgetRightClick_options.Manage'>
+		  <source>Toggle current page processing</source>
+		  <target state='new'>Inclure/Exclure la page courante</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Linkify'>
 		  <source>Update current page</source>
 		  <target state='new'>Actualiser la page courante</target>
 		</trans-unit>
-		<trans-unit id='hotkeyToggle_title'>
-		  <source>Hot key to toggle linkificator state</source>
-		  <target state='new'>Raccourci clavier pour changer l'état de Linkificator</target>
+		<trans-unit id='hotkeyName_title'>
+		  <source>Hot key to</source>
+		  <target state='new'>Raccourci clavier pour</target>
 		</trans-unit>
-		<trans-unit id='hotkeyParse_title'>
-		  <source>Hot key to re-linkify current tab</source>
-		  <target state='new'>Raccourci clavier pour traiter la page courante</target>
+		<trans-unit id='hotkeyName_options.Toggle'>
+		  <source>Toggle linkificator state</source>
+		  <target state='new'>Changer l'état de Linkificator</target>
+		</trans-unit>
+		<trans-unit id='hotkeyName_options.Manage'>
+		  <source>Toggle current page processing</source>
+		  <target state='new'>Inclure/Exclure la page courante</target>
+		</trans-unit>
+		<trans-unit id='hotkeyName_options.Linkify'>
+		  <source>Update current page</source>
+		  <target state='new'>Actualiser la page courante</target>
+		</trans-unit>
+		<trans-unit id='hotkeyValue_title'>
+		  <source>Hot key combination</source>
+		  <target state='new'>Combinaison du raccourci clavier</target>
 		</trans-unit>
 		<trans-unit id='useRegExp_title'>
 		  <source>Use regular expressions for domains</source>

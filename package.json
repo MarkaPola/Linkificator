@@ -27,8 +27,16 @@
        "title": "On Widget right-click",
        "options": [
           {
+             "value": "none",
+             "label": "None"
+          },
+          {
              "value": "toggle",
              "label": "Toggle"
+          },
+          {
+             "value": "manage",
+             "label": "Manage"
           },
           {
              "value": "linkify",
@@ -37,16 +45,30 @@
        ]
     },
     {
-       "type": "string",
-       "value": "control-shift-y",
-       "name": "hotkeyToggle",
-       "title": "Hot key to toggle linkificator state"
+       "type": "menulist",
+       "value": "hotkeyToggle",
+       "name": "hotkeyName",
+       "title": "Hot key to",
+       "options": [
+          {
+             "value": "hotkeyToggle",
+             "label": "Toggle"
+          },
+          {
+             "value": "hotkeyManage",
+             "label": "Manage"
+          },
+          {
+             "value": "hotkeyParse",
+             "label": "Linkify"
+          }
+       ]
     },
     {
        "type": "string",
-       "value": "control-shift-u",
-       "name": "hotkeyParse",
-       "title": "Hot key to re-linkify current page"
+       "value": "control-shift-y",
+       "name": "hotkeyValue",
+       "title": "Hot key combination"
     },
     {
        "type": "bool",
