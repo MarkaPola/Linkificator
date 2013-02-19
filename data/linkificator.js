@@ -582,36 +582,22 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 
 			this.count++;
 
-			// first node must be splitted
+			// create range matching URL and attach it to the anchor
+			let range = document.createRange();
 			let element = list[0];
-			let node = element.node;
-			let parent = node.parentNode;
-			parent.insertBefore(this.document.createTextNode(node.nodeValue.substring(0, pos-element.index)), node);
-			let a = this.newAnchor(url);
-			a.appendChild(this.document.createTextNode(node.nodeValue.substring(pos-element.index)));
-			node.parentNode.replaceChild(a, node);
-
-			// all other nodes, except last one must be simply anchored to <a> node
-			//  which replace initial node
-			for (let i = 1; i < list.length-1; ++i) {
-				let a = this.newAnchor(url);
-				let node = list[i].node;
-				a.appendChild(node.cloneNode(true));
-				node.parentNode.replaceChild(a, node);
-			}
-
-			// last node must also be splitted
+			range.setStart(element.node, pos-element.index);
 			element = list[list.length-1];
-			node = element.node;
-			parent = node.parentNode;
-			a = this.newAnchor(url);
-			a.appendChild(this.document.createTextNode(node.nodeValue.substring(0, start-element.index)));
-			parent.insertBefore(a, node);
-			let newNode = this.document.createTextNode(node.nodeValue.substring(start-element.index));
-			parent.replaceChild(newNode, node);
+			range.setEnd(element.node, start-element.index);
+
+			let anchor = this.newAnchor(url);
+			anchor.appendChild(range.extractContents());
+			range.insertNode(anchor);
+
+			range.detach();
+
 			// update descriptor for future treatments
 			element.index = start;
-			element.node = newNode;
+			element.node = anchor.nextSibling;
 		}
 	}
 	
