@@ -15,7 +15,7 @@ function Statistics (document, action) {
 	var body = document.body;
 
     function getInt (value) {
-        let v = parseInt(value);
+        let v = parseInt(value, 10);
         return isNaN(v) ? 0 : v;
     }
     
