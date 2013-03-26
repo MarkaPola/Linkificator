@@ -10,12 +10,13 @@
 // to avoid any CPU total comsumption and UI freezes, this utility help execute tasks in the background
 
 // arguments to Thread function are:
-// action: object which MUST expose, at least, the following argumentless functions:
+// action: object which MUST expose, at least, the following functions:
 //   * execute: will execute a part of the work and must return true if work is completed
 //   * finish: will execute all remaining tasks to complete the work
 //   * abort: thread was aborted, remaining work must not be done
 //   * complete: this function will be called when all work is done
 // interval: waiting time (in ms) between each execution. If not specified, 10ms will be used.
+// all functions are argumentless except abort and complete which pass thread reference.
 //
 // Thread functions are:
 // start: launch execution of action object in the background.
@@ -43,8 +44,11 @@
 // 				console.log (this.index);
 // 			console.log ("complete done");
 // 		},
-//      abort: function () {
+//      abort: function (thread) {
 //           console.log ("aborted at " + this.index);
+//      },
+//      complete: function (thread) {
+//           console.log ("completed");
 //      }
 // };
 // 
@@ -55,10 +59,11 @@
 
 function Thread (action, interval) {
     var thread = {
-			interval: 10,
-	        action: null,
-			worker: null,
-			completed: false,
+        ref: null, 
+		interval: 10,
+	    action: null,
+		worker: null,
+		completed: false
 	};
 	if (interval)
 		thread.interval = interval;
@@ -70,7 +75,7 @@ function Thread (action, interval) {
 		
 		if (thread.action.execute()) {
             thread.completed = true;
-			thread.action.complete();
+			thread.action.complete(thread.ref);
 		} else {
 			thread.worker = setTimeout(execute, interval);
 		}
@@ -85,7 +90,7 @@ function Thread (action, interval) {
 		let terminate = function() {
 			thread.completed = true;
 			thread.action.finish();
-            thread.action.complete();
+            thread.action.complete(thread.ref);
 		};
 		
 		if (timeout) {
@@ -102,11 +107,10 @@ function Thread (action, interval) {
 		clearTimeout(thread.worker);
 
 		thread.completed = true;
-        thread.action.abort();
+        thread.action.abort(thread.ref);
 	}
 	
-	
-	return {
+	thread.ref = {
 		start: function () {
 			execute();
 		},
@@ -119,4 +123,6 @@ function Thread (action, interval) {
 			abort();
 		}
 	};
+    
+	return thread.ref;
 }

@@ -46,6 +46,30 @@
 		  <source>Display widget in the Add-on Bar</source>
 		  <target state='new'>Display widget in the Add-on Bar</target>
 		</trans-unit>
+		<trans-unit id='contextMenuIntegration_title'>
+		  <source>Page context menu integration</source>
+		  <target state='new'>Page context menu integration</target>
+		</trans-unit>
+		<trans-unit id='widgetMiddleClick_title'>
+		  <source>On Widget middle-click</source>
+		  <target state='new'>On Widget middle-click</target>
+		</trans-unit>
+		<trans-unit id='widgetMiddleClick_options.None'>
+		  <source>None</source>
+		  <target state='new'>None</target>
+		</trans-unit>
+		<trans-unit id='widgetMiddleClick_options.Toggle'>
+		  <source>Toggle linkificator state</source>
+		  <target state='new'>Toggle linkificator state</target>
+		</trans-unit>
+		<trans-unit id='widgetMiddleClick_options.Manage'>
+		  <source>Toggle current page processing</source>
+		  <target state='new'>Toggle current page processing</target>
+		</trans-unit>
+		<trans-unit id='widgetMiddleClick_options.Linkify'>
+		  <source>Update current page</source>
+		  <target state='new'>Update current page</target>
+		</trans-unit>
 		<trans-unit id='widgetRightClick_title'>
 		  <source>On Widget right-click</source>
 		  <target state='new'>On Widget right-click</target>
@@ -163,6 +187,12 @@
 		<trans-unit id='panel.linkify'>
 		  <source>Update</source>
 		  <target state='new'>Update</target>
+		</trans-unit>
+	  </group>
+	  <group id='context-menu'>
+		<trans-unit id='menu.linkify'>
+		  <source>Update links</source>
+		  <target state='new'>Update links</target>
 		</trans-unit>
 	  </group>
 	</body>

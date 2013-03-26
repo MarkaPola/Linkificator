@@ -23,6 +23,14 @@ function Statistics (document, action) {
 		return {links: getInt(count), time: getInt(time)};
 	}
 
+	if (action == 'undo') {
+		if (body.hasAttribute(countLabel)) {
+			body.removeAttribute(countLabel);
+			body.removeAttribute(timeLabel);
+		}
+		return null;
+	}
+
 	if (action == 'get-statistics') {
 		return {
 			get: function () {
@@ -33,7 +41,7 @@ function Statistics (document, action) {
 					return getStats(0, 0);
 				}
 			}
-		}
+		};
 	}
 
 	var elapse = 0;
@@ -62,5 +70,5 @@ function Statistics (document, action) {
 				return getStats(0, 0);
 			}
         }
-    }
+    };
 }

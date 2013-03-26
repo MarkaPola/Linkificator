@@ -109,7 +109,7 @@ function Parser (properties) {
 		getURL: function (regex) {
 			return null;
 		}
-	}
+	};
 
 	// to handle all pattern matching rules
 	function Pattern (prefix) {
@@ -152,7 +152,7 @@ function Parser (properties) {
 					}
 
 					for (let i = 0; i < subpatterns.length; ++i) {
-						if (valid = subpatterns[i].test(result)) {
+						if ((valid = subpatterns[i].test(result))) {
 							break;
 						}
 					}
@@ -182,12 +182,12 @@ function Parser (properties) {
 							// in normal condition, not reached
 							return "";
 						}
-					}
+					};
 				} else {
 					return null;
 				}
 			}
-		}
+		};
 	}
 
     // regexps are based on various RFC, mainly 1738, 822, 1036 and 2732
@@ -342,8 +342,8 @@ function Parser (properties) {
 		+ ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
     if (properties.predefinedRules.subdomains) {
 		for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
-			let subdomain = properties.predefinedRules.subdomains[index].filter;
-			query += "contains(translate(., '" + subdomain.toUpperCase() + "', '" + subdomain.toLowerCase() + "'), '" + subdomain.toLowerCase() + "') or ";
+			let sub_domain = properties.predefinedRules.subdomains[index].filter;
+			query += "contains(translate(., '" + sub_domain.toUpperCase() + "', '" + sub_domain.toLowerCase() + "'), '" + sub_domain.toLowerCase() + "') or ";
 		}
 	}
 	query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
@@ -363,7 +363,7 @@ function Parser (properties) {
 		match: function (text) {
 			return pattern.match(text);
 		}
-    }
+    };
 }
 
 function Linkify (document, statistics, properties, style, completed) {
@@ -384,17 +384,19 @@ function Linkify (document, statistics, properties, style, completed) {
 				ref.linkify.call (ref, function(iterations){return false;});
 			},
 			
-			complete: function () {
+			complete: function (thread) {
 				ref.statistics.store(ref.count);
 
 				if (completed)
 					completed();
+
+                threads.detach(thread);
 			},
 			
 			abort: function () {
 				// nothing to do
 			}
-		}
+		};
 	}
 }
 Linkify.prototype = {
@@ -440,7 +442,7 @@ Linkify.prototype = {
 
 		return anchor;
 	}
-}
+};
 
 // To linkify text nodes.
 function LinkifyNode (node, statistics, properties, parser, style, completed) {
@@ -570,7 +572,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 		let start = 0;
 		let match = null;
 		
-		while (match = this.parser.match(textNode.text.substring(start))) {
+		while ((match = this.parser.match(textNode.text.substring(start)))) {
 			let pos = start + match.index;
 			start =  pos + match.length;
 			let url = match.url;
@@ -602,7 +604,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 	}
 	
     return this.index == this.textNodes.length;
-}
+};
 
 function execute (action, properties) {
 	var document = window.document;
@@ -665,6 +667,7 @@ function execute (action, properties) {
 				for (let index = 0; index < size; ++index) {
 					let thread = Thread(new linkify(elements.snapshotItem(index), statistics, properties, parser, style, completed),
 										properties.processing.interval);
+                    threads.push(thread);
 					thread.start();
 				}
 			}
@@ -689,6 +692,12 @@ function undo () {
 		return;
 	}
 
+    // abort any running linkifications...
+    threads.apply(function (thread) {
+        thread.kill();
+    });
+    threads.splice();
+    
 	// get list of anchors with class 'linkificator-ext'
 	var query = "//a[@class='linkificator-ext']";
 	var anchors = document.evaluate(query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -704,7 +713,22 @@ function undo () {
 	}
 
 	state.reset();
+
+	Statistics(document, 'undo');
 }
+
+var threads = [];
+threads.apply = function (action) {
+	this.forEach (function (thread, index, array) {
+		action (thread, index, array);
+	});
+};
+threads.detach = function (thread) {
+	var index = this.indexOf(thread);
+	if(index != -1) {
+		this.splice(index, 1);
+	}
+};
 
 self.port.on('parse', function (properties) {
 	execute('parse', properties);
