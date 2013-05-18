@@ -54,6 +54,10 @@
 		  <source>None</source>
 		  <target state='new'>None</target>
 		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Show'>
+		  <source>None</source>
+		  <target state='new'>Show menu</target>
+		</trans-unit>
 		<trans-unit id='widgetRightClick_options.Toggle'>
 		  <source>Toggle linkificator state</source>
 		  <target state='new'>Toggle linkificator state</target>

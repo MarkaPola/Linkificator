@@ -50,26 +50,6 @@
 		  <source>Page context menu integration</source>
 		  <target state='new'>Intégration dans le menu contextuel de page</target>
 		</trans-unit>
-		<trans-unit id='widgetMiddleClick_title'>
-		  <source>On Widget middle-click</source>
-		  <target state='new'>Clic central sur le widget</target>
-		</trans-unit>
-		<trans-unit id='widgetMiddleClick_options.None'>
-		  <source>None</source>
-		  <target state='new'>Aucune action</target>
-		</trans-unit>
-		<trans-unit id='widgetMiddleClick_options.Toggle'>
-		  <source>Toggle linkificator state</source>
-		  <target state='new'>Changer l'état de Linkificator</target>
-		</trans-unit>
-		<trans-unit id='widgetMiddleClick_options.Manage'>
-		  <source>Toggle current page processing</source>
-		  <target state='new'>Inclure/Exclure la page courante</target>
-		</trans-unit>
-		<trans-unit id='widgetMiddleClick_options.Linkify'>
-		  <source>Update current page</source>
-		  <target state='new'>Actualiser la page courante</target>
-		</trans-unit>
 		<trans-unit id='widgetRightClick_title'>
 		  <source>On Widget right-click</source>
 		  <target state='new'>Clic droit sur le widget</target>
@@ -77,6 +57,10 @@
 		<trans-unit id='widgetRightClick_options.None'>
 		  <source>None</source>
 		  <target state='new'>Aucune action</target>
+		</trans-unit>
+		<trans-unit id='widgetRightClick_options.Show'>
+		  <source>None</source>
+		  <target state='new'>Afficher le menu</target>
 		</trans-unit>
 		<trans-unit id='widgetRightClick_options.Toggle'>
 		  <source>Toggle linkificator state</source>
