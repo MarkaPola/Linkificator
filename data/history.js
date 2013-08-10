@@ -9,17 +9,10 @@
 // catch backward/forward button events to handle widget update
 function toPage (event) {
 	if (event.persisted) {
-		self.port.emit('to-page');
+		self.port.emit('pageshow');
 	}
 }
 
-function fromPage (event) {
-	self.port.emit('from-page');
-}
-
-	
 self.port.on('attach', function () {
 	window.top.addEventListener('pageshow', toPage, false);
-	//window.top.addEventListener('pagehide', fromPage, false);
-	// pagehide event is not binded because doing so generate asynchronous exceptions!?
 });
