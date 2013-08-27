@@ -579,6 +579,9 @@ function CustomRules (preferences, defaults, properties) {
 
 //************** Configuration ************************
 function Configuration (preferences, defaults, properties) {
+	function resetRequiredCharacters (event) {
+		preferences.clearUserPref('requiredCharacters');
+	}
 	function resetProtocols (event) {
 		preferences.clearUserPref('protocols');
 	}
@@ -593,6 +596,8 @@ function Configuration (preferences, defaults, properties) {
 	}
 
 	// manage events
+	$('advanced-settings.configuration.requiredCharacters.reset').addEventListener('command', resetRequiredCharacters);
+
 	$('advanced-settings.configuration.protocol.reset').addEventListener('command', resetProtocols);
 
 	$('advanced-settings.configuration.subdomain.reset').addEventListener('command', resetSubdomains);
@@ -606,6 +611,8 @@ function Configuration (preferences, defaults, properties) {
 		},
 
 		release: function () {
+			$('advanced-settings.configuration.requiredCharacters.reset').removeEventListener('command', resetRequiredCharacters);
+
 			$('advanced-settings.configuration.protocol.reset').removeEventListener('command', resetProtocols);
 
 			$('advanced-settings.configuration.subdomain.reset').removeEventListener('command', resetSubdomains);

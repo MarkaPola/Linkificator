@@ -27,6 +27,7 @@
 <!ENTITY advanced-settings.custom-rules.edit-button.tooltip        "Editer">
 <!ENTITY advanced-settings.custom-rules.delete-button.tooltip      "Supprimer">
 
+<!ENTITY advanced-settings.configuration.requiredCharacters        "Caractères requis">
 <!ENTITY advanced-settings.configuration.protocols                 "Protocoles">
 <!ENTITY advanced-settings.configuration.subdomains                "Sous-domaines">
 <!ENTITY advanced-settings.configuration.excludedElements          "Eléments exclus">

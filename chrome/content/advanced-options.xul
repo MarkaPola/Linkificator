@@ -37,6 +37,8 @@
       <preference  type="bool" id="pref.supportCustomRulesAfter"
 				   name="extensions.linkificator@markapola.supportCustomRulesAfter"/>
 
+      <preference  type="string" id="pref.requiredCharacters"
+				   name="extensions.linkificator@markapola.requiredCharacters"/>
       <preference  type="string" id="pref.protocols"
 				   name="extensions.linkificator@markapola.protocols"/>
       <preference  type="string" id="pref.subdomains"
@@ -169,6 +171,17 @@
 		</tabpanel>
 
 		<tabpanel id="advanced-settings.configuration" orient="vertical">
+          <groupbox>
+    	    <caption label="&advanced-settings.configuration.requiredCharacters;"/>
+      	    <hbox align="center">
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.requiredCharacters.list" 
+					   preference="pref.requiredCharacters"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.configuration.requiredCharacters.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
+    	    </hbox>
+    	  </groupbox>
           <groupbox>
     	    <caption label="&advanced-settings.configuration.protocols;"/>
       	    <hbox align="center">

@@ -32,6 +32,7 @@ pref("extensions.linkificator@markapola.supportInlineElements", true);
 pref("extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("extensions.linkificator@markapola.supportCustomRulesAfter", false);
 pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afterList\":[{\"name\":\"URN:NBN Resolver, Redirect to document itself\",\"pattern\":\"urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+\",\"url\":\"http://nbn-resolving.org/redirect/$&\",\"active\":true},{\"name\":\"URN:NBN Resolver, All Links\",\"pattern\":\"urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+\",\"url\":\"http://nbn-resolving.org/$&\",\"active\":false}]}");
+pref("extensions.linkificator@markapola.requiredCharacters", ":/@");
 pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;ftp~ftp#2;news~news#0;nntp~nntp#2;telnet~telnet#2;irc~irc#2;file~file#3");
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
@@ -62,6 +63,7 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportInlineEl
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesAfter", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.customRules", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.requiredCharacters", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.protocols", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.subdomains", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.excludedElements", false);
