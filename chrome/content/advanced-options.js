@@ -644,6 +644,9 @@ var AdvancedSettings = (function () {
 			customRules = CustomRules(preferences, defaults, properties);
 			configuration = Configuration(preferences, defaults, properties);
 
+            // configure observers
+            $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
+            
 			// set previously selected tab
 			if (properties.ui.selectedTab != undefined) {
 				tabbox.selectedIndex = properties.ui.selectedTab;
@@ -665,6 +668,10 @@ var AdvancedSettings = (function () {
 			configuration.retrieve();
 
 			return true;
-		}
+		},
+
+        change: function (id) {
+            $('broadcaster.'+id).setAttribute('disabled', !$('pref.'+id).value);
+        }
 	};
 })();

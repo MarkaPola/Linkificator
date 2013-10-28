@@ -13,7 +13,7 @@
 }
 
 #advanced-settings\.tabbox {
-	width: 450px;
+	width: 500px;
 }
 
 .advanced-settings\.custom-rules\.edit-button {
@@ -41,12 +41,12 @@
 }
 
 #advanced-settings\.custom-rules\.panel {
-	width: 400px;
+	width: 450px;
 }
 .advanced-settings\.custom-rules\.panel\.textbox {
-	width: 270px;
+	width: 320px;
 }
 
 .advanced-settings\.configuration\.textbox {
-	width: 280px;
+	width: 330px;
 }

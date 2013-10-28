@@ -218,7 +218,7 @@ function Parser (properties) {
     }
     AboutRule.prototype = new PatternRule;
     AboutRule.prototype.test = function(regex) {
-        return properties.predefinedRules.support.about && regex[this._index] !== undefined;
+        return properties.predefinedRules.support.about.active && regex[this._index] !== undefined;
     };
     AboutRule.prototype.getURL = function(regex) {
         if (regex[this._index])
@@ -232,7 +232,7 @@ function Parser (properties) {
     }
     MailRule.prototype = new PatternRule;
     MailRule.prototype.test = function(regex) {
-        return properties.predefinedRules.support.email && regex[this._index] !== undefined;
+        return properties.predefinedRules.support.email.active && regex[this._index] !== undefined;
     };
     MailRule.prototype.getURL = function(regex) {
         if (regex[this._index])
@@ -254,7 +254,7 @@ function Parser (properties) {
     }
     FullProtocolRule.prototype = new PatternRule;
     FullProtocolRule.prototype.test = function(regex) {
-        return properties.predefinedRules.support.standard && regex[this._index] !== undefined;
+        return properties.predefinedRules.support.standard.active && regex[this._index] !== undefined;
     };
     FullProtocolRule.prototype.getURL = function(regex) {
         if (regex[this._index]) {
@@ -271,7 +271,7 @@ function Parser (properties) {
     }
     AuthenticatedDomainRule.prototype = new PatternRule;
     AuthenticatedDomainRule.prototype.test = function(regex) {
-        return properties.predefinedRules.support.standard && regex[this._index] !== undefined;
+        return properties.predefinedRules.support.standard.active && regex[this._index] !== undefined;
     };
     AuthenticatedDomainRule.prototype.getURL = function(regex) {
         if (regex[this._index]) {
@@ -327,7 +327,7 @@ function Parser (properties) {
     var pattern = Pattern ("(^|[\\s()<>«“]+)");
     if (properties.customRules.support.before)
         buildCustomRules(pattern, properties.customRules.rules.beforeList);
-    if (properties.predefinedRules.support.about)
+    if (properties.predefinedRules.support.about.active)
         pattern.push(new AboutRule);
     pattern.push(new FullMailRule);
     pattern.push(new FullProtocolRule);

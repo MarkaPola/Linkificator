@@ -25,11 +25,17 @@
   <prefpane>
 	<preferences>
       <preference  type="bool" id="pref.supportEmail"
-				   name="extensions.linkificator@markapola.supportEmail"/>
+				   name="extensions.linkificator@markapola.supportEmail"
+				   onchange="AdvancedSettings.change('supportEmail');"/>
+      <preference  type="bool" id="pref.emailUseTLD"
+				   name="extensions.linkificator@markapola.emailUseTLD"/>
       <preference  type="bool" id="pref.supportAbout"
 				   name="extensions.linkificator@markapola.supportAbout"/>
       <preference  type="bool" id="pref.supportStandardURLs"
-				   name="extensions.linkificator@markapola.supportStandardURLs"/>
+				   name="extensions.linkificator@markapola.supportStandardURLs"
+				   onchange="AdvancedSettings.change('supportStandardURLs');"/>
+	  <preference  type="bool" id="pref.standardURLUseTLD"
+				   name="extensions.linkificator@markapola.standardURLUseTLD"/>
       <preference  type="bool" id="pref.supportInlineElements"
 				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.supportCustomRulesBefore"
@@ -43,6 +49,8 @@
 				   name="extensions.linkificator@markapola.protocols"/>
       <preference  type="string" id="pref.subdomains"
 				   name="extensions.linkificator@markapola.subdomains"/>
+      <preference  type="string" id="pref.topLevelDomains"
+				   name="extensions.linkificator@markapola.topLevelDomains"/>
       <preference  type="string" id="pref.excludedElements"
 				   name="extensions.linkificator@markapola.excludedElements"/>
       <preference  type="string" id="pref.inlineElements"
@@ -65,12 +73,22 @@
 				<checkbox id="advanced-settings.link-type.predefined-rules.email-address"
 						  preference="pref.supportEmail"
 						  label="&advanced-settings.links.predefined-rules.email-address;"/>
+				<checkbox class="indent"
+						  id="advanced-settings.link-type.predefined-rules.email-address-use-TLD"
+						  preference="pref.emailUseTLD"
+						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
+						  observes="broadcaster.supportEmail"/>
 				<checkbox id="advanced-settings.link-type.predefined-rules.about-protocol"
 						  preference="pref.supportAbout"
 						  label="&advanced-settings.links.predefined-rules.about-protocol;"/>
 				<checkbox id="advanced-settings.link-type.predefined-rules.standard-urls"
 						  preference="pref.supportStandardURLs"
 						  label="&advanced-settings.links.predefined-rules.standard-urls;"/>
+				<checkbox class="indent"
+						  preference="pref.standardURLUseTLD"
+						  id="advanced-settings.link-type.predefined-rules.standard-url-use-TLD"
+						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
+						  observes="broadcaster.supportStandardURLs"/>
 			  </vbox>
 			</groupbox>
 			<groupbox orient="horizontal" flex="1">
@@ -205,6 +223,17 @@
     	    </hbox>
     	  </groupbox>
     	  <groupbox>
+    	    <caption label="&advanced-settings.configuration.topLevelDomains;"/>
+    	    <hbox align="center">
+    		  <textbox class="advanced-settings.configuration.textbox"
+					   id="advanced-settings.configuration.topleveldomains.list"
+					   preference="pref.topLevelDomains"/>
+			  <spacer flex="1"/>
+    		  <button id="advanced-settings.configuration.topleveldomains.reset"
+					  label="&advanced-settings.configuration.reset-button;"/>
+    	    </hbox>
+    	  </groupbox>
+    	  <groupbox>
     	    <caption label="&advanced-settings.configuration.excludedElements;"/>
     	    <hbox align="center">
     		  <textbox class="advanced-settings.configuration.textbox"
@@ -229,6 +258,12 @@
 		</tabpanel>
       </tabpanels>
 	</tabbox>
+
+	<broadcasterset>
+      <broadcaster id="broadcaster.supportEmail" disabled="false"/>
+      <broadcaster id="broadcaster.supportStandardURLs" disabled="false"/>
+	</broadcasterset>
+
   </prefpane>
 
   <script src="chrome://linkificator/content/advanced-options.js" type="application/x-javascript"/>
