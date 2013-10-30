@@ -29,7 +29,7 @@ var Utils = {
 		Utils.getString = function(name)
 		{
 			return stringBundle.GetStringFromName(name);
-		}
+		};
 		return Utils.getString(name);
 	},
 

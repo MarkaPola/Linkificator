@@ -16,8 +16,8 @@
 <!ENTITY advanced-settings.links.predefined-rules.email-address      "Email addresses">
 <!ENTITY advanced-settings.links.predefined-rules.about-protocol     "about: protocol">
 <!ENTITY advanced-settings.links.predefined-rules.standard-urls      "Standard URLs">
-<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD        "Use top level domains">
 <!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains "Use subdomains to identify protocol">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD        "Use top level domains">
 <!ENTITY advanced-settings.links.custom-rules                        "Apply Custom Rules for:">
 <!ENTITY advanced-settings.links.custom-rules.before-predefined      "Before predefined rules list">
 <!ENTITY advanced-settings.links.custom-rules.after-predefined       "After predefined rules list">
