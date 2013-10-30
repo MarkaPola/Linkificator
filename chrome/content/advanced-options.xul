@@ -36,6 +36,8 @@
 				   onchange="AdvancedSettings.change('supportStandardURLs');"/>
 	  <preference  type="bool" id="pref.standardURLUseTLD"
 				   name="extensions.linkificator@markapola.standardURLUseTLD"/>
+	  <preference  type="bool" id="pref.standardURLUseSubdomains"
+				   name="extensions.linkificator@markapola.standardURLUseSubdomains"/>
       <preference  type="bool" id="pref.supportInlineElements"
 				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.supportCustomRulesBefore"
@@ -88,6 +90,11 @@
 						  preference="pref.standardURLUseTLD"
 						  id="advanced-settings.link-type.predefined-rules.standard-url-use-TLD"
 						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
+						  observes="broadcaster.supportStandardURLs"/>
+				<checkbox class="indent"
+						  preference="pref.standardURLUseSubdomains"
+						  id="advanced-settings.link-type.predefined-rules.standard-url-use-subdomains"
+						  label="&advanced-settings.links.predefined-rules.URI-use-subdomains;"
 						  observes="broadcaster.supportStandardURLs"/>
 			  </vbox>
 			</groupbox>

@@ -72,7 +72,7 @@ function Parser (properties) {
                 continue;
             }
             if (regex.charAt(index) == '(' && !inSet) {
-                if (regex.indexOf("?:", index) != index+1)
+                if (regex.indexOf("?", index) != index+1)
                     count += 1;
             }
         }
@@ -200,9 +200,17 @@ function Parser (properties) {
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
     
-    const domain_element = "(?:[^-\\s()<>[\\]{}/.:](?:[^\\s()<>[\\]{}/.:]{1,}[^-\\s()<>[\\]{}/.:]|[^-\\s()<>[\\]{}/.:])?)";
-    const domain = "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
-    const full_domain = "(?:" + domain_element + "(?:\\." + domain_element + ")+)";
+    const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
+    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?![a-zA-Z]))";
+            
+    const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
+                                                                        : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
+        
+    const domain = properties.predefinedRules.support.standard.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
+                                                                      : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
+    const full_domain = properties.predefinedRules.support.standard.useTLD ? domain
+                                                                           : "(?:" + domain_element + "(?:\\." + domain_element + ")+)";
+
     const subdomain = "(?:(" + buildPattern(properties.predefinedRules.subdomains) + ")\\.)";
     const port = "(?::[\\d]{1,5})?";
 
@@ -228,7 +236,7 @@ function Parser (properties) {
     };
     ///// e-mail without protocol specification
     function MailRule () {
-        PatternRule.call(this, "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + domain + "|" + IP + "))");
+        PatternRule.call(this, "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + mail_domain + "|" + IP + "))");
     }
     MailRule.prototype = new PatternRule;
     MailRule.prototype.test = function(regex) {
@@ -267,7 +275,11 @@ function Parser (properties) {
     };
     ///// url including authentication but without protocol
     function AuthenticatedDomainRule () {
-        PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+        if (properties.predefinedRules.support.standard.useSubdomains) {
+            PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+        } else {
+            PatternRule.call(this, "(" + full_authentication + "(?:" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+        }
     }
     AuthenticatedDomainRule.prototype = new PatternRule;
     AuthenticatedDomainRule.prototype.test = function(regex) {
@@ -275,11 +287,16 @@ function Parser (properties) {
     };
     AuthenticatedDomainRule.prototype.getURL = function(regex) {
         if (regex[this._index]) {
-            let subdomain_index = this._index+1;
-            if (regex[subdomain_index]) {
-                // protocol less url with known subdomain
-                // Deduce protocol from the subdomain
-                return getDomainProtocol(regex[subdomain_index]) + regex[this._index];
+            if (properties.predefinedRules.support.standard.useSubdomains) {
+                let subdomain_index = this._index+1;
+                if (regex[subdomain_index]) {
+                    // protocol less url with known subdomain
+                    // Deduce protocol from the subdomain
+                    return getDomainProtocol(regex[subdomain_index]) + regex[this._index];
+                } else {
+                    // protocol less url, assume http
+                    return "http://" + regex[this._index];
+                }
             } else {
                 // protocol less url, assume http
                 return "http://" + regex[this._index];
@@ -291,7 +308,19 @@ function Parser (properties) {
     ///// protocol-less url with optional authentication
     function DomainRule () {
         AuthenticatedDomainRule.call(this);
-        this.pattern = "(" + authentication + "?(?:" + subdomain + domain_host + "/?|(?:" + full_domain_host + "|" + IP_host + ")/)" + subpath + "?)";
+        if (properties.predefinedRules.support.standard.useSubdomains) {
+            if (properties.predefinedRules.support.standard.useTLD) {
+                this.pattern = "((?:" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:/" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?)))|(?:" + full_domain_host + "(?:/" + subpath + ")?))";
+            } else {
+                this.pattern = "(" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:/" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?)))";
+            }
+        } else {
+            if (properties.predefinedRules.support.standard.useTLD) {
+                this.pattern = "((?:" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?))|(?:" + full_domain_host + "(?:/" + subpath + ")?))";
+            } else {
+                this.pattern = "(" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?))";
+            }
+        }
     }
     DomainRule.prototype = new AuthenticatedDomainRule;
     
@@ -340,10 +369,17 @@ function Parser (properties) {
     
     var query =  "//text()[ancestor::body and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
         + ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
-    if (properties.predefinedRules.subdomains) {
+    if (properties.predefinedRules.support.standard.useSubdomains) {
         for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
             let sub_domain = properties.predefinedRules.subdomains[index].filter;
             query += "contains(translate(., '" + sub_domain.toUpperCase() + "', '" + sub_domain.toLowerCase() + "'), '" + sub_domain.toLowerCase() + "') or ";
+        }
+    }
+    if (properties.predefinedRules.support.email.useTLD
+        || properties.predefinedRules.support.standard.useTLD) {
+        for (let index = 0; index < properties.predefinedRules.topLevelDomains.length; ++index) {
+            let tld = properties.predefinedRules.topLevelDomains[index];
+            query += "contains(translate(., '" + tld.toUpperCase() + "', '" + tld.toLowerCase() + "'), '." + tld.toLowerCase() + "') or ";
         }
     }
     query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
