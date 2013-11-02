@@ -353,7 +353,7 @@ function Parser (properties) {
         }
     }
 
-    var pattern = Pattern ("(^|[\\s()<>«“]+)");
+    var pattern = Pattern ("(^|[\\s()（）<>\"'`«»“”‘’]+)");
     if (properties.customRules.support.before)
         buildCustomRules(pattern, properties.customRules.rules.beforeList);
     if (properties.predefinedRules.support.about.active)
