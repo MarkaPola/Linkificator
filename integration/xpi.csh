@@ -8,12 +8,17 @@ if (! -f package.json) then
 	exit 1;
 endif
 
+set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
+
 set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
 if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
 	set APP_EXTENSION = ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension
 endif
 cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 
+#
+# packaging add-on
+#
 python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension
 
 #
@@ -26,10 +31,16 @@ cat ${TDIR}/options.orig.xul | sed 's/<menulist/<menulist sizetopopup="always"/'
 zip -r -j linkificator.xpi ${TDIR}/options.xul
 rm -rf ${TDIR}
 
+if ($CFX_VERSION < 115) then
+	#
+	# Add chrome extensions and custom version of preferences
+	#
+	zip -r linkificator.xpi chrome chrome.manifest
+endif
 #
-# Add chrome extensions and custom version of preferences
+# Add custom version of preferences
 #
-zip -r linkificator.xpi chrome chrome.manifest defaults/preferences/prefs.js
+zip -r linkificator.xpi defaults/preferences/prefs.js
 
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 

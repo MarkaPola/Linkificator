@@ -6,6 +6,8 @@
 /* Advanced options management - Linkificator's module
  * author: MarkaPola */
 
+"use strict";
+
 const Cu = Components.utils;
 const {Services} = Cu.import('resource://gre/modules/Services.jsm');
 
@@ -570,10 +572,10 @@ function CustomRules (preferences, defaults, properties) {
 			beforeList.release();
 			afterList.release();
 			$('advanced-settings.custom-rules.list-selection').removeEventListener('command', selectList);
-			$('advanced-settings.custom-rules.add').removeEventListener('mouseover', setState);
-			$('advanced-settings.custom-rules.add').removeEventListener('mouseout', resetState);
+			$('advanced-settings.custom-rules.add').removeEventListener('mouseover', setAdd);
+			$('advanced-settings.custom-rules.add').removeEventListener('mouseout', resetAdd);
 		}
-	}
+	};
 }
 
 
@@ -620,7 +622,7 @@ function Configuration (preferences, defaults, properties) {
 			$('advanced-settings.configuration.excludedElement.reset').removeEventListener('command', resetExcludedElements);
 			$('advanced-settings.configuration.inlineElement.reset').removeEventListener('command', resetInlineElements);
 		}
-	}
+	};
 }
 
 

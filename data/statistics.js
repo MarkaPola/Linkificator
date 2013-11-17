@@ -8,6 +8,7 @@
 
 
 function Statistics (document, action) {
+    "use strict";
 
 	const countLabel = "linkificator-count";
 	const timeLabel = "linkificator-time";

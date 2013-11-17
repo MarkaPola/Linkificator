@@ -7,6 +7,8 @@
  * author: MarkaPola */
 
 
+"use strict";
+
 function Parser (properties) {
 
     function buildPattern (data) {
@@ -389,11 +391,11 @@ function Parser (properties) {
 
     return {
         textNodes: function (document) {
-            return document.evaluate (query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+            return document.evaluate(query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         },
 
         splittedTextNodes: function (document) {
-            return document.evaluate (query2, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+            return document.evaluate(query2, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         },
 
         match: function (text) {
@@ -525,57 +527,57 @@ LinkifyNode.prototype.linkify = function (isOver) {
 
 // To linkify URLs splitted on multiple text nodes
 function LinkifySplittedText (node, statistics, properties, parser, style, completed) {
+    // parse current node to list "root" nodes of splitted urls
+    function TextNode () {
+        this._text = "";
+        this._items = [];
+        this._nodes = [];
+    }
+    TextNode.prototype = {
+        get length () {
+            return this._items.length;
+        },
+        text: function (index) {
+            if (index === undefined) {
+                return this._text;
+            } else {
+                return this._items[index].text;
+            }
+        },
+        add: function (node) {
+            this._nodes.push({index: this._text.length, node: node});
+            this._text += node.nodeValue;
+        },
+        reset: function () {
+            this._text = "";
+            this._nodes = [];
+        },
+        finalize: function (requiredChars) {
+            // split potential huge string in a list of smaller ones
+            // to speed-up URI pattern matching
+            let regex = new RegExp("[^\\s()<>«“]+", "g");
+            let result;
+            while ((result = regex.exec (this._text)) !== null
+                   && result[0].search(requiredChars) != -1) {
+                this._items.push({offset: result.index, text: result[0]});
+            }
+        },
+        match: function (index, start, end) {
+            start += this._items[index].offset;
+            end += this._items[index].offset;
+            
+            return this._nodes.filter(
+                function (element, index, array) {
+                    let max = element.index + element.node.nodeValue.length - 1;
+                    return (start >= element.index && start <= max)
+                        || (end >= element.index && end <= max)
+                        || (start < element.index && end > max);
+                });
+        }
+    };
+    
     if (node) {
         this.parser = parser;
-
-        // parse current node to list "root" nodes of splitted urls
-        function TextNode () {
-            this._text = "";
-            this._items = [];
-            this._nodes = [];
-        }
-        TextNode.prototype = {
-            get length () {
-                return this._items.length;
-            },
-            text: function (index) {
-                if (index === undefined) {
-                    return this._text;
-                } else {
-                    return this._items[index].text;
-                }
-            },
-            add: function (node) {
-                this._nodes.push({index: this._text.length, node: node});
-                this._text += node.nodeValue;
-            },
-            reset: function () {
-                this._text = "";
-                this._nodes = [];
-            },
-            finalize: function (requiredChars) {
-                // split potential huge string in a list of smaller ones
-                // to speed-up URI pattern matching
-                let regex = new RegExp("[^\\s()<>«“]+", "g");
-                let result;
-                while ((result = regex.exec (this._text)) !== null
-                       && result[0].search(requiredChars) != -1) {
-                    this._items.push({offset: result.index, text: result[0]});
-                }
-            },
-            match: function (index, start, end) {
-                start += this._items[index].offset;
-                end += this._items[index].offset;
-                
-                return this._nodes.filter(
-                    function (element, index, array) {
-                        let max = element.index + element.node.nodeValue.length - 1;
-                        return (start >= element.index && start <= max)
-                            || (end >= element.index && end <= max)
-                            || (start < element.index && end > max);
-                    });
-            }
-        };
 
         this.textNodes = (function parse (node) {
             const inline = new RegExp("^("+properties.extraFeatures.inlineElements.join("|")+")$","i");

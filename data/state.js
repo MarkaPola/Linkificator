@@ -7,6 +7,7 @@
  * author: MarkaPola */
 
 function State (document, action) {
+    "use strict";
 
 	const statusLabel = "linkificator-status";
 

@@ -58,6 +58,8 @@
 
 
 function Thread (action, interval) {
+    "use strict";
+    
     var thread = {
         ref: null, 
 		interval: 10,
