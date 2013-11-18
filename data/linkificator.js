@@ -201,7 +201,7 @@ function Parser (properties) {
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
     
     const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
-    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?![a-zA-Z]))";
+    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/\\s.,;:!?()（）[{}'\"`<>«»“”‘’])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
@@ -218,7 +218,7 @@ function Parser (properties) {
     const domain_host = domain + port;
     const full_domain_host = full_domain + port;
 
-    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()\\[{};:'\".,<>?«»“”‘’])";
+    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()[{};:'\".,<>?«»“”‘’])";
 
     // define sub-classes from PatternRule for the various URI formats
     function AboutRule () {
