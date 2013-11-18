@@ -201,9 +201,12 @@ function Parser (properties) {
 
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
+
+    const start_uri_delimiter = "\\s.,;:!?#&()（）[\\]{}'\"`<>«»“”‘’";
+    const end_uri_delimiter = "\\s.,;:!()（）[\\]{}'\"`<>«»“”‘’";
     
     const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
-    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/\\s.,;:!?()（）[{}'\"`<>«»“”‘’])))";
+    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/" + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
@@ -220,7 +223,7 @@ function Parser (properties) {
     const domain_host = domain + port;
     const full_domain_host = full_domain + port;
 
-    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[{};:'\".,<>?«»“”‘’]))|[^\\s`!()[{};:'\".,<>?«»“”‘’])";
+    const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^" + end_uri_delimiter + "]))|[^" + end_uri_delimiter + "])";
 
     // define sub-classes from PatternRule for the various URI formats
     function AboutRule () {
@@ -354,8 +357,8 @@ function Parser (properties) {
             pattern.push(new CustomRule(rule));
         }
     }
-
-    var pattern = Pattern ("(^|[\\s()（）<>\"'`«»“”‘’]+)");
+    
+    var pattern = Pattern ("(^|[" + start_uri_delimiter + "]+)");
     if (properties.customRules.support.before)
         buildCustomRules(pattern, properties.customRules.rules.beforeList);
     if (properties.predefinedRules.support.about.active)
