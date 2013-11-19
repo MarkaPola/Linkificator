@@ -8,7 +8,7 @@ if (! -f package.json) then
 	exit 1;
 endif
 
-set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
+set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | gawk '{print $3*100;}'`
 
 set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
 if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
