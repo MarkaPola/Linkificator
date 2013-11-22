@@ -203,7 +203,7 @@ function Parser (properties) {
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
 
     const start_uri_delimiter = "\\s.,;:!?#&()（）[\\]{}'\"`<>«»“”‘’";
-    const end_uri_delimiter = "\\s.,;:!()（）[\\]{}'\"`<>«»“”‘’";
+    const end_uri_delimiter = "\\s.,;:!()（）{}'\"`<>«»“”‘’";
     
     const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
     const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/" + end_uri_delimiter + "])))";
