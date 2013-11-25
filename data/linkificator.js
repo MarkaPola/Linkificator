@@ -206,7 +206,7 @@ function Parser (properties) {
     const end_uri_delimiter = "\\s.,;:!()（）{}'\"`<>«»“”‘’";
     
     const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
-    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/" + end_uri_delimiter + "])))";
+    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[/?#" + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
@@ -263,7 +263,7 @@ function Parser (properties) {
 
     ///// Full protocol (including protocol specification except e-mail one)
     function FullProtocolRule () {
-        PatternRule.call(this, "(" + protocol + authentication + "?(?:" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+        PatternRule.call(this, "(" + protocol + authentication + "?(?:" + domain_host + "|" + IP_host + ")" + "(?:[/?#]" + subpath + ")?)");
     }
     FullProtocolRule.prototype = new PatternRule;
     FullProtocolRule.prototype.test = function(regex) {
@@ -281,9 +281,9 @@ function Parser (properties) {
     ///// url including authentication but without protocol
     function AuthenticatedDomainRule () {
         if (properties.predefinedRules.support.standard.useSubdomains) {
-            PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+            PatternRule.call(this, "(" + full_authentication + "(?:" + subdomain + domain_host + "|" + domain_host + "|" + IP_host + ")" + "(?:[/?#]" + subpath + ")?)");
         } else {
-            PatternRule.call(this, "(" + full_authentication + "(?:" + domain_host + "|" + IP_host + ")" + "(?:/" + subpath + ")?)");
+            PatternRule.call(this, "(" + full_authentication + "(?:" + domain_host + "|" + IP_host + ")" + "(?:[/?#]" + subpath + ")?)");
         }
     }
     AuthenticatedDomainRule.prototype = new PatternRule;
@@ -315,15 +315,15 @@ function Parser (properties) {
         AuthenticatedDomainRule.call(this);
         if (properties.predefinedRules.support.standard.useSubdomains) {
             if (properties.predefinedRules.support.standard.useTLD) {
-                this.pattern = "((?:" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:/" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?)))|(?:" + full_domain_host + "(?:/" + subpath + ")?))";
+                this.pattern = "((?:" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:[/?#]" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")[/?#]" + subpath + "?)))|(?:" + full_domain_host + "(?:[/?#]" + subpath + ")?))";
             } else {
-                this.pattern = "(" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:/" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?)))";
+                this.pattern = "(" + authentication + "?(?:(?:" + subdomain + domain_host + "(?:[/?#]" + subpath + ")?)|(?:(?:" + full_domain_host + "|" + IP_host + ")[/?#]" + subpath + "?)))";
             }
         } else {
             if (properties.predefinedRules.support.standard.useTLD) {
-                this.pattern = "((?:" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?))|(?:" + full_domain_host + "(?:/" + subpath + ")?))";
+                this.pattern = "((?:" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")[/?#]" + subpath + "?))|(?:" + full_domain_host + "(?:[/?#]" + subpath + ")?))";
             } else {
-                this.pattern = "(" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")/" + subpath + "?))";
+                this.pattern = "(" + authentication + "?(?:(?:" + full_domain_host + "|" + IP_host + ")[/?#]" + subpath + "?))";
             }
         }
     }
@@ -380,19 +380,22 @@ function Parser (properties) {
             query += "contains(translate(., '" + sub_domain.toUpperCase() + "', '" + sub_domain.toLowerCase() + "'), '" + sub_domain.toLowerCase() + "') or ";
         }
     }
+
+    var requiredChars = properties.requiredCharacters;
     if (properties.predefinedRules.support.email.useTLD
         || properties.predefinedRules.support.standard.useTLD) {
-        for (let index = 0; index < properties.predefinedRules.topLevelDomains.length; ++index) {
-            let tld = properties.predefinedRules.topLevelDomains[index];
-            query += "contains(translate(., '" + tld.toUpperCase() + "', '" + tld.toLowerCase() + "'), '." + tld.toLowerCase() + "') or ";
-        }
+        requiredChars.push('.');
     }
-    query += "contains(., '" + properties.requiredCharacters.join ("') or contains(., '") + "'))]";
-
+    query += "contains(., '" + requiredChars.join("') or contains(., '") + "'))]";
+    
     var query2 =  "(//" + properties.extraFeatures.inlineElements.join("|//") + ")[ancestor::body and not(ancestor::" + properties.extraFeatures.inlineElements.join(" or ancestor::") + ") and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
         + ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
 
     return {
+        get requiredCharacters () {
+            return requiredChars;
+        },
+        
         textNodes: function (document) {
             return document.evaluate(query, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
         },
@@ -558,7 +561,7 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
         finalize: function (requiredChars) {
             // split potential huge string in a list of smaller ones
             // to speed-up URI pattern matching
-            let regex = new RegExp("[^\\s()<>«“]+", "g");
+            let regex = new RegExp("[^\\s'\"`<>«»“”‘’]+", "g");
             let result;
             while ((result = regex.exec (this._text)) !== null
                    && result[0].search(requiredChars) != -1) {
@@ -584,7 +587,7 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
 
         this.textNodes = (function parse (node) {
             const inline = new RegExp("^("+properties.extraFeatures.inlineElements.join("|")+")$","i");
-            const requiredChars = new RegExp(properties.requiredCharacters.join("|"),"i");
+            const requiredChars = new RegExp(parser.requiredCharacters.join("|"),"i");
 
             var nodes = new Array;          
             var textNode = new TextNode;

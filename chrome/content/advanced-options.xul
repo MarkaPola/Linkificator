@@ -87,13 +87,13 @@
 						  preference="pref.supportStandardURLs"
 						  label="&advanced-settings.links.predefined-rules.standard-urls;"/>
 				<checkbox class="indent"
-						  preference="pref.standardURLUseSubdomains"
 						  id="advanced-settings.link-type.predefined-rules.standard-url-use-subdomains"
+						  preference="pref.standardURLUseSubdomains"
 						  label="&advanced-settings.links.predefined-rules.URI-use-subdomains;"
 						  observes="broadcaster.supportStandardURLs"/>
 				<checkbox class="indent"
-						  preference="pref.standardURLUseTLD"
 						  id="advanced-settings.link-type.predefined-rules.standard-url-use-TLD"
+						  preference="pref.standardURLUseTLD"
 						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
 						  observes="broadcaster.supportStandardURLs"/>
 			  </vbox>
