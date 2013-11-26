@@ -6,43 +6,44 @@
 <!-- en-US localization - Linkificator's module
    - author: MarkaPola -->
 
-<!ENTITY advanced-settings.title                                     "Linkificator Advanced Options">
+<!ENTITY advanced-settings.title                                          "Linkificator Advanced Options">
 
-<!ENTITY advanced-settings.tab-links                                 "Links">
-<!ENTITY advanced-settings.tab-custom-rules                          "Custom Rules">
-<!ENTITY advanced-settings.tab-configuration                         "Configuration">
+<!ENTITY advanced-settings.tab-links                                      "Links">
+<!ENTITY advanced-settings.tab-custom-rules                               "Custom Rules">
+<!ENTITY advanced-settings.tab-configuration                              "Configuration">
 
-<!ENTITY advanced-settings.links.predefined-rules                    "Apply Predefined Rules for:">
-<!ENTITY advanced-settings.links.predefined-rules.email-address      "Email addresses">
-<!ENTITY advanced-settings.links.predefined-rules.about-protocol     "about: protocol">
-<!ENTITY advanced-settings.links.predefined-rules.standard-urls      "Standard URLs">
-<!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains "Use subdomains to identify protocol">
-<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD        "Use top level domains">
-<!ENTITY advanced-settings.links.custom-rules                        "Apply Custom Rules for:">
-<!ENTITY advanced-settings.links.custom-rules.before-predefined      "Before predefined rules list">
-<!ENTITY advanced-settings.links.custom-rules.after-predefined       "After predefined rules list">
-<!ENTITY advanced-settings.links.extra-features.inline-elements      "Handle inline elements">
+<!ENTITY advanced-settings.links.predefined-rules                         "Apply Predefined Rules for:">
+<!ENTITY advanced-settings.links.predefined-rules.email-address           "Email addresses">
+<!ENTITY advanced-settings.links.predefined-rules.about-protocol          "about: protocol">
+<!ENTITY advanced-settings.links.predefined-rules.standard-urls           "Standard URLs">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains      "Use subdomains to identify protocol">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD             "Use top level domains">
+<!ENTITY advanced-settings.links.predefined-rules.URI-linkify-authority   "Linkify URL containing the alone authority (i.e. host:port)">
+<!ENTITY advanced-settings.links.custom-rules                             "Apply Custom Rules for:">
+<!ENTITY advanced-settings.links.custom-rules.before-predefined           "Before predefined rules list">
+<!ENTITY advanced-settings.links.custom-rules.after-predefined            "After predefined rules list">
+<!ENTITY advanced-settings.links.extra-features.inline-elements           "Handle inline elements">
 
-<!ENTITY advanced-settings.custom-rules.before-predefined            "Before predefined rules">
-<!ENTITY advanced-settings.custom-rules.after-predefined             "After predefined rules">
-<!ENTITY advanced-settings.custom-rules.add-button                   "Add Rule">
-<!ENTITY advanced-settings.custom-rules.edit-button.tooltip          "Edit">
-<!ENTITY advanced-settings.custom-rules.delete-button.tooltip        "Delete">
+<!ENTITY advanced-settings.custom-rules.before-predefined                 "Before predefined rules">
+<!ENTITY advanced-settings.custom-rules.after-predefined                  "After predefined rules">
+<!ENTITY advanced-settings.custom-rules.add-button                        "Add Rule">
+<!ENTITY advanced-settings.custom-rules.edit-button.tooltip               "Edit">
+<!ENTITY advanced-settings.custom-rules.delete-button.tooltip             "Delete">
 
-<!ENTITY advanced-settings.configuration.requiredCharacters          "Required Characters">
-<!ENTITY advanced-settings.configuration.protocols                   "Protocols">
-<!ENTITY advanced-settings.configuration.subdomains                  "Subdomains">
-<!ENTITY advanced-settings.configuration.topLevelDomains             "Top-Level Domains">
-<!ENTITY advanced-settings.configuration.excludedElements            "Excluded Elements">
-<!ENTITY advanced-settings.configuration.inlineElements              "Inline Elements">
-<!ENTITY advanced-settings.configuration.reset-button                "Reset to Default">
+<!ENTITY advanced-settings.configuration.requiredCharacters               "Required Characters">
+<!ENTITY advanced-settings.configuration.protocols                        "Protocols">
+<!ENTITY advanced-settings.configuration.subdomains                       "Subdomains">
+<!ENTITY advanced-settings.configuration.topLevelDomains                  "Top-Level Domains">
+<!ENTITY advanced-settings.configuration.excludedElements                 "Excluded Elements">
+<!ENTITY advanced-settings.configuration.inlineElements                   "Inline Elements">
+<!ENTITY advanced-settings.configuration.reset-button                     "Reset to Default">
 
-<!ENTITY advanced-settings.custom-rules.panel.name.label             "Name">
-<!ENTITY advanced-settings.custom-rules.panel.name.placeholder       "Rule identification">
-<!ENTITY advanced-settings.custom-rules.panel.pattern.label          "Pattern">
-<!ENTITY advanced-settings.custom-rules.panel.pattern.placeholder    "Regular expression">
-<!ENTITY advanced-settings.custom-rules.panel.url.label              "URL">
-<!ENTITY advanced-settings.custom-rules.panel.url.placeholder        "Regular expression">
+<!ENTITY advanced-settings.custom-rules.panel.name.label                  "Name">
+<!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Rule identification">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.label               "Pattern">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.placeholder         "Regular expression">
+<!ENTITY advanced-settings.custom-rules.panel.url.label                   "URL">
+<!ENTITY advanced-settings.custom-rules.panel.url.placeholder             "Regular expression">
 
-<!ENTITY advanced-settings.ok-button                                 "OK">
-<!ENTITY advanced-settings.cancel-button                             "Cancel">
+<!ENTITY advanced-settings.ok-button                                      "OK">
+<!ENTITY advanced-settings.cancel-button                                  "Cancel">

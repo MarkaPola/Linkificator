@@ -31,6 +31,7 @@ pref("extensions.linkificator@markapola.supportAbout", false);
 pref("extensions.linkificator@markapola.supportStandardURLs", true);
 pref("extensions.linkificator@markapola.standardURLUseSubdomains", true);
 pref("extensions.linkificator@markapola.standardURLUseTLD", true);
+pref("extensions.linkificator@markapola.standardURLLinkifyAuthority", false);
 pref("extensions.linkificator@markapola.supportInlineElements", true);
 pref("extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("extensions.linkificator@markapola.supportCustomRulesAfter", false);
@@ -66,6 +67,7 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportAbout", 
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportStandardURLs", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLUseSubdomains", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLUseTLD", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLLinkifyAuthority", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportInlineElements", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesAfter", false);

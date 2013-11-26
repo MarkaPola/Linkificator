@@ -38,6 +38,8 @@
 				   name="extensions.linkificator@markapola.standardURLUseSubdomains"/>
 	  <preference  type="bool" id="pref.standardURLUseTLD"
 				   name="extensions.linkificator@markapola.standardURLUseTLD"/>
+	  <preference  type="bool" id="pref.standardURLLinkifyAuthority"
+				   name="extensions.linkificator@markapola.standardURLLinkifyAuthority"/>
       <preference  type="bool" id="pref.supportInlineElements"
 				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.supportCustomRulesBefore"
@@ -95,6 +97,11 @@
 						  id="advanced-settings.link-type.predefined-rules.standard-url-use-TLD"
 						  preference="pref.standardURLUseTLD"
 						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
+						  observes="broadcaster.supportStandardURLs"/>
+				<checkbox class="indent"
+						  id="advanced-settings.link-type.predefined-rules.standard-url-linkify-authority"
+						  preference="pref.standardURLLinkifyAuthority"
+						  label="&advanced-settings.links.predefined-rules.URI-linkify-authority;"
 						  observes="broadcaster.supportStandardURLs"/>
 			  </vbox>
 			</groupbox>
