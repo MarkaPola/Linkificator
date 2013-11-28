@@ -1,0 +1,29 @@
+
+.large-text {
+	font-size: 120%;
+}
+
+.version-changes {
+	position: relative;
+	left: 5%;
+}
+
+.feature-list-title {
+	font-size: 115%;
+	font-weight: bold;
+	color: rgb(30, 100, 255);
+}
+
+html {
+	background: -moz-linear-gradient(top, rgb(220, 245, 255), rgb(255, 255, 255));
+	background: linear-gradient(to bottom, rgb(220, 245, 255), rgb(255, 255, 255));
+}
+
+#linkificator-icon {
+	vertical-align: middle;
+	float: left;
+	margin-top: 10pt;
+	margin-right: 30pt;
+	margin-bottom: 10pt;
+	margin-left: 10pt;
+}
