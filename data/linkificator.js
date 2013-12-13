@@ -580,6 +580,9 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
                 this._items.push({offset: result.index, text: result[0]});
             }
         },
+        offset: function (index,  pos) {
+            return this._items[index].offset + pos;
+        }, 
         match: function (index, start, end) {
             start += this._items[index].offset;
             end += this._items[index].offset;
@@ -668,9 +671,9 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
                 // create range matching URL and attach it to the anchor
                 let range = document.createRange();
                 let element = list[0];
-                range.setStart(element.node, pos-element.index);
+                range.setStart(element.node, textNode.offset(i,pos)-element.index);
                 element = list[list.length-1];
-                range.setEnd(element.node, start-element.index);
+                range.setEnd(element.node, textNode.offset(i,start)-element.index);
 
                 let anchor = this.newAnchor(url);
                 anchor.appendChild(range.extractContents());
@@ -679,7 +682,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
                 range.detach();
 
                 // update descriptor for future treatments
-                element.index = start;
+                element.index = textNode.offset(i,start);
                 element.node = anchor.nextSibling;
             }
         }

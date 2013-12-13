@@ -1,8 +1,13 @@
 #!/bin/csh -f
-
 #
 # Build Firefox add-on xpi package with some extensions
 #
+
+if ("$*" == "--help") then
+	python ${ADDON_HOME_PATH}/bin/cfx --help
+	exit 0;
+endif
+
 if (! -f package.json) then
 	echo "Must be executed from the root directory of the add-on";
 	exit 1;
@@ -19,7 +24,7 @@ cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 #
 # packaging add-on
 #
-python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension
+python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $*
 
 #
 # patch options.xul for a correct UI behavior
