@@ -15,7 +15,6 @@
 }
 
 html {
-	background: -moz-linear-gradient(top, rgb(220, 245, 255), rgb(255, 255, 255));
 	background: linear-gradient(to bottom, rgb(220, 245, 255), rgb(255, 255, 255));
 }
 

@@ -33,7 +33,7 @@ set TDIR = ${TMP}/$$
 if (! -d $TDIR) mkdir $TDIR
 unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
 cat ${TDIR}/options.orig.xul | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
-zip -r -j linkificator.xpi ${TDIR}/options.xul
+zip -j linkificator.xpi ${TDIR}/options.xul
 rm -rf ${TDIR}
 
 if ($CFX_VERSION < 115) then
@@ -45,7 +45,7 @@ endif
 #
 # Add custom version of preferences
 #
-zip -r linkificator.xpi defaults/preferences/prefs.js
+zip linkificator.xpi defaults/preferences/prefs.js
 
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 

@@ -15,6 +15,24 @@ RegExp.escape = function(string) {
 };
 
 
+// Handle dynamic document changes using MutationOberserver interface
+var documentObserver = (function () {
+    let observer = new MutationObserver (function () {
+        self.port.emit ('document-changed');
+    });
+
+    let config = {childList: true, subtree: true};
+
+    return {
+        observe: function () {
+            observer.observe (window.document, config);
+        },
+        disconnect: function () {
+            observer.disconnect ();
+        }
+    };
+})();
+
 function Parser (properties) {
 
     function buildPattern (data) {
@@ -816,14 +834,19 @@ threads.detach = function (thread) {
 };
 
 self.port.on('parse', function (properties) {
+    documentObserver.disconnect();
     execute('parse', properties);
+    documentObserver.observe();
 });
 
 self.port.on('re-parse', function (properties) {
+    documentObserver.disconnect();
     execute('re-parse', properties);
+    documentObserver.observe();
 });
 
 self.port.on('undo', function (properties) {
+    documentObserver.disconnect();
     undo();
 });
 
