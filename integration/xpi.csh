@@ -21,10 +21,15 @@ if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
 endif
 cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 
+set XPI_OPTIONS = ""
+if ($CFX_VERSION < 115) then
+	set XPI_OPTIONS = "--strip-sdk"
+endif
+
 #
 # packaging add-on
 #
-python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $*
+python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $XPI_OPTIONS $*
 
 #
 # patch options.xul for a correct UI behavior

@@ -40,12 +40,14 @@
 				   name="extensions.linkificator@markapola.standardURLUseTLD"/>
 	  <preference  type="bool" id="pref.standardURLLinkifyAuthority"
 				   name="extensions.linkificator@markapola.standardURLLinkifyAuthority"/>
-      <preference  type="bool" id="pref.supportInlineElements"
-				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.supportCustomRulesBefore"
 				   name="extensions.linkificator@markapola.supportCustomRulesBefore"/>
       <preference  type="bool" id="pref.supportCustomRulesAfter"
 				   name="extensions.linkificator@markapola.supportCustomRulesAfter"/>
+      <preference  type="bool" id="pref.supportInlineElements"
+				   name="extensions.linkificator@markapola.supportInlineElements"/>
+      <preference  type="bool" id="pref.automaticLinkification"
+				   name="extensions.linkificator@markapola.automaticLinkification"/>
 
       <preference  type="string" id="pref.requiredCharacters"
 				   name="extensions.linkificator@markapola.requiredCharacters"/>
@@ -122,6 +124,9 @@
 				<checkbox id="advanced-settings.link-type.extra-features.inline-elements"
 						  preference="pref.supportInlineElements"
 						  label="&advanced-settings.links.extra-features.inline-elements;"/>
+				<checkbox id="advanced-settings.link-type.extra-features.automatic-linkification"
+						  preference="pref.automaticLinkification"
+						  label="&advanced-settings.links.extra-features.automatic-linkification;"/>
 			  </vbox>
 			</groupbox>
 		  </vbox>

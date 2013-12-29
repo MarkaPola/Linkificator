@@ -33,6 +33,8 @@ pref("extensions.linkificator@markapola.standardURLUseSubdomains", true);
 pref("extensions.linkificator@markapola.standardURLUseTLD", true);
 pref("extensions.linkificator@markapola.standardURLLinkifyAuthority", false);
 pref("extensions.linkificator@markapola.supportInlineElements", true);
+pref("extensions.linkificator@markapola.automaticLinkification", true);
+pref("extensions.linkificator@markapola.autoLinkificationDelay", 300);
 pref("extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("extensions.linkificator@markapola.supportCustomRulesAfter", false);
 pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afterList\":[{\"name\":\"URN:NBN Resolver, Redirect to document itself\",\"pattern\":\"urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+\",\"url\":\"http://nbn-resolving.org/redirect/$&\",\"active\":true},{\"name\":\"URN:NBN Resolver, All Links\",\"pattern\":\"urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+\",\"url\":\"http://nbn-resolving.org/$&\",\"active\":false}]}");
@@ -69,6 +71,8 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLUseS
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLUseTLD", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLLinkifyAuthority", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportInlineElements", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.automaticLinkification", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationDelay", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesAfter", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.customRules", false);

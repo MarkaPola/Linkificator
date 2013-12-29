@@ -14,21 +14,32 @@ RegExp.escape = function(string) {
     return string.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1');
 };
 
-
 // Handle dynamic document changes using MutationOberserver interface
 var documentObserver = (function () {
-    let observer = new MutationObserver (function () {
-        self.port.emit ('document-changed');
-    });
-
     let config = {childList: true, subtree: true};
+    let observing = false;
+    let delay = 300;
+    
+    let observer = new MutationObserver ((function () {
+        observing = false;
+        observer.disconnect();
+        
+        setTimeout(function() {
+            self.port.emit ('document-changed');
+        }, delay);
+    }).bind(this));
 
     return {
-        observe: function () {
+        observe: function (timeout) {
+            observing = true;
+            delay = timeout === undefined ? 300 : timeout;
             observer.observe (window.document, config);
         },
         disconnect: function () {
-            observer.disconnect ();
+            if (observing) {
+                observing = false;
+                observer.disconnect ();
+            }
         }
     };
 })();
@@ -836,13 +847,17 @@ threads.detach = function (thread) {
 self.port.on('parse', function (properties) {
     documentObserver.disconnect();
     execute('parse', properties);
-    documentObserver.observe();
+    if (properties.extraFeatures.support.automaticLinkification) {
+        documentObserver.observe(properties.extraFeatures.autoLinkificationDelay);
+    }
 });
 
 self.port.on('re-parse', function (properties) {
     documentObserver.disconnect();
     execute('re-parse', properties);
-    documentObserver.observe();
+    if (properties.extraFeatures.support.automaticLinkification) {
+        documentObserver.observe(properties.extraFeatures.autoLinkificationDelay);
+    }
 });
 
 self.port.on('undo', function (properties) {

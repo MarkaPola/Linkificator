@@ -23,6 +23,7 @@
 <!ENTITY advanced-settings.links.custom-rules.before-predefined           "Liste Avant les règles prédéfinies">
 <!ENTITY advanced-settings.links.custom-rules.after-predefined            "Liste Après les règles prédéfinies">
 <!ENTITY advanced-settings.links.extra-features.inline-elements           "Traiter les éléments en ligne">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification   "Traiter automatiquement les changements dynamiques">
 
 <!ENTITY advanced-settings.custom-rules.before-predefined                 "Avant les règles prédéfinies">
 <!ENTITY advanced-settings.custom-rules.after-predefined                  "Après les règles prédéfinies">
