@@ -604,9 +604,10 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
             // to speed-up URI pattern matching
             let regex = new RegExp("[^\\s'\"<>«»“”‘’]+", "g");
             let result;
-            while ((result = regex.exec (this._text)) !== null
-                   && result[0].search(requiredChars) != -1) {
-                this._items.push({offset: result.index, text: result[0]});
+            while ((result = regex.exec (this._text)) !== null) {
+                if (result[0].search(requiredChars) != -1) {
+                    this._items.push({offset: result.index, text: result[0]});
+                }
             }
         },
         offset: function (index,  pos) {
@@ -679,7 +680,7 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
 
     for (; !isOver(iterations) && this.index < this.textNodes.length; ++iterations, ++this.index) {
         let textNode = this.textNodes[this.index];
-
+        
         for (let i = 0; i < textNode.length; ++i) {
             let text = textNode.text(i);
             let start = 0;
@@ -692,27 +693,46 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
                 
                 // retrieve list of nodes impacted by url
                 let list = textNode.match(i, pos, pos+match.length-1);
-                // ignore not splitted url
-                if (list.length < 2) continue;
 
                 this.count++;
+                
+                if (list.length < 2) {
+                    // not splitted url
+                    let element = list[0];
+                    let node = element.node;
+                    let parent = node.parentNode;
+                    let sibling = node.nextSibling;
+                    
+                    parent.removeChild(node);
+                    parent.insertBefore(this.document.createTextNode(node.nodeValue.substring(0, textNode.offset(i,pos)-element.index)), sibling);
+                    
+                    let anchor = this.newAnchor(match.url);
+                    anchor.appendChild(this.document.createTextNode(match.text));
+                    parent.insertBefore(anchor, sibling);
 
-                // create range matching URL and attach it to the anchor
-                let range = document.createRange();
-                let element = list[0];
-                range.setStart(element.node, textNode.offset(i,pos)-element.index);
-                element = list[list.length-1];
-                range.setEnd(element.node, textNode.offset(i,start)-element.index);
+                    parent.insertBefore(this.document.createTextNode(node.nodeValue.substring(textNode.offset(i,start)-element.index)), sibling);
+                    
+                    // update descriptor for future treatments
+                    element.index = textNode.offset(i,start);
+                    element.node = anchor.nextSibling;
+                } else {
+                    // create range matching URL and attach it to the anchor
+                    let range = document.createRange();
+                    let element = list[0];
+                    range.setStart(element.node, textNode.offset(i,pos)-element.index);
+                    element = list[list.length-1];
+                    range.setEnd(element.node, textNode.offset(i,start)-element.index);
 
-                let anchor = this.newAnchor(url);
-                anchor.appendChild(range.extractContents());
-                range.insertNode(anchor);
+                    let anchor = this.newAnchor(url);
+                    anchor.appendChild(range.extractContents());
+                    range.insertNode(anchor);
 
-                range.detach();
-
-                // update descriptor for future treatments
-                element.index = textNode.offset(i,start);
-                element.node = anchor.nextSibling;
+                    range.detach();
+                    
+                    // update descriptor for future treatments
+                    element.index = textNode.offset(i,start);
+                    element.node = anchor.nextSibling;
+                }
             }
         }
     }
