@@ -767,52 +767,54 @@ function execute (action, properties) {
     var parser = Parser(properties);
 
     function parse () {
-        var count = 0;
-
-        // function called on completion of node parsing
-        // When all nodes are parsed, update status
-        function finish () {
-            count -= 1;
-            if (count <= 0) {
-                state.complete();
-            }
-        }
-        // function called on completion of splitted text node parsing
-        // When all nodes are parsed, start linkification of "standard" text nodes
-        function completed () {
-            count -= 1;
-            if (count <= 0) {
-                // second pass: handle not splitted urls
-                parseDocument(parser.textNodes, LinkifyNode, finish);
-            }
-        }
-
-        function parseDocument (getNodes, linkify, completed) {
-            // get list of text nodes
-            var elements = getNodes(document);
-
-            let size = elements.snapshotLength;
-            count = size;
-            if (size == 0) {
-                statistics.store(0);
-                if (completed)
-                    completed();
-            } else {
-                for (let index = 0; index < size; ++index) {
-                    let thread = Thread(new linkify(elements.snapshotItem(index), statistics, properties, parser, style, completed),
-                                        properties.processing.interval);
-                    threads.push(thread);
-                    thread.start();
+        function parseDocument (getNodes, linkify) {
+            function Snapshot (elements) {
+                this.elements = elements;
+                this.size = elements.snapshotLength;
+                
+                for (let index = 0; index < this.size; ++index) {
+                    yield this.elements.snapshotItem(index);
                 }
             }
+            let snapshot = new Snapshot(getNodes(document));
+            let count = 0;
+            
+            function nextNode () {
+                count += 1;
+                if (count == properties.processing.iterations) {
+                    count = 0;
+                    setTimeout(parseNode, properties.processing.interval);
+                } else {
+                    parseNode();
+                }
+            }
+            function parseNode () {
+                let thread = Thread(new linkify(snapshot.next(), statistics, properties, parser, style, nextNode),
+                                    properties.processing.interval);
+                threads.push(thread);
+                thread.start();
+            }
+
+            try {
+                nextNode();
+            } catch (e) {
+                if (e instanceof StopIteration)
+                    // end of iteration
+                    return;
+                else
+                    throw e;
+            }
         }
+        
+        statistics.store(0);
 
         if (properties.extraFeatures.support.inlineElements) {
             // start parsing by splitted text nodes
-            parseDocument(parser.splittedTextNodes, LinkifySplittedText, completed);
-        } else {
-            parseDocument(parser.textNodes, LinkifyNode, finish);
+            parseDocument(parser.splittedTextNodes, LinkifySplittedText);
         }
+        parseDocument(parser.textNodes, LinkifyNode);
+
+        state.complete();
     }
     
     parse();

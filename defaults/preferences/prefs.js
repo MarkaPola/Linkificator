@@ -45,7 +45,7 @@ pref("extensions.linkificator@markapola.topLevelDomains", "ac;ad;ae;aero;af;ag;a
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
 pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt;span;wbr");
 pref("extensions.linkificator@markapola.sync", false);
-pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":3}");
+pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":40}");
 // sync management, deactivated by default
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.contextMenuIntegration", false);
