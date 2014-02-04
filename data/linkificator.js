@@ -781,29 +781,31 @@ function execute (action, properties) {
             
             function nextNode () {
                 count += 1;
-                if (count == properties.processing.iterations) {
-                    count = 0;
+                if (count > properties.processing.iterations) {
+                    count = 1;
                     setTimeout(parseNode, properties.processing.interval);
                 } else {
                     parseNode();
                 }
             }
             function parseNode () {
-                let thread = Thread(new linkify(snapshot.next(), statistics, properties, parser, style, nextNode),
-                                    properties.processing.interval);
-                threads.push(thread);
-                thread.start();
+                try
+                {
+                    let thread = Thread(new linkify(snapshot.next(), statistics, properties, parser, style, nextNode),
+                                        properties.processing.interval);
+                    threads.push(thread);
+                    thread.start();
+                } catch (e) {
+                    if (e instanceof StopIteration)
+                        // end of iteration
+                        return;
+                    else {
+                        throw e;
+                    }
+                }
             }
 
-            try {
-                nextNode();
-            } catch (e) {
-                if (e instanceof StopIteration)
-                    // end of iteration
-                    return;
-                else
-                    throw e;
-            }
+            nextNode();
         }
         
         statistics.store(0);
