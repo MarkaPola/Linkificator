@@ -9,12 +9,12 @@
 
 this.addEventListener('click', function(event) {
 	if (event.button == 1 || (event.button == 0 && event.altKey == true)) {
-		self.port.emit('middle-click');
+		self.port.emit('middleclick');
 		event.stopPropagation();
 		event.preventDefault();
 	}
 	if (event.button == 2 || (event.button == 0 && event.shiftKey == true)) {
-		self.port.emit('right-click');
+		self.port.emit('rightclick');
 		event.stopPropagation();
 		event.preventDefault();
 	}
