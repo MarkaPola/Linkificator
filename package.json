@@ -31,17 +31,13 @@
     },
     {
        "type": "menulist",
-       "value": "show",
-       "name": "widgetLeftClick",
-       "title": "On Widget left-click",
+       "value": "toggle",
+       "name": "widgetMiddleClick",
+       "title": "On Widget middle-click",
        "options": [
           {
              "value": "none",
              "label": "None"
-          },
-          {
-             "value": "show",
-             "label": "Show"
           },
           {
              "value": "toggle",
@@ -60,44 +56,12 @@
     {
        "type": "menulist",
        "value": "none",
-       "name": "widgetMiddleClick",
-       "title": "On Widget middle-click",
-       "options": [
-          {
-             "value": "none",
-             "label": "None"
-          },
-          {
-             "value": "show",
-             "label": "Show"
-          },
-          {
-             "value": "toggle",
-             "label": "Toggle"
-          },
-          {
-             "value": "manage",
-             "label": "Manage"
-          },
-          {
-             "value": "linkify",
-             "label": "Linkify"
-          }
-       ]
-    },
-    {
-       "type": "menulist",
-       "value": "toggle",
        "name": "widgetRightClick",
        "title": "On Widget right-click",
        "options": [
           {
              "value": "none",
              "label": "None"
-          },
-          {
-             "value": "show",
-             "label": "Show"
           },
           {
              "value": "toggle",
