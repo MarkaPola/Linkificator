@@ -20,12 +20,11 @@ this.addEventListener('click', function(event) {
 	}
 }, true);
 
-self.port.on('on', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-on.png");
-});
-self.port.on('off', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-off.png");
-});
-self.port.on('excluded', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-excluded.png");
+self.port.on('icon', function (icon) {
+    if (icon === 'linkificator-on')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-on.png");
+    else if (icon === 'linkificator-off')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-off.png");
+    else if (icon === 'linkificator-excluded')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-excluded.png");
 });
