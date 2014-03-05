@@ -43,36 +43,17 @@ entries.manage.addEventListener('click', function(event) {
 }, true);
 
 entries.linkify.addEventListener('click', function(event) {
-    if (entries.linkify.getAttribute("class") === "linkificator-active")
-	    self.port.emit('linkify');
+	self.port.emit('linkify');
 	event.preventDefault();
 	reset(event);
 }, true);
 
-
-self.port.on('initialize', function (data) {
-	l10n = data;
-
-	entries.options.textContent = l10n.options;
-	entries.toggle.textContent = l10n.disable;
-	entries.manage.textContent = l10n.exclude;
-	entries.linkify.textContent = l10n.linkify;
-});
-
-self.port.on('configure', function (config) {
-	isActive = config.active;
-
-	entries.toggle.textContent = isActive ? l10n.disable : l10n.enable;
-	entries.manage.textContent = config.status == 'excluded' ? l10n.include : l10n.exclude;
-	entries.manage.setAttribute("class", config.status == 'excluded' || config.status == 'processed' ? "linkificator-active" : "linkificator-inactive");
-	entries.linkify.setAttribute("class", config.status == 'processed' ? "linkificator-active" : "linkificator-inactive");
-});
 
 self.port.on('label', function (data) {
     entries[data.id].textContent = data.value;
 });
 
 self.port.on('disabled', function (data) {
-    entries[data.id].setAttribute("class", data.value ? "linkificator-active" : "linkificator-inactive");
+    entries[data.id].setAttribute("class", data.value ? "linkificator-inactive" : "linkificator-active");
 });
 
