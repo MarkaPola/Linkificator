@@ -55,5 +55,13 @@ zip linkificator.xpi defaults/preferences/prefs.js
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 
 echo "Renaming extension to linkificator${version}.xpi"
-mv linkificator.xpi linkificator${version}.xpi
-
+if ($CFX_VERSION < 115) then
+	mv linkificator.xpi linkificator${version}.xpi
+else
+	# work-around: remove erroneous / empty folder
+	set zd = $cwd
+	unzip -q -d ${TDIR} linkificator.xpi
+	cd ${TDIR}; zip -q -r ${zd}/linkificator${version}.xpi *; cd ${zd}
+	rm -rf ${TDIR}
+	rm -rf linkificator.xpi
+endif
