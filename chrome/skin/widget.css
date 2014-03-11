@@ -8,31 +8,32 @@
 */
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-@namespace html url("http://www.w3.org/1999/xhtml");
 
-.linkificator-on {
-  list-style-image: url("chrome://linkificator/skin/link16-on.png");
-}
-/* Added for Australis support */
-.linkificator-on[cui-areatype="menu-panel"],
-toolbarpaletteitem[place="palette"] > .linkificator-on {
-  list-style-image: url("chrome://linkificator/skin/link32-on.png");
-}
+@-moz-document url("chrome://browser/content/browser.xul") {
+	.linkificator-on {
+		list-style-image: url("chrome://linkificator/skin/link16-on.png");
+	}
+	/* Added for Australis support */
+	.linkificator-on[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-on {
+		list-style-image: url("chrome://linkificator/skin/link32-on.png");
+	}
 
-.linkificator-off {
-  list-style-image: url("chrome://linkificator/skin/link16-off.png");
-}
-/* Added for Australis support */
-.linkificator-off[cui-areatype="menu-panel"],
-toolbarpaletteitem[place="palette"] > .linkificator-off {
-  list-style-image: url("chrome://linkificator/skin/link32-off.png");
-}
+	.linkificator-off {
+		list-style-image: url("chrome://linkificator/skin/link16-off.png");
+	}
+	/* Added for Australis support */
+	.linkificator-off[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-off {
+		list-style-image: url("chrome://linkificator/skin/link32-off.png");
+	}
 
-.linkificator-excluded {
-  list-style-image: url("chrome://linkificator/skin/link16-excluded.png");
-}
-/* Added for Australis support */
-.linkificator-excluded[cui-areatype="menu-panel"],
-toolbarpaletteitem[place="palette"] > .linkificator-excluded {
-  list-style-image: url("chrome://linkificator/skin/link32-excluded.png");
+	.linkificator-excluded {
+		list-style-image: url("chrome://linkificator/skin/link16-excluded.png");
+	}
+	/* Added for Australis support */
+	.linkificator-excluded[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-excluded {
+		list-style-image: url("chrome://linkificator/skin/link32-excluded.png");
+	}
 }
