@@ -9,23 +9,22 @@
 
 this.addEventListener('click', function(event) {
 	if (event.button == 1 || (event.button == 0 && event.altKey == true)) {
-		self.port.emit('middle-click');
+		self.port.emit('middleclick');
 		event.stopPropagation();
 		event.preventDefault();
 	}
 	if (event.button == 2 || (event.button == 0 && event.shiftKey == true)) {
-		self.port.emit('right-click');
+		self.port.emit('rightclick');
 		event.stopPropagation();
 		event.preventDefault();
 	}
 }, true);
 
-self.port.on('on', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-on.png");
-});
-self.port.on('off', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-off.png");
-});
-self.port.on('excluded', function () {
-	 document.getElementById("widget-image").setAttribute("src", "../resources/link-excluded.png");
+self.port.on('icon', function (icon) {
+    if (icon === 'linkificator-on')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-on.png");
+    else if (icon === 'linkificator-off')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-off.png");
+    else if (icon === 'linkificator-excluded')
+	    document.getElementById("widget-image").setAttribute("src", "../resources/link-excluded.png");
 });

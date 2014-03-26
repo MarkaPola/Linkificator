@@ -1,0 +1,39 @@
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * widget style-sheet - Linkificator's module
+ * author: MarkaPola
+*/
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+	.linkificator-on {
+		list-style-image: url("chrome://linkificator/skin/link16-on.png");
+	}
+	/* Added for Australis support */
+	.linkificator-on[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-on {
+		list-style-image: url("chrome://linkificator/skin/link32-on.png");
+	}
+
+	.linkificator-off {
+		list-style-image: url("chrome://linkificator/skin/link16-off.png");
+	}
+	/* Added for Australis support */
+	.linkificator-off[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-off {
+		list-style-image: url("chrome://linkificator/skin/link32-off.png");
+	}
+
+	.linkificator-excluded {
+		list-style-image: url("chrome://linkificator/skin/link16-excluded.png");
+	}
+	/* Added for Australis support */
+	.linkificator-excluded[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-excluded {
+		list-style-image: url("chrome://linkificator/skin/link32-excluded.png");
+	}
+}

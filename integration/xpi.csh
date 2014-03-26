@@ -37,7 +37,7 @@ python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $XPI_OPTIONS $
 set TDIR = ${TMP}/$$
 if (! -d $TDIR) mkdir $TDIR
 unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
-cat ${TDIR}/options.orig.xul | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
+cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" pref-name="displayWidget"/' | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
 zip -j linkificator.xpi ${TDIR}/options.xul
 rm -rf ${TDIR}
 

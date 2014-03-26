@@ -14,7 +14,7 @@ RegExp.escape = function(string) {
     return string.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1');
 };
 
-// Handle dynamic document changes using MutationOberserver interface
+// Handle dynamic document changes using MutationObserver interface
 var documentObserver = (function () {
     let config = {childList: true, subtree: true};
     let observing = false;

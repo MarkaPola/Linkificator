@@ -70,7 +70,7 @@ CustomRule.prototype = {
 
 		function check (regex) {
 			try {
-				RegExp (regex);
+				new RegExp (regex);
 				return true;
 			} catch (e) {
 				if (errorMessage.length) errorMessage += "\n";
