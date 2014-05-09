@@ -13,7 +13,11 @@ if (! -f package.json) then
 	exit 1;
 endif
 
-set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | gawk '{print $3*100;}'`
+if ($HOSTTYPE == 'intel-mac') then
+	set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
+else
+	set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | gawk '{print $3*100;}'`
+endif
 
 set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
 if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
@@ -34,7 +38,11 @@ python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $XPI_OPTIONS $
 #
 # patch options.xul for a correct UI behavior
 #
-set TDIR = ${TMP}/$$
+if ($HOSTTYPE == 'intel-windows') then
+	set TDIR = ${TMP}/$$
+else
+	set TDIR = /tmp/$$
+endif
 if (! -d $TDIR) mkdir $TDIR
 unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
 cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" pref-name="displayWidget"/' | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
