@@ -6,7 +6,6 @@ audi
 axa
 bank
 bbb
-berlin
 bugatti
 bzh
 catholic
@@ -38,6 +37,7 @@ llc
 llp
 med
 merck
+mls
 mma
 music
 ngo
@@ -45,8 +45,8 @@ ong
 ovh
 pars
 pharmacy
-pyc
 radio
+reit
 scot
 shia
 shop
@@ -54,8 +54,9 @@ ski
 spa
 sport
 stada
-xstatar
+swiss
 taxi
+tatar
 tennis
 thai
 versicherung

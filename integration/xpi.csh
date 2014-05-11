@@ -13,11 +13,7 @@ if (! -f package.json) then
 	exit 1;
 endif
 
-if ($HOSTTYPE == 'intel-mac') then
-	set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
-else
-	set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | gawk '{print $3*100;}'`
-endif
+set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
 
 set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
 if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
@@ -38,7 +34,7 @@ python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $XPI_OPTIONS $
 #
 # patch options.xul for a correct UI behavior
 #
-if ($HOSTTYPE == 'intel-windows') then
+if ($?TMP) then
 	set TDIR = ${TMP}/$$
 else
 	set TDIR = /tmp/$$
