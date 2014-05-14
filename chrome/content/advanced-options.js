@@ -581,20 +581,43 @@ function CustomRules (preferences, defaults, properties) {
 
 //************** Configuration ************************
 function Configuration (preferences, defaults, properties) {
+	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
+	
+    function resetPreference (id) {
+        if (! instantApply) {
+            // force change of preference to ensure update on reset
+            preferences.setCharPref(id, '');
+        }
+        preferences.clearUserPref(id);
+    }
+    
 	function resetRequiredCharacters (event) {
-		preferences.clearUserPref('requiredCharacters');
+		resetPreference('requiredCharacters');
 	}
 	function resetProtocols (event) {
-		preferences.clearUserPref('protocols');
+		resetPreference('protocols');
 	}
 	function resetSubdomains (event) {
-		preferences.clearUserPref('subdomains');
+		resetPreference('subdomains');
 	}
 	function resetExcludedElements (event) {
-		preferences.clearUserPref('excludedElements');
+		resetPreference('excludedElements');
 	}
 	function resetInlineElements (event) {
-		preferences.clearUserPref('inlineElements');
+		resetPreference('inlineElements');
+	}
+
+    function resetGTLDs (event) {
+		resetPreference('gTLDs');
+	}
+    function resetCcTLDs (event) {
+		resetPreference('ccTLDs');
+	}
+    function resetGeoTLDs (event) {
+		resetPreference('geoTLDs');
+	}
+    function resetCommunityTLDs (event) {
+		resetPreference('communityTLDs');
 	}
 
 	// manage events
@@ -606,6 +629,11 @@ function Configuration (preferences, defaults, properties) {
 
 	$('advanced-settings.configuration.excludedElement.reset').addEventListener('command', resetExcludedElements);
 	$('advanced-settings.configuration.inlineElement.reset').addEventListener('command', resetInlineElements);
+    
+	$('advanced-settings.configuration.gTLDs.reset').addEventListener('command', resetGTLDs);
+	$('advanced-settings.configuration.ccTLDs.reset').addEventListener('command', resetCcTLDs);
+	$('advanced-settings.configuration.geoTLDs.reset').addEventListener('command', resetGeoTLDs);
+	$('advanced-settings.configuration.communityTLDs.reset').addEventListener('command', resetCommunityTLDs);
 
 	return {
 		retrieve: function () {
@@ -621,6 +649,12 @@ function Configuration (preferences, defaults, properties) {
 
 			$('advanced-settings.configuration.excludedElement.reset').removeEventListener('command', resetExcludedElements);
 			$('advanced-settings.configuration.inlineElement.reset').removeEventListener('command', resetInlineElements);
+
+            $('advanced-settings.configuration.gTLDs.reset').removeEventListener('command', resetGTLDs);
+	        $('advanced-settings.configuration.ccTLDs.reset').removeEventListener('command', resetCcTLDs);
+	        $('advanced-settings.configuration.geoTLDs.reset').removeEventListener('command', resetGeoTLDs);
+	        $('advanced-settings.configuration.communityTLDs.reset').removeEventListener('command', resetCommunityTLDs);
+
 		}
 	};
 }
@@ -635,6 +669,7 @@ var AdvancedSettings = (function () {
 	var configuration = null;
 
 	var tabbox = $('advanced-settings.tabbox');
+	var tabbox2 = $('advanced-settings.configuration.tabbox');
 
 	return {
 		init: function () {
@@ -642,22 +677,33 @@ var AdvancedSettings = (function () {
 			preferences = Services.prefs.getBranch('extensions.linkificator@markapola.');
 	        defaults = Services.prefs.getDefaultBranch('extensions.linkificator@markapola.');
 
-			//links = Links(preferences, properties);
 			customRules = CustomRules(preferences, defaults, properties);
 			configuration = Configuration(preferences, defaults, properties);
 
             // configure observers
+            $('broadcaster.supportEmail').setAttribute('disabled', !$('pref.supportEmail').value);
             $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
+
+            for (let p of ['useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {
+                if ($('pref.'+p).value)
+                    $('broadcaster.'+p).removeAttribute('disabled');
+                else
+                    $('broadcaster.'+p).setAttribute('disabled', true);
+            }
             
 			// set previously selected tab
 			if (properties.ui.selectedTab != undefined) {
 				tabbox.selectedIndex = properties.ui.selectedTab;
+			}
+			if (properties.ui.selectedSubTab != undefined) {
+				tabbox2.selectedIndex = properties.ui.selectedSubTab;
 			}
 		},
 
 		release: function () {
 			// keep some UI settings
 			properties.ui.selectedTab = tabbox.selectedIndex;
+            properties.ui.selectedSubTab = tabbox2.selectedIndex;
 
 			customRules.release();
 			configuration.release();
@@ -673,7 +719,17 @@ var AdvancedSettings = (function () {
 		},
 
         change: function (id) {
-            $('broadcaster.'+id).setAttribute('disabled', !$('pref.'+id).value);
+            var useTLDs = /use.+TLDs/;
+            if (id.match(useTLDs)) {
+                // special treatment to support textbox
+                if ($('pref.'+id).value) {
+                    $('broadcaster.'+id).removeAttribute('disabled');
+                } else {
+                    $('broadcaster.'+id).setAttribute('disabled', true);
+                }
+            } else {
+                $('broadcaster.'+id).setAttribute('disabled', !$('pref.'+id).value);
+            }
         }
 	};
 })();

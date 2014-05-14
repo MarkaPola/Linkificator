@@ -40,11 +40,18 @@ pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afte
 pref("extensions.linkificator@markapola.requiredCharacters", ":@/?#");
 pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;ftp~ftp#2;news~news#0;nntp~nntp#2;telnet~telnet#2;irc~irc#2;file~file#3");
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
-pref("extensions.linkificator@markapola.topLevelDomains", "ac;ad;ae;aero;af;ag;ai;al;am;an;ao;aq;ar;arpa;as;asia;at;au;aw;ax;az;ba;bb;bd;be;bf;bg;bh;bi;biz;bj;bl;bm;bn;bo;bq;br;bs;bt;bv;bw;by;bz;ca;cat;cc;cd;cf;cg;ch;ci;ck;cl;cm;cn;co;com;coop;cr;cu;cv;cw;cx;cy;cz;de;dj;dk;dm;do;dz;ec;edu;ee;eg;eh;er;es;et;eu;fi;fj;fk;fm;fo;fr;ga;gb;gd;ge;gf;gg;gh;gi;gl;gm;gn;gov;gp;gq;gr;gs;gt;gu;gw;gy;hk;hm;hn;hr;ht;hu;id;ie;il;im;in;info;int;io;iq;ir;is;it;je;jm;jo;jobs;jp;ke;kg;kh;ki;km;kn;kp;kr;kw;ky;kz;la;lb;lc;li;lk;lr;ls;lt;lu;lv;ly;ma;mc;md;me;mf;mg;mh;mil;mk;ml;mm;mn;mo;mobi;mp;mq;mr;ms;mt;mu;museum;mv;mw;mx;my;mz;na;name;nc;ne;net;nf;ng;ni;nl;no;np;nr;nu;nz;om;org;pa;pe;pf;pg;ph;pk;pl;pm;pn;post;pr;pro;ps;pt;pw;py;qa;re;ro;rs;ru;rw;sa;sb;sc;sd;se;sg;sh;si;sj;sk;sl;sm;sn;so;sr;ss;st;su;sv;sx;sy;sz;tc;td;tel;tf;tg;th;tj;tk;tl;tm;tn;to;tp;tr;travel;tt;tv;tw;tz;ua;ug;uk;um;us;uy;uz;va;vc;ve;vg;vi;vn;vu;wf;ws;xxx;ye;yt;za;zm;zw");
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
 pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt;span;wbr");
 pref("extensions.linkificator@markapola.sync", false);
 pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":40}");
+pref("extensions.linkificator@markapola.useGTLDs", true);
+pref("extensions.linkificator@markapola.gTLDs", "academy;accountants;actor;aero;agency;airforce;archi;arpa;asia;associates;bargains;best;bid;bike;biz;black;blackfriday;blue;boutique;build;builders;buzz;cab;camera;camp;capital;cards;care;career;careers;cash;cat;catering;center;ceo;cheap;christmas;citic;claims;cleaning;clinic;clothing;club;codes;coffee;college;cologne;com;community;company;computer;construction;contractors;cooking;cool;coop;country;credit;creditcard;cruises;dance;dating;democrat;dental;desi;diamonds;digital;directory;discount;domains;edu;education;email;engineering;enterprises;equipment;estate;events;exchange;expert;exposed;fail;farm;feedback;finance;financial;fish;fishing;fitness;flights;florist;foo;foundation;frogans;fund;furniture;futbol;gallery;gift;glass;globo;gmo;gop;gov;graphics;gratis;gripe;guitars;guru;haus;holdings;holiday;horse;house;immobilien;industries;info;institute;insure;int;international;investments;jetzt;jobs;kaufen;kim;kitchen;kiwi;kred;land;lease;lighting;limited;limo;link;luxury;management;mango;marketing;media;meet;menu;mil;mobi;moda;moe;monash;museum;name;net;neustar;ninja;onl;org;partners;parts;photo;photography;photos;pics;pictures;pink;plumbing;post;pro;productions;properties;pub;qpon;recipes;red;reisen;ren;rentals;repair;report;rest;reviews;rich;rocks;rodeo;ruhr;ryukyu;saarland;schule;services;sexy;shiksha;shoes;singles;social;sohu;solar;solutions;soy;supplies;supply;support;surgery;systems;tattoo;tax;technology;tel;tienda;tips;today;tools;town;toys;trade;training;travel;university;uno;vacations;vegas;ventures;viajes;villas;vision;vodka;vote;voting;voto;voyage;wang;watch;webcam;wed;wiki;works;wtc;wtf;xxx;xyz;zone");
+pref("extensions.linkificator@markapola.useCcTLDs", true);
+pref("extensions.linkificator@markapola.ccTLDs", "ac;ad;ae;af;ag;ai;al;am;an;ao;aq;ar;as;at;au;aw;ax;az;ba;bb;bd;be;bf;bg;bh;bi;bj;bm;bn;bo;br;bs;bt;bv;bw;by;bz;ca;cc;cd;cf;cg;ch;ci;ck;cl;cm;cn;co;cr;cu;cv;cw;cx;cy;cz;de;dj;dk;dm;do;dz;ec;ee;eg;er;es;et;eu;fi;fj;fk;fm;fo;fr;ga;gb;gd;ge;gf;gg;gh;gi;gl;gm;gn;gp;gq;gr;gs;gt;gu;gw;gy;hk;hm;hn;hr;ht;hu;id;ie;il;im;in;io;iq;ir;is;it;je;jm;jo;jp;ke;kg;kh;ki;km;kn;kp;kr;kw;ky;kz;la;lb;lc;li;lk;lr;ls;lt;lu;lv;ly;ma;mc;md;me;mg;mh;mk;ml;mm;mn;mo;mp;mq;mr;ms;mt;mu;mv;mw;mx;my;mz;na;nc;ne;nf;ng;ni;nl;no;np;nr;nu;nz;om;pa;pe;pf;pg;ph;pk;pl;pm;pn;pr;ps;pt;pw;py;qa;re;ro;rs;ru;rw;sa;sb;sc;sd;se;sg;sh;si;sj;sk;sl;sm;sn;so;sr;st;su;sv;sx;sy;sz;tc;td;tf;tg;th;tj;tk;tl;tm;tn;to;tp;tr;tt;tv;tw;tz;ua;ug;uk;us;uy;uz;va;vc;ve;vg;vi;vn;vu;wf;ws;ye;yt;za;zm;zw");
+pref("extensions.linkificator@markapola.useGeoTLDs", true);
+pref("extensions.linkificator@markapola.geoTLDs", "abudhabi;africa;alsace;amsterdam;aquitaine;bar;barcelona;bayern;berlin;boston;brussels;budapest;capetown;catalonia;colognea;cymru;dohaa;dubai;durban;gent;hamburg;helsinki;istanbul;joburg;koeln;kyoto;london;madrid;melbourne;miami;moscow;nagoya;nrw;nyc;okinawa;osaka;paris;quebec;rio;roma;vlaanderen;saarland;stockholm;sydney;taipei;tirol;tokyo;vlaanderen;wales;wien;zuerich;yokohama");
+pref("extensions.linkificator@markapola.useCommunityTLDs", true);
+pref("extensions.linkificator@markapola.communityTLDs", "aco;adac;archi;art;audi;axa;bank;bbb;bugatti;bzh;catholic;corp;corsica;cpa;eco;edeka;eus;gal;gay;gea;gmbh;gree;halal;hotel;ieee;ikano;immo;inc;insurance;islam;ismaili;kids;lamborghini;lds;leclerc;llc;llp;med;merck;mls;mma;music;ngo;ong;ovh;pars;pharmacy;radio;reit;scot;shia;shop;ski;spa;sport;stada;swiss;taxi;tatar;tennis;thai;versicherung;webs");
 // sync management, deactivated by default
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.contextMenuIntegration", false);
@@ -77,6 +84,13 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.customRules", f
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.requiredCharacters", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.protocols", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.subdomains", false);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.topLevelDomains", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.excludedElements", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.inlineElements", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.useGTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.gTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.useCcTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.ccTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.useGeoTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.geoTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.useCommunityTLDs", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.communityTLDs", false);

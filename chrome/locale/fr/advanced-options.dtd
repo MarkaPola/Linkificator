@@ -31,13 +31,20 @@
 <!ENTITY advanced-settings.custom-rules.edit-button.tooltip               "Editer">
 <!ENTITY advanced-settings.custom-rules.delete-button.tooltip             "Supprimer">
 
+<!ENTITY advanced-settings.configuration.tab-general                      "Général">
+<!ENTITY advanced-settings.configuration.tab-topLevelDomains              "Domaines de premier niveau">
+
 <!ENTITY advanced-settings.configuration.requiredCharacters               "Caractères requis">
 <!ENTITY advanced-settings.configuration.protocols                        "Protocoles">
 <!ENTITY advanced-settings.configuration.subdomains                       "Sous-domaines">
-<!ENTITY advanced-settings.configuration.topLevelDomains                  "Domaines de premier niveau">
 <!ENTITY advanced-settings.configuration.excludedElements                 "Eléments exclus">
 <!ENTITY advanced-settings.configuration.inlineElements                   "Eléments en ligne">
 <!ENTITY advanced-settings.configuration.reset-button                     "Remettre par défaut">
+
+<!ENTITY advanced-settings.configuration.gTLDs                            "Génériques">
+<!ENTITY advanced-settings.configuration.ccTLDs                           "Codes de Pays">
+<!ENTITY advanced-settings.configuration.geoTLDs                          "Géographiques">
+<!ENTITY advanced-settings.configuration.communityTLDs                    "Communautés">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label                  "Nom">
 <!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Identification de la règle">

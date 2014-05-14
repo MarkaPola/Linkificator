@@ -55,12 +55,31 @@
 				   name="extensions.linkificator@markapola.protocols"/>
       <preference  type="string" id="pref.subdomains"
 				   name="extensions.linkificator@markapola.subdomains"/>
-      <preference  type="string" id="pref.topLevelDomains"
-				   name="extensions.linkificator@markapola.topLevelDomains"/>
       <preference  type="string" id="pref.excludedElements"
 				   name="extensions.linkificator@markapola.excludedElements"/>
       <preference  type="string" id="pref.inlineElements"
 				   name="extensions.linkificator@markapola.inlineElements"/>
+
+      <preference  type="bool" id="pref.useGTLDs"
+				   name="extensions.linkificator@markapola.useGTLDs"
+                   onchange="AdvancedSettings.change('useGTLDs');"/>
+      <preference  type="string" id="pref.gTLDs"
+				   name="extensions.linkificator@markapola.gTLDs"/>
+      <preference  type="bool" id="pref.useCcTLDs"
+				   name="extensions.linkificator@markapola.useCcTLDs"
+                   onchange="AdvancedSettings.change('useCcTLDs');"/>
+      <preference  type="string" id="pref.ccTLDs"
+				   name="extensions.linkificator@markapola.ccTLDs"/>
+      <preference  type="bool" id="pref.useGeoTLDs"
+				   name="extensions.linkificator@markapola.useGeoTLDs"
+                   onchange="AdvancedSettings.change('useGeoTLDs');"/>
+      <preference  type="string" id="pref.geoTLDs"
+				   name="extensions.linkificator@markapola.geoTLDs"/>
+      <preference  type="bool" id="pref.useCommunityTLDs"
+				   name="extensions.linkificator@markapola.useCommunityTLDs"
+                   onchange="AdvancedSettings.change('useCommunityTLDs');"/>
+      <preference  type="string" id="pref.communityTLDs"
+				   name="extensions.linkificator@markapola.communityTLDs"/>
 	</preferences>
 
 	<tabbox id="advanced-settings.tabbox">
@@ -208,79 +227,146 @@
 		</tabpanel>
 
 		<tabpanel id="advanced-settings.configuration" orient="vertical">
-          <groupbox>
-    	    <caption label="&advanced-settings.configuration.requiredCharacters;"/>
-      	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.requiredCharacters.list" 
-					   preference="pref.requiredCharacters"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.requiredCharacters.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
-          <groupbox>
-    	    <caption label="&advanced-settings.configuration.protocols;"/>
-      	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.protocol.list" 
-					   preference="pref.protocols"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.protocol.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
-    	  <groupbox>
-    	    <caption label="&advanced-settings.configuration.subdomains;"/>
-    	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.subdomain.list"
-					   preference="pref.subdomains"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.subdomain.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
-    	  <groupbox>
-    	    <caption label="&advanced-settings.configuration.topLevelDomains;"/>
-    	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.topleveldomains.list"
-					   preference="pref.topLevelDomains"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.topleveldomains.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
-    	  <groupbox>
-    	    <caption label="&advanced-settings.configuration.excludedElements;"/>
-    	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.excludedElement.list"
-					   preference="pref.excludedElements"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.excludedElement.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
-    	  <groupbox>
-    	    <caption label="&advanced-settings.configuration.inlineElements;"/>
-    	    <hbox align="center">
-    		  <textbox class="advanced-settings.configuration.textbox"
-					   id="advanced-settings.configuration.inlineElement.list"
-					   preference="pref.inlineElements"/>
-			  <spacer flex="1"/>
-    		  <button id="advanced-settings.configuration.inlineElement.reset"
-					  label="&advanced-settings.configuration.reset-button;"/>
-    	    </hbox>
-    	  </groupbox>
+		  <tabbox id="advanced-settings.configuration.tabbox">
+			<tabs>
+			  <tab label="&advanced-settings.configuration.tab-general;"/>
+			  <tab label="&advanced-settings.configuration.tab-topLevelDomains;"/>
+			</tabs>
+
+			<tabpanels>
+			  <tabpanel id="advanced-settings.configuration.general" orient="vertical">
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.requiredCharacters;"/>
+      			  <hbox align="center">
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.requiredCharacters.list" 
+							 preference="pref.requiredCharacters"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.requiredCharacters.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.protocols;"/>
+      			  <hbox align="center">
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.protocol.list" 
+							 preference="pref.protocols"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.protocol.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+    			<groupbox>
+    			  <caption label="&advanced-settings.configuration.subdomains;"/>
+    			  <hbox align="center">
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.subdomain.list"
+							 preference="pref.subdomains"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.subdomain.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+    			<groupbox>
+    			  <caption label="&advanced-settings.configuration.excludedElements;"/>
+    			  <hbox align="center">
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.excludedElement.list"
+							 preference="pref.excludedElements"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.excludedElement.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+    			<groupbox>
+    			  <caption label="&advanced-settings.configuration.inlineElements;"/>
+    			  <hbox align="center">
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.inlineElement.list"
+							 preference="pref.inlineElements"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.inlineElement.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+			  </tabpanel>
+
+			  <tabpanel id="advanced-settings.configuration.topLevelDomains" orient="vertical">
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.gTLDs;"/>
+      			  <hbox align="center">
+					<checkbox id="advanced-settings.configuration.topLevelDomains.use-gTLDs"
+							  preference="pref.useGTLDs"/>
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.gTLDS.list" 
+							 preference="pref.gTLDs"
+							 observes="broadcaster.useGTLDs"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.gTLDs.reset"
+							label="&advanced-settings.configuration.reset-button;"
+							observes="broadcaster.useGTLDs"/>
+    			  </hbox>
+    			</groupbox>
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.ccTLDs;"/>
+      			  <hbox align="center">
+					<checkbox id="advanced-settings.configuration.topLevelDomains.use-ccTLDs"
+							  preference="pref.useCcTLDs"/>
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.ccTLDS.list" 
+							 preference="pref.ccTLDs"
+							 observes="broadcaster.useCcTLDs"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.ccTLDs.reset"
+							label="&advanced-settings.configuration.reset-button;"
+							observes="broadcaster.useCcTLDs"/>
+    			  </hbox>
+    			</groupbox>
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.geoTLDs;"/>
+      			  <hbox align="center">
+					<checkbox id="advanced-settings.configuration.topLevelDomains.use-geoTLDs"
+							  preference="pref.useGeoTLDs"/>
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.geoTLDS.list" 
+							 preference="pref.geoTLDs"
+							 observes="broadcaster.useGeoTLDs"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.geoTLDs.reset"
+							label="&advanced-settings.configuration.reset-button;"
+							observes="broadcaster.useGeoTLDs"/>
+    			  </hbox>
+    			</groupbox>
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.communityTLDs;"/>
+      			  <hbox align="center">
+					<checkbox id="advanced-settings.configuration.topLevelDomains.use-communityTLDs"
+							  preference="pref.useCommunityTLDs"/>
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.communityTLDS.list" 
+							 preference="pref.communityTLDs"
+							 observes="broadcaster.useCommunityTLDs"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.communityTLDs.reset"
+							label="&advanced-settings.configuration.reset-button;"
+							observes="broadcaster.useCommunityTLDs"/>
+    			  </hbox>
+    			</groupbox>
+			  </tabpanel>
+			</tabpanels>
+		  </tabbox>
 		</tabpanel>
-      </tabpanels>
+	  </tabpanels>
 	</tabbox>
 
 	<broadcasterset>
       <broadcaster id="broadcaster.supportEmail" disabled="false"/>
       <broadcaster id="broadcaster.supportStandardURLs" disabled="false"/>
+      <broadcaster id="broadcaster.useGTLDs" disabled="false"/>
+      <broadcaster id="broadcaster.useCcTLDs" disabled="false"/>
+      <broadcaster id="broadcaster.useGeoTLDs" disabled="false"/>
+      <broadcaster id="broadcaster.useCommunityTLDs" disabled="false"/>
 	</broadcasterset>
 
   </prefpane>

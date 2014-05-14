@@ -12,7 +12,7 @@ brussels
 budapest
 capetown
 catalonia
-colognea
+cologne
 cymru
 dohaa
 dubai
@@ -50,4 +50,3 @@ wales
 wien
 zuerich
 yokohama
-
