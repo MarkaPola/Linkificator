@@ -583,41 +583,51 @@ function CustomRules (preferences, defaults, properties) {
 function Configuration (preferences, defaults, properties) {
 	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
 	
-    function resetPreference (id) {
+    function resetCharPreference (id) {
         if (! instantApply) {
             // force change of preference to ensure update on reset
             preferences.setCharPref(id, '');
         }
         preferences.clearUserPref(id);
     }
+    function resetIntPreference (id) {
+        if (! instantApply) {
+            // force change of preference to ensure update on reset
+            preferences.setIntPref(id, 0);
+        }
+        preferences.clearUserPref(id);
+    }
     
 	function resetRequiredCharacters (event) {
-		resetPreference('requiredCharacters');
+		resetCharPreference('requiredCharacters');
 	}
 	function resetProtocols (event) {
-		resetPreference('protocols');
+		resetCharPreference('protocols');
 	}
 	function resetSubdomains (event) {
-		resetPreference('subdomains');
+		resetCharPreference('subdomains');
 	}
 	function resetExcludedElements (event) {
-		resetPreference('excludedElements');
+		resetCharPreference('excludedElements');
 	}
 	function resetInlineElements (event) {
-		resetPreference('inlineElements');
+		resetCharPreference('inlineElements');
+	}
+	function resetMaxDataSize (event) {
+		resetIntPreference('maxDataSize');
 	}
 
     function resetGTLDs (event) {
-		resetPreference('gTLDs');
+		resetCharPreference('gTLDs');
 	}
     function resetCcTLDs (event) {
-		resetPreference('ccTLDs');
+		resetCharPreference('ccTLDs');
 	}
     function resetGeoTLDs (event) {
-		resetPreference('geoTLDs');
+		resetCharPreference('geoTLDs');
 	}
     function resetCommunityTLDs (event) {
-		resetPreference('communityTLDs');
+		resetCharPreference('communityTLDs');
 	}
 
 	// manage events
@@ -629,6 +639,8 @@ function Configuration (preferences, defaults, properties) {
 
 	$('advanced-settings.configuration.excludedElement.reset').addEventListener('command', resetExcludedElements);
 	$('advanced-settings.configuration.inlineElement.reset').addEventListener('command', resetInlineElements);
+    
+	$('advanced-settings.configuration.maxDataSize.reset').addEventListener('command', resetMaxDataSize);
     
 	$('advanced-settings.configuration.gTLDs.reset').addEventListener('command', resetGTLDs);
 	$('advanced-settings.configuration.ccTLDs.reset').addEventListener('command', resetCcTLDs);
@@ -649,6 +661,8 @@ function Configuration (preferences, defaults, properties) {
 
 			$('advanced-settings.configuration.excludedElement.reset').removeEventListener('command', resetExcludedElements);
 			$('advanced-settings.configuration.inlineElement.reset').removeEventListener('command', resetInlineElements);
+
+			$('advanced-settings.configuration.inlineElement.reset').removeEventListener('command', resetMaxDataSize);
 
             $('advanced-settings.configuration.gTLDs.reset').removeEventListener('command', resetGTLDs);
 	        $('advanced-settings.configuration.ccTLDs.reset').removeEventListener('command', resetCcTLDs);

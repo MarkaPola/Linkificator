@@ -39,6 +39,7 @@
 <!ENTITY advanced-settings.configuration.subdomains                       "Sous-domaines">
 <!ENTITY advanced-settings.configuration.excludedElements                 "Eléments exclus">
 <!ENTITY advanced-settings.configuration.inlineElements                   "Eléments en ligne">
+<!ENTITY advanced-settings.configuration.maxDataSize                      "Taille maximum des données">
 <!ENTITY advanced-settings.configuration.reset-button                     "Remettre par défaut">
 
 <!ENTITY advanced-settings.configuration.gTLDs                            "Génériques">

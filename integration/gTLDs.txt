@@ -9,6 +9,7 @@ arpa
 asia
 associates
 audio
+autos
 bargains
 beer
 best
@@ -114,6 +115,7 @@ haus
 hiphop
 holdings
 holiday
+homes
 horse
 house
 immobilien
@@ -154,6 +156,7 @@ moda
 moe
 monash
 museum
+motorcycles
 name
 net
 neustar
@@ -177,6 +180,7 @@ pub
 qpon
 recipes
 red
+reise
 reisen
 ren
 rentals
@@ -224,6 +228,7 @@ uno
 vacations
 vegas
 ventures
+versicherung
 viajes
 villas
 vision
@@ -242,4 +247,5 @@ wtc
 wtf
 xxx
 xyz
+yachts
 zone

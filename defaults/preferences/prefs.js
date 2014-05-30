@@ -42,6 +42,7 @@ pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;f
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
 pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;@onclick;@onmousedown;@onmouseup");
 pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt;span;wbr");
+pref("extensions.linkificator@markapola.maxDataSize", 500000);
 pref("extensions.linkificator@markapola.sync", false);
 pref("extensions.linkificator@markapola.processing", "{\"interval\":10,\"iterations\":40}");
 pref("extensions.linkificator@markapola.useGTLDs", true);
@@ -86,6 +87,7 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.protocols", fal
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.subdomains", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.excludedElements", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.inlineElements", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.maxDataSize", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.useGTLDs", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.gTLDs", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.useCcTLDs", false);

@@ -59,6 +59,8 @@
 				   name="extensions.linkificator@markapola.excludedElements"/>
       <preference  type="string" id="pref.inlineElements"
 				   name="extensions.linkificator@markapola.inlineElements"/>
+      <preference  type="int" id="pref.maxDataSize"
+				   name="extensions.linkificator@markapola.maxDataSize"/>
 
       <preference  type="bool" id="pref.useGTLDs"
 				   name="extensions.linkificator@markapola.useGTLDs"
@@ -287,6 +289,17 @@
 							 preference="pref.inlineElements"/>
 					<spacer flex="1"/>
     				<button id="advanced-settings.configuration.inlineElement.reset"
+							label="&advanced-settings.configuration.reset-button;"/>
+    			  </hbox>
+    			</groupbox>
+    			<groupbox>
+    			  <caption label="&advanced-settings.configuration.maxDataSize;"/>
+    			  <hbox align="center">
+    				<textbox id="advanced-settings.configuration.maxDataSize.number"
+							 type="number" min="1000" increment="100"
+							 preference="pref.maxDataSize"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.maxDataSize.reset"
 							label="&advanced-settings.configuration.reset-button;"/>
     			  </hbox>
     			</groupbox>

@@ -537,7 +537,7 @@ function LinkifyNode (node, statistics, properties, parser, style, completed) {
         this.node = node;
         this.parent = node.parentNode;
         this.sibling = node.nextSibling;
-        this.text = node.nodeValue;
+        this.text = node.nodeValue.length > properties.extraFeatures.maxDataSize ? null : node.nodeValue;
 
         return Linkify.call(this, node.ownerDocument, statistics, properties, style, completed);
     }
@@ -548,7 +548,7 @@ LinkifyNode.prototype.linkify = function (isOver) {
     var iterations = 0;
     
     for (let match = null;
-         !isOver(iterations) && (match = this.parser.match(this.text));
+         !isOver(iterations) && this.text !== null && (match = this.parser.match(this.text));
          ++iterations, ++this.count) {
         if (!matched) {
             matched = true;
@@ -605,7 +605,7 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
             let regex = new RegExp("[^\\s'\"<>«»“”‘’]+", "g");
             let result;
             while ((result = regex.exec (this._text)) !== null) {
-                if (result[0].search(requiredChars) != -1) {
+                if (result[0].length <= properties.extraFeatures.maxDataSize && result[0].search(requiredChars) != -1) {
                     this._items.push({offset: result.index, text: result[0]});
                 }
             }
