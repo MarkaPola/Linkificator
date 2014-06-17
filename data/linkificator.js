@@ -25,7 +25,7 @@ var documentObserver = (function () {
         observer.disconnect();
         
         setTimeout(function() {
-            self.port.emit ('document-changed');
+            self.port.emit('document-changed');
         }, delay);
     }).bind(this));
 
@@ -33,12 +33,15 @@ var documentObserver = (function () {
         observe: function (timeout) {
             observing = true;
             delay = timeout === undefined ? 300 : timeout;
-            observer.observe (window.document, config);
+            // wait a little before starting to observe to ensure all changes are done...
+            setTimeout(function() {
+                observer.observe(window.document, config);
+            }, delay);
         },
         disconnect: function () {
             if (observing) {
                 observing = false;
-                observer.disconnect ();
+                observer.disconnect();
             }
         }
     };
@@ -411,8 +414,8 @@ function Parser (properties) {
 
     var requiredChars = properties.requiredCharacters;
     
-    var query =  "//text()[ancestor::body and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
-        + ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
+    var query =  "//text()[ancestor::*[local-name()='body'] and not(ancestor::*[local-name()='" + properties.predefinedRules.excludedElements.join("'] or ancestor::*[local-name()='")
+        + "']) and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
     if (properties.predefinedRules.support.standard.useSubdomains) {
         for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
             let sub_domain = properties.predefinedRules.subdomains[index].filter;
@@ -425,8 +428,8 @@ function Parser (properties) {
     }
     query += "contains(., '" + requiredChars.join("') or contains(., '") + "'))]";
 
-    var query2 =  "(//" + properties.extraFeatures.inlineElements.join("|//") + ")[ancestor::body and not(ancestor::" + properties.extraFeatures.inlineElements.join(" or ancestor::") + ") and not(ancestor::" + properties.predefinedRules.excludedElements.join(" or ancestor::")
-        + ") and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
+    var query2 =  "(//*[local-name()='" + properties.extraFeatures.inlineElements.join("' or local-name()='") + "'])[ancestor::*[local-name()='body'] and not(..[local-name()='" + properties.extraFeatures.inlineElements.join("'] or ..[local-name()='") + "']) and not(ancestor::*[local-name()='" + properties.predefinedRules.excludedElements.join("'] or ancestor::*[local-name()='")
+        + "']) and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
 
     return {
         get requiredCharacters () {
@@ -537,8 +540,8 @@ function LinkifyNode (node, statistics, properties, parser, style, completed) {
         this.node = node;
         this.parent = node.parentNode;
         this.sibling = node.nextSibling;
-        this.text = node.nodeValue.length > properties.extraFeatures.maxDataSize ? null : node.nodeValue;
-
+        this.text = (properties.extraFeatures.maxDataSize > 0 && node.nodeValue.length > properties.extraFeatures.maxDataSize) ? null : node.nodeValue;
+        
         return Linkify.call(this, node.ownerDocument, statistics, properties, style, completed);
     }
 }
@@ -605,7 +608,7 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
             let regex = new RegExp("[^\\s'\"<>«»“”‘’]+", "g");
             let result;
             while ((result = regex.exec (this._text)) !== null) {
-                if (result[0].length <= properties.extraFeatures.maxDataSize && result[0].search(requiredChars) != -1) {
+                if ((properties.extraFeatures.maxDataSize == 0 || result[0].length <= properties.extraFeatures.maxDataSize) && result[0].search(requiredChars) != -1) {
                     this._items.push({offset: result.index, text: result[0]});
                 }
             }
@@ -619,6 +622,9 @@ function LinkifySplittedText (node, statistics, properties, parser, style, compl
             
             return this._nodes.filter(
                 function (element, index, array) {
+                    if (element.node === null)
+                        return false;
+                    
                     let max = element.index + element.node.nodeValue.length - 1;
                     return (start >= element.index && start <= max)
                         || (end >= element.index && end <= max)
@@ -713,8 +719,14 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
                     parent.insertBefore(this.document.createTextNode(node.nodeValue.substring(textNode.offset(i,start)-element.index)), sibling);
                     
                     // update descriptor for future treatments
-                    element.index = textNode.offset(i,start);
-                    element.node = anchor.nextSibling;
+                    if (anchor.nextSibling.nodeType == 3) {
+                        // this is a text node
+                        element.index = textNode.offset(i,start);
+                        element.node = anchor.nextSibling;
+                    } else {
+                        // text of last node of range is exhausted
+                        element.node = null;
+                    }
                 } else {
                     // create range matching URL and attach it to the anchor
                     let range = document.createRange();
@@ -730,8 +742,18 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
                     range.detach();
                     
                     // update descriptor for future treatments
-                    element.index = textNode.offset(i,start);
-                    element.node = anchor.nextSibling;
+                    if (anchor.nextSibling.nodeType == 3) {
+                        // this is a text node
+                        element.index = textNode.offset(i,start);
+                        element.node = anchor.nextSibling;
+                    } else {
+                        // text of last node of range is exhausted
+                        element.node = null;
+                    }
+                    // erase all previous nodes of the list
+                    for (let li = list.length-2; li >= 0; li--) {
+                        list[li].node = null;
+                    }
                 }
             }
         }
@@ -815,7 +837,7 @@ function execute (action, properties) {
             parseDocument(parser.splittedTextNodes, LinkifySplittedText);
         }
         parseDocument(parser.textNodes, LinkifyNode);
-
+        
         state.complete();
     }
     
