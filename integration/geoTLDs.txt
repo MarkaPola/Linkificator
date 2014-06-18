@@ -10,6 +10,7 @@ berlin
 boston
 brussels
 budapest
+bzh
 capetown
 catalonia
 cologne
@@ -38,8 +39,8 @@ paris
 quebec
 rio
 roma
-vlaanderen
 saarland
+scot
 stockholm
 sydney
 taipei
