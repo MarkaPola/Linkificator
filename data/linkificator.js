@@ -534,45 +534,90 @@ Linkify.prototype = {
 
 // To linkify text nodes.
 function LinkifyNode (node, statistics, properties, parser, style, completed) {
+    function TextNode (node, requiredChars) {
+        if (node) {
+            this._node = node;
+            this._items = [];
+
+            // split text to speed-up URI pattern matching
+            let regex = new RegExp("[^\\s'\"<>«»“”‘’]+", "g");
+            let text = node.nodeValue;
+            let result;
+
+            while ((result = regex.exec (text)) !== null) {
+                if ((properties.extraFeatures.maxDataSize == 0 || result[0].length <= properties.extraFeatures.maxDataSize) && result[0].search(requiredChars) != -1) {
+                    this._items.push({offset: result.index, text: result[0]});
+                }
+            }
+        }
+    }
+    TextNode.prototype = {
+        get node () {
+            return this._node;
+        },
+        get length () {
+            return this._items.length;
+        },
+        text: function (index) {
+            if (index === undefined) {
+                return this._node.nodeValue;
+            } else {
+                return this._items[index].text;
+            }
+        },
+        offset: function (index,  pos) {
+            return this._items[index].offset + pos;
+        }
+    };
+    
     if (node) {
         this.parser = parser;
 
+        this.textNode = new TextNode(node, new RegExp(parser.requiredCharacters.join("|"),"i"));
+
+        this.offset = 0;
         this.node = node;
-        this.parent = node.parentNode;
-        this.sibling = node.nextSibling;
-        this.text = (properties.extraFeatures.maxDataSize > 0 && node.nodeValue.length > properties.extraFeatures.maxDataSize) ? null : node.nodeValue;
+
+        this.index = 0;
         
         return Linkify.call(this, node.ownerDocument, statistics, properties, style, completed);
     }
 }
 LinkifyNode.prototype = new Linkify;
 LinkifyNode.prototype.linkify = function (isOver) {
-    var matched = false;
     var iterations = 0;
-    
-    for (let match = null;
-         !isOver(iterations) && this.text !== null && (match = this.parser.match(this.text));
-         ++iterations, ++this.count) {
-        if (!matched) {
-            matched = true;
-            this.parent.removeChild(this.node);
-        }
-        
-        this.parent.insertBefore(this.document.createTextNode(this.text.substring(0, match.index)), this.sibling);
 
-        let anchor = this.newAnchor(match.url);
-        anchor.appendChild(this.document.createTextNode(match.text));
-        this.parent.insertBefore(anchor, this.sibling);
-        
-        this.text = this.text.substr(match.index + match.length);
+    for (; !isOver(iterations) && this.index < this.textNode.length; ++iterations, ++this.index) {
+        let text = this.textNode.text(this.index);
+        let start = 0;
+        let match = null;
+            
+        while ((match = this.parser.match(text.substring(start)))) {
+            let pos = start + match.index;
+            start =  pos + match.length;
+            let url = match.url;
+            
+            this.count++;
+            
+            let parent = this.node.parentNode;
+            let sibling = this.node.nextSibling;
+                    
+            parent.removeChild(this.node);
+            parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(0, this.textNode.offset(this.index,pos)-this.offset)), sibling);
+            
+            let anchor = this.newAnchor(match.url);
+            anchor.appendChild(this.document.createTextNode(match.text));
+            parent.insertBefore(anchor, sibling);
+
+            parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(this.textNode.offset(this.index,start)-this.offset)), sibling);
+                    
+            // update for future treatments
+            this.offset = this.textNode.offset(this.index,start);
+            this.node = anchor.nextSibling;
+        }
     }
-    
-    if (matched) {
-        this.node = this.document.createTextNode(this.text);
-        this.parent.insertBefore(this.node, this.sibling);
-    }
-    
-    return !isOver(iterations);
+
+    return this.index == this.textNode.length;
 };
 
 // To linkify URLs splitted on multiple text nodes
