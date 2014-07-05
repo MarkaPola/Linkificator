@@ -1,5 +1,6 @@
 academy
 accountants
+active
 actor
 aero
 agency
@@ -29,6 +30,7 @@ buzz
 cab
 camera
 camp
+cancerresearch
 capital
 cards
 care
@@ -73,6 +75,7 @@ dentist
 desi
 diamonds
 digital
+direct
 directory
 discount
 domains
@@ -153,6 +156,7 @@ limited
 limo
 link
 loans
+lotto
 luxe
 luxury
 management

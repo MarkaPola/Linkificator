@@ -36,6 +36,7 @@ nyc
 okinawa
 osaka
 paris
+place
 quebec
 rio
 roma

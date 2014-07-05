@@ -571,45 +571,52 @@ function LinkifyNode (node, statistics, properties, parser, style, completed) {
     };
     
     if (node) {
-        this.parser = parser;
+        if (!node.parentNode) {
+            // for unknown reason (for now !), some text nodes does not have a parent.
+            // these nodes cannot be handled and are ignored.
+            this.node = null;
+        } else {
+            this.parser = parser;
 
-        this.textNode = new TextNode(node, new RegExp(parser.requiredCharacters.join("|"),"i"));
+            this.textNode = new TextNode(node, new RegExp(parser.requiredCharacters.join("|"),"i"));
 
-        this.offset = 0;
-        this.node = node;
-
-        this.index = 0;
+            this.offset = 0;
+            this.node = node;
+            this.parent = node.parentNode;
+            this.index = 0;
+        }
         
         return Linkify.call(this, node.ownerDocument, statistics, properties, style, completed);
     }
 }
 LinkifyNode.prototype = new Linkify;
 LinkifyNode.prototype.linkify = function (isOver) {
+    if (!this.node)
+        return true;
+    
     var iterations = 0;
 
     for (; !isOver(iterations) && this.index < this.textNode.length; ++iterations, ++this.index) {
         let text = this.textNode.text(this.index);
         let start = 0;
         let match = null;
-            
+        
         while ((match = this.parser.match(text.substring(start)))) {
             let pos = start + match.index;
             start =  pos + match.length;
             let url = match.url;
             
             this.count++;
-            
-            let parent = this.node.parentNode;
             let sibling = this.node.nextSibling;
                     
-            parent.removeChild(this.node);
-            parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(0, this.textNode.offset(this.index,pos)-this.offset)), sibling);
+            this.parent.removeChild(this.node);
+            this.parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(0, this.textNode.offset(this.index,pos)-this.offset)), sibling);
             
             let anchor = this.newAnchor(match.url);
             anchor.appendChild(this.document.createTextNode(match.text));
-            parent.insertBefore(anchor, sibling);
+            this.parent.insertBefore(anchor, sibling);
 
-            parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(this.textNode.offset(this.index,start)-this.offset)), sibling);
+            this.parent.insertBefore(this.document.createTextNode(this.node.nodeValue.substring(this.textNode.offset(this.index,start)-this.offset)), sibling);
                     
             // update for future treatments
             this.offset = this.textNode.offset(this.index,start);
