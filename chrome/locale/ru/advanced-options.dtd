@@ -1,0 +1,59 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- en-US localization - Linkificator's module
+   - author: Капелька Яда -->
+
+<!ENTITY advanced-settings.title                                          "Расширенные настройки Linkificator">
+
+<!ENTITY advanced-settings.tab-links                                      "Ссылки">
+<!ENTITY advanced-settings.tab-custom-rules                               "Пользовательские правила">
+<!ENTITY advanced-settings.tab-configuration                              "Конфигурация">
+
+<!ENTITY advanced-settings.links.predefined-rules                         "Применять предопределённые правила для:">
+<!ENTITY advanced-settings.links.predefined-rules.email-address           "Адреса электронной почты">
+<!ENTITY advanced-settings.links.predefined-rules.about-protocol          "about: протокол">
+<!ENTITY advanced-settings.links.predefined-rules.standard-urls           "Стандартные URL-адреса">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains      "Использовать поддомены для определения протокола">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD             "Использовать домены верхнего уровня">
+<!ENTITY advanced-settings.links.predefined-rules.URI-linkify-authority   "Подчёркивать URL, содержащие единственную часть (т.е. host:port)">
+<!ENTITY advanced-settings.links.custom-rules                             "Применять пользовательские правила для:">
+<!ENTITY advanced-settings.links.custom-rules.before-predefined           "Перед списком предопределённых правил">
+<!ENTITY advanced-settings.links.custom-rules.after-predefined            "После списка предопределённых правил">
+<!ENTITY advanced-settings.links.extra-features.inline-elements           "Обрабатывать встроенные элементы">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification   "Автоматически обрабатывать динамические изменения">
+
+<!ENTITY advanced-settings.custom-rules.before-predefined                 "Перед предопределёнными правилами">
+<!ENTITY advanced-settings.custom-rules.after-predefined                  "После предопределённых правил">
+<!ENTITY advanced-settings.custom-rules.add-button                        "Добавить правило">
+<!ENTITY advanced-settings.custom-rules.edit-button.tooltip               "Изменить">
+<!ENTITY advanced-settings.custom-rules.delete-button.tooltip             "Удалить">
+
+
+<!ENTITY advanced-settings.configuration.tab-general                      "Общие">
+<!ENTITY advanced-settings.configuration.tab-topLevelDomains              "Домены верхнего уровня">
+
+<!ENTITY advanced-settings.configuration.requiredCharacters               "Необходимые символы">
+<!ENTITY advanced-settings.configuration.protocols                        "Протоколы">
+<!ENTITY advanced-settings.configuration.subdomains                       "Поддомены">
+<!ENTITY advanced-settings.configuration.excludedElements                 "Исключённые элементы">
+<!ENTITY advanced-settings.configuration.inlineElements                   "Встроенные элементы">
+<!ENTITY advanced-settings.configuration.maxDataSize                      "Максимальный размер данных">
+<!ENTITY advanced-settings.configuration.reset-button                     "Сброс по умолчанию">
+
+<!ENTITY advanced-settings.configuration.gTLDs                            "Основные">
+<!ENTITY advanced-settings.configuration.ccTLDs                           "Коды стран">
+<!ENTITY advanced-settings.configuration.geoTLDs                          "Географические">
+<!ENTITY advanced-settings.configuration.communityTLDs                    "Общественные">
+
+<!ENTITY advanced-settings.custom-rules.panel.name.label                  "Имя">
+<!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Название правила">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.label               "Шаблон">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.placeholder         "Регулярное выражение">
+<!ENTITY advanced-settings.custom-rules.panel.url.label                   "URL">
+<!ENTITY advanced-settings.custom-rules.panel.url.placeholder             "Регулярное выражение">
+
+<!ENTITY advanced-settings.ok-button                                      "OK">
+<!ENTITY advanced-settings.cancel-button                                  "Отмена">

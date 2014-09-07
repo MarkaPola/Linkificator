@@ -49,6 +49,17 @@
 		<em:description>Transforme les liens textuels en liens hypertexte cliquables...</em:description>
 	  </Description>
 	</em:localized>
+	<em:localized>
+	  <Description>
+		<em:locale>ru</em:locale>
+		<em:creator>MarkaPola</em:creator>
+		<em:contributor>Icons from www.fasticon.com</em:contributor>
+		<em:translator>Капелька Яда</em:translator>
+
+		<em:name>Linkificator</em:name>
+		<em:description>Преобразует текстовые ссылки в кликабельные.</em:description>
+	  </Description>
+	</em:localized>
 
   </Description>
 </RDF>

@@ -11,3 +11,4 @@ skin    linkificator classic/1.0 chrome/skin/
 
 locale	linkificator en-US chrome/locale/en-US/
 locale	linkificator    fr chrome/locale/fr/
+locale	linkificator    ru chrome/locale/ru/

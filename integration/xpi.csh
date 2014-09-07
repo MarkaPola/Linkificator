@@ -8,8 +8,11 @@ if ("$*" == "--help") then
 	exit 0;
 endif
 
+# goto add-on root directory
+cd `dirname $0`/..
+
 if (! -f package.json) then
-	echo "Must be executed from the root directory of the add-on";
+	echo "Not found package.json... Potentially corrupted add-on!";
 	exit 1;
 endif
 
@@ -29,7 +32,7 @@ endif
 #
 # packaging add-on
 #
-python ${ADDON_HOME_PATH}/bin/cfx xpi --templatedir=app-extension $XPI_OPTIONS $*
+python ${ADDON_HOME_PATH}/bin/cfx xpi --pkgdir=$cwd --templatedir=app-extension $XPI_OPTIONS $*
 
 #
 # patch options.xul for a correct UI behavior
@@ -40,11 +43,11 @@ else
 	set TDIR = /tmp/$$
 endif
 
-# to avoid sed errors on windows
+# noglob option generates sed errors
 unsetenv MSYS
 
 if (! -d $TDIR) mkdir $TDIR
-unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
+unzip -p linkificator.xpi options.xul > ! ${TDIR}/options.orig.xul
 cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" &/' | sed 's/<menulist/& sizetopopup="always"/' > ${TDIR}/options.xul
 zip -j linkificator.xpi ${TDIR}/options.xul
 rm -rf ${TDIR}
