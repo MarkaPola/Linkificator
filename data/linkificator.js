@@ -240,12 +240,12 @@ function Parser (properties) {
     const authentication = "(?:[\\w%$#&_\\-]+(?::[^@:/\\s]+)?@)";
     const full_authentication = "(?:[\\w%$#&_\\-]+:[^@:/\\s]+@)";
 
-    const start_uri_delimiter = "\\s.。,，、;:!?\\-#&()（）[\\]［］{}'\"`<>«»“”‘’";
-    const end_uri_delimiter = "\\s.。,，、;:!\\-()（）[\\]［］{}'\"`<>«»“”‘’";
+    const start_uri_delimiter = "\\s.。,，、;；:：!！?？=＝\\-－—*＊#＃&＆()（）〔〕[\\]［］【】{}｛｝'＇\"＂`<>＜＞‹›《》「」｢｣『』﹂﹁﹄﹃«»“”〝〞‘’";
+    const end_uri_delimiter = "\\s.。,，、;；:：!！？＝\\-－—＊＃＆()（）〔〕[\\]［］【】{}｛｝'＇\"＂`<>＜＞‹›《》「」｢｣『』﹂﹁﹄﹃«»“”〝〞‘’";
 
     const start_path_delimiter = "/\\?#";
     
-    const domain_element = "(?:[^-@\\s()<>[\\]{}/.:](?:[^@\\s()<>[\\]{}/.:]{1,}[^-@\\s()<>[\\]{}/.:]|[^-@\\s()<>[\\]{}/.:])?)";
+    const domain_element = "(?:[^"+start_uri_delimiter+"](?:[^"+start_uri_delimiter+"]{1,}[^"+start_uri_delimiter+"]|[^"+start_uri_delimiter+"])?)";
     const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"

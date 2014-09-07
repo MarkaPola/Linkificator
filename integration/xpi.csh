@@ -39,9 +39,13 @@ if ($?TMP) then
 else
 	set TDIR = /tmp/$$
 endif
+
+# to avoid sed errors on windows
+unsetenv MSYS
+
 if (! -d $TDIR) mkdir $TDIR
 unzip -p linkificator.xpi options.xul > ${TDIR}/options.orig.xul
-cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" pref-name="displayWidget"/' | sed 's/<menulist/<menulist sizetopopup="always"/' > ${TDIR}/options.xul
+cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" &/' | sed 's/<menulist/& sizetopopup="always"/' > ${TDIR}/options.xul
 zip -j linkificator.xpi ${TDIR}/options.xul
 rm -rf ${TDIR}
 
