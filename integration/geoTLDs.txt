@@ -18,6 +18,7 @@ cymru
 dohaa
 dubai
 durban
+frl
 gent
 hamburg
 helsinki
