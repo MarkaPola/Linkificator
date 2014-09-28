@@ -245,7 +245,9 @@ function Parser (properties) {
 
     const start_path_delimiter = "/\\?#";
     
-    const domain_element = "(?:[^"+start_uri_delimiter+"](?:[^"+start_uri_delimiter+"]{1,}[^"+start_uri_delimiter+"]|[^"+start_uri_delimiter+"])?)";
+    const domain_class = "@?#\\s()<>[\\]{}/.:";
+    const domain_element = "(?:[^-"+domain_class+"](?:[^"+domain_class+"]{1,}[^-"+domain_class+"]|[^-"+domain_class+"])?)";
+
     const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"

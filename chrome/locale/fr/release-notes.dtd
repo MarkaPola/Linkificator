@@ -16,6 +16,8 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.0.6-1              "Corrige une régression sur l'analyse de la partie domaine de l'URI.">
+
 <!ENTITY release-notes.enhancements.2.0.5-1              "Nouvelle localisation : russe (fournie par 'Капелька Яда').">
 <!ENTITY release-notes.enhancements.2.0.5-2              "Amélioration du support des langues asiatiques.">
 <!ENTITY release-notes.enhancements.2.0.5-3              "La liste des domaines de premier niveau a été mise à jour.">

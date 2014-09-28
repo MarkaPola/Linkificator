@@ -16,6 +16,8 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.0.6-1              "Fixes regression on URI domain part parsing.">
+
 <!ENTITY release-notes.enhancements.2.0.5-1              "New localization: russian (provided by 'Капелька Яда').">
 <!ENTITY release-notes.enhancements.2.0.5-2              "Enhances asian languages support.">
 <!ENTITY release-notes.enhancements.2.0.5-3              "Top level domains list is updated.">
