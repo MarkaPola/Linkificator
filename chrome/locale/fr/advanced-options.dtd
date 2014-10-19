@@ -15,6 +15,7 @@
 <!ENTITY advanced-settings.links.predefined-rules                         "Appliquer les règles prédéfinies pour :">
 <!ENTITY advanced-settings.links.predefined-rules.email-address           "Adresses de courriel">
 <!ENTITY advanced-settings.links.predefined-rules.about-protocol          "Protocole about:">
+<!ENTITY advanced-settings.links.predefined-rules.news-uri                "Protocole news:">
 <!ENTITY advanced-settings.links.predefined-rules.standard-urls           "URL standards">
 <!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains      "Utiliser les sous-domaines pour identifier le protocole">
 <!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD             "Utiliser les domaines de premier niveau">

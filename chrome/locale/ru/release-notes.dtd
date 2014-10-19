@@ -16,6 +16,9 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.0.7-1              "Enhances news protocol URIs parsing.">
+<!ENTITY release-notes.enhancements.2.0.7-2              "Улучшена поддержка восточно-азиатских языков.">
+
 <!ENTITY release-notes.enhancements.2.0.6-1              "Исправлена регрессия при парсинге частей URI домена.">
 
 <!ENTITY release-notes.enhancements.2.0.5-1              "Новая локализация: русский язык (перевод 'Капелька Яда').">

@@ -31,6 +31,11 @@
 				   name="extensions.linkificator@markapola.emailUseTLD"/>
       <preference  type="bool" id="pref.supportAbout"
 				   name="extensions.linkificator@markapola.supportAbout"/>
+      <preference  type="bool" id="pref.supportNews"
+				   name="extensions.linkificator@markapola.supportNews"
+				   onchange="AdvancedSettings.change('supportNews');"/>
+      <preference  type="bool" id="pref.newsUseTLD"
+				   name="extensions.linkificator@markapola.newsUseTLD"/>
       <preference  type="bool" id="pref.supportStandardURLs"
 				   name="extensions.linkificator@markapola.supportStandardURLs"
 				   onchange="AdvancedSettings.change('supportStandardURLs');"/>
@@ -108,6 +113,14 @@
 				<checkbox id="advanced-settings.link-type.predefined-rules.about-protocol"
 						  preference="pref.supportAbout"
 						  label="&advanced-settings.links.predefined-rules.about-protocol;"/>
+				<checkbox id="advanced-settings.link-type.predefined-rules.news-uri"
+						  preference="pref.supportNews"
+						  label="&advanced-settings.links.predefined-rules.news-uri;"/>
+				<checkbox class="indent"
+						  id="advanced-settings.link-type.predefined-rules.news-uri-use-TLD"
+						  preference="pref.newsUseTLD"
+						  label="&advanced-settings.links.predefined-rules.URI-use-TLD;"
+						  observes="broadcaster.supportNews"/>
 				<checkbox id="advanced-settings.link-type.predefined-rules.standard-urls"
 						  preference="pref.supportStandardURLs"
 						  label="&advanced-settings.links.predefined-rules.standard-urls;"/>
@@ -375,6 +388,7 @@
 
 	<broadcasterset>
       <broadcaster id="broadcaster.supportEmail" disabled="false"/>
+      <broadcaster id="broadcaster.supportNews" disabled="false"/>
       <broadcaster id="broadcaster.supportStandardURLs" disabled="false"/>
       <broadcaster id="broadcaster.useGTLDs" disabled="false"/>
       <broadcaster id="broadcaster.useCcTLDs" disabled="false"/>

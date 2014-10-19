@@ -253,6 +253,9 @@ function Parser (properties) {
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
         
+    const news_domain = properties.predefinedRules.support.news.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
+                                                                       : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
+        
     const domain = properties.predefinedRules.support.standard.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                       : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
     const full_domain = properties.predefinedRules.support.standard.useTLD ? domain
@@ -262,6 +265,7 @@ function Parser (properties) {
     const port = "(?::[\\d]{1,5})?";
 
     const IP_host = IP + port;
+    const news_domain_host = news_domain + port;
     const domain_host = domain + port;
     const full_domain_host = full_domain + port;
 
@@ -303,6 +307,21 @@ function Parser (properties) {
     }
     FullMailRule.prototype = new MailRule;
 
+    ///// news protocol. authority is optional
+    function NewsRule () {
+        PatternRule.call(this, "(news:(?://" + news_domain_host + "|" + IP_host + "[" + start_path_delimiter + "])?" + subpath + ")");
+    }
+    NewsRule.prototype = new PatternRule;
+    NewsRule.prototype.test = function(regex) {
+        return properties.predefinedRules.support.news.active && regex[this._index] !== undefined;
+    };
+    NewsRule.prototype.getURL = function(regex) {
+        if (regex[this._index])
+            return regex[this._index];
+        else
+            return null; 
+    };
+    
     ///// Full protocol (including protocol specification except e-mail one)
     function FullProtocolRule () {
         PatternRule.call(this, "(" + protocol + authentication + "?(?:" + domain_host + "|" + IP_host + ")" + "(?:[" + start_path_delimiter + "]" + subpath + ")?)");
@@ -406,6 +425,7 @@ function Parser (properties) {
     if (properties.predefinedRules.support.about.active)
         pattern.push(new AboutRule);
     pattern.push(new FullMailRule);
+    pattern.push(new NewsRule);
     pattern.push(new FullProtocolRule);
     pattern.push(new AuthenticatedDomainRule);
     pattern.push(new DomainRule);
@@ -425,6 +445,7 @@ function Parser (properties) {
         }
     }
     if (properties.predefinedRules.support.email.useTLD
+        || properties.predefinedRules.support.news.useTLD
         || properties.predefinedRules.support.standard.useTLD) {
         requiredChars.indexOf('.') === -1 && requiredChars.push('.');
     }
