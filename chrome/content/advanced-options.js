@@ -696,7 +696,6 @@ var AdvancedSettings = (function () {
 
             // configure observers
             $('broadcaster.supportEmail').setAttribute('disabled', !$('pref.supportEmail').value);
-            $('broadcaster.supportNews').setAttribute('disabled', !$('pref.supportNews').value);
             $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
 
             for (let p of ['useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {

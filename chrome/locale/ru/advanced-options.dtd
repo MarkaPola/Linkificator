@@ -15,7 +15,6 @@
 <!ENTITY advanced-settings.links.predefined-rules                         "Применять предопределённые правила для:">
 <!ENTITY advanced-settings.links.predefined-rules.email-address           "Адреса электронной почты">
 <!ENTITY advanced-settings.links.predefined-rules.about-protocol          "about: протокол">
-<!ENTITY advanced-settings.links.predefined-rules.news-uri                "news: протокол">
 <!ENTITY advanced-settings.links.predefined-rules.standard-urls           "Стандартные URL-адреса">
 <!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains      "Использовать поддомены для определения протокола">
 <!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD             "Использовать домены верхнего уровня">

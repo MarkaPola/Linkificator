@@ -27,8 +27,6 @@ pref("extensions.linkificator@markapola.backgroundColor", "#fff9ab");
 pref("extensions.linkificator@markapola.supportEmail", true);
 pref("extensions.linkificator@markapola.emailUseTLD", true);
 pref("extensions.linkificator@markapola.supportAbout", false);
-pref("extensions.linkificator@markapola.supportNews", true);
-pref("extensions.linkificator@markapola.newsUseTLD", true);
 pref("extensions.linkificator@markapola.supportStandardURLs", true);
 pref("extensions.linkificator@markapola.standardURLUseSubdomains", true);
 pref("extensions.linkificator@markapola.standardURLUseTLD", true);
