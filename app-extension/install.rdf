@@ -15,7 +15,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
         <em:minVersion>21.0</em:minVersion>
-        <em:maxVersion>34.*</em:maxVersion>
+        <em:maxVersion>35.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
@@ -25,6 +25,7 @@
     <em:description>Converts text links into clickable links...</em:description>
     <em:creator>MarkaPola</em:creator>    
 	<em:contributor>Icons by: FastIcon.com (http://www.fasticon.com)</em:contributor>
+	<em:contributor>Localization infrastructure: Crowdin.com (http://crowdin.com)</em:contributor>
 	<em:translator>MarkaPola</em:translator>
 
 	<em:localized>
@@ -32,6 +33,7 @@
 		<em:locale>en-US</em:locale>
 		<em:creator>MarkaPola</em:creator>
 		<em:contributor>Icons from www.fasticon.com</em:contributor>
+		<em:contributor>Localization infrastructure: Crowdin.com (http://crowdin.com)</em:contributor>
 		<em:translator>MarkaPola</em:translator>
 
 		<em:name>Linkificator</em:name>
@@ -42,7 +44,8 @@
 	  <Description>
 		<em:locale>fr</em:locale>
 		<em:creator>MarkaPola</em:creator>
-		<em:contributor>Icons from www.fasticon.com</em:contributor>
+		<em:contributor>Icones fournies par www.fasticon.com</em:contributor>
+		<em:contributor>Infrastructure de localisation : Crowdin.com (http://crowdin.com)</em:contributor>
 		<em:translator>MarkaPola</em:translator>
 
 		<em:name>Linkificator</em:name>
@@ -54,10 +57,23 @@
 		<em:locale>ru</em:locale>
 		<em:creator>MarkaPola</em:creator>
 		<em:contributor>Icons from www.fasticon.com</em:contributor>
+		<em:contributor>Localization infrastructure: Crowdin.com (http://crowdin.com)</em:contributor>
 		<em:translator>Капелька Яда</em:translator>
 
 		<em:name>Linkificator</em:name>
 		<em:description>Преобразует текстовые ссылки в кликабельные.</em:description>
+	  </Description>
+	</em:localized>
+	<em:localized>
+	  <Description>
+		<em:locale>gl</em:locale>
+		<em:creator>MarkaPola</em:creator>
+		<em:contributor>Icons from www.fasticon.com</em:contributor>
+		<em:contributor>Localization infrastructure: Crowdin.com (http://crowdin.com)</em:contributor>
+		<em:translator></em:translator>
+
+		<em:name>Linkificator</em:name>
+		<em:description>Converts text links into clickable links...</em:description>
 	  </Description>
 	</em:localized>
 

@@ -16,8 +16,10 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
-<!ENTITY release-notes.enhancements.2.0.7-1              "Amélioration de l'analyse des URIs du protocole news.">
-<!ENTITY release-notes.enhancements.2.0.7-2              "Amélioration du support des langues asiatiques.">
+<!ENTITY release-notes.new_features.2.1.0-1              "Le comportement du traitement automatique des changements dynamiques peut maintenant être réglé à votre goût (voir Réglages avancés, onglet Liens).">
+<!ENTITY release-notes.enhancements.2.1.0-1              "Amélioration de l'analyse des URIs du protocole news.">
+<!ENTITY release-notes.enhancements.2.1.0-2              "Amélioration du support des langues asiatiques.">
+<!ENTITY release-notes.enhancements.2.1.0-3              "Nouvelle localisation: galicien (fournie par  ).">
 
 <!ENTITY release-notes.enhancements.2.0.6-1              "Corrige une régression sur l'analyse de la partie domaine de l'URI.">
 

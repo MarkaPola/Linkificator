@@ -697,8 +697,9 @@ var AdvancedSettings = (function () {
             // configure observers
             $('broadcaster.supportEmail').setAttribute('disabled', !$('pref.supportEmail').value);
             $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
+            //$('broadcaster.automaticLinkification').setAttribute('disabled', !$('pref.automaticLinkification').value);
 
-            for (let p of ['useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {
+            for (let p of ['automaticLinkification', 'useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {
                 if ($('pref.'+p).value)
                     $('broadcaster.'+p).removeAttribute('disabled');
                 else
@@ -733,7 +734,7 @@ var AdvancedSettings = (function () {
 		},
 
         change: function (id) {
-            var useTLDs = /use.+TLDs/;
+            var useTLDs = /(automaticLinkification|use.+TLDs)/;
             if (id.match(useTLDs)) {
                 // special treatment to support textbox
                 if ($('pref.'+id).value) {

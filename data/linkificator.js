@@ -16,23 +16,33 @@ RegExp.escape = function(string) {
 
 // Handle dynamic document changes using MutationObserver interface
 var documentObserver = (function () {
-    let config = {childList: true, subtree: true};
-    let observing = false;
-    let delay = 300;
+    var config = {childList: true, subtree: true};
+    var observing = false;
+    var interval = {active: true, value: 2000};
+    var delay = 300;
+    var date = Date.now();
     
-    let observer = new MutationObserver ((function () {
+    var observer = new MutationObserver ((function () {
         observing = false;
         observer.disconnect();
-        
+
+        let delta = Date.now() - date;
+        date = Date.now();
+
         setTimeout(function() {
             self.port.emit('document-changed');
-        }, delay);
+        }, (!interval.active || delta > interval.value) ? 0 : interval.value-delta);
     }).bind(this));
 
     return {
-        observe: function (timeout) {
+        observe: function (properties) {
             observing = true;
-            delay = timeout === undefined ? 300 : timeout;
+
+            if (properties !== undefined) {
+                interval = properties.interval;
+                delay = properties.delay;
+            }
+            
             // wait a little before starting to observe to ensure all changes are done...
             setTimeout(function() {
                 observer.observe(window.document, config);
@@ -964,15 +974,22 @@ self.port.on('parse', function (properties) {
     documentObserver.disconnect();
     execute('parse', properties);
     if (properties.extraFeatures.support.automaticLinkification) {
-        documentObserver.observe(properties.extraFeatures.autoLinkificationDelay);
+        documentObserver.observe(properties.extraFeatures.autoLinkification);
     }
 });
 
 self.port.on('re-parse', function (properties) {
     documentObserver.disconnect();
+
+    let date = Date.now();
     execute('re-parse', properties);
     if (properties.extraFeatures.support.automaticLinkification) {
-        documentObserver.observe(properties.extraFeatures.autoLinkificationDelay);
+        if (properties.extraFeatures.autoLinkification.threshold.active
+            && (Date.now()-date > properties.extraFeatures.autoLinkification.threshold.value))
+            // processing time is too costly, deactivate auto linkification
+            return;
+    
+        documentObserver.observe(properties.extraFeatures.autoLinkification);
     }
 });
 

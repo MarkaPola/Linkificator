@@ -8,6 +8,8 @@
 
 <!ENTITY advanced-settings.title                                          "Linkificator Options Avancées">
 
+<!ENTITY advanced-settings.milliseconds                                   "ms">
+
 <!ENTITY advanced-settings.tab-links                                      "Liens">
 <!ENTITY advanced-settings.tab-custom-rules                               "Règles Utilisateur">
 <!ENTITY advanced-settings.tab-configuration                              "Configuration">
@@ -24,6 +26,8 @@
 <!ENTITY advanced-settings.links.custom-rules.after-predefined            "Liste Après les règles prédéfinies">
 <!ENTITY advanced-settings.links.extra-features.inline-elements           "Traiter les éléments en ligne">
 <!ENTITY advanced-settings.links.extra-features.automatic-linkification   "Traiter automatiquement les changements dynamiques">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-interval   "Traiter les changements dynamiques tous les :">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-threshold   "Désactiver le traitement des changements dynamiques si il prend plus de :">
 
 <!ENTITY advanced-settings.custom-rules.before-predefined                 "Avant les règles prédéfinies">
 <!ENTITY advanced-settings.custom-rules.after-predefined                  "Après les règles prédéfinies">

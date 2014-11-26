@@ -47,7 +47,16 @@
       <preference  type="bool" id="pref.supportInlineElements"
 				   name="extensions.linkificator@markapola.supportInlineElements"/>
       <preference  type="bool" id="pref.automaticLinkification"
-				   name="extensions.linkificator@markapola.automaticLinkification"/>
+				   name="extensions.linkificator@markapola.automaticLinkification"
+				   onchange="AdvancedSettings.change('automaticLinkification');"/>
+      <preference  type="bool" id="pref.autoLinkificationInterval"
+				   name="extensions.linkificator@markapola.autoLinkificationInterval"/>
+      <preference  type="int" id="pref.autoLinkificationIntervalValue"
+				   name="extensions.linkificator@markapola.autoLinkificationIntervalValue"/>
+      <preference  type="bool" id="pref.autoLinkificationThreshold"
+				   name="extensions.linkificator@markapola.autoLinkificationThreshold"/>
+      <preference  type="int" id="pref.autoLinkificationThresholdValue"
+				   name="extensions.linkificator@markapola.autoLinkificationThresholdValue"/>
 
       <preference  type="string" id="pref.requiredCharacters"
 				   name="extensions.linkificator@markapola.requiredCharacters"/>
@@ -148,6 +157,30 @@
 				<checkbox id="advanced-settings.link-type.extra-features.automatic-linkification"
 						  preference="pref.automaticLinkification"
 						  label="&advanced-settings.links.extra-features.automatic-linkification;"/>
+				<hbox class="indent" align="center">
+				  <checkbox id="advanced-settings.link-type.extra-features.automatic-linkification.refresh-interval"
+							preference="pref.autoLinkificationInterval"
+							label="&advanced-settings.links.extra-features.automatic-linkification.refresh-interval;"
+							observes="broadcaster.automaticLinkification"/>
+				  <spacer flex="1"/>
+				  <textbox id="advanced-settings.link-type.extra-features.automatic-linkification.refresh-interval-value"
+						   preference="pref.autoLinkificationIntervalValue"
+						   type="number" size="4" min="0" increment="10"
+						   observes="broadcaster.automaticLinkification"/>
+				  <label control="advanced-settings.link-type.extra-features.automatic-linkification.refresh-interval-value" value="&advanced-settings.milliseconds;"/>
+				</hbox>
+				<hbox class="indent" align="center">
+				  <checkbox id="advanced-settings.link-type.extra-features.automatic-linkification.refresh-threshold"
+							preference="pref.autoLinkificationThreshold"
+							label="&advanced-settings.links.extra-features.automatic-linkification.refresh-threshold;"
+							observes="broadcaster.automaticLinkification"/>
+				  <spacer flex="1"/>
+				  <textbox id="advanced-settings.link-type.extra-features.automatic-linkification.refresh-threshold-value"
+						   preference="pref.autoLinkificationThresholdValue"
+						   type="number" size="4" min="0" increment="100"
+						   observes="broadcaster.automaticLinkification"/>
+				  <label control="advanced-settings.link-type.extra-features.automatic-linkification.refresh-threshold-value" value="&advanced-settings.milliseconds;"/>
+				</hbox>
 			  </vbox>
 			</groupbox>
 		  </vbox>
@@ -376,6 +409,7 @@
 	<broadcasterset>
       <broadcaster id="broadcaster.supportEmail" disabled="false"/>
       <broadcaster id="broadcaster.supportStandardURLs" disabled="false"/>
+      <broadcaster id="broadcaster.automaticLinkification" disabled="false"/>
       <broadcaster id="broadcaster.useGTLDs" disabled="false"/>
       <broadcaster id="broadcaster.useCcTLDs" disabled="false"/>
       <broadcaster id="broadcaster.useGeoTLDs" disabled="false"/>
