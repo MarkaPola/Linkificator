@@ -8,6 +8,7 @@
 
 <!ENTITY release-notes.new_version                       "Nouvelle version installée.">
 <!ENTITY release-notes.thank_you                         "Merci d'avoir choisi Linkificator.">
+<!ENTITY release-notes.localization                      "L'infrastructure de localisation est maintenant pleinement opérationnelle. Toute aide est la bienvenue... Envoyez-moi un &#60;a href=&#34;mailto:linkificator@gmail.com&#34;&#62;courriel&#60;/a&#62; pour demander les éléments nécessaires à la localisation.">
 <!ENTITY release-notes.more_information                  "Pour de plus amples informations, visitez la &#60;a href=&#34;https://addons.mozilla.org/fr/firefox/addon/linkificator&#34;&#62;page du module&#60;/a&#62;.">
 
 <!ENTITY release-notes.history                           "Historique des changements">

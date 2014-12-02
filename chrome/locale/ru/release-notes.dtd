@@ -8,6 +8,7 @@
 
 <!ENTITY release-notes.new_version                       "Установлена новая версия.">
 <!ENTITY release-notes.thank_you                         "Спасибо за использование Linkificator.">
+<!ENTITY release-notes.localization                      "Localization infrastructure is now fully operational. Any help is welcomed... Send-me an &#60;a href=&#34;mailto:linkificator@gmail.com&#34;&#62;e-mail&#60;/a&#62; to request translation materials.">
 <!ENTITY release-notes.more_information                  "Пожалуйста, посетите &#60;a href=&#34;https://addons.mozilla.org/ru/firefox/addon/linkificator&#34;&#62;страницу дополнения&#60;/a&#62; для получения дополнительной информации.">
 
 <!ENTITY release-notes.history                           "История изменений">

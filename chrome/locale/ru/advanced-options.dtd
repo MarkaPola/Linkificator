@@ -24,6 +24,8 @@
 <!ENTITY advanced-settings.links.custom-rules.after-predefined            "После списка предопределённых правил">
 <!ENTITY advanced-settings.links.extra-features.inline-elements           "Обрабатывать встроенные элементы">
 <!ENTITY advanced-settings.links.extra-features.automatic-linkification   "Автоматически обрабатывать динамические изменения">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-interval   "Process dynamic changes every:">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-threshold   "Disable the processing of dynamic changes if it takes longer than:">
 
 <!ENTITY advanced-settings.custom-rules.before-predefined                 "Перед предопределёнными правилами">
 <!ENTITY advanced-settings.custom-rules.after-predefined                  "После предопределённых правил">

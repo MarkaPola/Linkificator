@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<description>
+  <paragraph title="Description">
+	<![CDATA[
+	  Ce module analyse les parties texte des pages HTML pour identifier les modèles de liens hypertextes qui ne sont pas correctement codés (i.e. ne faisant pas partie d'un tag anchor) et ajoute les tags anchor nécessaires pour permettre d'accéder à la cible par un simple clic souris.
+
+	  La fonctionalité est la même que le module <a href="https://addons.mozilla.org/fr/firefox/addon/linkification/?src=ss">Linkification</a>, mais dans la mesure ou ce module ne semble plus maintenu, Linkificator peut être utilisé à la place.
+
+	  <strong>ATTENTION</strong>: Dans la mesure où ce module réalise les même transformations que le module Linkification, il est <strong>recommandé</strong> de désactiver ou désinstaller ce module pour un fonctionnement correct.
+
+	  Cette version contient les bogues et limitations suivants :
+	]]>
+	<ul>
+      <li>Du fait des limitations du Add-on SDK, jusqu'à la version 28 de Firefox, Il n'est pas possible d'enlever le widget de Linkificator de la barre des modules en utilisant la méthode standard. Il faut, à la place, utiliser l'option 'Afficher le widget dans la barre des modules' de Linkificator.
+      A partir de la version 29.0 de Firefox, cette limitation a été supprimée et la méthode standard de personnalisation de Firefox peut être utilisée pour gérer le widget de Linkificator.</li>
+	</ul>
+	<![CDATA[
+	  Icones fournies par <a href="http://www.fasticon.com">FastIcon.com</a>
+	  Infrastructure de localization : <a href="http://crowdin.com">Crowdin.com</a>
+	]]>
+  </paragraph>
+  <paragraph title="Technical Details">
+	<![CDATA[
+	  Pour tout dysfonctionnement ou question relative à Linkificator, Il est préférable de m'envoyer un courriel (voir <b>Courriel d'assistance</b> sur la page du module) plutôt que de poster un avis.
+	  
+	  Toute aide pour la localisation est la bienvenue. Pour cela, il suffit de m'envoyer un courriel (voir <b>Courriel d'assistance</b> sur la page du module) pour demander les éléments nécessaires à la localisation.
+	]]>
+  </paragraph>
+  <paragraph title="Screenshots">
+	<ul>
+	  <li>Une info-bulle montre quel URL sera utilisé</li>
+	  <li>Le widget fournit des informations concernant le traitement</li>
+	  <li>Menu du widget</li>
+	  <li>Le widget fournit des informations concernant le traitement</li>
+	  <li>Réglages généraux</li>
+	  <li>Réglages avancés, gestion des liens</li>
+	  <li>Réglages avancés, gestion des règles utilisateur</li>
+	  <li>Réglages avancés, gestion de la configuration, paramètres généraux</li>
+	  <li>Réglages avancés, gestion de la configuration, listes des domaines de premier niveau</li>
+	</ul>
+  </paragraph>
+  <paragraph title="What's Next">
+	<![CDATA[
+	  Les fonctionnalités suivantes seront implémentées dans une version future :
+	]]>
+	<ul>
+	  <li>Fonctionnalités court terme
+	  <ul>
+		<li>Ajout de la possibilité de sauvegarder et restaurer la configuration</li>
+		<li>Ajout de nouvelles localisations (locales actuellement supportées : en-US, fr et ru)</li>
+	  </ul>
+	  </li>
+	  <li>Fonctionnalités long terme
+	  <ul>
+		<li>Support des produits SeaMonkey et Thunderbird</li>
+	  </ul>
+	  </li>
+	</ul>
+  </paragraph>
+</description>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<description>
+  <paragraph title="Description">
+	<![CDATA[
+	This add-on parses text parts of HTML pages to match hypertext patterns not correctly encoded (i.e. not part of an anchor) and add an anchor to enable a standard mouse click to access the target as specified by the hypertext.
+
+	The functionality is the same as the <a href="https://addons.mozilla.org/en-US/firefox/addon/linkification/?src=ss">Linkification add-on</a>, but because this add-on seems no longer maintained, Linkificator add-on could be used as a replacement.
+
+	<strong>WARNING</strong>: Because this add-on does same transformations as Linkification add-on, it is <strong>required</strong> to deactivate or de-install this add-on to ensure a correct behavior.
+
+	This version have the following known limitations and bugs:
+	]]>
+	<ul>
+	  <li>Due to Add-on SDK limitations, For Firefox until version 28.0, it is not possible to remove Linkificator widget from the Add-on bar using standard method. Instead, use Linkificator option 'Display widget in the Add-on Bar'.
+	Starting with Firefox version 29.0, this limitation does not exist anymore: you can use standard customization work-flows to manage Linkificator widget.</li>
+	</ul>
+	<![CDATA[
+	Icons by: <a href="http://www.fasticon.com">FastIcon.com</a>
+	Localization infrastructure: <a href="http://crowdin.com">Crowdin.com</a>
+	]]>
+  </paragraph>
+  <paragraph title="Technical Details">
+	<![CDATA[
+  For any bug report or question regarding Linkificator, the preferred method is to send to me an e-mail (see <b>Support E-mail</b> on Add-on page).
+
+  Help is welcomed to manage various localization. For that purpose, send-me an e-mail (see <b>Support E-mail</b> on Add-on page) to request translation materials.
+	]]>
+  </paragraph>
+  <paragraph title="Screenshots">
+	<ul>
+	  <li>A tooltip shows which URL will be used</li>
+	  <li>The widget gives some information about treatment</li>
+	  <li>Widget menu</li>
+	  <li>The widget gives some information about treatment</li>
+	  <li>Linkificator settings</li>
+	  <li>Advanced settings, links management</li>
+	  <li>Advanced settings, custom rules management</li>
+	  <li>Advanced settings, configuration management, general settings</li>
+	  <li>Advanced settings, configuration management, top level domains</li>
+	</ul>
+  </paragraph>
+  <paragraph title="What's Next">
+	<![CDATA[
+	The following features will be implemented in some future releases:
+	]]>
+	<ul>
+	  <li>Short term features
+	  <ul>
+		<li>Add capability to backup and restore settings</li>
+		<li>Add support of more locales (locales currently supported: en-US, fr and ru)</li>
+	  </ul>
+	  </li>
+	  <li>Long term features
+	  <ul>
+		<li>Support of SeaMonkey and Thunderbird</li>
+	  </ul>
+	  </li>
+	</ul>
+  </paragraph>
+</description>
