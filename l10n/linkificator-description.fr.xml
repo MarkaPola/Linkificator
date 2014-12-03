@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <description>
+  <paragraph title="Summary">
+	<![CDATA[
+Transforme les liens textuels en liens hypertexte cliquables...
+	]]>
+  </paragraph>
   <paragraph title="Description">
 	<![CDATA[
 	  Ce module analyse les parties texte des pages HTML pour identifier les modèles de liens hypertextes qui ne sont pas correctement codés (i.e. ne faisant pas partie d'un tag anchor) et ajoute les tags anchor nécessaires pour permettre d'accéder à la cible par un simple clic souris.
@@ -16,7 +21,7 @@
 	</ul>
 	<![CDATA[
 	  Icones fournies par <a href="http://www.fasticon.com">FastIcon.com</a>
-	  Infrastructure de localization : <a href="http://crowdin.com">Crowdin.com</a>
+	  Infrastructure de localisation : <a href="http://crowdin.com">Crowdin.com</a>
 	]]>
   </paragraph>
   <paragraph title="Technical Details">
