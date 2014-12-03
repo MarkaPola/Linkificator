@@ -17,7 +17,7 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitations">
 
-<!ENTITY release-notes.new_features.2.1.0-1              "Automatic linkification behavior can now adjusted to your taste (see Advanced Settings, Links tab).">
+<!ENTITY release-notes.new_features.2.1.0-1              "Automatic linkification behavior can now be adjusted to your taste (see Advanced Settings, Links tab).">
 <!ENTITY release-notes.enhancements.2.1.0-1              "Enhances news protocol URIs parsing.">
 <!ENTITY release-notes.enhancements.2.1.0-2              "Enhances asian languages support.">
 <!ENTITY release-notes.enhancements.2.1.0-3              "New localization: galician (provided by ).">
