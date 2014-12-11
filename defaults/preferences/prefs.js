@@ -19,7 +19,7 @@ pref("extensions.linkificator@markapola.hotkeyParse", "control-shift-u");
 pref("extensions.linkificator@markapola.useRegExp", true);
 pref("extensions.linkificator@markapola.filterMode", "black");
 pref("extensions.linkificator@markapola.whitelist", "");
-pref("extensions.linkificator@markapola.blacklist", "^about: localhost www\\.google\\..* www\\.deezer\\.com.*");
+pref("extensions.linkificator@markapola.blacklist", "^about: localhost www\\.google\\..* www\\.yahoo\\..* www\\.yandex\\..* www\\.deezer\\.com.*");
 pref("extensions.linkificator@markapola.overrideTextColor", false);
 pref("extensions.linkificator@markapola.linkColor", "#006620");
 pref("extensions.linkificator@markapola.overrideBackgroundColor", false);
