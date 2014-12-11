@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+
+<!-- This Source Code is subject to the terms of the Mozilla Public License
+- version 2.0 (the "License"). You can obtain a copy of the License at
+- http://mozilla.org/MPL/2.0/. -->
+
+<!-- options UI - Linkificator's module
+- author: MarkaPola -->
+
+<!DOCTYPE linkificator-options  SYSTEM "chrome://linkificator/locale/options.dtd">
+
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.displayWidget" id="linkificator-displayWidget" title="&settings.display-widget;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.contextMenuIntegration" title="&settings.context-menu-integration;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.widgetMiddleClick" title="&settings.widget-middle-click;" type="menulist">
+    <menulist sizetopopup="always">
+      <menupopup>
+        <menuitem label="&settings.action-none;" value="none"/>
+        <menuitem label="&settings.action-toggle;" value="toggle"/>
+        <menuitem label="&settings.action-manage;" value="manage"/>
+        <menuitem label="&settings.action-linkify;" value="linkify"/>
+      </menupopup>
+    </menulist>
+  </setting>
+  <setting pref="extensions.linkificator@markapola.widgetRightClick" title="&settings.widget-right-click;" type="menulist">
+    <menulist sizetopopup="always">
+      <menupopup>
+        <menuitem label="&settings.action-none;" value="none"/>
+        <menuitem label="&settings.action-toggle;" value="toggle"/>
+        <menuitem label="&settings.action-manage;" value="manage"/>
+        <menuitem label="&settings.action-linkify;" value="linkify"/>
+      </menupopup>
+    </menulist>
+  </setting>
+  <setting pref="extensions.linkificator@markapola.hotkeyName" title="&settings.hot-key-to;" type="menulist">
+    <menulist sizetopopup="always">
+      <menupopup>
+        <menuitem label="&settings.action-toggle;" value="hotkeyToggle"/>
+        <menuitem label="&settings.action-manage;" value="hotkeyManage"/>
+        <menuitem label="&settings.action-linkify;" value="hotkeyParse"/>
+      </menupopup>
+    </menulist>
+  </setting>
+  <setting pref="extensions.linkificator@markapola.hotkeyValue" title="&settings.hot-key-combination;" type="string"/>
+  <setting pref="extensions.linkificator@markapola.useRegExp" title="&settings.use-regular-expressions;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.filterMode" title="&settings.domain-filtering-mode;" type="menulist">
+    <menulist sizetopopup="always">
+      <menupopup>
+        <menuitem label="&settings.domain-filtering-mode.none;" value="none"/>
+        <menuitem label="&settings.domain-filtering-mode.whitelist;" value="white"/>
+        <menuitem label="&settings.domain-filtering-mode.blacklist;" value="black"/>
+      </menupopup>
+    </menulist>
+  </setting>
+  <setting pref="extensions.linkificator@markapola.whitelist" title="&settings.whitelisted-domains;" type="string">&settings.separator-domains;</setting>
+  <setting pref="extensions.linkificator@markapola.blacklist" title="&settings.blacklisted-domains;" type="string">&settings.separator-domains;</setting>
+  <setting pref="extensions.linkificator@markapola.overrideTextColor" title="&settings.override-text-color;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.linkColor" title="&settings.linkified-text-color;" type="color"/>
+  <setting pref="extensions.linkificator@markapola.overrideBackgroundColor" title="&settings.override-background-color;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.backgroundColor" title="&settings.linkified-background-color;" type="color"/>
+  <setting pref="extensions.linkificator@markapola.advancedSettings" title="" type="control">
+    <button label="&settings.advanced-settings;" oncommand="Services.obs.notifyObservers(null, 'linkificator@markapola-cmdPressed', 'advancedSettings');"/>
+  </setting>
+  <setting pref="extensions.linkificator@markapola.sync" title="&settings.sync-settings;" type="bool"/>
+</vbox>

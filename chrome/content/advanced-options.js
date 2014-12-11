@@ -280,7 +280,7 @@ ListItem.prototype = {
 	releaseNode: function (node) {
 		node._data.release();
 	}
-}
+};
 
 function DragManager (event, listbox, item) {
 	this._source = event.target;
@@ -344,6 +344,8 @@ function ListBox (listbox, itemTemplate, tooltip, callbacks) {
 
 	this._tooltip = new Tooltip(tooltip);
 
+    this._dragManager = null;
+    
 	this._handlers = {
 		dragstart: this.dragstart.bind(this),
 		drop: this.drop.bind(this),
@@ -430,14 +432,17 @@ ListBox.prototype = {
 	},
 
 	release: function () {
-		this._dragManager.release();
-
+        if (this._dragManager) {
+		    this._dragManager.release();
+            this._dragManager = null;
+        }
+        
 		// release each listitem
 		for (let index = this._richlistbox.getRowCount()-1; index >= 0; index--) {
 			ListItem.prototype.releaseNode(ListItem.this._richlistbox.getItemAtIndex(index));
 		}
 	}
-}
+};
 
 function CustomRules (preferences, defaults, properties) {
 	var inInit = true;

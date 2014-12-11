@@ -46,22 +46,17 @@ endif
 # noglob option generates sed errors
 unsetenv MSYS
 
-if (! -d $TDIR) mkdir $TDIR
-unzip -p linkificator.xpi options.xul > ! ${TDIR}/options.orig.xul
-cat ${TDIR}/options.orig.xul | sed 's/pref-name="displayWidget"/id="linkificator-displayWidget" &/' | sed 's/<menulist/& sizetopopup="always"/' > ${TDIR}/options.xul
-zip -j linkificator.xpi ${TDIR}/options.xul
-rm -rf ${TDIR}
+#
+# Add inline options and custom version of preferences
+#
+zip linkificator.xpi options.xul defaults/preferences/prefs.js
 
 if ($CFX_VERSION < 115) then
-	#
-	# Add chrome extensions and custom version of preferences
-	#
-	zip -r linkificator.xpi chrome chrome.manifest
+    #
+    # Add chrome extensions
+    #
+    zip -r linkificator.xpi chrome chrome.manifest
 endif
-#
-# Add custom version of preferences
-#
-zip linkificator.xpi defaults/preferences/prefs.js
 
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 

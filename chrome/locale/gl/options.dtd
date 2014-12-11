@@ -1,0 +1,38 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- gl localization - Linkificator's module
+   - author:  -->
+
+<!ENTITY settings.activated                         "Activado">
+<!ENTITY settings.display-widget                    "Mostrar o widget na barra de complementos">
+<!ENTITY settings.context-menu-integration          "Page context menu integration">
+
+<!ENTITY settings.widget-middle-click               "On Widget middle-click">
+<!ENTITY settings.widget-right-click                "On Widget right-click">
+<!ENTITY settings.action-none                       "None">
+<!ENTITY settings.action-toggle                     "Toggle linkificator state">
+<!ENTITY settings.action-manage                     "Toggle current page processing">
+<!ENTITY settings.action-linkify                    "Actualizar páxina actual">
+
+<!ENTITY settings.hot-key-to                        "Hot key to">
+<!ENTITY settings.hot-key-combination               "Hot key combination">
+
+<!ENTITY settings.use-regular-expressions           "Use regular expressions for domains">
+<!ENTITY settings.domain-filtering-mode             "Domain filtering mode">
+<!ENTITY settings.domain-filtering-mode.none        "None">
+<!ENTITY settings.domain-filtering-mode.whitelist   "Only linkify for domains in Whitelist">
+<!ENTITY settings.domain-filtering-mode.blacklist   "Never linkify for domains in Blacklist">
+<!ENTITY settings.whitelisted-domains               "Whitelisted Domains">
+<!ENTITY settings.blacklisted-domains               "Blacklisted Domains">
+<!ENTITY settings.separator-domains                 "Separate domains with a space">
+
+<!ENTITY settings.override-text-color               "Override text color">
+<!ENTITY settings.linkified-text-color              "Linkified text color">
+<!ENTITY settings.override-background-color         "Override background color">
+<!ENTITY settings.linkified-background-color        "Linkified background color">
+
+<!ENTITY settings.advanced-settings                 "Axustes avanzados...">
+<!ENTITY settings.sync-settings                     "Sincronizar axustes">

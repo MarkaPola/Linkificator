@@ -1,0 +1,38 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- ru localization - Linkificator's module
+   - author: Капелька Яда -->
+
+<!ENTITY settings.activated                         "Включено">
+<!ENTITY settings.display-widget                    "Показывать виджет в панели дополнений">
+<!ENTITY settings.context-menu-integration          "Интеграция в контекстное меню">
+
+<!ENTITY settings.widget-middle-click               "Щелчок средней кнопкой на виджете">
+<!ENTITY settings.widget-right-click                "Щелчок правой кнопкой на виджете">
+<!ENTITY settings.action-none                       "Ничего">
+<!ENTITY settings.action-toggle                     "Переключить состояние Linkificator">
+<!ENTITY settings.action-manage                     "Переключить обработку текущей страницы">
+<!ENTITY settings.action-linkify                    "Обновить текущую страницу">
+
+<!ENTITY settings.hot-key-to                        "Действие горячих клавиш">
+<!ENTITY settings.hot-key-combination               "Сочетание горячих клавиш">
+
+<!ENTITY settings.use-regular-expressions           "Регулярные выражения для доменов">
+<!ENTITY settings.domain-filtering-mode             "Режим фильтрации доменов">
+<!ENTITY settings.domain-filtering-mode.none        "Ничего">
+<!ENTITY settings.domain-filtering-mode.whitelist   "Подчёркивать только домены в белом списке">
+<!ENTITY settings.domain-filtering-mode.blacklist   "Никогда не подчёркивать домены в чёрном списке">
+<!ENTITY settings.whitelisted-domains               "Белый список доменов">
+<!ENTITY settings.blacklisted-domains               "Чёрный список доменов">
+<!ENTITY settings.separator-domains                 "Разделяйте домены пробелом">
+
+<!ENTITY settings.override-text-color               "Изменить цвет текста">
+<!ENTITY settings.linkified-text-color              "Цвет подчёркнутого текста">
+<!ENTITY settings.override-background-color         "Изменить цвет фона">
+<!ENTITY settings.linkified-background-color        "Цвет фона подчёркивания">
+
+<!ENTITY settings.advanced-settings                 "Расширенные настройки...">
+<!ENTITY settings.sync-settings                     "Синхронизация настроек">
