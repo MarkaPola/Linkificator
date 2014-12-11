@@ -3,12 +3,12 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
-<!-- en-US localization - Linkificator's module
+<!-- ru localization - Linkificator's module
    - author: Капелька Яда -->
 
 <!ENTITY release-notes.new_version                       "Установлена новая версия.">
 <!ENTITY release-notes.thank_you                         "Спасибо за использование Linkificator.">
-<!ENTITY release-notes.localization                      "Localization infrastructure is now fully operational. Any help is welcomed... Send-me an &#60;a href=&#34;mailto:linkificator@gmail.com&#34;&#62;e-mail&#60;/a&#62; to request translation materials.">
+<!ENTITY release-notes.localization                      "Система локализации уже полностью функционирует. Любая помощь приветствуется... Отправьте мне по &#60;a href=&#34;mailto:linkificator@gmail.com&#34;&#62;электронной почте&#60;/a&#62; запрос на предоставление локализуемых материалов.">
 <!ENTITY release-notes.more_information                  "Пожалуйста, посетите &#60;a href=&#34;https://addons.mozilla.org/ru/firefox/addon/linkificator&#34;&#62;страницу дополнения&#60;/a&#62; для получения дополнительной информации.">
 
 <!ENTITY release-notes.history                           "История изменений">
@@ -17,13 +17,10 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
-<!ENTITY release-notes.new_features.2.1.0-1              "Automatic linkification behavior can now adjusted to your taste (see Advanced Settings, Links tab).">
-<!ENTITY release-notes.enhancements.2.1.0-1              "Enhances news protocol URIs parsing.">
-<!ENTITY release-notes.enhancements.2.1.0-2              "Enhances asian languages support.">
-<!ENTITY release-notes.enhancements.2.1.0-3              "New localization: galician (provided by ).">
-
-<!ENTITY release-notes.enhancements.2.0.7-1              "Enhances news protocol URIs parsing.">
-<!ENTITY release-notes.enhancements.2.0.7-2              "Улучшена поддержка восточно-азиатских языков.">
+<!ENTITY release-notes.new_features.2.1.0-1              "Автоматическое поведение линкификации теперь можно настроить на свой вкус (см. Дополнительные параметры, вкладка ссылок).">
+<!ENTITY release-notes.enhancements.2.1.0-1              "Улучшен парсинг протокола URI новостей.">
+<!ENTITY release-notes.enhancements.2.1.0-2              "Улучшена поддержка азиатских языков.">
+<!ENTITY release-notes.enhancements.2.1.0-3              "Новая локализация: галисийский (предоставлен).">
 
 <!ENTITY release-notes.enhancements.2.0.6-1              "Исправлена регрессия при парсинге частей URI домена.">
 
@@ -33,16 +30,16 @@
 
 <!ENTITY release-notes.enhancements.2.0.4-1              "Улучшен парсинг URI.">
 
-<!ENTITY release-notes.enhancements.2.0.3-1              "Updates page content processing for Firefox 32 support.">
-<!ENTITY release-notes.enhancements.2.0.3-2              "Top level domains list is updated.">
+<!ENTITY release-notes.enhancements.2.0.3-1              "Обработка обновления содержимого страниц для поддержки Firefox 32.">
+<!ENTITY release-notes.enhancements.2.0.3-2              "Обновлен список доменов верхнего уровня.">
 
-<!ENTITY release-notes.enhancements.2.0.2-1              "Adds support of XHTML documents.">
-<!ENTITY release-notes.enhancements.2.0.2-2              "Adds support of namespaces in documents.">
-<!ENTITY release-notes.enhancements.2.0.2-3              "Firefox 32 support.">
-<!ENTITY release-notes.enhancements.2.0.2-4              "Various bugs fixes on inline elements handling.">
-<!ENTITY release-notes.enhancements.2.0.2-5              "Top level domains list is updated.">
+<!ENTITY release-notes.enhancements.2.0.2-1              "Добавлена ​​поддержка документов XHTML.">
+<!ENTITY release-notes.enhancements.2.0.2-2              "Добавлена ​​поддержка пространств имен в документах.">
+<!ENTITY release-notes.enhancements.2.0.2-3              "Поддержка Firefox 32.">
+<!ENTITY release-notes.enhancements.2.0.2-4              "Различные исправления ошибок на встроенных элементах обработки.">
+<!ENTITY release-notes.enhancements.2.0.2-5              "Обновлен список доменов верхнего уровня.">
 
-<!ENTITY release-notes.enhancements.2.0.1-1              "Top level domains list is updated and its management is enhanced.">
+<!ENTITY release-notes.enhancements.2.0.1-1              "Обновлен список доменов верхнего уровня и улучшено его управление.">
 <!ENTITY release-notes.enhancements.2.0.1-2              "Entries in widget contextual menu show now the keyboard shortcut, if any.">
 <!ENTITY release-notes.enhancements.2.0.1-3              "Various minor bug fixes.">
 
@@ -65,7 +62,7 @@
 <!ENTITY release-notes.limitations.1.6.0-1               "Due to new add-on packaging, minimal version supported is now &#60;b&#62;Firefox 21&#60;/b&#62;.">
 
 <!ENTITY release-notes.enhancements.1.5.3-1              "Fix erroneous handling of inline elements.">
-<!ENTITY release-notes.limitations.1.5.3-1               "Per window private browsing mode on &#60;b>Firefox 20&#60;/b&#62; is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.&#60;br/&#62;So, on Firefox 20, Linkificator context menu is deactivated. It is &#60;b&#62;strongly&#60;/b&#62; recommended to upgrade to &#60;b&#62;Firefox 21&#60;/b&#62; and above to have a fully operational Linkificator.">
+<!ENTITY release-notes.limitations.1.5.3-1               "Per window private browsing mode on &#60;b&#62;Firefox 20&#60;/b&#62; is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.&#60;br/&#62;So, on Firefox 20, Linkificator context menu is deactivated. It is &#60;b&#62;strongly&#60;/b&#62; recommended to upgrade to &#60;b&#62;Firefox 21&#60;/b&#62; and above to have a fully operational Linkificator.">
 
 <!ENTITY release-notes.enhancements.1.5.2-1              "By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.&#60;br/&#62;The option 'Advanced Options-&#62;Links-&#62;Linkify URL containing the alone authority' enables to activate this treatment.">
 <!ENTITY release-notes.enhancements.1.5.2-2              "Enhances matching of URIs.">

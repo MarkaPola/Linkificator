@@ -64,18 +64,6 @@
 		<em:description>Преобразует текстовые ссылки в кликабельные.</em:description>
 	  </Description>
 	</em:localized>
-	<em:localized>
-	  <Description>
-		<em:locale>gl</em:locale>
-		<em:creator>MarkaPola</em:creator>
-		<em:contributor>Icons from www.fasticon.com</em:contributor>
-		<em:contributor>Localization infrastructure: Crowdin.com (http://crowdin.com)</em:contributor>
-		<em:translator></em:translator>
-
-		<em:name>Linkificator</em:name>
-		<em:description>Converts text links into clickable links...</em:description>
-	  </Description>
-	</em:localized>
 
   </Description>
 </RDF>

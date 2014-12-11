@@ -62,7 +62,7 @@
 <!ENTITY release-notes.limitations.1.6.0-1               "Due to new add-on packaging, minimal version supported is now &#60;b&#62;Firefox 21&#60;/b&#62;.">
 
 <!ENTITY release-notes.enhancements.1.5.3-1              "Fix erroneous handling of inline elements.">
-<!ENTITY release-notes.limitations.1.5.3-1               "Per window private browsing mode on &#60;b>Firefox 20&#60;/b&#62; is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.&#60;br/&#62;So, on Firefox 20, Linkificator context menu is deactivated. It is &#60;b&#62;strongly&#60;/b&#62; recommended to upgrade to &#60;b&#62;Firefox 21&#60;/b&#62; and above to have a fully operational Linkificator.">
+<!ENTITY release-notes.limitations.1.5.3-1               "Per window private browsing mode on &#60;b&#62;Firefox 20&#60;/b&#62; is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.&#60;br/&#62;So, on Firefox 20, Linkificator context menu is deactivated. It is &#60;b&#62;strongly&#60;/b&#62; recommended to upgrade to &#60;b&#62;Firefox 21&#60;/b&#62; and above to have a fully operational Linkificator.">
 
 <!ENTITY release-notes.enhancements.1.5.2-1              "By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.&#60;br/&#62;The option 'Advanced Options-&#62;Links-&#62;Linkify URL containing the alone authority' enables to activate this treatment.">
 <!ENTITY release-notes.enhancements.1.5.2-2              "Enhances matching of URIs.">
