@@ -11,7 +11,7 @@
 
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
-  <setting pref="extensions.linkificator@markapola.displayWidget" id="linkificator-displayWidget" title="&settings.display-widget;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.displayWidget" id="settings.displayWidget" title="&settings.display-widget;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.contextMenuIntegration" title="&settings.context-menu-integration;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.widgetMiddleClick" title="&settings.widget-middle-click;" type="menulist">
     <menulist sizetopopup="always">
@@ -44,7 +44,8 @@
   </setting>
   <setting pref="extensions.linkificator@markapola.hotkeyValue" title="&settings.hot-key-combination;" type="string"/>
   <setting pref="extensions.linkificator@markapola.useRegExp" title="&settings.use-regular-expressions;" type="bool"/>
-  <setting pref="extensions.linkificator@markapola.filterMode" title="&settings.domain-filtering-mode;" type="menulist">
+  <setting pref="extensions.linkificator@markapola.filterMode" id="settings.filterMode"
+		   title="&settings.domain-filtering-mode;" type="menulist">
     <menulist sizetopopup="always">
       <menupopup>
         <menuitem label="&settings.domain-filtering-mode.none;" value="none"/>
@@ -53,8 +54,10 @@
       </menupopup>
     </menulist>
   </setting>
-  <setting pref="extensions.linkificator@markapola.whitelist" title="&settings.whitelisted-domains;" type="string">&settings.separator-domains;</setting>
-  <setting pref="extensions.linkificator@markapola.blacklist" title="&settings.blacklisted-domains;" type="string">&settings.separator-domains;</setting>
+  <setting pref="extensions.linkificator@markapola.whitelist" id="settings.whitelist"
+		   title="&settings.whitelisted-domains;" type="string">&settings.separator-domains;</setting>
+  <setting pref="extensions.linkificator@markapola.blacklist" id="settings.blacklist"
+		   title="&settings.blacklisted-domains;" type="string">&settings.separator-domains;</setting>
   <setting pref="extensions.linkificator@markapola.overrideTextColor" title="&settings.override-text-color;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.linkColor" title="&settings.linkified-text-color;" type="color"/>
   <setting pref="extensions.linkificator@markapola.overrideBackgroundColor" title="&settings.override-background-color;" type="bool"/>

@@ -702,7 +702,6 @@ var AdvancedSettings = (function () {
             // configure observers
             $('broadcaster.supportEmail').setAttribute('disabled', !$('pref.supportEmail').value);
             $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
-            //$('broadcaster.automaticLinkification').setAttribute('disabled', !$('pref.automaticLinkification').value);
 
             for (let p of ['automaticLinkification', 'useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {
                 if ($('pref.'+p).value)
