@@ -259,7 +259,7 @@ function Parser (properties) {
     const start_path_delimiter = "/\\?#";
     
     const domain_class = "@?#\\s()<>[\\]{}/.:";
-    const domain_element = "(?:[^-"+domain_class+"](?:[^"+domain_class+"]{1,}[^-"+domain_class+"]|[^-"+domain_class+"])?)";
+    const domain_element = "(?:[^-"+domain_class+"](?:[^"+domain_class+"]{1,}[^-\\\\"+domain_class+"]|[^-\\\\"+domain_class+"])?)";
 
     const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
             
@@ -458,7 +458,7 @@ function Parser (properties) {
         requiredChars.indexOf('.') === -1 && requiredChars.push('.');
     }
     query += "contains(., '" + requiredChars.join("') or contains(., '") + "'))]";
-
+    
     var query2 =  "(//*[local-name()='" + properties.extraFeatures.inlineElements.join("' or local-name()='") + "'])[ancestor::*[local-name()='body'] and not(..[local-name()='" + properties.extraFeatures.inlineElements.join("'] or ..[local-name()='") + "']) and not(ancestor::*[local-name()='" + properties.predefinedRules.excludedElements.join("'] or ancestor::*[local-name()='")
         + "']) and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
 
@@ -574,7 +574,7 @@ function LinkifyNode (node, statistics, properties, parser, style, completed) {
             let regex = new RegExp("[^\\s'\"<>«»“”‘’]+", "g");
             let text = node.nodeValue;
             let result;
-
+            
             while ((result = regex.exec (text)) !== null) {
                 if ((properties.extraFeatures.maxDataSize == 0 || result[0].length <= properties.extraFeatures.maxDataSize) && result[0].search(requiredChars) != -1) {
                     this._items.push({offset: result.index, text: result[0]});

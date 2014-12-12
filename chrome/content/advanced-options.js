@@ -439,7 +439,7 @@ ListBox.prototype = {
         
 		// release each listitem
 		for (let index = this._richlistbox.getRowCount()-1; index >= 0; index--) {
-			ListItem.prototype.releaseNode(ListItem.this._richlistbox.getItemAtIndex(index));
+			ListItem.prototype.releaseNode(this._richlistbox.getItemAtIndex(index));
 		}
 	}
 };
