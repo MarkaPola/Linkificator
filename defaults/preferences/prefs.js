@@ -44,7 +44,7 @@ pref("extensions.linkificator@markapola.customRules", "{\"beforeList\":[],\"afte
 pref("extensions.linkificator@markapola.requiredCharacters", ":@/?#");
 pref("extensions.linkificator@markapola.protocols", "h..p~http#2;h..ps~https#2;ftp~ftp#2;nntp~nntp#2;telnet~telnet#2;irc~irc#2;file~file#3");
 pref("extensions.linkificator@markapola.subdomains", "www~www\\d{0,3}~http://;ftp~ftp~ftp://;irc~irc~irc://");
-pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;audio;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;script;select;style;textarea;title;video;@onclick;@onmousedown;@onmouseup");
+pref("extensions.linkificator@markapola.excludedElements", "a;applet;area;audio;embed;frame;frameset;head;iframe;img;map;meta;noscript;object;option;param;pre;script;select;style;textarea;title;video;@onclick;@onmousedown;@onmouseup");
 pref("extensions.linkificator@markapola.inlineElements", "b;i;big;small;em;strong;tt;span;wbr");
 pref("extensions.linkificator@markapola.maxDataSize", 20000);
 pref("extensions.linkificator@markapola.sync", false);

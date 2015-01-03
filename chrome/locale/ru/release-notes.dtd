@@ -17,6 +17,9 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.1.1-1              "Enhances UI for black/white lists management.">
+<!ENTITY release-notes.enhancements.2.1.1-2              "Reduces, dramatically for some pages, resources consumption for processing.">
+
 <!ENTITY release-notes.new_features.2.1.0-1              "Автоматическое поведение линкификации теперь можно настроить на свой вкус (см. Дополнительные параметры, вкладка ссылок).">
 <!ENTITY release-notes.enhancements.2.1.0-1              "Улучшен парсинг протокола URI новостей.">
 <!ENTITY release-notes.enhancements.2.1.0-2              "Улучшена поддержка азиатских языков.">
