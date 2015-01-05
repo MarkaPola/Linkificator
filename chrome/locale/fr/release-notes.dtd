@@ -19,6 +19,7 @@
 
 <!ENTITY release-notes.enhancements.2.1.1-1              "Amélioration de l'interface de gestion des listes blanche/noire.">
 <!ENTITY release-notes.enhancements.2.1.1-2              "Réduction des besoins en ressources, dans de larges proportions pour certaines pages, pour le traitement.">
+<!ENTITY release-notes.enhancements.2.1.1-3              "Optimisation de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé et, pour Firefox 30.0 et versions plus récentes, évite de recharger les pages.">
 
 <!ENTITY release-notes.new_features.2.1.0-1              "Le comportement du traitement automatique des changements dynamiques peut maintenant être réglé à votre goût (voir Réglages avancés, onglet Liens).">
 <!ENTITY release-notes.enhancements.2.1.0-1              "Amélioration de l'analyse des URIs du protocole news.">

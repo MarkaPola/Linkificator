@@ -27,6 +27,13 @@ function State (document, action) {
 		return null;
 	}
 
+    if (action == 'reset') {
+        if (body.hasAttribute(statusLabel)) {
+			body.removeAttribute(statusLabel);
+		}
+        return null;
+    }
+    
 	body.setAttribute(statusLabel, action == 'undo' ? "in-undo" : "in-process");
 
 	return {
