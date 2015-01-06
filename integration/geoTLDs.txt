@@ -48,6 +48,7 @@ sydney
 taipei
 tirol
 tokyo
+tui
 vlaanderen
 wales
 wien
