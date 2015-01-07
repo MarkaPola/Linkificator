@@ -318,7 +318,7 @@ function Parser (properties) {
 
     ///// news protocol. authority is optional
     function NewsRule () {
-        PatternRule.call(this, "(news:(?://" + domain_host + "|" + IP_host + "[" + start_path_delimiter + "])?" + subpath + ")");
+        PatternRule.call(this, "(news:(?:(?://" + authentication + "?(?:" + domain_host + "|" + IP_host + "))|(?:" + domain_element + "(?:\\." + domain_element + ")*))" + "(?:[" + start_path_delimiter + "]" + subpath + ")?)");
     }
     NewsRule.prototype = new PatternRule;
     NewsRule.prototype.test = function(regex) {
