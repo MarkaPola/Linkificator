@@ -10,9 +10,6 @@
     <em:bootstrap>true</em:bootstrap>
     <em:unpack>false</em:unpack>
 
-	<!--em:optionsURL>chrome://linkificator/content/options.xul</em:optionsURL-->
-	<em:optionType>2</em:optionType>
-	
 	<em:iconURL>chrome://linkificator/skin/icon48.png</em:iconURL>
 	<em:icon64URL>chrome://linkificator/skin/icon64.png</em:icon64URL>
 	
@@ -27,6 +24,7 @@
 
     <!-- Front End MetaData -->
     <em:name>Linkificator</em:name>
+	<!--em:optionsURL>chrome://linkificator/content/options.xul</em:optionsURL-->	
     <em:optionsType>2</em:optionsType>
     <em:description>Converts text links into clickable links...</em:description>
     <em:creator>MarkaPola</em:creator>    
