@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.1.2-1              "Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 2.1.1.">
+
 <!ENTITY release-notes.enhancements.2.1.1-1              "Улучшен интерфейс для управления чёрным/белым списками.">
 <!ENTITY release-notes.enhancements.2.1.1-2              "Существенно уменьшено потребление ресурсов для обработки некоторых страниц.">
 <!ENTITY release-notes.enhancements.2.1.1-3              "Оптимизировано восстановление исходного содержания страниц, когда дополнение отключено или удалено, для Firefox 30.0 и выше, предотвращает перезагрузку страниц.">

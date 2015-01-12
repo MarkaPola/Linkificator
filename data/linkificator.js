@@ -9,9 +9,6 @@
 
 "use strict";
 
-// keep original HTML to enable original page restoration
-var originalHTML = window.document.body.innerHTML;
-
 // extend RegExp to handle meta-character escaping
 RegExp.escape = function(string) {
     return string.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1');
@@ -1003,14 +1000,4 @@ self.port.on('undo', function (properties) {
 
 self.port.on('get-statistics', function () {
     self.port.emit('statistics', Statistics(window.document, 'get-statistics').get());
-});
-
-self.port.on('detach', function () {
-    try {
-        window.document.body.innerHTML = originalHTML;
-        State(window.document, 'reset');
-        Statistics(window.document, 'undo');
-    } catch (e) {
-        // ignore possible exceptions
-    }
 });
