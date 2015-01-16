@@ -424,6 +424,13 @@ function Parser (properties) {
             pattern.push(new CustomRule(rule));
         }
     }
+
+    // remove tag <pre> from excludedElements for plain text document
+    if (properties.document.contentType.startsWith('text/plain')) {
+        let index = properties.predefinedRules.excludedElements.indexOf('pre');
+        if (index != -1)
+            properties.predefinedRules.excludedElements.splice(index, 1);
+    }
     
     var pattern = Pattern ("(^|[" + start_uri_delimiter + "]+)");
     if (properties.customRules.support.before)

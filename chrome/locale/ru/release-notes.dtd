@@ -17,6 +17,9 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.1.3-1              "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1.">
+<!ENTITY release-notes.enhancements.2.1.3-2              "Enhances, for Firefox 30.0 and newer, the restoration of the original content of pages when add-on is disabled or removed.">
+
 <!ENTITY release-notes.enhancements.2.1.2-1              "Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 2.1.1.">
 
 <!ENTITY release-notes.enhancements.2.1.1-1              "Улучшен интерфейс для управления чёрным/белым списками.">
