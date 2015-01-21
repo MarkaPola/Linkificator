@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.1.4-1              "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1.">
+
 <!ENTITY release-notes.enhancements.2.1.3-1              "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1.">
 <!ENTITY release-notes.enhancements.2.1.3-2              "Amélioration, pour Firefox 30.0 et versions plus récentes, de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé.">
 
