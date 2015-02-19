@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.new_features.2.2.0-1              "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).">
+
 <!ENTITY release-notes.enhancements.2.1.4-1              "Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.">
 
 <!ENTITY release-notes.enhancements.2.1.3-1              "Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.">

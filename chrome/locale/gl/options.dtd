@@ -36,3 +36,9 @@
 
 <!ENTITY settings.advanced-settings                 "Axustes avanzados...">
 <!ENTITY settings.sync-settings                     "Sincronizar axustes">
+
+<!ENTITY settings.prefs-management                  "Settings management">
+<!ENTITY settings.prefs-sync                        "Sincronizar axustes">
+<!ENTITY settings.prefs-import                      "Import settings...">
+<!ENTITY settings.prefs-export                      "Export settings...">
+<!ENTITY settings.prefs-defaults                    "Restore defaults">

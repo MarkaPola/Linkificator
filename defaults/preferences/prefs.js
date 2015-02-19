@@ -62,6 +62,8 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget",
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.contextMenuIntegration", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetMiddleClick", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetRightClick", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyName", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyValue", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyToggle", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyManage", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyParse", false);
@@ -82,6 +84,10 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLUseT
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLLinkifyAuthority", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportInlineElements", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.automaticLinkification", false);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationInterval", true);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationIntervalValue", 2000);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationThreshold", true);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationThresholdValue", 500);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationDelay", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesAfter", false);

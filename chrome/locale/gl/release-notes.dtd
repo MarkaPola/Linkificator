@@ -4,18 +4,18 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <!-- en-US localization - Linkificator's module
-   - author: MarkaPola -->
+	 - author:  -->
 
-<!ENTITY release-notes.new_version                       "New version installed.">
-<!ENTITY release-notes.thank_you                         "Thank you for using Linkificator.">
+<!ENTITY release-notes.new_version                       "Nova versión instalada.">
+<!ENTITY release-notes.thank_you                         "Grazas por usares Linkificator.">
 <!ENTITY release-notes.localization                      "Localization infrastructure is now fully operational. Any help is welcomed... Send-me an &#60;a href=&#34;mailto:linkificator@gmail.com&#34;&#62;e-mail&#60;/a&#62; to request translation materials.">
-<!ENTITY release-notes.more_information                  "Please visit the &#60;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/linkificator/&#34;&#62;Add-on page&#60;/a&#62; for more informations.">
+<!ENTITY release-notes.more_information                  "Por favor, visita &#60;a href=&#34;https://addons.mozilla.org/gl/firefox/addon/linkificator/&#34;&#62;a páxina do complemento&#60;/a&#62; para máis información.">
 
-<!ENTITY release-notes.history                           "History of changes">
-<!ENTITY release-notes.version                           "Version">
-<!ENTITY release-notes.new_features                      "New features">
+<!ENTITY release-notes.history                           "Historial de cambios">
+<!ENTITY release-notes.version                           "Versión">
+<!ENTITY release-notes.new_features                      "Novas funcionalidades">
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
-<!ENTITY release-notes.limitations                       "Limitations">
+<!ENTITY release-notes.limitations                       "Limitacións">
 
 <!ENTITY release-notes.new_features.2.2.0-1              "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).">
 

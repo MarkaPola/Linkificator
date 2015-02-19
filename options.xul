@@ -65,5 +65,16 @@
   <setting pref="extensions.linkificator@markapola.advancedSettings" title="" type="control">
     <button label="&settings.advanced-settings;" oncommand="Services.obs.notifyObservers(null, 'linkificator@markapola-cmdPressed', 'advancedSettings');"/>
   </setting>
-  <setting pref="extensions.linkificator@markapola.sync" title="&settings.sync-settings;" type="bool"/>
+  <setting title="&settings.prefs-management;" type="control">
+    <button id="settings.prefsMenu" class="header-button" type="menu" label="">
+      <menupopup id="settings.prefs" position="after_start">
+		<menuitem id="settings.prefs.sync" label="&settings.prefs-sync;" type="checkbox"/>
+		<menuseparator/>
+		<menuitem id="settings.prefs.import" class="menuitem-iconic" label="&settings.prefs-import;"/>
+		<menuitem id="settings.prefs.export" class="menuitem-iconic" label="&settings.prefs-export;"/>
+		<menuseparator/>
+		<menuitem id="settings.prefs.defaults" class="menuitem-iconic" label="&settings.prefs-defaults;"/>
+      </menupopup>
+	</button>
+  </setting>
 </vbox>

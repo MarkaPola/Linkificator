@@ -36,3 +36,9 @@
 
 <!ENTITY settings.advanced-settings                 "Réglages avancés...">
 <!ENTITY settings.sync-settings                     "Synchroniser les réglages">
+
+<!ENTITY settings.prefs-management                  "Gestion des réglages">
+<!ENTITY settings.prefs-sync                        "Synchroniser les réglages">
+<!ENTITY settings.prefs-import                      "Importer les réglages...">
+<!ENTITY settings.prefs-export                      "Exporter les réglages...">
+<!ENTITY settings.prefs-defaults                    "Restaurer les réglages par défaut">

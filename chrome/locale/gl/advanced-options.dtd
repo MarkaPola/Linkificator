@@ -1,0 +1,63 @@
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!-- en-US localization - Linkificator's module
+   - author:  -->
+
+<!ENTITY advanced-settings.title                                          "Opcións avanzadas de Linkificator">
+
+<!ENTITY advanced-settings.milliseconds                                   "ms">
+
+<!ENTITY advanced-settings.tab-links                                      "Ligazóns">
+<!ENTITY advanced-settings.tab-custom-rules                               "Personalizar regras">
+<!ENTITY advanced-settings.tab-configuration                              "Configuración">
+
+<!ENTITY advanced-settings.links.predefined-rules                         "Aplicar regras predefinidas para:">
+<!ENTITY advanced-settings.links.predefined-rules.email-address           "Enderezos electrónicos">
+<!ENTITY advanced-settings.links.predefined-rules.about-protocol          "about: protocol">
+<!ENTITY advanced-settings.links.predefined-rules.standard-urls           "URL estándar">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-subdomains      "Utilizar subdominios para identificar o protocolo">
+<!ENTITY advanced-settings.links.predefined-rules.URI-use-TLD             "Use top level domains">
+<!ENTITY advanced-settings.links.predefined-rules.URI-linkify-authority   "Linkify URL containing the alone authority (i.e. host:port)">
+<!ENTITY advanced-settings.links.custom-rules                             "Apply Custom Rules for:">
+<!ENTITY advanced-settings.links.custom-rules.before-predefined           "Before predefined rules list">
+<!ENTITY advanced-settings.links.custom-rules.after-predefined            "After predefined rules list">
+<!ENTITY advanced-settings.links.extra-features.inline-elements           "Handle inline elements">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification   "Automatically process dynamic changes">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-interval   "Process dynamic changes every:">
+<!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-threshold   "Disable the processing of dynamic changes if it takes longer than:">
+
+<!ENTITY advanced-settings.custom-rules.before-predefined                 "Before predefined rules">
+<!ENTITY advanced-settings.custom-rules.after-predefined                  "After predefined rules">
+<!ENTITY advanced-settings.custom-rules.add-button                        "Engadir regra">
+<!ENTITY advanced-settings.custom-rules.edit-button.tooltip               "Editar">
+<!ENTITY advanced-settings.custom-rules.delete-button.tooltip             "Eliminar">
+
+
+<!ENTITY advanced-settings.configuration.tab-general                      "Xeral">
+<!ENTITY advanced-settings.configuration.tab-topLevelDomains              "Top-Level Domains">
+
+<!ENTITY advanced-settings.configuration.requiredCharacters               "Required Characters">
+<!ENTITY advanced-settings.configuration.protocols                        "Protocolos">
+<!ENTITY advanced-settings.configuration.subdomains                       "Subdominios">
+<!ENTITY advanced-settings.configuration.excludedElements                 "Elementos excluídos">
+<!ENTITY advanced-settings.configuration.inlineElements                   "Inline Elements">
+<!ENTITY advanced-settings.configuration.maxDataSize                      "Tamaño máximo dos datos">
+<!ENTITY advanced-settings.configuration.reset-button                     "Restablecer aos valores predefinidos">
+
+<!ENTITY advanced-settings.configuration.gTLDs                            "Generics">
+<!ENTITY advanced-settings.configuration.ccTLDs                           "Códigos de país">
+<!ENTITY advanced-settings.configuration.geoTLDs                          "Geographics">
+<!ENTITY advanced-settings.configuration.communityTLDs                    "Comunidades">
+
+<!ENTITY advanced-settings.custom-rules.panel.name.label                  "Nome">
+<!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Identificación da regra">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.label               "Pattern">
+<!ENTITY advanced-settings.custom-rules.panel.pattern.placeholder         "Expresión regular">
+<!ENTITY advanced-settings.custom-rules.panel.url.label                   "URL">
+<!ENTITY advanced-settings.custom-rules.panel.url.placeholder             "Expresión regular">
+
+<!ENTITY advanced-settings.ok-button                                      "Aceptar">
+<!ENTITY advanced-settings.cancel-button                                  "Cancelar">
