@@ -85,9 +85,9 @@ pref("services.sync.prefs.sync.extensions.linkificator@markapola.standardURLLink
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportInlineElements", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.automaticLinkification", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationInterval", true);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationIntervalValue", 2000);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationIntervalValue", true);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationThreshold", true);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationThresholdValue", 500);
+pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationThresholdValue", true);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.autoLinkificationDelay", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesBefore", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.supportCustomRulesAfter", false);

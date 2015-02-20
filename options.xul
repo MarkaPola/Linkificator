@@ -66,7 +66,7 @@
     <button label="&settings.advanced-settings;" oncommand="Services.obs.notifyObservers(null, 'linkificator@markapola-cmdPressed', 'advancedSettings');"/>
   </setting>
   <setting title="&settings.prefs-management;" type="control">
-    <button id="settings.prefsMenu" class="header-button" type="menu" label="">
+    <button id="settings.prefsMenu" type="menu" label="">
       <menupopup id="settings.prefs" position="after_start">
 		<menuitem id="settings.prefs.sync" label="&settings.prefs-sync;" type="checkbox"/>
 		<menuseparator/>
