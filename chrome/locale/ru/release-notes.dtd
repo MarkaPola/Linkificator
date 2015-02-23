@@ -17,7 +17,7 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
-<!ENTITY release-notes.new_features.2.2.0-1              "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).">
+<!ENTITY release-notes.new_features.2.2.0-1              "Теперь можно сохранять и восстанавливать настройки Linkificator, а также сбрасывать их по умолчанию (см. 'Управление настройками' в опциях дополнения).">
 
 <!ENTITY release-notes.enhancements.2.1.4-1              "Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.">
 
@@ -40,18 +40,18 @@
 
 <!ENTITY release-notes.enhancements.2.0.5-1              "Новая локализация: русский язык (перевод 'Капелька Яда').">
 <!ENTITY release-notes.enhancements.2.0.5-2              "Улучшена поддержка восточно-азиатских языков.">
-<!ENTITY release-notes.enhancements.2.0.5-3              "Обновлëн список доменов верхнего уровня.">
+<!ENTITY release-notes.enhancements.2.0.5-3              "Обновлeн список доменов верхнего уровня.">
 
 <!ENTITY release-notes.enhancements.2.0.4-1              "Улучшен парсинг URI.">
 
 <!ENTITY release-notes.enhancements.2.0.3-1              "Обработка обновления содержимого страниц для поддержки Firefox 32.">
-<!ENTITY release-notes.enhancements.2.0.3-2              "Обновлëн список доменов верхнего уровня.">
+<!ENTITY release-notes.enhancements.2.0.3-2              "Обновлен список доменов верхнего уровня.">
 
 <!ENTITY release-notes.enhancements.2.0.2-1              "Добавлена ​​поддержка документов XHTML.">
 <!ENTITY release-notes.enhancements.2.0.2-2              "Добавлена ​​поддержка пространств имен в документах.">
 <!ENTITY release-notes.enhancements.2.0.2-3              "Поддержка Firefox 32.">
 <!ENTITY release-notes.enhancements.2.0.2-4              "Различные исправления ошибок на встроенных элементах обработки.">
-<!ENTITY release-notes.enhancements.2.0.2-5              "Обновлëн список доменов верхнего уровня.">
+<!ENTITY release-notes.enhancements.2.0.2-5              "Обновлeн список доменов верхнего уровня.">
 
 <!ENTITY release-notes.enhancements.2.0.1-1              "Обновлен список доменов верхнего уровня и улучшено его управление.">
 <!ENTITY release-notes.enhancements.2.0.1-2              "Entries in widget contextual menu show now the keyboard shortcut, if any.">
