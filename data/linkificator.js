@@ -887,12 +887,12 @@ function execute (action, properties) {
             }
             let snapshot = new Snapshot(getNodes(document));
             let count = 0;
-            
+
             function nextNode () {
                 count += 1;
                 if (count > properties.processing.iterations) {
                     count = 1;
-                    setTimeout(parseNode, properties.processing.interval);
+                    setTimeout(function(){parseNode();}, properties.processing.interval);
                 } else {
                     parseNode();
                 }

@@ -79,7 +79,7 @@ function Thread (action, interval) {
             thread.completed = true;
 			thread.action.complete(thread.ref);
 		} else {
-			thread.worker = setTimeout(execute, interval);
+			thread.worker = setTimeout(function(){execute();}, interval);
 		}
 	}
 	

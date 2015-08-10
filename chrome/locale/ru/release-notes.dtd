@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.2.1-1              "Совместимость Firefox 40+.">
+
 <!ENTITY release-notes.new_features.2.2.0-1              "Теперь можно сохранять и восстанавливать настройки Linkificator, а также сбрасывать их по умолчанию (см. 'Управление настройками' в опциях дополнения).">
 
 <!ENTITY release-notes.enhancements.2.1.4-1              "Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.">

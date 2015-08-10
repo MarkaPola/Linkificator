@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.2.1-1              "Compatibilité avec Firefox 40+.">
+
 <!ENTITY release-notes.new_features.2.2.0-1              "Ajout de la possibilité de sauvegarder et restaurer les réglages ainsi que de reinitialiser les réglages aux valeurs par défaut (voir 'Gestion des réglages' dans les Options du module).">
 
 <!ENTITY release-notes.enhancements.2.1.4-1              "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1.">

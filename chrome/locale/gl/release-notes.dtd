@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitacións">
 
+<!ENTITY release-notes.enhancements.2.2.1-1              "Firefox 40+ compatibility.">
+
 <!ENTITY release-notes.new_features.2.2.0-1              "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).">
 
 <!ENTITY release-notes.enhancements.2.1.4-1              "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1.">
