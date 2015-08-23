@@ -6,7 +6,6 @@ ag
 ai
 al
 am
-an
 ao
 aq
 ar
@@ -221,7 +220,6 @@ tl
 tm
 tn
 to
-tp
 tr
 tt
 tv

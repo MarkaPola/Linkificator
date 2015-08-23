@@ -18,6 +18,7 @@
 <!ENTITY release-notes.limitations                       "Limitacións">
 
 <!ENTITY release-notes.enhancements.2.3.0-1              "Multi-process Firefox (Electrolysis project) support.">
+<!ENTITY release-notes.enhancements.2.3.0-2              "Top level domains list reorganized and updated.">
 
 <!ENTITY release-notes.enhancements.2.2.1-1              "Firefox 40+ compatibility.">
 

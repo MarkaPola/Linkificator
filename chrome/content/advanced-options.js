@@ -634,6 +634,9 @@ function Configuration (preferences, defaults, properties) {
     function resetCommunityTLDs (event) {
 		resetCharPreference('communityTLDs');
 	}
+    function resetBrandTLDs (event) {
+		resetCharPreference('brandTLDs');
+	}
 
 	// manage events
 	$('advanced-settings.configuration.requiredCharacters.reset').addEventListener('command', resetRequiredCharacters);
@@ -651,6 +654,7 @@ function Configuration (preferences, defaults, properties) {
 	$('advanced-settings.configuration.ccTLDs.reset').addEventListener('command', resetCcTLDs);
 	$('advanced-settings.configuration.geoTLDs.reset').addEventListener('command', resetGeoTLDs);
 	$('advanced-settings.configuration.communityTLDs.reset').addEventListener('command', resetCommunityTLDs);
+	$('advanced-settings.configuration.brandTLDs.reset').addEventListener('command', resetBrandTLDs);
 
 	return {
 		retrieve: function () {
@@ -673,6 +677,7 @@ function Configuration (preferences, defaults, properties) {
 	        $('advanced-settings.configuration.ccTLDs.reset').removeEventListener('command', resetCcTLDs);
 	        $('advanced-settings.configuration.geoTLDs.reset').removeEventListener('command', resetGeoTLDs);
 	        $('advanced-settings.configuration.communityTLDs.reset').removeEventListener('command', resetCommunityTLDs);
+	        $('advanced-settings.configuration.brandTLDs.reset').removeEventListener('command', resetBrandTLDs);
 
 		}
 	};
@@ -703,7 +708,7 @@ var AdvancedSettings = (function () {
             $('broadcaster.supportEmail').setAttribute('disabled', !$('pref.supportEmail').value);
             $('broadcaster.supportStandardURLs').setAttribute('disabled', !$('pref.supportStandardURLs').value);
 
-            for (let p of ['automaticLinkification', 'useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs']) {
+            for (let p of ['automaticLinkification', 'useGTLDs', 'useCcTLDs', 'useGeoTLDs', 'useCommunityTLDs', 'useBrandTLDs']) {
                 if ($('pref.'+p).value)
                     $('broadcaster.'+p).removeAttribute('disabled');
                 else

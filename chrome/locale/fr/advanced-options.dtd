@@ -50,6 +50,7 @@
 <!ENTITY advanced-settings.configuration.ccTLDs                           "Codes de Pays">
 <!ENTITY advanced-settings.configuration.geoTLDs                          "Géographiques">
 <!ENTITY advanced-settings.configuration.communityTLDs                    "Communautés">
+<!ENTITY advanced-settings.configuration.brandTLDs                        "Marques Commerciales">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label                  "Nom">
 <!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Identification de la règle">

@@ -91,6 +91,11 @@
                    onchange="AdvancedSettings.change('useCommunityTLDs');"/>
       <preference  type="string" id="pref.communityTLDs"
 				   name="extensions.linkificator@markapola.communityTLDs"/>
+      <preference  type="bool" id="pref.useBrandTLDs"
+				   name="extensions.linkificator@markapola.useBrandTLDs"
+                   onchange="AdvancedSettings.change('useBrandTLDs');"/>
+      <preference  type="string" id="pref.brandTLDs"
+				   name="extensions.linkificator@markapola.brandTLDs"/>
 	</preferences>
 
 	<tabbox id="advanced-settings.tabbox">
@@ -399,6 +404,21 @@
 							observes="broadcaster.useCommunityTLDs"/>
     			  </hbox>
     			</groupbox>
+				<groupbox>
+    			  <caption label="&advanced-settings.configuration.brandTLDs;"/>
+      			  <hbox align="center">
+					<checkbox id="advanced-settings.configuration.topLevelDomains.use-brandTLDs"
+							  preference="pref.useBrandTLDs"/>
+    				<textbox class="advanced-settings.configuration.textbox"
+							 id="advanced-settings.configuration.brandTLDS.list" 
+							 preference="pref.brandTLDs"
+							 observes="broadcaster.useBrandTLDs"/>
+					<spacer flex="1"/>
+    				<button id="advanced-settings.configuration.brandTLDs.reset"
+							label="&advanced-settings.configuration.reset-button;"
+							observes="broadcaster.useBrandTLDs"/>
+    			  </hbox>
+    			</groupbox>
 			  </tabpanel>
 			</tabpanels>
 		  </tabbox>
@@ -414,6 +434,7 @@
       <broadcaster id="broadcaster.useCcTLDs" disabled="false"/>
       <broadcaster id="broadcaster.useGeoTLDs" disabled="false"/>
       <broadcaster id="broadcaster.useCommunityTLDs" disabled="false"/>
+      <broadcaster id="broadcaster.useBrandTLDs" disabled="false"/>
 	</broadcasterset>
 
   </prefpane>

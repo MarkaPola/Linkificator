@@ -51,6 +51,7 @@
 <!ENTITY advanced-settings.configuration.ccTLDs                           "Country Codes">
 <!ENTITY advanced-settings.configuration.geoTLDs                          "Geographics">
 <!ENTITY advanced-settings.configuration.communityTLDs                    "Communities">
+<!ENTITY advanced-settings.configuration.brandTLDs                        "Brands">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label                  "Name">
 <!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Rule identification">

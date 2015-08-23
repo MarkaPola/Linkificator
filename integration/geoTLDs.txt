@@ -15,13 +15,14 @@ capetown
 catalonia
 cologne
 cymru
-dohaa
+doha
 dubai
 durban
 frl
 gent
 hamburg
 helsinki
+ist
 istanbul
 joburg
 koeln
