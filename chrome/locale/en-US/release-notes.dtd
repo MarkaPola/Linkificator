@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.3.0-1              "Multi-process Firefox (Electrolysis project) support.">
+
 <!ENTITY release-notes.enhancements.2.2.1-1              "Firefox 40+ compatibility.">
 
 <!ENTITY release-notes.new_features.2.2.0-1              "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).">

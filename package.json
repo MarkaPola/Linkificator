@@ -4,10 +4,11 @@
     "license": "MPL 2.0", 
     "author": "MarkaPola",
     "contributors": ["Icons from www.fasticon.com"],
-    "version": "2.2.1",
+    "version": "2.3.0",
     "id": "linkificator@markapola", 
     "description": "Converts text links into clickable links...",
     "permissions": {                                                                      
-        "private-browsing": true                                                          
+        "private-browsing": true,
+        "multiprocess": true
     }
 }
