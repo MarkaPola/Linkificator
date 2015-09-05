@@ -17,6 +17,7 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.new_features.2.3.0-1              "Pour une consommation minimale des ressources, il est désormais possible de traiter les documents uniquement sur demande.">
 <!ENTITY release-notes.enhancements.2.3.0-1              "Support de Firefox Multi-Process (projet Electrolysis).">
 <!ENTITY release-notes.enhancements.2.3.0-2              "La liste des domaines de premier niveau a été réorganisée et mise à jour.">
 

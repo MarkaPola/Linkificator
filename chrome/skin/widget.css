@@ -19,6 +19,15 @@
 		list-style-image: url("chrome://linkificator/skin/link32-on.png");
 	}
 
+	.linkificator-manual {
+		list-style-image: url("chrome://linkificator/skin/link16-manual.png");
+	}
+	/* Added for Australis support */
+	.linkificator-manual[cui-areatype="menu-panel"],
+	toolbarpaletteitem[place="palette"] > .linkificator-manual {
+		list-style-image: url("chrome://linkificator/skin/link32-manual.png");
+	}
+
 	.linkificator-off {
 		list-style-image: url("chrome://linkificator/skin/link16-off.png");
 	}

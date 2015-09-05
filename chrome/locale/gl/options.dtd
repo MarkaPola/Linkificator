@@ -8,12 +8,14 @@
 
 <!ENTITY settings.activated                         "Activado">
 <!ENTITY settings.display-widget                    "Mostrar o widget na barra de complementos">
+<!ENTITY settings.on-demand-only                    "Linkify only on demand">
 <!ENTITY settings.context-menu-integration          "Page context menu integration">
 
 <!ENTITY settings.widget-middle-click               "On Widget middle-click">
 <!ENTITY settings.widget-right-click                "On Widget right-click">
 <!ENTITY settings.action-none                       "None">
 <!ENTITY settings.action-toggle                     "Toggle linkificator state">
+<!ENTITY settings.action-manual                     "Toggle processing mode (automatic/manual)">
 <!ENTITY settings.action-manage                     "Toggle current page processing">
 <!ENTITY settings.action-linkify                    "Actualizar páxina actual">
 

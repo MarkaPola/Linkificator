@@ -8,12 +8,14 @@
 
 <!ENTITY settings.activated                         "Activé">
 <!ENTITY settings.display-widget                    "Afficher le widget dans la barre des modules">
+<!ENTITY settings.on-demand-only                    "Traiter seulement sur demande">
 <!ENTITY settings.context-menu-integration          "Intégration dans le menu contextuel de page">
 
 <!ENTITY settings.widget-middle-click               "Clic central sur le widget">
 <!ENTITY settings.widget-right-click                "Clic droit sur le widget">
 <!ENTITY settings.action-none                       "Aucune action">
 <!ENTITY settings.action-toggle                     "Changer l'état de Linkificator">
+<!ENTITY settings.action-manual                     "Mode de traitement automatique/manuel">
 <!ENTITY settings.action-manage                     "Inclure/Exclure la page courante">
 <!ENTITY settings.action-linkify                    "Actualiser la page courante">
 

@@ -16,8 +16,6 @@ if (! -f package.json) then
 	exit 1;
 endif
 
-set CFX_VERSION = `python ${ADDON_HOME_PATH}/bin/cfx --version | awk '{print $3*100;}'`
-
 set APP_EXTENSION = ${ADDON_HOME_PATH}/app-extension
 if (-d ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension) then
 	set APP_EXTENSION = ${ADDON_HOME_PATH}/python-lib/cuddlefish/app-extension
@@ -25,9 +23,6 @@ endif
 cp -f ${APP_EXTENSION}/{application.ini,bootstrap.js} app-extension
 
 set XPI_OPTIONS = ""
-if ($CFX_VERSION < 115) then
-	set XPI_OPTIONS = "--strip-sdk"
-endif
 
 #
 # packaging add-on
@@ -51,23 +46,12 @@ unsetenv MSYS
 #
 zip linkificator.xpi options.xul defaults/preferences/prefs.js
 
-if ($CFX_VERSION < 115) then
-    #
-    # Add chrome extensions
-    #
-    zip -r linkificator.xpi chrome chrome.manifest
-endif
-
 set version=`cat package.json | perl -e 'use JSON; undef $/; my $text=<STDIN>; $/ = "\n"; print from_json($text)->{"version"};'`
 
 echo "Renaming extension to linkificator${version}.xpi"
-if ($CFX_VERSION < 115) then
-	mv linkificator.xpi linkificator${version}.xpi
-else
-	# work-around: remove erroneous / empty folder
-	set zd = $cwd
-	unzip -q -d ${TDIR} linkificator.xpi
-	cd ${TDIR}; zip -q -r ${zd}/linkificator${version}.xpi *; cd ${zd}
-	rm -rf ${TDIR}
-	rm -rf linkificator.xpi
-endif
+# work-around: remove erroneous / empty folder
+set zd = $cwd
+unzip -q -d ${TDIR} linkificator.xpi
+cd ${TDIR}; zip -q -r ${zd}/linkificator${version}.xpi *; cd ${zd}
+rm -rf ${TDIR}
+rm -rf linkificator.xpi

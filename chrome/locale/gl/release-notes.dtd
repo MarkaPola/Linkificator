@@ -17,6 +17,7 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitacións">
 
+<!ENTITY release-notes.new_features.2.3.0-1              "For a minimal resources consumption, It is now possible to process the documents only on demand.">
 <!ENTITY release-notes.enhancements.2.3.0-1              "Multi-process Firefox (Electrolysis project) support.">
 <!ENTITY release-notes.enhancements.2.3.0-2              "Top level domains list reorganized and updated.">
 

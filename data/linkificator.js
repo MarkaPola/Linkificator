@@ -849,14 +849,30 @@ LinkifySplittedText.prototype.linkify = function (isOver) {
     return this.index == this.textNodes.length;
 };
 
-function execute (action, properties) {
+
+function configure () {
     var document = window.document;
 
-    var state = State(document, action);
-    if (!state) {
+    var state = State(document);
+
+    if (!state.isValid('parse')) {
         return;
     }
 
+    var statistics = Statistics(document, 'parse');
+
+    state.configured();
+}
+
+function execute (action, properties) {
+    var document = window.document;
+
+    var state = State(document);
+    if (!state.isValid(action)) {
+        return;
+    }
+    state.process();
+    
     var statistics = Statistics(document, action);
 
     var style = (function (style) {
@@ -934,11 +950,12 @@ function execute (action, properties) {
 function undo () {
     var document = window.document;
 
-    var state = State(document, 'undo');
-    if (!state) {
+    var state = State(document);
+    if (!state.isValid('undo')) {
         return;
     }
-
+    state.undo();
+    
     // abort any running linkifications...
     threads.apply(function (thread) {
         thread.kill();
@@ -979,9 +996,16 @@ threads.detach = function (thread) {
 
 self.port.on('parse', function (properties) {
     documentObserver.disconnect();
-    execute('parse', properties);
-    if (properties.extraFeatures.support.automaticLinkification) {
-        documentObserver.observe(properties.extraFeatures.autoLinkification);
+    
+    if (properties.manual)
+        configure ();
+    else
+    {
+        execute('parse', properties);
+    
+        if (properties.extraFeatures.support.automaticLinkification) {
+            documentObserver.observe(properties.extraFeatures.autoLinkification);
+        }
     }
 });
 
@@ -990,7 +1014,8 @@ self.port.on('re-parse', function (properties) {
 
     let date = Date.now();
     execute('re-parse', properties);
-    if (properties.extraFeatures.support.automaticLinkification) {
+    
+    if (!properties.manual && properties.extraFeatures.support.automaticLinkification) {
         if (properties.extraFeatures.autoLinkification.threshold.active
             && (Date.now()-date > properties.extraFeatures.autoLinkification.threshold.value))
             // processing time is too costly, deactivate auto linkification

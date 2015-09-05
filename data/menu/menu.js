@@ -8,7 +8,9 @@
  * author: MarkaPola */
 
 self.on("context", function (node) {
-	return document.querySelector("body[linkificator-status='complete']") != null;
+    var state = State(document);
+    
+	return state.isConfigured() || state.isComplete();
 });
 
 self.on('click', function (node, data) {

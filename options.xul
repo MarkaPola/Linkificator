@@ -12,12 +12,14 @@
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.displayWidget" id="settings.displayWidget" title="&settings.display-widget;" type="bool"/>
+  <setting pref="extensions.linkificator@markapola.manual" id="settings.manual" title="&settings.on-demand-only;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.contextMenuIntegration" title="&settings.context-menu-integration;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.widgetMiddleClick" title="&settings.widget-middle-click;" type="menulist">
     <menulist sizetopopup="always">
       <menupopup>
         <menuitem label="&settings.action-none;" value="none"/>
         <menuitem label="&settings.action-toggle;" value="toggle"/>
+        <menuitem label="&settings.action-manual;" value="manual"/>
         <menuitem label="&settings.action-manage;" value="manage"/>
         <menuitem label="&settings.action-linkify;" value="linkify"/>
       </menupopup>
@@ -28,6 +30,7 @@
       <menupopup>
         <menuitem label="&settings.action-none;" value="none"/>
         <menuitem label="&settings.action-toggle;" value="toggle"/>
+        <menuitem label="&settings.action-manual;" value="manual"/>
         <menuitem label="&settings.action-manage;" value="manage"/>
         <menuitem label="&settings.action-linkify;" value="linkify"/>
       </menupopup>
@@ -37,6 +40,7 @@
     <menulist sizetopopup="always">
       <menupopup>
         <menuitem label="&settings.action-toggle;" value="hotkeyToggle"/>
+        <menuitem label="&settings.action-manual;" value="hotkeyManual"/>
         <menuitem label="&settings.action-manage;" value="hotkeyManage"/>
         <menuitem label="&settings.action-linkify;" value="hotkeyParse"/>
       </menupopup>
