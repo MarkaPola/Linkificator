@@ -7,7 +7,6 @@
    - author: MarkaPola -->
 
 <!ENTITY settings.activated                         "Activé">
-<!ENTITY settings.display-widget                    "Afficher le widget dans la barre des modules">
 <!ENTITY settings.on-demand-only                    "Traiter seulement sur demande">
 <!ENTITY settings.context-menu-integration          "Intégration dans le menu contextuel de page">
 

@@ -7,7 +7,6 @@
  * author: MarkaPola */
 
 pref("extensions.linkificator@markapola.activated", true);
-pref("extensions.linkificator@markapola.displayWidget", true);
 pref("extensions.linkificator@markapola.manual", false);
 pref("extensions.linkificator@markapola.contextMenuIntegration", true);
 pref("extensions.linkificator@markapola.widgetMiddleClick", "toggle");
@@ -62,7 +61,6 @@ pref("extensions.linkificator@markapola.communityTLDs", "abogado;aco;android;apa
 pref("extensions.linkificator@markapola.useBrandTLDs", true);
 pref("extensions.linkificator@markapola.brandTLDs", "abb;abbott;accenture;adac;ads;aeg;afl;aig;airtel;aquarelle;audi;axa;azure;barclaycard;barclays;bauhaus;bbb;bbc;bbva;bentley;bharti;bing;bloomberg;bmw;bnl;bnpparibas;bond;boots;bradesco;bridgestone;brother;bugatti;cal;canon;cartier;cba;cbn;ceb;cfa;chanel;chloe;cisco;commbank;crown;cuisinella;cyou;dabur;datsun;dclk;delta;doosan;dvag;emerck;epson;erni;everbank;fage;firmdale;flsmidth;forex;gbiz;gdn;genting;ggee;gle;gmail;gmx;goldpoint;goo;goog;google;guge;hangout;hermes;hitachi;homedepot;honda;hotmail;hsbc;ibm;icbc;ice;icu;ifm;iinet;infiniti;ipiranga;itau;iwc;jcb;jlc;jll;jprs;kddi;komatsu;krd;lacaixa;lamborghini;lancaster;lasalle;latrobe;leclerc;lexus;liaison;lidl;lixil;lotte;lupin;maif;man;marriott;merck;microsoft;mini;mma;montblanc;mtn;mtpc;nadex;nec;netbank;nexus;nhk;nico;nissan;nokia;nra;ntt;office;omega;oracle;orange;otsuka;panerai;philips;piaget;pictet;pohl;praxi;redstone;ricoh;samsung;sakura;sandvik;sandvikcoromant;sanofi;sap;saxo;sca;scb;schmidt;schwarz;scor;seat;seek;sener;shriram;skype;sncf;sony;spiegel;stada;starhub;statoil;suzuki;swatch;tatamotors;telephonica;temasek;thd;toray;toshiba;toyota;ubs;uol;vista;vistaprint;walter;weir;williamhill;windows;wme;xbox;xerox;xperia;yandex;yodobashi;youtube");
 // sync management, deactivated by default
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.displayWidget", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.manual", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.contextMenuIntegration", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetMiddleClick", false);

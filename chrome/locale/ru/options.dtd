@@ -7,7 +7,6 @@
    - author: Капелька Яда -->
 
 <!ENTITY settings.activated                         "Включено">
-<!ENTITY settings.display-widget                    "Показывать виджет в панели дополнений">
 <!ENTITY settings.on-demand-only                    "Linkify only on demand">
 <!ENTITY settings.context-menu-integration          "Интеграция в контекстное меню">
 

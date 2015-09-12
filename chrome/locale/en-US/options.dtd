@@ -7,7 +7,6 @@
    - author: MarkaPola -->
 
 <!ENTITY settings.activated                         "Activated">
-<!ENTITY settings.display-widget                    "Display widget in the Add-on Bar">
 <!ENTITY settings.on-demand-only                    "Linkify only on demand">
 <!ENTITY settings.context-menu-integration          "Page context menu integration">
 

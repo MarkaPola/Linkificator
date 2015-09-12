@@ -11,7 +11,6 @@
 
 <vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <setting pref="extensions.linkificator@markapola.activated" title="&settings.activated;" type="bool"/>
-  <setting pref="extensions.linkificator@markapola.displayWidget" id="settings.displayWidget" title="&settings.display-widget;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.manual" id="settings.manual" title="&settings.on-demand-only;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.contextMenuIntegration" title="&settings.context-menu-integration;" type="bool"/>
   <setting pref="extensions.linkificator@markapola.widgetMiddleClick" title="&settings.widget-middle-click;" type="menulist">
