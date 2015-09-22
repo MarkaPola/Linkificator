@@ -17,10 +17,10 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
-<!ENTITY release-notes.new_features.2.3.0-1              "For a minimal resources consumption, It is now possible to process the documents only on demand.">
-<!ENTITY release-notes.enhancements.2.3.0-1              "Multi-process Firefox (Electrolysis project) support.">
-<!ENTITY release-notes.enhancements.2.3.0-2              "Top level domains list reorganized and updated.">
-<!ENTITY release-notes.limitations.2.3.0-1               "Drop support for Firefox versions before 31.0.">
+<!ENTITY release-notes.new_features.2.3.0-1              "Для минимального потребления ресурсов теперь можно обрабатывать документы только по запросу.">
+<!ENTITY release-notes.enhancements.2.3.0-1              "Поддержка мульти-процессов в Firefox (проект Electrolysis).">
+<!ENTITY release-notes.enhancements.2.3.0-2              "Реорганизован и обновлён список доменов верхнего уровня.">
+<!ENTITY release-notes.limitations.2.3.0-1               "Прекращена поддержка Firefox версий ниже 31.0.">
 
 <!ENTITY release-notes.enhancements.2.2.1-1              "Совместимость Firefox 40+.">
 

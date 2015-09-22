@@ -7,14 +7,14 @@
    - author: Капелька Яда -->
 
 <!ENTITY settings.activated                         "Включено">
-<!ENTITY settings.on-demand-only                    "Linkify only on demand">
+<!ENTITY settings.on-demand-only                    "Линковать только по запросу">
 <!ENTITY settings.context-menu-integration          "Интеграция в контекстное меню">
 
 <!ENTITY settings.widget-middle-click               "Щелчок средней кнопкой на виджете">
 <!ENTITY settings.widget-right-click                "Щелчок правой кнопкой на виджете">
 <!ENTITY settings.action-none                       "Ничего">
 <!ENTITY settings.action-toggle                     "Переключить состояние Linkificator">
-<!ENTITY settings.action-manual                     "Toggle processing mode (automatic/manual)">
+<!ENTITY settings.action-manual                     "Переключить режим обработки (автоматический/ручной)">
 <!ENTITY settings.action-manage                     "Переключить обработку текущей страницы">
 <!ENTITY settings.action-linkify                    "Обновить текущую страницу">
 

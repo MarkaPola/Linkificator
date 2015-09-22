@@ -51,7 +51,7 @@
 <!ENTITY advanced-settings.configuration.ccTLDs                           "Коды стран">
 <!ENTITY advanced-settings.configuration.geoTLDs                          "Географические">
 <!ENTITY advanced-settings.configuration.communityTLDs                    "Общественные">
-<!ENTITY advanced-settings.configuration.brandTLDs                        "Brands">
+<!ENTITY advanced-settings.configuration.brandTLDs                        "Бренды">
 
 <!ENTITY advanced-settings.custom-rules.panel.name.label                  "Имя">
 <!ENTITY advanced-settings.custom-rules.panel.name.placeholder            "Название правила">
