@@ -447,7 +447,7 @@ ListBox.prototype = {
 function CustomRules (preferences, defaults, properties) {
 	var inInit = true;
 
-	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
+	var instantApply = Services.prefs.getBoolPref("browser.preferences.instantApply");
 	
 	var beforeList = new ListBox('advanced-settings.custom-rules.before-list',
 								 'advanced-settings.custom-rules.itemTemplate',
@@ -586,7 +586,7 @@ function CustomRules (preferences, defaults, properties) {
 
 //************** Configuration ************************
 function Configuration (preferences, defaults, properties) {
-	var instantApply = Application.prefs.get("browser.preferences.instantApply").value;
+	var instantApply = Services.prefs.getBoolPref("browser.preferences.instantApply");
 	
     function resetCharPreference (id) {
         if (! instantApply) {
