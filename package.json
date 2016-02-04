@@ -1,14 +1,21 @@
 {
+    "title": "Linkificator", 
     "name": "linkificator", 
-    "fullName": "Linkificator", 
+    "version": "2.4.0",
     "license": "MPL 2.0", 
     "author": "MarkaPola",
-    "contributors": ["Icons from www.fasticon.com"],
-    "version": "2.3.0",
     "id": "linkificator@markapola", 
     "description": "Converts text links into clickable links...",
+    "contributors": ["Icons from www.fasticon.com"],
+    "keywords": [
+        "jetpack"
+    ], 
+    "engines": {
+        "firefox": ">=38.0a1"
+    }, 
     "permissions": {                                                                      
         "private-browsing": true,
         "multiprocess": true
-    }
+    }, 
+    "main": "lib/main.js"
 }

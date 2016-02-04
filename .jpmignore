@@ -1,0 +1,21 @@
+
+# temporary files
+*~
+
+# previous xpi
+*.xpi
+
+# local stuff
+README.md
+test
+doc
+app-extension
+l10n
+integration
+
+# jpm stuff
+.jpmignore
+
+# git stuff
+.git
+.gitignore
