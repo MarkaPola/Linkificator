@@ -9,9 +9,9 @@
     <em:type>2</em:type>
     <em:bootstrap>true</em:bootstrap>
     <em:unpack>false</em:unpack>
-    
+	<em:multiprocessCompatible>true</em:multiprocessCompatible>
+	
     <em:iconURL>chrome://linkificator/skin/icon48.png</em:iconURL>
-    <em:icon64URL>chrome://linkificator/skin/icon64.png</em:icon64URL>
 	
     <!-- Firefox -->
     <em:targetApplication>
