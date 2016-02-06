@@ -17,6 +17,9 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.3.1-1              "Поддержка мульти-процессов в Firefox (проект Electrolysis).">
+<!ENTITY release-notes.limitations.2.3.1-1               "Прекращена поддержка Firefox версий ниже 38.0.">
+
 <!ENTITY release-notes.new_features.2.3.0-1              "Для минимального потребления ресурсов теперь можно обрабатывать документы только по запросу.">
 <!ENTITY release-notes.enhancements.2.3.0-1              "Поддержка мульти-процессов в Firefox (проект Electrolysis).">
 <!ENTITY release-notes.enhancements.2.3.0-2              "Реорганизован и обновлён список доменов верхнего уровня.">

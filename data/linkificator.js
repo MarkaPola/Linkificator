@@ -14,6 +14,13 @@ RegExp.escape = function(string) {
     return string.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1');
 };
 
+function isValidDocument () {
+	let contentType = Document(window.document).contentType;
+	
+	return contentType.startsWith('text/html') || contentType.startsWith('text/plain')
+		|| contentType.startsWith('application/xhtml');
+}
+
 // Handle dynamic document changes using MutationObserver interface
 var documentObserver = (function () {
     var config = {childList: true, subtree: true};
@@ -867,6 +874,8 @@ function configure () {
 function execute (action, properties) {
     var document = window.document;
 
+    properties.document = {contentType: Document(document).contentType};
+
     var state = State(document);
     if (!state.isValid(action)) {
         return;
@@ -947,6 +956,25 @@ function execute (action, properties) {
     parse();
 }
 
+function parse (properties) {
+    if (!isValidDocument()) {
+        return;
+    }
+    
+    documentObserver.disconnect();
+
+    if (properties.manual)
+        configure ();
+    else
+    {
+        execute('parse', properties);
+    
+        if (properties.extraFeatures.support.automaticLinkification) {
+            documentObserver.observe(properties.extraFeatures.autoLinkification);
+        }
+    }
+}
+
 function undo () {
     var document = window.document;
 
@@ -994,19 +1022,15 @@ threads.detach = function (thread) {
     }
 };
 
+self.port.on('initial-parse', function (properties) {
+    // send back to add-on the document content type
+    self.port.emit('content-type', Document(window.document).contentType);
+
+    parse (properties);
+});
+
 self.port.on('parse', function (properties) {
-    documentObserver.disconnect();
-    
-    if (properties.manual)
-        configure ();
-    else
-    {
-        execute('parse', properties);
-    
-        if (properties.extraFeatures.support.automaticLinkification) {
-            documentObserver.observe(properties.extraFeatures.autoLinkification);
-        }
-    }
+    parse (properties);
 });
 
 self.port.on('re-parse', function (properties) {
