@@ -5,11 +5,13 @@ apartments
 archi
 art
 auto
+autos
 bank
 bcn
 bet
 bible
 bingo
+broadway
 bzh
 cafe
 caravan
@@ -95,6 +97,7 @@ spa
 sport
 spreadbetting
 srl
+storage
 studio
 sucks
 surf
@@ -105,10 +108,14 @@ team
 tennis
 thai
 theater
+theatre
 tickets
 tours
 versicherung
 vin
+vip
+wanggou
+watches
 webs
 whoswho
 win

@@ -19,6 +19,7 @@
 
 <!ENTITY release-notes.enhancements.2.3.1-1              "Support de Firefox Multi-Process (projet Electrolysis).">
 <!ENTITY release-notes.limitations.2.3.1-1               "Suppression du support des versions de Firefox antérieures à 38.0.">
+<!ENTITY release-notes.enhancements.2.3.1-2              "La liste des domaines de premier niveau a été mise à jour.">
 
 <!ENTITY release-notes.new_features.2.3.0-1              "Pour une consommation minimale des ressources, il est désormais possible de traiter les documents uniquement sur demande.">
 <!ENTITY release-notes.enhancements.2.3.0-1              "Support de Firefox Multi-Process (projet Electrolysis).">
