@@ -881,7 +881,7 @@ function execute (action, properties) {
         return;
     }
     state.process();
-    
+	
     var statistics = Statistics(document, action);
 
     var style = (function (style) {
@@ -900,7 +900,7 @@ function execute (action, properties) {
 
     var parser = Parser(properties);
 
-    function parse () {
+    function parseNodes () {
         function parseDocument (getNodes, linkify) {
             function Snapshot (elements) {
                 this.elements = elements;
@@ -923,8 +923,7 @@ function execute (action, properties) {
                 }
             }
             function parseNode () {
-                try
-                {
+                try {
                     let thread = Thread(new linkify(snapshot.next(), statistics, properties, parser, style, nextNode),
                                         properties.processing.interval);
                     threads.push(thread);
@@ -953,7 +952,7 @@ function execute (action, properties) {
         state.complete();
     }
     
-    parse();
+    parseNodes();
 }
 
 function parse (properties) {
