@@ -24,7 +24,7 @@ function Document (doc) {
 
     return {
         get contentType () {
-            let contentType = 'text/html';
+            let contentType = null;
 
             if (document) {
                 // specify multiple CSS Selectors because 'i' flag is not supported before FF47
@@ -35,8 +35,19 @@ function Document (doc) {
                         contentType = content.trim().split(/;|\s/)[0];
                     }
                 }
-            }
 
+                if (! contentType) {
+                    // Check possible plain text page
+                    if (document.querySelector('link[href="resource://gre-resources/plaintext.css"]')) {
+                        contentType = 'text/plain';
+                    }
+                }
+            }
+            
+            if (! contentType) {
+                contentType = 'text/html';
+            }
+            
             return contentType;
         }
     };

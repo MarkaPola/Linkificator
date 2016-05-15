@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Enhancements and bug fixes">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.3.2-1              "Fixes a regression, regarding test/plain documents, introduced in version 2.3.1.">
+
 <!ENTITY release-notes.enhancements.2.3.1-1              "Multi-process Firefox (Electrolysis project) support.">
 <!ENTITY release-notes.enhancements.2.3.1-2              "Top level domains list is updated.">
 <!ENTITY release-notes.limitations.2.3.1-1               "Drop support for Firefox versions before 38.0.">

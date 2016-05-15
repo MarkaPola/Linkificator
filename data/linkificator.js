@@ -14,9 +14,12 @@ RegExp.escape = function(string) {
     return string.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1');
 };
 
-function isValidDocument () {
-	let contentType = Document(window.document).contentType;
-	
+function isValidDocument (properties) {
+    if (!properties.document.contentType) {
+	    properties.document.contentType = Document(window.document).contentType;
+	}
+
+    let contentType = properties.document.contentType;
 	return contentType.startsWith('text/html') || contentType.startsWith('text/plain')
 		|| contentType.startsWith('application/xhtml');
 }
@@ -874,8 +877,6 @@ function configure () {
 function execute (action, properties) {
     var document = window.document;
 
-    properties.document = {contentType: Document(document).contentType};
-
     var state = State(document);
     if (!state.isValid(action)) {
         return;
@@ -956,7 +957,7 @@ function execute (action, properties) {
 }
 
 function parse (properties) {
-    if (!isValidDocument()) {
+    if (!isValidDocument(properties)) {
         return;
     }
     
@@ -1023,7 +1024,9 @@ threads.detach = function (thread) {
 
 self.port.on('initial-parse', function (properties) {
     // send back to add-on the document content type
-    self.port.emit('content-type', Document(window.document).contentType);
+    let contentType = properties.document.contentType ? properties.document.contentType
+                                                      : Document(window.document).contentType;
+    self.port.emit('content-type', contentType);
 
     parse (properties);
 });

@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Améliorations et correction de bogues">
 <!ENTITY release-notes.limitations                       "Limitations">
 
+<!ENTITY release-notes.enhancements.2.3.2-1              "Correction d'une régression, concernant les documents texte, introduite dans la version 2.3.1.">
+
 <!ENTITY release-notes.enhancements.2.3.1-1              "Support de Firefox Multi-Process (projet Electrolysis).">
 <!ENTITY release-notes.enhancements.2.3.1-2              "La liste des domaines de premier niveau a été mise à jour.">
 <!ENTITY release-notes.limitations.2.3.1-1               "Suppression du support des versions de Firefox antérieures à 38.0.">

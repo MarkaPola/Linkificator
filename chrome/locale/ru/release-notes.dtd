@@ -17,6 +17,8 @@
 <!ENTITY release-notes.enhancements                      "Улучшения и исправления ошибок">
 <!ENTITY release-notes.limitations                       "Ограничения">
 
+<!ENTITY release-notes.enhancements.2.3.2-1              "Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 2.3.1.">
+
 <!ENTITY release-notes.enhancements.2.3.1-1              "Поддержка мульти-процессов в Firefox (проект Electrolysis).">
 <!ENTITY release-notes.enhancements.2.3.1-2              "Обновлён список доменов верхнего уровня.">
 <!ENTITY release-notes.limitations.2.3.1-1               "Прекращена поддержка Firefox версий ниже 38.0.">
