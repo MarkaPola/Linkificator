@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="MarkaPola">
+
+	<link rel="stylesheet" href="options.css">
+
+	<script src="localization.js"></script>
+  </head>
+  <body>	
+	<form name="linkificator-settings">
+	  <div class="settings-entry">
+		<label for="activated" data-l10n-id="settings.activated">Activated</label>
+		<input checked type="checkbox" id="activated">
+	  </div>
+	  <div class="settings-entry">
+		<label for="on-demand" data-l10n-id="settings.on-demand">Linkify only on demand</label>
+		<input type="checkbox" name="on-demand" id="on-demand"/>
+	  </div>
+	  <div class="settings-entry">
+		<label for="display-counter" data-l10n-id="settings.display-counter">Display counter</label>
+		<input checked type="checkbox" name="display-counter" id="display-counter"/>
+	  </div>
+	  <div class="settings-entry">
+		<label for="context-menu" data-l10n-id="settings.context-menu-integration">Page context menu integration</label>
+		<input checked type="checkbox" name="context-menu" id="context-menu"/>
+	  </div>
+	  <hr>
+	  <div class="settings-entry">
+		<label for="use-regexp" data-l10n-id="settings.use-regular-expressions">Use regular expressions for domains</label>
+		<input checked type="checkbox" name="use-regexp" id="use-regexp"/>
+	  </div>
+	  <div class="settings-entry">
+		<label for="domain-filtering-mode" data-l10n-id="settings.domain-filtering-mode">Domain filtering mode</label>
+		<select id="domain-filtering-mode">
+		  <option value="none" data-l10n-id="settings.domain-filtering-mode.none" >None</option>
+		  <option value="white" data-l10n-id="settings.domain-filtering-mode.whitelist">Only linkify for domains in Whitelist</option>
+		  <option selected value="black" data-l10n-id="settings.domain-filtering-mode.blacklist">Never linkify for domains in Blacklist</option>
+		</select>
+	  </div>
+	  <div class="settings-entry">
+		<label for="domains-list" data-l10n-id="settings.domain-filtering-mode.domains-list">Domains</label>
+		<input type="text" name="domains-list" id="domains-list" class="long-text"/>
+	  </div>
+	  <hr>
+      <div class="settings-entry">
+		<label for="override-text-color" data-l10n-id="settings.override-text-color">Override text color</label>
+		<input type="checkbox" name="override-text-color" id="override-text-color"/>
+		<input type="color" name="href-text-color" id="href-text-color"/>
+	  </div>
+      <div class="settings-entry">
+		<label for="override-background-color" data-l10n-id="settings.override-background-color">Override background color</label>
+		<input type="checkbox" name="override-background-color" id="override-background-color"/>
+		<input type="color" name="href-background-color" id="href-background-color"/>
+	  </div>
+	  <hr>
+	  <div class="settings-entry">
+		<label for="prefs-management" data-l10n-id="settings.prefs-management">Settings management</label>
+		<div class="dropdown" id="prefs-management">
+		  <button type="button" id="dropdown-button" class="dropdown-button"><img src="utilities.png" alt="">▼</button>
+		  <div id="dropdown-content" class="dropdown-content">
+			<div class="dropdown-entry">
+			  <input checked type="checkbox" name="prefs-sync" id="prefs-sync"/>
+			  <label for="prefs-sync" data-l10n-id="settings.prefs-sync">Sync settings</label>
+			</div>
+			<hr class="dropdown-separator">
+			<div class="dropdown-entry">
+			  <input type="image" src="export.png" name="prefs-export" id="prefs-export"/>
+			  <label for="prefs-export" data-l10n-id="settings.prefs-export">Export</label>
+			</div>
+			<div class="dropdown-entry">
+			  <input type="image" src="import.png" name="prefs-import" id="prefs-import"/>
+			  <label for="prefs-import" data-l10n-id="settings.prefs-import">Import</label>
+			</div>
+			<hr class="dropdown-separator">
+			<div class="dropdown-entry">
+			  <input type="image" src="arrow-circle.png" name="prefs-defaults" id="prefs-defaults"/>
+			  <label for="prefs-defaults" data-l10n-id="settings.prefs-defaults">Restore defaults</label>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</form>
+	
+	<script src="options.js"></script>
+  </body>
+</html>
+

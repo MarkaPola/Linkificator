@@ -1,0 +1,54 @@
+{
+
+    "manifest_version": 2,
+    "name": "Linkificator",
+    "version": "3.0",
+    "description": "__MSG_extensionDescription__",
+    "icons": {
+        "48": "resources/icons/icon48.png"
+    }, 
+
+    "default_locale": "en_US", 
+
+    "applications": {
+        "gecko": {
+            "id": "linkificator@markapola",
+            "strict_min_version": "54.0"
+        }
+    }, 
+
+    "permissions": [
+        "tabs", "storage"
+    ],
+    
+    "options_ui": {
+        "browser_style": true,
+        "page": "options/options.html"
+    },
+    
+    "browser_action": {
+        "browser_style": true,
+        "default_area": "navbar",
+        "default_icon": {
+            "16": "resources/icons/link16-on.png", 
+            "32": "resources/icons/link32-on.png"
+        },
+        "default_title": "Linkificator"
+    },
+    
+    "background": {
+        "scripts" : ["configurator.js", "controler.js", "main.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*/*", "file:///*"],
+            "all_frames": true,
+            "run_at": "document_end", 
+            "js": [
+                "utilities/thread.js", 
+                "utilities/document.js", 
+                "content_scripts/statistics.js", 
+                "content_scripts/linkificator.js"]
+        }
+    ]
+}

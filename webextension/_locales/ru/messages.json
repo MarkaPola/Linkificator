@@ -1,0 +1,116 @@
+{
+    "extensionDescription": {
+    "message": "Преобразует текстовые ссылки в кликабельные.", 
+    "description": "Description of the extension."
+    }, 
+
+    "settings.activated": {
+        "message": "Включено",
+        "description": "Activated"
+    },
+    "settings.on-demand": {
+        "message": "Линковать только по запросу",
+        "description": "Linkify only on demand"
+    },
+    "settings.display-counter": {
+        "message": "Display counter",
+        "description": "Display number of links linkified as icon badge"
+    },
+    "settings.context-menu-integration": {
+        "message": "Интеграция в контекстное меню",
+        "description": "Page context menu integration"
+    },
+    "settings.use-regular-expressions": {
+        "message": "Регулярные выражения для доменов",
+        "description": "Use regular expressions for domains filtering"
+    },
+    "settings.domain-filtering-mode": {
+        "message": "Режим фильтрации доменов",
+        "description": "Domain filtering mode"
+    },
+    "settings.domain-filtering-mode.none": {
+        "message": "Ничего",
+        "description": "Domain filtering mode: no filtering"
+    },
+    "settings.domain-filtering-mode.whitelist": {
+        "message": "Подчёркивать только домены в белом списке",
+        "description": "Domain filtering mode: while list"
+    },
+    "settings.domain-filtering-mode.blacklist": {
+        "message": "Никогда не подчёркивать домены в чёрном списке",
+        "description": "Domain filtering mode: black list"
+    },
+    "settings.domain-filtering-mode.domains-list": {
+        "message": "доменов",
+        "description": "List of domains for filtering (white or black)"
+    },
+    "settings.override-text-color": {
+        "message": "Изменить цвет текста",
+        "description": "To change text color of hyperlinks"
+    },
+    "settings.override-background-color": {
+        "message": "Изменить цвет фона",
+        "description": "To change background color of hyperlinks"
+    },
+    "settings.prefs-management": {
+        "message": "Управление настройками",
+        "description": "Settings management"
+    },
+    "settings.prefs-sync": {
+        "message": "Настройки синхронизации",
+        "description": "To active multi devices synchronization of settings"
+    },
+    "settings.prefs-import": {
+        "message": "Импорт настроек...",
+        "description": "Imports settings from the selected file"
+    },
+    "settings.prefs-export": {
+        "message": "Экспорт настроек...",
+        "description": "Exports settings to selected file"
+    },
+    "settings.prefs-defaults": {
+        "message": "Восстановить по умолчанию",
+        "description": "Reset all settings to default values"
+    },
+
+    "stats.0links": {
+        "message": "0 \u0441\u0441\u044b\u043b\u043e\u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043e",
+        "description": "zero links processed" 
+    }, 
+    "stats.1link": {
+        "message": "1 \u0441\u0441\u044b\u043b\u043a\u0430 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u0430",
+        "description": "one link processed"
+    }, 
+    "stats.links": {
+        "message": "$COUNT$ \u0441\u0441\u044b\u043b\u043e\u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043e", 
+        "description": "number of links processed", 
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    }, 
+    "stats.time": {
+        "message": "\u0437\u0430 $TIME$ \u043c\u0441\u0435\u043a",
+        "description": "elapsed time of processing",
+        "placeholders": {
+            "time": {
+                "content": "$1",
+                "example": "25"
+            }
+        }
+    }, 
+    "stats.excluded": {
+        "message": "\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u0438\u0441\u043a\u043b\u044e\u0447\u0435\u043d\u0430",
+        "description": "page excluded"
+    }, 
+    "stats.filtered": {
+        "message": "\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u043f\u0440\u043e\u0438\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0430",
+        "description": "page ignored"
+    }, 
+    "stats.not_processed": {
+        "message": "\u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430 \u043d\u0435 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u0430",
+        "description": "page not processed"
+    }
+}

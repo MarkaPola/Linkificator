@@ -1,0 +1,116 @@
+{
+    "extensionDescription": {
+    "message": "Converts text links into clickable links...",
+    "description": "Description of the extension."
+    }, 
+
+    "settings.activated": {
+        "message": "Activated",
+        "description": "Activated"
+    },
+    "settings.on-demand": {
+        "message": "Linkify only on demand",
+        "description": "Linkify only on demand"
+    },
+    "settings.display-counter": {
+        "message": "Display counter",
+        "description": "Display number of links linkified as icon badge"
+    },
+    "settings.context-menu-integration": {
+        "message": "Page context menu integration",
+        "description": "Page context menu integration"
+    },
+    "settings.use-regular-expressions": {
+        "message": "Use regular expressions for domains",
+        "description": "Use regular expressions for domains filtering"
+    },
+    "settings.domain-filtering-mode": {
+        "message": "Domain filtering mode",
+        "description": "Domain filtering mode"
+    },
+    "settings.domain-filtering-mode.none": {
+        "message": "None",
+        "description": "Domain filtering mode: no filtering"
+    },
+    "settings.domain-filtering-mode.whitelist": {
+        "message": "Only linkify for domains in Whitelist",
+        "description": "Domain filtering mode: while list"
+    },
+    "settings.domain-filtering-mode.blacklist": {
+        "message": "Never linkify for domains in Blacklist",
+        "description": "Domain filtering mode: black list"
+    },
+    "settings.domain-filtering-mode.domains-list": {
+        "message": "Domains",
+        "description": "List of domains for filtering (white or black)"
+    },
+    "settings.override-text-color": {
+        "message": "Override text color",
+        "description": "To change text color of hyperlinks"
+    },
+    "settings.override-background-color": {
+        "message": "Override text color",
+        "description": "To change background color of hyperlinks"
+    },
+    "settings.prefs-management": {
+        "message": "Settings management",
+        "description": "Settings management"
+    },
+    "settings.prefs-sync": {
+        "message": "Sync settings",
+        "description": "To active multi devices synchronization of settings"
+    },
+    "settings.prefs-import": {
+        "message": "Import settings...",
+        "description": "Imports settings from the selected file"
+    },
+    "settings.prefs-export": {
+        "message": "Export settings...",
+        "description": "Exports settings to selected file"
+    },
+    "settings.prefs-defaults": {
+        "message": "Restore defaults",
+        "description": "Reset all settings to default values"
+    },
+    
+    "stats.0links": {
+        "message": "0 links processsed",
+        "description": "zero links processed"
+    }, 
+    "stats.1link": {
+        "message": "1 link processsed",
+        "description": "one link processed"
+    }, 
+    "stats.links": {
+        "message": "$COUNT$ links processed", 
+        "description": "number of links processed", 
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    }, 
+    "stats.time": {
+        "message": "in $TIME$ ms",
+        "description": "elapsed time of processing",
+        "placeholders": {
+            "time": {
+                "content": "$1",
+                "example": "25"
+            }
+        }
+    }, 
+    "stats.excluded": {
+        "message": "page excluded",
+        "description": "page excluded"
+    }, 
+    "stats.filtered": {
+        "message": "page ignored",
+        "description": "page ignored"
+    }, 
+    "stats.not_processed": {
+        "message": "page not processed",
+        "description": "page not processed"
+    }
+}

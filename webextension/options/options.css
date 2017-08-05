@@ -1,0 +1,164 @@
+
+form {
+	font-size: 1.25em;
+}
+
+.settings-entry {
+	display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.settings-entry input, select {
+	vertical-align: top;
+	font-size: 1em;
+	color: #333;
+}
+.settings-entry input {
+    border-style: solid;
+    border-width: 1px;
+	border-radius: 2px;
+	border-color: #c1c1c1;
+}
+.settings-entry input:focus {
+	border-color: rgba(0, 149, 221, 0.8);
+}
+.settings-entry > input[type="text"] {
+	width: calc(50% - 200px);
+}
+.settings-entry > input.long-text {
+	width: calc(95% - 200px);
+}
+.settings-entry  input[type="color"] {
+	margin-left: 15px;
+}
+.settings-entry select {
+    border-style: solid;
+    border-width: 1px;
+	border-color: #c1c1c1;
+	border-radius: 2px;
+}
+.settings-entry select:hover {
+    background-color: #f1f1f1;
+}
+.settings-entry select option:hover {
+	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset ;
+}
+.settings-entry select option:checked {
+	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
+}
+
+.settings-entry label {
+	display: inline-block;
+	width: 200px;
+	margin-left: 6px;
+	margin-right: 20px;
+	vertical-align: top;
+	text-align: left;
+}
+
+form > .settings-entry {
+	width: 90%;
+}
+
+form > hr {
+	color: #fff;
+	width: 100%;
+}
+
+/*=======================================*/
+.dropdown-button {
+	font-size: 0.5em;
+    background-color: white;
+    color: #333;
+	/* top right bottom left */
+    padding: 0px 6px 7px 8px;
+    border-style: solid;
+    border-width: 1px;
+	border-color: #c1c1c1;
+	border-radius: 2px;
+    cursor: pointer;
+}
+
+.dropdown-button img {
+	position: relative;
+	top: 5px;
+	left: -3px;
+}
+
+/* Dropdown button on hover & focus */
+.dropdown-button:hover, .dropdown-button:focus {
+    background-color: #f1f1f1;
+}
+.dropdown-button::-moz-focus-inner {
+	border: 0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+	background-color: #f1f1f1;
+    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+    min-width: 210px;
+}
+
+/* Entries inside the dropdown */
+.dropdown-content .dropdown-entry {
+    color: #333;
+    padding: 4px 14px;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 210px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* Change color of dropdown entries on hover */
+.dropdown-content .dropdown-entry:hover {
+	background-color: rgba(0, 149, 221, 0.25);
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.dropdown-show {
+	display: block;
+}
+
+.dropdown-content label {
+	vertical-align: top;
+	text-align: left;
+	min-width: 120px;
+	margin-left: 10px;
+	width: auto;
+	float: left;
+}
+
+.dropdown-content > hr {
+	width: 100%;
+}
+.dropdown-content hr {
+	color: #fff;
+	float: right;
+	margin-top: 0em;
+	margin-bottom: 0em;
+}
+
+.dropdown-content input {
+	vertical-align: top;
+	font-size: 1.25rem;
+	width: 16px;
+	float: left;
+}
+.dropdown-content input[type="image"] {
+	margin-right: 6px;
+}

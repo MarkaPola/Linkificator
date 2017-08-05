@@ -1,0 +1,116 @@
+{
+    "extensionDescription": {
+    "message": "Transforme les liens textuels en liens hypertexte cliquables...", 
+    "description": "Description de l'extension."
+    }, 
+
+    "settings.activated": {
+        "message": "Activé",
+        "description": "Activated"
+    },
+    "settings.on-demand": {
+        "message": "Traiter seulement sur demande",
+        "description": "Linkify only on demand"
+    },
+    "settings.display-counter": {
+        "message": "Affiche le compteur",
+        "description": "Display number of links linkified as icon badge"
+    },
+    "settings.context-menu-integration": {
+        "message": "Intégration dans le menu contextuel de page",
+        "description": "Page context menu integration"
+    },
+    "settings.use-regular-expressions": {
+        "message": "Utiliser les expressions régulières pour les domaines",
+        "description": "Use regular expressions for domains filtering"
+    },
+    "settings.domain-filtering-mode": {
+        "message": "Mode de filtrage des domaines",
+        "description": "Domain filtering mode"
+    },
+    "settings.domain-filtering-mode.none": {
+        "message": "Aucun",
+        "description": "Domain filtering mode: no filtering"
+    },
+    "settings.domain-filtering-mode.whitelist": {
+        "message": "Traiter les domaines de la liste blanche",
+        "description": "Domain filtering mode: while list"
+    },
+    "settings.domain-filtering-mode.blacklist": {
+        "message": "Ne pas traiter les domaines de la liste noire",
+        "description": "Domain filtering mode: black list"
+    },
+    "settings.domain-filtering-mode.domains-list": {
+        "message": "Domaines",
+        "description": "List of domains for filtering (white or black)"
+    },
+    "settings.override-text-color": {
+        "message": "Remplacer la couleur du texte",
+        "description": "To change text color of hyperlinks"
+    },
+    "settings.override-background-color": {
+        "message": "Remplacer la couleur du fond",
+        "description": "To change background color of hyperlinks"
+    },
+    "settings.prefs-management": {
+        "message": "Gestion des réglages",
+        "description": "Settings management"
+    },
+    "settings.prefs-sync": {
+        "message": "Synchroniser les réglages",
+        "description": "To active multi devices synchronization of settings"
+    },
+    "settings.prefs-import": {
+        "message": "Importer les réglages...",
+        "description": "Imports settings from the selected file"
+    },
+    "settings.prefs-export": {
+        "message": "Exporter les réglages...",
+        "description": "Exports settings to selected file"
+    },
+    "settings.prefs-defaults": {
+        "message": "Restaurer les réglages par défaut",
+        "description": "Reset all settings to default values"
+    },
+
+    "stats.0links": {
+        "message": "0 liens trait\u00e9s",
+        "description": "zero links processed"
+    }, 
+    "stats.1link": {
+        "message": "1 lien trait\u00e9",
+        "description": "one link processed"
+    }, 
+    "stats.links": {
+        "message": "$COUNT$ liens trait\u00e9s", 
+        "description": "number of links processed", 
+        "placeholders": {
+            "count": {
+                "content": "$1",
+                "example": "10"
+            }
+        }
+    }, 
+    "stats.time": {
+        "message": "en $TIME$ ms",
+        "description": "elapsed time of processing",
+        "placeholders": {
+            "time": {
+                "content": "$1",
+                "example": "25"
+            }
+        }
+    }, 
+    "stats.excluded": {
+        "message": "page exclue",
+        "description": "page excluded"
+    }, 
+    "stats.filtered": {
+        "message": "page ignor\u00e9e",
+        "description": "page ignored"
+    }, 
+    "stats.not_processed": {
+        "message": "page non trait\u00e9e",
+        "description": "page not processed"
+    }
+}
