@@ -205,33 +205,9 @@ function Configurator () {
     let properties = {};
 
 
-    // handle preferences changes
-    browser.storage.onChanged.addListener((changes,  areaName) => {
-        if (areaName === 'local' && changes.sync) {
-            area = changes.sync ? 'sync' : 'local';
-            properties.area = area;
-            
-            // propagate current settings to new storage
-            browser.storage[area].set(properties).catch(reason => console.error(reason));
-        }
-        else {
-            if (areaName === area) {
-                for (let key in changes) {
-                    properties[key] =  changes[key].newValue;
-                }
-            }
-        }
-    });
-
-    return browser.storage.local.get('sync').then(result => {
-        if (result.sync === undefined) {
-            area = 'local';
-            browser.storage.local.set({sync: false}).catch(reason => console.error(reason));
-        } else {
-            area = result.sync ? 'sync' : 'local';
-        }
-
-        return browser.storage[area].get(Object.keys(preferences)).then(result => {
+    function initializePreferences ()
+    {
+        return browser.storage[area].get().then(result => {
             properties = result;
             properties.area = area;
             
@@ -248,5 +224,63 @@ function Configurator () {
                 });
             });
         });
+    }
+    
+    // handle preferences changes
+    browser.storage.onChanged.addListener((changes,  areaName) => {
+        if (areaName === area) {
+            for (let key in changes) {
+                properties[key] =  changes[key].newValue;
+            }
+        }
+    });
+
+    // handle preferences management events
+    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        switch (message.id) {
+        case 'change-area':
+            browser.storage.local.set({sync: message.sync}).then(result => {
+                area = message.sync ? 'sync' : 'local';
+
+                initializePreferences().then(result => {
+                    sendResponse({id: 'change-area'});
+                });
+            }).catch(reason => console.error(reason));
+            break;
+        case 'reset-defaults':
+            browser.storage[area].set(preferences).then(result => {
+                sendResponse({id: 'reset-defaults'});
+            }).catch(reason => console.error(reason));
+            break;
+        }        
+    });
+
+    
+    return browser.storage.local.get('sync').then(result => {
+        if (result.sync === undefined) {
+            area = 'local';
+            browser.storage.local.set({sync: false}).catch(reason => console.error(reason));
+        } else {
+            area = result.sync ? 'sync' : 'local';
+        }
+
+        return initializePreferences();
+        // return browser.storage[area].get().then(result => {
+        //     properties = result;
+        //     properties.area = area;
+            
+        //     // initialized undefined preferences
+        //     for (let preference in preferences) {
+        //         if (!properties.hasOwnProperty(preference)) {
+        //             properties[preference] = preferences[preference];
+        //         }
+        //     }
+
+        //     return browser.storage[area].set(properties).then(() => {
+        //         return new Promise((resolve, reject) => {
+        //             resolve(properties);
+        //         });
+        //     });
+        // });
     });
 }

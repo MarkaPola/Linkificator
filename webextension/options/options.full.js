@@ -4,6 +4,27 @@ function $ (id) {
 	return document.getElementById(id);
 }
 
+//=============== dropdown menu handling =====================
+// to show menu on button click
+document.getElementById("dropdown-button").addEventListener("click", event => 
+                                                            $("dropdown-content").classList.toggle("dropdown-show"),
+                                                            {
+                                                                capture: true
+                                                            });
+
+// Close the dropdown menu if the user clicks outside of it
+window.addEventListener("click", event => {
+    if (!event.target.matches('.dropdown-button')) {
+
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let element of dropdowns) {
+            if (element.classList.contains('dropdown-show')) {
+                element.classList.remove('dropdown-show');
+            }
+        }
+    }
+});
+
 //=============== settings management =====================
 function initializePreferences () {
     function setCheckbox (id, checked) {

@@ -5,6 +5,8 @@
 	<meta name="author" content="MarkaPola">
 
 	<link rel="stylesheet" href="options.css">
+
+	<script src="localization.js"></script>
   </head>
   <body>	
 	<form name="linkificator-settings">
@@ -38,9 +40,8 @@
 		</select>
 	  </div>
 	  <div class="settings-entry">
-		<label for="domains-list" data-l10n-id="settings.domain-filtering-mode.domains-list">Domains%</label>
-		<input type="text" name="domains-list" id="domains-list" class="long-text"
-			   title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"/>
+		<label for="domains-list" data-l10n-id="settings.domain-filtering-mode.domains-list">Domains</label>
+		<input type="text" name="domains-list" id="domains-list" class="long-text"/>
 	  </div>
 	  <hr>
       <div class="settings-entry">
@@ -55,16 +56,33 @@
 	  </div>
 	  <hr>
 	  <div class="settings-entry">
-		<label for="prefs-sync" data-l10n-id="settings.prefs-sync">Sync settings</label>
-		<input type="checkbox" id="prefs-sync">
-	  </div>
-	  <div class="settings-entry">
-		<label for="prefs-default" data-l10n-id="settings.prefs-default">Restore defaults</label>
-		<button type="button" id="prefs-default" class="reset-button"><img src="arrow-circle.png" alt=""></button>
+		<label for="prefs-management" data-l10n-id="settings.prefs-management">Settings management</label>
+		<div class="dropdown" id="prefs-management">
+		  <button type="button" id="dropdown-button" class="dropdown-button"><img src="utilities.png" alt="">▼</button>
+		  <div id="dropdown-content" class="dropdown-content">
+			<div class="dropdown-entry">
+			  <input checked type="checkbox" name="prefs-sync" id="prefs-sync"/>
+			  <label for="prefs-sync" data-l10n-id="settings.prefs-sync">Sync settings</label>
+			</div>
+			<hr class="dropdown-separator">
+			<div class="dropdown-entry">
+			  <input type="image" src="export.png" name="prefs-export" id="prefs-export"/>
+			  <label for="prefs-export" data-l10n-id="settings.prefs-export">Export</label>
+			</div>
+			<div class="dropdown-entry">
+			  <input type="image" src="import.png" name="prefs-import" id="prefs-import"/>
+			  <label for="prefs-import" data-l10n-id="settings.prefs-import">Import</label>
+			</div>
+			<hr class="dropdown-separator">
+			<div class="dropdown-entry">
+			  <input type="image" src="arrow-circle.png" name="prefs-defaults" id="prefs-defaults"/>
+			  <label for="prefs-defaults" data-l10n-id="settings.prefs-defaults">Restore defaults</label>
+			</div>
+		  </div>
+		</div>
 	  </div>
 	</form>
 	
-	<script src="localization.js"></script>
 	<script src="options.js"></script>
   </body>
 </html>

@@ -44,6 +44,10 @@
         "message": "Domaines",
         "description": "List of domains for filtering (white or black)"
     },
+    "settings.domain-filtering-mode.domains-list.title": {
+        "message": "Séparer les domaines avec un espace",
+        "description": "Separate domains with a space"
+    }, 
     "settings.override-text-color": {
         "message": "Remplacer la couleur du texte",
         "description": "To change text color of hyperlinks"

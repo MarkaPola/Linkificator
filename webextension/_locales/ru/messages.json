@@ -44,6 +44,10 @@
         "message": "доменов",
         "description": "List of domains for filtering (white or black)"
     },
+    "settings.domain-filtering-mode.domains-list.title": {
+        "message": "Разделяйте домены пробелом",
+        "description": "Separate domains with a space"
+    }, 
     "settings.override-text-color": {
         "message": "Изменить цвет текста",
         "description": "To change text color of hyperlinks"
