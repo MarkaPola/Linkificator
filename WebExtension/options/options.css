@@ -1,6 +1,6 @@
 
 form {
-	font-size: 1.25em;
+	font-size: 1.25rem;
 }
 
 .settings-entry {
@@ -60,7 +60,7 @@ form {
 }
 
 form > .settings-entry {
-	width: 90%;
+	width: 100%;
 }
 
 form > hr {

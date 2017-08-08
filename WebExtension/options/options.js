@@ -5,7 +5,9 @@ function $ (id) {
 }
 
 //=============== settings management =====================
-function initializePreferences () {
+var properties = {};
+
+function updatePreference (id, value) {
     function setCheckbox (id, checked) {
         $(id).checked = checked;
     }
@@ -16,45 +18,63 @@ function initializePreferences () {
         colorPicker.disabled = !config.override;
     }
     
+    properties[id] = value;
+        
+    switch (id) {
+        // basic settings
+    case 'activated':
+        setCheckbox('activated', properties.activated);
+        break;
+    case 'manual':
+        setCheckbox('on-demand', properties.manual);
+        break;
+    case 'displayBadge':
+        setCheckbox('display-counter', properties.displayBadge);
+        break;
+    case 'contextMenuIntegration':
+        setCheckbox('context-menu', properties.contextMenuIntegration);
+        break;
+        // domains management
+    case 'domains':
+        setCheckbox('use-regexp', properties.domains.useRegExp);
+        $('domain-filtering-mode').value = properties.domains.type;
+        let domainList = $('domains-list');
+        if (properties.domains.type == 'none') {
+            domainList.disabled = true;
+            domainList.value = '';
+        } else {
+            domainList.disabled = false;
+            domainList.value = properties.domains.list[properties.domains.type].join(' ');
+        }
+        break;
+        // link colors management
+    case 'style':
+        setColorSelector('text', properties.style.text);
+        setColorSelector('background', properties.style.background);
+        break;
+    case 'sync':
+        // settings management
+        setCheckbox('prefs-sync', properties.sync);
+        
+    }
+}
+
+function initializePreferences () {
     return browser.storage.local.get('sync').then(result => {
-        let area = result.sync ? 'sync' : 'local';
+        properties.area = result.sync ? 'sync' : 'local';
 
-        return browser.storage[area].get().then(result => {
-            let properties = result;
-            properties.area = area;
+        return browser.storage[properties.area].get().then(result => {
+            for (let id in result)
+                updatePreference(id, result[id]);
 
-            setCheckbox('activated', properties.activated);
-            setCheckbox('on-demand', properties.manual);
-            setCheckbox('display-counter', properties.displayBadge);
-            setCheckbox('context-menu', properties.contextMenuIntegration);
-
-            // domains management
-            setCheckbox('use-regexp', properties.domains.useRegExp);
-            $('domain-filtering-mode').value = properties.domains.type;
-            let domainList = $('domains-list');
-            if (properties.domains.type == 'none') {
-                domainList.disabled = true;
-                domainList.value = '';
-            } else {
-                domainList.disabled = false;
-                domainList.value = properties.domains.list[properties.domains.type].join(' ');
-            }
-
-            // link colors management
-            setColorSelector('text', properties.style.text);
-            setColorSelector('background', properties.style.background);
-
-            // settings management
-            setCheckbox('prefs-sync', area === 'sync');
-            
             return new Promise((resolve, reject) => {
-                resolve(properties);
+                resolve();
             });
         });
     });
 }
 
-function managePreferences (properties) {
+function managePreferences () {
     function addCheckboxManager (id, preference) {
         let checkbox = $(id);
         checkbox.addEventListener('change', event => {
@@ -116,7 +136,7 @@ function managePreferences (properties) {
 
     // settings management
     let prefsSync = $('prefs-sync');
-    let prefsDefault = $('prefs-default');
+    let prefsDefault = $('prefs-defaults');
     prefsSync.addEventListener('change', event => {
         browser.runtime.sendMessage({id: 'change-area', sync: prefsSync.checked}).then(message => {
             initializePreferences();
@@ -129,12 +149,22 @@ function managePreferences (properties) {
     });
 }
 
+// audit storage changes for some preferences which can be changes outside options page
+browser.storage.onChanged.addListener((changes, area) => {
+    if (area === properties.area) {
+        if (changes.hasOwnProperty('disabled'))
+            updatePreference('disabled', changes.disabled.newValue);
+        if (changes.hasOwnProperty('manual'))
+            updatePreference('manual', changes.manual.newValue);
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded",
                           () => {
                               translateElements();
-                              initializePreferences().then(properties => {
-                                  managePreferences(properties);
+                              initializePreferences().then(() => {
+                                  managePreferences();
                               });
                           }, 
                           {

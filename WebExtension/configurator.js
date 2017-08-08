@@ -227,7 +227,7 @@ function Configurator () {
     }
     
     // handle preferences changes
-    browser.storage.onChanged.addListener((changes,  areaName) => {
+    browser.storage.onChanged.addListener((changes, areaName) => {
         if (areaName === area) {
             for (let key in changes) {
                 properties[key] =  changes[key].newValue;
