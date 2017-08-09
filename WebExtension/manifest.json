@@ -5,6 +5,8 @@
     "version": "3.0",
     "description": "__MSG_extensionDescription__",
     "icons": {
+        "16": "resources/icons/link16-on.png", 
+        "32": "resources/icons/link32-on.png", 
         "48": "resources/icons/icon48.png"
     }, 
 
@@ -18,7 +20,7 @@
     }, 
 
     "permissions": [
-        "tabs", "storage"
+        "tabs", "contextMenus", "storage"
     ],
     
     "options_ui": {

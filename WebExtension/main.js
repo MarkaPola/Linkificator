@@ -18,7 +18,8 @@ Configurator().then (properties => {
 
 
     class Worker {
-        constructor (tab) {
+        constructor (port, tab) {
+            this._port = port;
             this._tab = tab;
             this._contentType = null;
             this._statistics = new Statistics();
@@ -43,6 +44,10 @@ Configurator().then (properties => {
 			      || this._contentType.startsWith('application/xhtml');
         }
 
+        sendMessage (message) {
+            this._port.postMessage(message);
+        }
+        
         get statistics () {
             return this._statistics;
         }
@@ -104,11 +109,24 @@ Configurator().then (properties => {
     var controler = Controler(properties);
 
     // handle tabs events
-    browser.tabs.onCreated.addListener (tab => controler.setStatus({tab: tab}));
-    browser.tabs.onUpdated.addListener ((tabId, info, tab) => {
-        if (info.url)
-            controler.setStatus({tab: tab, isValid: workers.isValidTab(tab)});
-    });                           
+    browser.tabs.onCreated.addListener(tab => controler.setStatus({tab: tab}));
+    
+    browser.tabs.onActivated.addListener(info => {
+        controler.contextMenu.update({enable: controler.isActive() && workers.isValidTab({id: info.tabId})});
+    });
+    
+    browser.tabs.onUpdated.addListener((tabId, info, tab) => {
+        if (info.url) {
+            let isValid = workers.isValidTab(tab);
+            
+            controler.setStatus({tab: tab, isValid: isValid});
+            
+            // update context menu if this is one of the active tabs
+            if (controler.isActive() && isValid) {
+                controler.contextMenu.update({tabId: tab.id, enable: true});
+            }
+        }
+    });
 
     // handle content_scripts
     browser.runtime.onConnect.addListener(port => {
@@ -116,7 +134,7 @@ Configurator().then (properties => {
             return;
         }
 
-        workers.set(port, new Worker({id: port.sender.tab.id, url: port.sender.tab.url}));
+        workers.set(port, new Worker(port, {id: port.sender.tab.id, url: port.sender.tab.url}));
 
         port.onMessage.addListener(message => {
             let worker = workers.get(port);
@@ -132,14 +150,30 @@ Configurator().then (properties => {
                     port.postMessage ({id: 'parse'});
                 }
                 break;
+            case 'configured':
+                if (controler.isActive() && controler.isManual()
+                    && controler.linkifyURL(tab) && worker.isValidDocument) {
+                    // update context menu
+                    controler.contextMenu.update({tabId: tab.id, enable: true});
+                }
+                break;
+            case 'completed':
+                if (controler.isActive() && !controler.isManual()
+                    && controler.linkifyURL(tab) && worker.isValidDocument) {
+                    // update context menu
+                    controler.contextMenu.update({tabId: tab.id, enable: true});
+                }
+                break;
             case 'statistics':
                 worker.statistics = message.statistics;
 
-                controler.setStatus({tab: tab,
-                                     isValid: true, 
-                                     displayTooltip: true, 
-                                     displayBadge: properties.displayBadge,
-                                     statistics: workers.getStatistics(tab)});
+                if (controler.isActive()) {
+                    controler.setStatus({tab: tab,
+                                         isValid: true, 
+                                         displayTooltip: true, 
+                                         displayBadge: properties.displayBadge,
+                                         statistics: workers.getStatistics(tab)});
+                }
                 break;
             }
         });
@@ -152,7 +186,7 @@ Configurator().then (properties => {
 
     // attach listeners to various events
     controler.onBadgeChanged.addListener(info => {
-        if (info.hasOwnProperty('displayBadge') && controler.isActive()) {
+        if (controler.isActive()) {
             for (const tab of workers.getTabs({validOnly: true})) {
                 // recompute links count for every tab
                 if (controler.linkifyURL(tab)) {
@@ -165,5 +199,48 @@ Configurator().then (properties => {
             }
         }
     });
+
+    controler.onContextMenuChanged.addListener(info => {
+        if (info.activated) {
+            browser.tabs.query({active: true}).then(tabs => {
+                for (const tab of tabs) {
+                    controler.contextMenu.update({enable: workers.isValidTab(tab)});
+                }
+            });
+        }
+    });
+    
+    controler.onActivated.addListener(info => {
+        // context menu configuration
+        if (info.activated) {
+            browser.tabs.query({active: true}).then(tabs => {
+                for (const tab of tabs) {
+                    controler.contextMenu.update({enable: workers.isValidTab(tab)});
+                }
+            });
+        }
+        
+        for (const tab of workers.getTabs()) {
+            let isValid = workers.isValidTab(tab);
             
+            controler.setStatus({tab: tab,
+                                 isValid: isValid});
+            
+            if (isValid && (!controler.isManual() || !info.activated)) {
+                for (const worker of workers.forTab(tab)) {
+                    worker.sendMessage({id: info.activated ? 'parse' : 'undo'});
+                }
+            }
+        }
+    });
+
+    controler.onUpdate.addListener(info => {
+        if (info.action === 're-parse') {
+            if (workers.isValidTab(info.tab))
+                for (const worker of workers.forTab(info.tab)) {
+                    worker.sendMessage({id: 're-parse'});
+                }
+        }
+    });
+    
 }).catch(reason => console.error(reason));

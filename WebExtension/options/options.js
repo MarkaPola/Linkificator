@@ -1,5 +1,16 @@
 
-// utility function
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+// configurator.js - Linikificator's module
+// author: MarkaPola
+
+//
+// Manage the options page of the add-on
+//
+
+// utility functions
 function $ (id) {
 	return document.getElementById(id);
 }
@@ -60,9 +71,10 @@ function updatePreference (id, value) {
 }
 
 function initializePreferences () {
-    return browser.storage.local.get('sync').then(result => {
+    return browser.storage.local.get({sync: false, activated: true}).then(result => {
         properties.area = result.sync ? 'sync' : 'local';
-
+        properties.activated = result.activated;
+        
         return browser.storage[properties.area].get().then(result => {
             for (let id in result)
                 updatePreference(id, result[id]);
@@ -75,14 +87,14 @@ function initializePreferences () {
 }
 
 function managePreferences () {
-    function addCheckboxManager (id, preference) {
+    function addCheckboxManager (id, preference, area = properties.area) {
         let checkbox = $(id);
         checkbox.addEventListener('change', event => {
             properties[preference] = checkbox.checked;
-            browser.storage[properties.area].set({[preference]: properties[preference]}).catch(reason => console.error(reason));
+            browser.storage[area].set({[preference]: properties[preference]}).catch(reason => console.error(reason));
         });
     }
-    function addColorManager (type) {
+    function addColorManager (type, area = properties.area) {
         // checkbox
         let checkbox = $(`override-${type}-color`);
         let colorPicker = $(`href-${type}-color`);
@@ -100,7 +112,7 @@ function managePreferences () {
         });
     }
     
-    addCheckboxManager('activated', 'activated');
+    addCheckboxManager('activated', 'activated', 'local');
     addCheckboxManager('on-demand', 'manual');
     addCheckboxManager('display-counter', 'displayBadge');
     addCheckboxManager('context-menu', 'contextMenuIntegration');
@@ -151,9 +163,12 @@ function managePreferences () {
 
 // audit storage changes for some preferences which can be changes outside options page
 browser.storage.onChanged.addListener((changes, area) => {
-    if (area === properties.area) {
+    if (area === 'local') {
         if (changes.hasOwnProperty('disabled'))
             updatePreference('disabled', changes.disabled.newValue);
+    }
+
+     if (area === properties.area) {
         if (changes.hasOwnProperty('manual'))
             updatePreference('manual', changes.manual.newValue);
     }
@@ -163,6 +178,11 @@ browser.storage.onChanged.addListener((changes, area) => {
 document.addEventListener("DOMContentLoaded",
                           () => {
                               translateElements();
+                              // tweak
+                              browser.runtime.getPlatformInfo().then(platformInfo => {
+                                  if (platformInfo.os === 'win')
+                                      $('linkificator-settings').style['font-size'] = '1.25rem';
+                              });
                               initializePreferences().then(() => {
                                   managePreferences();
                               });

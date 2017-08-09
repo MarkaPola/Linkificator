@@ -116,5 +116,10 @@
     "stats.not_processed": {
         "message": "page not processed",
         "description": "page not processed"
+    },
+
+    "menu.linkify": {
+        "message": "Update links",
+        "desription": "Update links"
     }
 }

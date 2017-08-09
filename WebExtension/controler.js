@@ -30,87 +30,138 @@ function Controler (properties) {
         hasListener (listener) {
             this._listeners.has(listener);
         }
+
+        every (infos) {
+            for (let listener of this._listeners) {
+                listener(infos);
+            }
+        }
+    }
+
+    var excludedURLs = new class {
+        constructor () {
+            this._urls = new Array();
+        }
+        
+		add (url) {
+			if (this._urls.indexOf(url) == -1) {
+				this._urls.push(url);
+				return true;
+			}
+			return false;
+		}
+		remove (url) {
+			let index = this._urls.indexOf(url);
+			if (index != -1) {
+				this._urls.splice(index, 1);
+				return true;
+			}
+			return false;
+		}
+        
+        // return true if url is excluded, false otherwise
+		toggle (url) {
+			let index = this._urls.indexOf(url);
+			if (index == -1) {
+				this._urls.push(url);
+				return true;
+			} else {
+				this._urls.splice(index, 1);
+				return false;
+			}
+		}
+
+		isExcluded (url) {
+			return this._urls.indexOf(url) != -1;
+		}
+	};
+
+    var includedURLs = new class {
+        constructor () {
+            this._urls = new Map();
+        }
+        
+		add (tab) {
+            this._urls.set(tab.id, tab.url);
+		}
+		remove (tab) {
+            this._urls.delete(tab.id);
+		}
+        update (tab) {
+            if (tab === undefined) return;
+            
+            let id = tab.id;
+            
+            let url = this._urls.get(id);
+            if (url && (tab.url !== url)) {
+                this._urls.delete(id);
+            }
+        }
+            
+        // return true if url is included, false otherwise
+		toggle (tab) {
+            let id = tab.id;
+            
+            if (this._urls.has(id)) {
+                this._urls.delete(id);
+                return false;
+            } else {
+                this._urls.set(id, tab.url);
+                return true;
+            }
+		}
+
+		isIncluded (tab) {
+            let url = this._urls.get(tab.id);
+            
+            return url && (tab.url === url);
+		}
+	};
+
+
+    //
+    // utility functions
+    //
+    function isActive () {
+        return properties.activated;
+    }
+    function isManual () {
+        return properties.manual;
+    }
+    function displayBadge () {
+        return properties.displayBadge;
+    }
+
+    function isValidURL (url) {
+        if (properties.domains.type === 'none')
+			return true;
+
+		let useRegExp = properties.domains.useRegExp;
+        let flag = properties.domains.type === 'white';
+		let list = properties.domains.list[properties.domains.type];
+
+		let index = 0;
+		while (index != list.length) {
+			if (useRegExp) {
+				if (url.match(new RegExp(list[index++], "i"))) {
+					return flag;
+				}
+			} else {
+				if (url.toLowerCase().indexOf(list[index++]) != -1) {
+					return flag;
+				}
+			}
+		}
+		
+        return !flag;
     }
 
     
-    var excludedURLs = (function () {
-		var urls = new Array();
-
-		return {
-			add: function (url) {
-				if (urls.indexOf(url) == -1) {
-					urls.push(url);
-					return true;
-				}
-				return false;
-			},
-			remove: function (url) {
-				let index = urls.indexOf(url);
-				if (index != -1) {
-					urls.splice(index, 1);
-					return true;
-				}
-				return false;
-			},
-            // return true if url is excluded, false otherwise
-			toggle: function (url) {
-				let index = urls.indexOf(url);
-				if (index == -1) {
-					urls.push(url);
-					return true;
-				} else {
-					urls.splice(index, 1);
-					return false;
-				}
-			},
-
-			isExcluded: function (url) {
-				return urls.indexOf(url) != -1;
-			}
-		};
-	})();
-
-    var includedURLs = (function () {
-        var urls = new Map();
-
-		return {
-			add: function (tab) {
-                urls.set(tab.id, tab.url);
-			},
-			remove: function (tab) {
-                urls.delete(tab.id);
-			},
-            update: function (tab) {
-                if (tab === undefined) return;
-                
-                let id = tab.id;
-                
-                let url = urls.get(id);
-                if (url && (tab.url !== url)) {
-                    urls.delete(id);
-                }
-            },
-            
-            // return true if url is included, false otherwise
-			toggle: function (tab) {
-                let id = tab.id;
-                
-                if (urls.has(id)) {
-                    urls.delete(id);
-                    return false;
-                } else {
-                    urls.set(id, tab.url);
-                    return true;
-                }
-			},
-
-			isIncluded: function (tab) {
-                let url = urls.get(tab.id);
-
-                return url && (tab.url === url);
-			}
-		};
-	})();
+    let badgeListeners = new ListenerManager();
+    let activateListeners = new ListenerManager();
+    let updateListeners = new ListenerManager();
+    let contextMenuListeners = new ListenerManager();
+    
 
     var browserAction = (function () {
         function getDefault () {
@@ -156,10 +207,10 @@ function Controler (properties) {
 			} else {
 				current.icon = isActive() ? (isManual() ? { 16: 'resources/icons/link16-manual.png',
                                                             32: 'resources/icons/link32-manual.png'}
-                                          : {16: 'resources/icons/link16-on.png',
-                                             32: 'resources/icons/link32-on.png'})
-                                 : {16: 'resources/icons/link16-off.png',
-                                    32: 'resources/icons/link32-off.png'};
+                                                        : {16: 'resources/icons/link16-on.png',
+                                                           32: 'resources/icons/link32-on.png'})
+                                          : {16: 'resources/icons/link16-off.png',
+                                             32: 'resources/icons/link32-off.png'};
 				current.state = 'not_processed';
                 current.badge = "";
 				current.tooltip = browser.i18n.getMessage("stats.not_processed");
@@ -170,7 +221,23 @@ function Controler (properties) {
 
         return {
             update: function (request) {
-                if (request.hasOwnProperty('statistics')) {
+                if (request.hasOwnProperty('initial')) {
+                    let state = getDefault();
+                                        
+                    browser.browserAction.setIcon({path: state.icon});
+                    browser.browserAction.setTitle({title: browser.i18n.getMessage("stats.not_processed")});
+                    browser.browserAction.setBadgeText({text: ""});
+                } else if (request.hasOwnProperty('manual')) {
+                    if (isActive()) {
+                        let state = getDefault();
+                        
+                        browser.tabs.query({}).then(tabs => {
+                            for (const tab of tabs) {
+                                browser.browserAction.setIcon({tabId: tab.id, path: state.icon});
+                            }
+                        });
+                    }
+                } else if (request.hasOwnProperty('statistics')) {
                     if (request.hasOwnProperty('displayBadge')) {
                         if (request.displayBadge) {
                             let count = request.statistics.links;
@@ -225,67 +292,113 @@ function Controler (properties) {
         };
     })();
 
-    let badgeListeners = new ListenerManager();
 
-    //
-    // utility functions
-    //
-    function isActive () {
-        return properties.activated;
-    }
-    function isManual () {
-        return properties.manual;
-    }
-    function displayBadge () {
-        return properties.displayBadge;
-    }
+    // Context menu handling
+    var contextMenu = new class ContextMenu {
+        constructor() {
+            this._contextMenu = null;
+            this._onClicked = ((info, tab) => {
+                if (info.menuItemId !== this._contextMenu) return;
 
-    function isValidURL (url) {
-        if (properties.domains.type === 'none')
-			return true;
+                updateListeners.every({action: 're-parse', tab: tab});
+            }).bind(this);
 
-		let useRegExp = properties.domains.useRegExp;
-        let flag = properties.domains.type === 'white';
-		let list = properties.domains.list[properties.domains.type];
+            if (properties.contextMenuIntegration)
+                this.activate();
+        }
 
-		let index = 0;
-		while (index != list.length) {
-			if (useRegExp) {
-				if (url.match(new RegExp(list[index++], "i"))) {
-					return flag;
-				}
-			} else {
-				if (url.toLowerCase().indexOf(list[index++]) != -1) {
-					return flag;
-				}
-			}
-		}
-		
-        return !flag;
-    }
+        activate () {
+            if (!this._contextMenu) {
+                this._contextMenu = browser.contextMenus.create({
+                    contexts: ['tab', 'page'],
+                    documentUrlPatterns: ["*://*/*", "file:///*"],
+                    enabled: false, 
+                    title: browser.i18n.getMessage("menu.linkify")
+                });
 
+                browser.contextMenus.onClicked.addListener(this._onClicked);
+            }
+        }
 
+        update (info) {
+            if (this._contextMenu) {
+                if (info.tabId) {
+                    // do update only if tabId matches one of active tabs
+                    browser.tabs.query({active: true}).then(tabs => {
+                        let id = tabs.find(tabInfo => tabInfo.id === info.tabId);
+
+                        if (id) browser.contextMenus.update(this._contextMenu, {enabled: info.enable});
+                    });
+                } else {
+                    browser.contextMenus.update(this._contextMenu, {enabled: info.enable});
+                }
+            }
+        }
+        
+        destroy () {
+            if (this._contextMenu) {
+                browser.contextMenus.remove(this._contextMenu);
+                browser.contextMenus.onClicked.removeListener(this._onClicked);
+                this._contextMenu = null;
+            }
+        }
+    };
+
+    
     // handle preferences changes
-    browser.storage.onChanged.addListener((changes,  areaName) => {
-        if (areaName !== properties.area) return;
+    browser.storage.onChanged.addListener((changes,  area) => {
+        if (area === 'local') {
+            if (changes.hasOwnProperty('activated')) {
+                if (!changes.activated.newValue)
+                    contextMenu.update({enable: false});
+                
+                browser.tabs.query({}).then (tabs => {
+                    for (const tab of tabs) {
+                        // set global browserAction state
+                        browserAction.update({tab: tab});
+                    }
+                    
+                    activateListeners.every({activated: changes.activated.newValue});
+                });
+            }
+        }
+        
+        if (area !== properties.area) return;
 
         for (let key in changes) {
             properties[key] =  changes[key].newValue;
             switch (key) {
             case 'displayBadge':
-                for (let listener of badgeListeners)
-                    listener({displayBadge: properties.displayBadge});
-                
+                badgeListeners.every({displayBadge: properties.displayBadge});
                 break;
+            case 'manual':
+                // update globally browserAction color
+                browserAction.update({manual: isManual()});
+                break;
+            case 'contextMenuIntegration':
+                if (properties.contextMenuIntegration) {
+                    contextMenu.activate();
+                } else {
+                    contextMenu.destroy();
+                }
+
+                contextMenuListeners.every({activated: properties.contextMenuIntegration});
             }
         }
     });
+
+    /// startup initialization
+    // initialize browserAction status for existing tabs
+    browserAction.update({initial: true});
 
     
     return {
         isActive: function () {
             return isActive();
         },
+        isManual: function () {
+            return isManual();
+        }, 
 		linkifyURL: function (tab) {
 			return !excludedURLs.isExcluded(tab.url) && (includedURLs.isIncluded(tab) || isValidURL(tab.url));
 		},
@@ -295,8 +408,21 @@ function Controler (properties) {
 			browserAction.update(request);
 		},
 
+        get contextMenu () {
+            return contextMenu;
+        },
+        
         get onBadgeChanged () {
             return badgeListeners;
+        },
+        get onContextMenuChanged () {
+            return contextMenuListeners;
+        }, 
+        get onActivated () {
+            return activateListeners;
+        },
+        get onUpdate () {
+            return updateListeners;
         }
     };
 }

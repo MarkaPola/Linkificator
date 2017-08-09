@@ -931,6 +931,7 @@ function configure () {
     var statistics = Statistics(document, 'parse');
 
     state.configured();
+    port.postMessage({id: 'configured'});
 }
 
 function execute (action, properties) {
@@ -1003,6 +1004,7 @@ function execute (action, properties) {
         parseDocument(parser.textNodes, LinkifyNode);
         
         state.complete();
+        port.postMessage({id: 'completed'});
     }
     
     parseNodes();

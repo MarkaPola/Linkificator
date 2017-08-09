@@ -12,7 +12,7 @@
 
 function Configurator () {
     // Initialization of preferences
-    let preferences = {
+    let defaultPreferences = {
         activated: true,
         manual: false, 
         displayBadge: true, 
@@ -201,24 +201,24 @@ function Configurator () {
         }
     };
 
-    let area = 'local';
-    let properties = {};
+    let properties = {area: 'local',
+                      activated: true};
 
 
     function initializePreferences ()
     {
-        return browser.storage[area].get().then(result => {
+        return browser.storage[properties.area].get().then(result => {
             properties = result;
-            properties.area = area;
+            properties.area = properties.area;
             
             // initialized undefined preferences
-            for (let preference in preferences) {
+            for (let preference in defaultPreferences) {
                 if (!properties.hasOwnProperty(preference)) {
-                    properties[preference] = preferences[preference];
+                    properties[preference] = defaultPreferences[preference];
                 }
             }
 
-            return browser.storage[area].set(properties).then(() => {
+            return browser.storage[properties.area].set(properties).then(() => {
                 return new Promise((resolve, reject) => {
                     resolve(properties);
                 });
@@ -227,8 +227,12 @@ function Configurator () {
     }
     
     // handle preferences changes
-    browser.storage.onChanged.addListener((changes, areaName) => {
-        if (areaName === area) {
+    browser.storage.onChanged.addListener((changes, area) => {
+        if (area === 'local' && changes.hasOwnProperty('activated')) {
+            properties.activated = changes.activated.newValue;
+        }
+        
+        if (area === properties.area) {
             for (let key in changes) {
                 properties[key] =  changes[key].newValue;
             }
@@ -240,7 +244,7 @@ function Configurator () {
         switch (message.id) {
         case 'change-area':
             browser.storage.local.set({sync: message.sync}).then(result => {
-                area = message.sync ? 'sync' : 'local';
+                properties.area = message.sync ? 'sync' : 'local';
 
                 initializePreferences().then(result => {
                     sendResponse({id: 'change-area'});
@@ -248,7 +252,7 @@ function Configurator () {
             }).catch(reason => console.error(reason));
             break;
         case 'reset-defaults':
-            browser.storage[area].set(preferences).then(result => {
+            browser.storage[properties.area].set(defaultPreferences).then(result => {
                 sendResponse({id: 'reset-defaults'});
             }).catch(reason => console.error(reason));
             break;
@@ -256,31 +260,20 @@ function Configurator () {
     });
 
     
-    return browser.storage.local.get('sync').then(result => {
+    return browser.storage.local.get(['sync', 'activated']).then(result => {
         if (result.sync === undefined) {
-            area = 'local';
+            properties.area = 'local';
             browser.storage.local.set({sync: false}).catch(reason => console.error(reason));
         } else {
-            area = result.sync ? 'sync' : 'local';
+            properties.area = result.sync ? 'sync' : 'local';
         }
-
+        if (result.activated === undefined) {
+            properties.activaed = true;
+            browser.storage.local.set({activated: true}).catch(reason => console.error(reason));
+        } else {
+            properties.activated = result.activated;
+        }
+        
         return initializePreferences();
-        // return browser.storage[area].get().then(result => {
-        //     properties = result;
-        //     properties.area = area;
-            
-        //     // initialized undefined preferences
-        //     for (let preference in preferences) {
-        //         if (!properties.hasOwnProperty(preference)) {
-        //             properties[preference] = preferences[preference];
-        //         }
-        //     }
-
-        //     return browser.storage[area].set(properties).then(() => {
-        //         return new Promise((resolve, reject) => {
-        //             resolve(properties);
-        //         });
-        //     });
-        // });
     });
 }
