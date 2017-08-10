@@ -400,6 +400,7 @@ function Controler (properties) {
             return isManual();
         }, 
 		linkifyURL: function (tab) {
+            if (!tab.url) return false;
 			return !excludedURLs.isExcluded(tab.url) && (includedURLs.isIncluded(tab) || isValidURL(tab.url));
 		},
 

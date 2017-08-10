@@ -121,5 +121,34 @@
     "menu.linkify": {
         "message": "Update links",
         "desription": "Update links"
+    }, 
+
+    "panel.options": {
+        "message": "Options...",
+        "desription": "Open add-on options page"
+    }, 
+    "panel.manual": {
+        "message": "On Demand",
+        "desription": "Toggle on demand mode"
+    }, 
+    "panel.activate": {
+        "message": "Activate",
+        "desription": "Activate add-on"
+    }, 
+    "panel.deactivate": {
+        "message": "Deactivate",
+        "desription": "Deactivate add-on"
+    }, 
+    "panel.include": {
+        "message": "Include",
+        "desription": "Add current tab URL as supported url"
+    }, 
+    "panel.exclude": {
+        "message": "Exclude",
+        "desription": "Exclude current tab URL as spported url"
+    }, 
+    "panel.linkify": {
+        "message": "Update",
+        "desription": "re-launch document linkification"
     }
 }

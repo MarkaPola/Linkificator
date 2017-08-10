@@ -121,5 +121,34 @@
     "menu.linkify": {
         "message": "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0438",
         "desription": "Update links"
+    }, 
+
+    "panel.options": {
+        "message": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438...",
+        "desription": "Open add-on options page"
+    }, 
+    "panel.manual": {
+        "message": "\u041f\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u0443",
+        "desription": "Toggle on demand mode"
+    }, 
+    "panel.activate": {
+        "message": "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c",
+        "desription": "Activate add-on"
+    }, 
+    "panel.deactivate": {
+        "message": "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c",
+        "desription": "Deactivate add-on"
+    }, 
+    "panel.include": {
+        "message": "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c",
+        "desription": "Add current tab URL as supported url"
+    }, 
+    "panel.exclude": {
+        "message": "\u0418\u0441\u043a\u043b\u044e\u0447\u0438\u0442\u044c",
+        "desription": "Exclude current tab URL as spported url"
+    }, 
+    "panel.linkify": {
+        "message": "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c",
+        "desription": "re-launch document linkification"
     }
 }

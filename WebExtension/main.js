@@ -83,6 +83,8 @@ Configurator().then (properties => {
         }
         
         isValidTab (tab) {
+            if (!controler.linkifyURL(tab.url)) return false;
+            
             for (const worker of this.forTab(tab)) {
                 if (worker.isValidDocument) {
                     return true;
@@ -112,7 +114,8 @@ Configurator().then (properties => {
     browser.tabs.onCreated.addListener(tab => controler.setStatus({tab: tab}));
     
     browser.tabs.onActivated.addListener(info => {
-        controler.contextMenu.update({enable: controler.isActive() && workers.isValidTab({id: info.tabId})});
+        browser.tabs.get(info.tabId).then(tab =>
+                                          controler.contextMenu.update({enable: controler.isActive() && workers.isValidTab(tab)}));
     });
     
     browser.tabs.onUpdated.addListener((tabId, info, tab) => {
@@ -151,15 +154,13 @@ Configurator().then (properties => {
                 }
                 break;
             case 'configured':
-                if (controler.isActive() && controler.isManual()
-                    && controler.linkifyURL(tab) && worker.isValidDocument) {
+                if (controler.isActive() && controler.isManual()) {
                     // update context menu
                     controler.contextMenu.update({tabId: tab.id, enable: true});
                 }
                 break;
             case 'completed':
-                if (controler.isActive() && !controler.isManual()
-                    && controler.linkifyURL(tab) && worker.isValidDocument) {
+                if (controler.isActive() && !controler.isManual()) {
                     // update context menu
                     controler.contextMenu.update({tabId: tab.id, enable: true});
                 }
