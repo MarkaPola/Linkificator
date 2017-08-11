@@ -1,0 +1,68 @@
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+ * author: MarkaPola
+ */
+
+.popup-content {
+    display: inline-block;
+	background-color: #f1f1f1;
+    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.3);
+    z-index: 1;
+    width: 180px;
+}
+
+.popup-content > .popup-entry {
+	color: #333;
+    padding: 4px 10px;
+    text-decoration: none;
+    display: inline-block;
+	width: calc(100%);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Change color of popup entries on hover */
+.popup-entry:hover {
+	background-color: rgba(0, 149, 221, 0.25);
+}
+
+.popup-content label {
+	vertical-align: top;
+	text-align: left;
+	min-width: 120px;
+	margin-left: 10px;
+	width: auto;
+	float: left;
+}
+
+.popup-content > hr {
+	width: 100%;
+}
+.popup-content hr {
+	color: #fff;
+	float: right;
+	margin-top: 0em;
+	margin-bottom: 0.30em;
+}
+
+.popup-content input {
+	vertical-align: top;
+	font-size: 1.25rem;
+	width: 16px;
+	float: left;
+}
+.popup-content input[type="image"] {
+	margin-right: 6px;
+}
+
+
+/* to manage disabled menu entries */
+.popup-entry-disabled {
+	color: #b0b0b0 !important;
+}
+.popup-entry-disabled:hover {
+	background-color: #f1f1f1;
+}

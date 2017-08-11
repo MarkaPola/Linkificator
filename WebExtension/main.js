@@ -185,6 +185,28 @@ Configurator().then (properties => {
     });
 
 
+    // manage communication with popup
+    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        switch (message.id) {
+        case 'context':
+            return browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+                let context = {area: properties.area, 
+                               activated: properties.activated,
+                               manual: properties.manual};
+                
+                let tab = tabs[0];
+                context.status = controler.getStatus({tab: tab,
+                                                      isValid: workers.isValidTab(tab)});
+
+                return context;
+            });
+            break;
+        default:
+            return undefined;
+        }        
+    });
+
+    
     // attach listeners to various events
     controler.onBadgeChanged.addListener(info => {
         if (controler.isActive()) {

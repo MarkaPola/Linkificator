@@ -208,8 +208,8 @@ function Configurator () {
     function initializePreferences ()
     {
         return browser.storage[properties.area].get().then(result => {
+            result.area = properties.area;
             properties = result;
-            properties.area = properties.area;
             
             // initialized undefined preferences
             for (let preference in defaultPreferences) {

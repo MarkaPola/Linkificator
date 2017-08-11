@@ -35,7 +35,8 @@
             "16": "resources/icons/link16-on.png", 
             "32": "resources/icons/link32-on.png"
         },
-        "default_title": "Linkificator"
+        "default_title": "Linkificator",
+        "default_popup": "popup/popup.html"
     },
     
     "background": {

@@ -156,6 +156,25 @@ function Controler (properties) {
         return !flag;
     }
 
+    function tabStatus (request) {
+        let state = 'not_processed';
+        
+        let tab = request.tab;
+        
+		if (isActive() && request.isValid) {
+			if (excludedURLs.isExcluded(tab.url)) {
+				state = 'excluded';
+			} else if (isValidURL(tab.url)) {
+				state = 'processed';
+			} else {
+				state = 'filtered';
+			}
+		} else {
+			state = 'not_processed';
+		}
+
+        return state;
+    }
     
     let badgeListeners = new ListenerManager();
     let activateListeners = new ListenerManager();
@@ -408,7 +427,10 @@ function Controler (properties) {
             includedURLs.update(request.tab);
 			browserAction.update(request);
 		},
-
+        getStatus: function (request) {
+            return tabStatus(request);
+        },
+        
         get contextMenu () {
             return contextMenu;
         },
