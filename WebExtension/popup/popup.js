@@ -36,7 +36,7 @@ function managePopup (context) {
         $('panel-deactivate').addEventListener('click', event => {
             browser.storage[context.area].set({activated: false});
             window.close();
-    });
+        });
     } else {
         $('entry-deactivate').setAttribute('style', 'display: none');
         $('panel-activate').addEventListener('click', event => {
@@ -45,8 +45,7 @@ function managePopup (context) {
         });
     }
 
-    let entry;
-    let manage;
+    let entry, manage;
     if (context.status === 'excluded' || context.status === 'filtered') {
         $('entry-exclude').setAttribute('style', 'display: none');
         entry = $('entry-include');
@@ -60,6 +59,10 @@ function managePopup (context) {
         entry.classList.add('popup-entry-disabled');
         manage.setAttribute('src', 'empty.png');
     }
+    manage.addEventListener('click', event => {
+        browser.runtime.sendMessage({id: 'manage-url', info: context}).catch(reason => console.error(reason));
+        window.close();
+    });
     
     let linkify = $('panel-linkify');
     if (context.status === 'processed') {
@@ -78,9 +81,9 @@ document.addEventListener("DOMContentLoaded",
                           () => {
                               translateElements();
                               // query current tab status
-                              browser.runtime.sendMessage({id: 'context'}).then(context => {
+                              browser.runtime.sendMessage({id: 'tab-context'}).then(context => {
                                   managePopup(context);
-                              });
+                              }).catch(reason => console.error(reason));
                           }, 
                           {
                               capture: true,

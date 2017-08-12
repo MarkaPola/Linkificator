@@ -11,7 +11,11 @@
 // Manage UI controling linkificator behavior
 //
 
-function Controler (properties) {
+function Controler (config) {
+
+    let {configurator, properties} = config;
+    
+    
     class ListenerManager {
         constructor () {
             this._listeners = new Set();
@@ -114,7 +118,7 @@ function Controler (properties) {
 		isIncluded (tab) {
             let url = this._urls.get(tab.id);
             
-            return url && (tab.url === url);
+            return url !== undefined && (tab.url === url);
 		}
 	};
 
@@ -132,30 +136,6 @@ function Controler (properties) {
         return properties.displayBadge;
     }
 
-    function isValidURL (url) {
-        if (properties.domains.type === 'none')
-			return true;
-
-		let useRegExp = properties.domains.useRegExp;
-        let flag = properties.domains.type === 'white';
-		let list = properties.domains.list[properties.domains.type];
-
-		let index = 0;
-		while (index != list.length) {
-			if (useRegExp) {
-				if (url.match(new RegExp(list[index++], "i"))) {
-					return flag;
-				}
-			} else {
-				if (url.toLowerCase().indexOf(list[index++]) != -1) {
-					return flag;
-				}
-			}
-		}
-		
-        return !flag;
-    }
-
     function tabStatus (request) {
         let state = 'not_processed';
         
@@ -164,7 +144,7 @@ function Controler (properties) {
 		if (isActive() && request.isValid) {
 			if (excludedURLs.isExcluded(tab.url)) {
 				state = 'excluded';
-			} else if (isValidURL(tab.url)) {
+			} else if (includedURLs.isIncluded(tab) || configurator.linkifyURL(tab.url)) {
 				state = 'processed';
 			} else {
 				state = 'filtered';
@@ -208,7 +188,7 @@ function Controler (properties) {
                                     32: 'resources/icons/link32-excluded.png'},
                     current.badge = "";
 					current.tooltip = browser.i18n.getMessage("stats.excluded");
-				} else if (isValidURL(tab.url)) {
+				} else if (includedURLs.isIncluded(tab) || configurator.linkifyURL(tab.url)) {
 					current.state = 'processed';
 					current.icon = isManual() ? { 16: 'resources/icons/link16-manual.png',
                                                    32: 'resources/icons/link32-manual.png'}
@@ -363,7 +343,46 @@ function Controler (properties) {
         }
     };
 
+
+    // include/exclude URLs management
+    function manageURL (info) {
+        let tab = info.tab;
+        
+        if (configurator.linkifyURL(tab.url)) {
+			let excluded = excludedURLs.toggle(tab.url);
+
+            contextMenu.update({enable: !excluded});
+            
+            // process all tabs holding same content (i.e. same url)
+            browser.tabs.query({url: tab.url}).then(tabs => {
+                for (let tab of tabs) {
+                    browserAction.update({tab: tab, isValid: true});
+                    updateListeners.every({action: excluded ? 'undo' : 'parse',
+                                           tab: tab});
+                }
+            });
+        } else {
+            let included = includedURLs.toggle(tab);
+
+            contextMenu.update({enable: included});
+            
+            // process current tab
+            browserAction.update({tab: tab, isValid: true});
+            updateListeners.every({action: included ? 'parse' : 'undo',
+                                   tab: tab});
+        }
+    }
+
     
+    // manage communication with popup
+    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        switch (message.id) {
+        case 'manage-url':
+            manageURL(message.info);
+            break;
+        }        
+    });
+
     // handle preferences changes
     browser.storage.onChanged.addListener((changes,  area) => {
         if (area === 'local') {
@@ -420,7 +439,8 @@ function Controler (properties) {
         }, 
 		linkifyURL: function (tab) {
             if (!tab.url) return false;
-			return !excludedURLs.isExcluded(tab.url) && (includedURLs.isIncluded(tab) || isValidURL(tab.url));
+			return !excludedURLs.isExcluded(tab.url) && (includedURLs.isIncluded(tab)
+                                                         || configurator.linkifyURL(tab.url));
 		},
 
         setStatus: function (request) {
@@ -430,7 +450,7 @@ function Controler (properties) {
         getStatus: function (request) {
             return tabStatus(request);
         },
-        
+
         get contextMenu () {
             return contextMenu;
         },

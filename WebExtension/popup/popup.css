@@ -61,8 +61,8 @@
 
 /* to manage disabled menu entries */
 .popup-entry-disabled {
-	color: #b0b0b0 !important;
+	color: #808080 !important;
 }
 .popup-entry-disabled:hover {
-	background-color: #f1f1f1;
+	background-color: #e7e7e7 !important;
 }

@@ -205,6 +205,36 @@ function Configurator () {
                       activated: true};
 
 
+    class ConfiguratorManager {
+        constructor () {
+        }
+
+        linkifyURL (url) {
+            if (properties.domains.type === 'none')
+			    return true;
+
+		    let useRegExp = properties.domains.useRegExp;
+            let flag = properties.domains.type === 'white';
+		    let list = properties.domains.list[properties.domains.type];
+
+		    let index = 0;
+		    while (index != list.length) {
+			    if (useRegExp) {
+				    if (url.match(new RegExp(list[index++], "i"))) {
+					    return flag;
+				    }
+			    } else {
+				    if (url.toLowerCase().indexOf(list[index++]) != -1) {
+					    return flag;
+				    }
+			    }
+		    }
+		    
+            return !flag;
+        }
+    }
+
+    
     function initializePreferences ()
     {
         return browser.storage[properties.area].get().then(result => {
@@ -220,7 +250,7 @@ function Configurator () {
 
             return browser.storage[properties.area].set(properties).then(() => {
                 return new Promise((resolve, reject) => {
-                    resolve(properties);
+                    resolve({configurator: new ConfiguratorManager(), properties: properties});
                 });
             });
         });

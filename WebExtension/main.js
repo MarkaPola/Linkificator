@@ -8,9 +8,11 @@
 
 
 
-Configurator().then (properties => {
+Configurator().then(config => {
 
-
+    let {configurator, properties} = config;
+    
+    
 	function Statistics () {
 		this.links = 0;
 		this.time = 0;
@@ -77,14 +79,12 @@ Configurator().then (properties => {
         
         *forTab (tab) {
             for (const worker of this.values()) {
-                if (tab.id == worker.tab.id)
+                if (tab.id === worker.tab.id)
                     yield worker;
             };
         }
-        
-        isValidTab (tab) {
-            if (!controler.linkifyURL(tab.url)) return false;
-            
+
+        isValidDocument (tab) {
             for (const worker of this.forTab(tab)) {
                 if (worker.isValidDocument) {
                     return true;
@@ -92,6 +92,9 @@ Configurator().then (properties => {
             }
 
             return false;
+        }
+        isValidTab (tab) {
+            return controler.linkifyURL(tab) && this.isValidDocument(tab);
         }
         
         getStatistics (tab) {
@@ -108,7 +111,7 @@ Configurator().then (properties => {
     
     var workers = new Workers();
 
-    var controler = Controler(properties);
+    var controler = Controler(config);
 
     // handle tabs events
     browser.tabs.onCreated.addListener(tab => controler.setStatus({tab: tab}));
@@ -147,7 +150,7 @@ Configurator().then (properties => {
             case 'content-type':
                 worker.contentType = message.contentType;
                 
-                controler.setStatus({tab: tab, isValid: workers.isValidTab(tab)});
+                controler.setStatus({tab: tab, isValid: workers.isValidDocument(tab)});
                 
                 if (controler.isActive() && controler.linkifyURL(tab) && worker.isValidDocument) {
                     port.postMessage ({id: 'parse'});
@@ -168,7 +171,7 @@ Configurator().then (properties => {
             case 'statistics':
                 worker.statistics = message.statistics;
 
-                if (controler.isActive()) {
+                if (controler.isActive() && controler.linkifyURL(tab)) {
                     controler.setStatus({tab: tab,
                                          isValid: true, 
                                          displayTooltip: true, 
@@ -188,15 +191,16 @@ Configurator().then (properties => {
     // manage communication with popup
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         switch (message.id) {
-        case 'context':
+        case 'tab-context':
             return browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
                 let context = {area: properties.area, 
                                activated: properties.activated,
                                manual: properties.manual};
                 
                 let tab = tabs[0];
+                context.tab = tab;
                 context.status = controler.getStatus({tab: tab,
-                                                      isValid: workers.isValidTab(tab)});
+                                                      isValid: workers.isValidDocument(tab)});
 
                 return context;
             });
@@ -258,11 +262,14 @@ Configurator().then (properties => {
     });
 
     controler.onUpdate.addListener(info => {
-        if (info.action === 're-parse') {
-            if (workers.isValidTab(info.tab))
-                for (const worker of workers.forTab(info.tab)) {
-                    worker.sendMessage({id: 're-parse'});
-                }
+        switch(info.action) {
+        case 'parse':
+        case 're-parse':
+        case 'undo':
+            for (const worker of workers.forTab(info.tab)) {
+                worker.sendMessage({id: info.action});
+            }
+            break;
         }
     });
     
