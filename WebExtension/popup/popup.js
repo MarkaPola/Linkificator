@@ -16,7 +16,6 @@ function $ (id) {
 
 
 function managePopup (context) {
-    console.log('STATUS: '+context.status);
     $('panel-options').addEventListener('click', event => {
         browser.runtime.openOptionsPage();
         window.close();
@@ -79,7 +78,6 @@ function managePopup (context) {
 
 document.addEventListener("DOMContentLoaded",
                           () => {
-                              translateElements();
                               // query current tab status
                               browser.runtime.sendMessage({id: 'tab-context'}).then(context => {
                                   managePopup(context);

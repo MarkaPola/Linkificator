@@ -20,7 +20,7 @@
     }, 
 
     "permissions": [
-        "tabs", "contextMenus", "storage"
+        "tabs", "contextMenus", "storage", "alarms"
     ],
     
     "options_ui": {
@@ -48,8 +48,8 @@
             "all_frames": true,
             "run_at": "document_end", 
             "js": [
-                "utilities/thread.js", 
-                "utilities/document.js", 
+                "resources/js/thread.js", 
+                "resources/js/document.js", 
                 "content_scripts/statistics.js", 
                 "content_scripts/linkificator.js"]
         }

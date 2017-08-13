@@ -176,8 +176,7 @@ browser.storage.onChanged.addListener((changes, area) => {
 
 document.addEventListener("DOMContentLoaded",
                           () => {
-                              translateElements();
-                              // tweak
+                              // UI tweak for windows
                               browser.runtime.getPlatformInfo().then(platformInfo => {
                                   if (platformInfo.os === 'win')
                                       $('linkificator-settings').style['font-size'] = '1.25rem';

@@ -150,5 +150,62 @@
     "panel.linkify": {
         "message": "Update",
         "desription": "re-launch document linkification"
+    },
+
+    "release-notes.new_version": {
+        "message": "New version installed.",
+        "desription": "New version installed."
+    },
+    "release-notes.thank_you": {
+        "message": "Thank you for using Linkificator.",
+        "desription": "Thank you for using Linkificator."
+    },
+    "release-notes.localization-1": {
+        "message": "Localization infrastructure is now fully operational. Any help is welcomed... Send-me an ",
+        "desription": ""
+    },
+    "release-notes.e-mail": {
+        "message": "e-mail",
+        "desription": "e-mail"
+    },
+    "release-notes.localization-2": {
+        "message": " to request translation materials.",
+        "desription": ""
+    },
+    "release-notes.more_information-1": {
+        "message": "Please visit the ",
+        "desription": ""
+    }, 
+    "release-notes.add-on": {
+        "message": "Add-on page",
+        "desription": "Add-on page"
+    }, 
+    "release-notes.more_information-2": {
+        "message": " for more informations.",
+        "desription": ""
+    }, 
+    "release-notes.history": {
+        "message": "History of changes",
+        "desription": "History of changes"
+    },
+    "release-notes.version": {
+        "message": "Version",
+        "desription": "Version"
+    },
+    "release-notes.new_features": {
+        "message": "New features",
+        "desription": "New features"
+    }, 
+    "release-notes.enhancements": {
+        "message": "Enhancements and bug fixes",
+        "desription": "Enhancements and bug fixes"
+    }, 
+    "release-notes.limitations": {
+        "message": "Limitations",
+        "desription": "Limitations"
+    },
+    "release-notes.enhancements.2.3.2-1": {
+        "message": "Fixes a regression, regarding text/plain documents, introduced in version 2.3.1.",
+        "desription": ""
     }
 }

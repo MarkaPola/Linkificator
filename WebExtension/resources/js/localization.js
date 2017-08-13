@@ -33,3 +33,13 @@ function translateElements() {
         }
     }
 }
+
+
+
+document.addEventListener("DOMContentLoaded",
+                          () => translateElements(), 
+                          {
+                              capture: true,
+                              passive: true,
+                              once: true
+                          });

@@ -113,6 +113,20 @@ Configurator().then(config => {
 
     var controler = Controler(config);
 
+    
+    // Display release-notes on install or update
+    browser.runtime.onInstalled.addListener(details => {
+        if ((details.reason === 'install' || details.reason === 'update') && !details.temporary) {
+            browser.alarms.onAlarm.addListener(alarm => {
+                if (alarm.name === 'linkificator-release-notes') {
+                    browser.alarm.clear('linkificator-release-notes');
+                    browser.tabs.create({url: "/resources/doc/release-notes.html", active: true});
+                }
+            });
+            browser.alarms.create('linkificator-release-notes', {when: Date.now()+2000});
+        }
+    });
+    
     // handle tabs events
     browser.tabs.onCreated.addListener(tab => controler.setStatus({tab: tab}));
     
