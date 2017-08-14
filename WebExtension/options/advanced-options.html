@@ -6,6 +6,8 @@
 	<link rel="license" href="http://mozilla.org/MPL/2.0/"/>
 
 	<link rel="stylesheet" href="advanced-options.css">
+
+	<title data-l10n-id="advanced-settings.title">Linkificator Advanced Options</title>
   </head>
   <body>	
 	<div class="tab">
@@ -15,8 +17,67 @@
 	</div>
 
 	<div id="links" class="tabcontent">
-	  <h3>Links</h3>
-	  <p>Links settings.</p>
+	  <fieldset>
+		<legend data-l10n-id="advanced-settings.links.predefined-rules">Apply Predefined Rules for:</legend>
+		<div class="settings-entry">
+		  <label for="email-address" data-l10n-id="advanced-settings.links.predefined-rules.email-address">Email addresses</label>
+		  <input checked type="checkbox" id="email-address">
+		</div>
+		<div class="settings-entry indent">
+		  <label for="email-address.use-TLD" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-TLD">Use top level domains</label>
+		  <input checked type="checkbox" id="email-address.use-TLD">
+		</div>
+		<div class="settings-entry">
+		  <label for="standrad-urls" data-l10n-id="advanced-settings.links.predefined-rules.standard-urls">Standard URLs</label>
+		  <input checked type="checkbox" id="standard-urls">
+		</div>
+		<div class="settings-entry indent">
+		  <label for="standard-urls.use-subdomains" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-subdomains">Use subdomains to identify protocol</label>
+		  <input checked type="checkbox" id="standard-urls.use-subdomains">
+		</div>
+		<div class="settings-entry indent">
+		  <label for="standard-urls.use-TLD" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-TLD">Use top level domains</label>
+		  <input checked type="checkbox" id="standard-urls.use-TLD">
+		</div>
+		<div class="settings-entry indent">
+		  <label for="standard-urls.linkify-authority" data-l10n-id="advanced-settings.links.predefined-rules.URI-linkify-authority">Linkify URL containing the alone authority (i.e. host:port)</label>
+		  <input type="checkbox" id="standard-urls.linkify-authority">
+		</div>
+	  </fieldset>
+	  <fieldset>
+		<legend data-l10n-id="advanced-settings.links.custom-rules">Apply Custom Rules for:</legend>
+		<div class="settings-entry">
+		  <label for="before-predefined" data-l10n-id="advanced-settings.links.custom-rules.before-predefined">Before predefined rules list</label>
+		  <input type="checkbox" id="before-predefined">
+		</div>
+		<div class="settings-entry">
+		  <label for="after-predefined" data-l10n-id="advanced-settings.links.custom-rules.after-predefined">After predefined rules list</label>
+		  <input type="checkbox" id="after-predefined">
+		</div>
+	  </fieldset>
+	  <fieldset>
+		<legend data-l10n-id="advanced-settings.links.extra-features">Extra Features</legend>
+		<div class="settings-entry">
+		  <label for="inline-elements" data-l10n-id="advanced-settings.links.extra-features.inline-elements">Handle inline elements</label>
+		  <input checked type="checkbox" id="inline-elements">
+		</div>
+		<div class="settings-entry">
+		  <label for="automatic-linkification" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification">Automatically process dynamic changes</label>
+		  <input checked type="checkbox" id="automatic-linkification">
+		</div>
+		<div class="settings-entry indent">
+		  <label for="automatic-linkification.refresh-interval" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-interval">Process dynamic changes every:</label>
+		  <input checked type="checkbox" id="automatic-linkification.refresh-interval">
+		  <input type="number" min="0" step="10" id="automatic-linkification.refresh-interval.value">
+		  <label class="secondary-label" for="automatic-linkification.refresh-interval.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
+		</div>
+		<div class="settings-entry indent">
+		  <label for="automatic-linkification.refresh-threshold" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-threshold">Disable the processing of dynamic changes if it takes longer than:</label>
+		  <input checked type="checkbox" id="automatic-linkification.refresh-threshold">
+		  <input type="number" min="0" step="100" id="automatic-linkification.refresh-threshold.value">
+		  <label class="secondary-label" for="automatic-linkification.refresh-threshold.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
+		</div>
+	  </fieldset>
 	</div>
 
 	<div id="custom-rules" class="tabcontent">

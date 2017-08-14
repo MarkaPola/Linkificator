@@ -51,7 +51,7 @@ form {
     background-color: #f1f1f1;
 }
 .settings-entry select option:hover {
-	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset ;
+	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset;
 }
 .settings-entry select option:checked {
 	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;

@@ -76,6 +76,83 @@
         "message": "Restore defaults",
         "description": "Reset all settings to default values"
     },
+
+    "advanced-settings.title": {
+        "message": "Linkificator Advanced Options",
+        "description": "Linkificator Advanced Options"
+    },
+    "advanced-settings.milliseconds" :{
+        "message": "ms",
+        "description": "ms"
+    },
+    "advanced-settings.tab-links": {
+        "message": "Links",
+        "description": "Links"
+    },
+    "advanced-settings.tab-custom-rules": {
+        "message": "Custom Rules",
+        "description": "Custom Rules"
+    },
+    "advanced-settings.tab-configuration": {
+        "message": "Configuration",
+        "description": "Configuration"
+    },
+    "advanced-settings.links.predefined-rules": {
+        "message": "Apply Predefined Rules for:",
+        "description": "Apply Predefined Rules for:"
+    },
+    "advanced-settings.links.predefined-rules.email-address": {
+        "message": "Email addresses",
+        "description": "Email addresses"
+    },
+    "advanced-settings.links.predefined-rules.standard-urls": {
+        "message": "Standard URLs",
+        "description": "Standard URLs"
+    },
+    "advanced-settings.links.predefined-rules.URI-use-subdomains": {
+        "message": "Use subdomains to identify protocol",
+        "description": ""
+    },
+    "advanced-settings.links.predefined-rules.URI-use-TLD": {
+        "message": "Use top level domains",
+        "description": "Use top level domains"
+    },
+    "advanced-settings.links.predefined-rules.URI-linkify-authority": {
+        "message": "Linkify URL containing the alone authority (i.e. host:port)",
+        "description": "Linkify URL containing the alone authority (i.e. host:port)"
+    },
+    "advanced-settings.links.custom-rules": {
+        "message": "Apply Custom Rules for:",
+        "description": "Apply Custom Rules for:"
+    },
+    "advanced-settings.links.custom-rules.before-predefined": {
+        "message": "Before predefined rules list",
+        "description": "Before predefined rules list"
+    },
+    "advanced-settings.links.custom-rules.after-predefined": {
+        "message": "After predefined rules list",
+        "description": "After predefined rules list"
+    },
+    "advanced-settings.links.extra-features": {
+        "message": "Extra Features",
+        "description": "Extra Features"
+    },
+    "advanced-settings.links.extra-features.inline-elements": {
+        "message": "Handle inline elements",
+        "description": "Handle inline elements"
+    },
+    "advanced-settings.links.extra-features.automatic-linkification": {
+        "message": "Automatically process dynamic changes",
+        "description": "Automatically process dynamic changes"
+    },
+    "!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-interval": {
+        "message": "Process dynamic changes every:",
+        "description": "Process dynamic changes every:"
+    },
+    "advanced-settings.links.extra-features.automatic-linkification.refresh-threshold": {
+        "message": "Disable the processing of dynamic changes if it takes longer than:",
+        "description": "Disable the processing of dynamic changes if it takes longer than:"
+    },
     
     "stats.0links": {
         "message": "0 links processsed",

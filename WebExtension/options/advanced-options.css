@@ -13,49 +13,142 @@
 
 * {box-sizing: border-box}
 
-button::-moz-focus-inner {
+/*button::-moz-focus-inner {
 	border: 0;
-}
+}*/
 
 /* Style the tab */
 div.tab {
     float: left;
-    /* border: 1px solid #ccc; */
-    background-color: #f1f1f1;
-    width: 30%;
+	background-color: #424f5a;
+	width: 200px;
 	height: 100vh;
-    /*height: 300px;*/
+	padding-top: 39px;
 }
 
 /* Style the buttons inside the tab */
 div.tab button {
     display: block;
     background-color: inherit;
-    color: black;
-    padding: 22px 16px;
+    color: #c1c1c1;
+    padding: 10px 16px;
     width: 100%;
     border: none;
     outline: none;
     text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
+	font-size: 1rem;
+    transition: background-color 150ms;
+	-moz-user-select: none;
 }
 
 /* Change background color of buttons on hover */
 div.tab button:hover {
-    background-color: #ddd;
+    background-color: #5e6972;
 }
 
 /* Create an active/current "tab button" class */
 div.tab button.active {
-    background-color: #ccc;
+    background-color: #343f48;
+	color: #f2f2f2;
+	padding-inline-start: 11px;
+	border-inline-start: solid 4px #ff9500;
 }
 
 /* Style the tab content */
 .tabcontent {
-	margin-left: 30%;
-    padding: 10px 12px;
-    width: 70%;
+	margin-left: 200px;
+    padding: 30px 12px;
+	width: calc(100% - 200px);
     border-left: none;
 	height: 100vh;
+}
+
+.tabcontent > fieldset {
+	border-top:2px solid #c1c1c1;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	padding-left:2em;
+	padding-top: 10px;
+	padding-bottom: 25px;
+	float:left;
+	width: 90%;
+}
+
+legend {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 1.1rem;
+}
+
+
+.settings-entry {
+	display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.settings-entry input, select {
+	vertical-align: top;
+	font-size: 1em;
+	color: #333;
+}
+.settings-entry input {
+    border-style: solid;
+    border-width: 1px;
+	border-radius: 2px;
+	border-color: #c1c1c1;
+}
+.settings-entry input:focus {
+	border-color: rgba(0, 149, 221, 0.8);
+}
+.settings-entry > input[type="text"] {
+	width: calc(50% - 200px);
+}
+.settings-entry > input.long-text {
+	width: calc(95% - 200px);
+}
+.settings-entry  input[type="color"] {
+	margin-left: 15px;
+}
+.settings-entry select {
+    border-style: solid;
+    border-width: 1px;
+	border-color: #c1c1c1;
+	border-radius: 2px;
+}
+.settings-entry select:hover {
+    background-color: #f1f1f1;
+}
+.settings-entry select option:hover {
+	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset;
+}
+.settings-entry select option:checked {
+	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
+}
+
+.settings-entry label {
+	display: inline-block;
+	width: 400px;
+	margin-left: 6px;
+	margin-right: 20px;
+	vertical-align: top;
+	text-align: left;
+}
+
+.indent label {
+	margin-left: 22px;
+	margin-right: 4px;
+}
+
+.settings-entry input[type="number"] {
+	margin-left: 20px;
+	width: 4em;
+}
+
+.secondary-label {
+	margin-left: 6px !important;
+	width: 50px !important;
 }
