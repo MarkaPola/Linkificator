@@ -150,5 +150,445 @@
     "panel.linkify": {
         "message": "Actualiser",
         "desription": "re-launch document linkification"
+    },
+
+    "release-notes.new_version": {
+        "message": "Nouvelle version installée.",
+        "desription": ""
+    },
+    "release-notes.thank_you": {
+        "message": "Merci d'avoir choisi Linkificator.",
+        "desription": ""
+    },
+    "release-notes.localization": {
+        "message": "L'infrastructure de localisation est maintenant pleinement opérationnelle. Toute aide est la bienvenue... Envoyez-moi un <a href=\"mailto:linkificator@gmail.com\">courriel</a> pour demander les éléments nécessaires à la localisation.",
+        "desription": ""
+    },
+    "release-notes.more_information": {
+        "message": "Pour de plus amples informations, visitez la <a href=\"https://addons.mozilla.org/fr/firefox/addon/linkificator\">page du module</a>.",
+        "desription": ""
+    },
+    "release-notes.history": {
+        "message": "Historique des changements",
+        "desription": ""
+    },
+    "release-notes.version": {
+        "message": "Version",
+        "desription": ""
+    },
+    "release-notes.new_features": {
+        "message": "Nouvelles fonctionnalités",
+        "desription": ""
+    },
+    "release-notes.enhancements": {
+        "message": "Améliorations et correction de bogues",
+        "desription": ""
+    },
+    "release-notes.limitations": {
+        "message": "Limitations", 
+        "desription": ""
+    },
+
+    "release-notes.enhancements.2.3.2-1": {
+        "message": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.3.1.",
+        "description": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.3.1."
+    }, 
+
+    "release-notes.enhancements.2.3.1-1": {
+        "message": "Support de Firefox Multi-Process (projet Electrolysis).",
+        "description": "Support de Firefox Multi-Process (projet Electrolysis)."
+    }, 
+    "release-notes.enhancements.2.3.1-2": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "La liste des domaines de premier niveau a été mise à jour."
+    }, 
+    "release-notes.limitations.2.3.1-1": {
+        "message": "Suppression du support des versions de Firefox antérieures à 38.0.",
+        "description": "Suppression du support des versions de Firefox antérieures à 38.0."
+    }, 
+
+    "release-notes.new_features.2.3.0-1": {
+        "message": "Pour une consommation minimale des ressources, il est désormais possible de traiter les documents uniquement sur demande.",
+        "description": "Pour une consommation minimale des ressources, il est désormais possible de traiter les documents uniquement sur demande."
+    }, 
+    "release-notes.enhancements.2.3.0-1": {
+        "message": "Support de Firefox Multi-Process (projet Electrolysis).",
+        "description": "Support de Firefox Multi-Process (projet Electrolysis)."
+    }, 
+    "release-notes.enhancements.2.3.0-2": {
+        "message": "La liste des domaines de premier niveau a été réorganisée et mise à jour.",
+        "description": "La liste des domaines de premier niveau a été réorganisée et mise à jour."
+    }, 
+    "release-notes.limitations.2.3.0-1": {
+        "message": "Suppression du support des versions de Firefox antérieures à 31.0.",
+        "description": "Suppression du support des versions de Firefox antérieures à 31.0."
+    }, 
+
+    "release-notes.enhancements.2.2.1-1": {
+        "message": "Compatibilité avec Firefox 40+.",
+        "description": "Compatibilité avec Firefox 40+."
+    }, 
+
+    "release-notes.new_features.2.2.0-1": {
+        "message": "Ajout de la possibilité de sauvegarder et restaurer les réglages ainsi que de reinitialiser les réglages aux valeurs par défaut (voir 'Gestion des réglages' dans les Options du module).",
+        "description": "Ajout de la possibilité de sauvegarder et restaurer les réglages ainsi que de reinitialiser les réglages aux valeurs par défaut (voir 'Gestion des réglages' dans les Options du module)."
+    }, 
+
+    "release-notes.enhancements.2.1.4-1": {
+        "message": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1.",
+        "description": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1."
+    }, 
+
+    "release-notes.enhancements.2.1.3-1": {
+        "message": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1.",
+        "description": "Correction d'une régression, concernant les documents texte, introduite dans la version 2.1.1."
+    }, 
+    "release-notes.enhancements.2.1.3-2": {
+        "message": "Amélioration, pour Firefox 30.0 et versions plus récentes, de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé.",
+        "description": "Amélioration, pour Firefox 30.0 et versions plus récentes, de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé."
+    }, 
+
+    "release-notes.enhancements.2.1.2-1": {
+        "message": "Correction d'une régression, concernant la navigation dans Firefox, introduite dans la version 2.1.1.",
+        "description": "Correction d'une régression, concernant la navigation dans Firefox, introduite dans la version 2.1.1."
+    }, 
+
+    "release-notes.enhancements.2.1.1-1": {
+        "message": "Amélioration de l'interface de gestion des listes blanche/noire.",
+        "description": "Amélioration de l'interface de gestion des listes blanche/noire."
+    }, 
+    "release-notes.enhancements.2.1.1-2": {
+        "message": "Réduction des besoins en ressources, dans de larges proportions pour certaines pages, pour le traitement.",
+        "description": "Réduction des besoins en ressources, dans de larges proportions pour certaines pages, pour le traitement."
+    }, 
+    "release-notes.enhancements.2.1.1-3": {
+        "message": "Optimisation de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé et, pour Firefox 30.0 et versions plus récentes, évite de recharger les pages.",
+        "description": "Optimisation de la restauration du contenu originel des pages lorsque le module est désactivé ou supprimé et, pour Firefox 30.0 et versions plus récentes, évite de recharger les pages."
+    }, 
+    "release-notes.enhancements.2.1.1-4": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "La liste des domaines de premier niveau a été mise à jour."
+    }, 
+
+    "release-notes.new_features.2.1.0-1": {
+        "message": "Le comportement du traitement automatique des changements dynamiques peut maintenant être réglé à votre goût (voir Réglages avancés, onglet Liens).",
+        "description": "Le comportement du traitement automatique des changements dynamiques peut maintenant être réglé à votre goût (voir Réglages avancés, onglet Liens)."
+    }, 
+    "release-notes.enhancements.2.1.0-1": {
+        "message": "Amélioration de l'analyse des URIs du protocole news.",
+        "description": "Amélioration de l'analyse des URIs du protocole news."
+    }, 
+    "release-notes.enhancements.2.1.0-2": {
+        "message": "Amélioration du support des langues asiatiques.",
+        "description": "Amélioration du support des langues asiatiques."
+    }, 
+    "release-notes.enhancements.2.1.0-3": {
+        "message": "Nouvelle localisation: galicien (fournie par  ).",
+        "description": "Nouvelle localisation: galicien (fournie par  )."
+    }, 
+
+    "release-notes.enhancements.2.0.6-1": {
+        "message": "Corrige une régression sur l'analyse de la partie domaine de l'URI.",
+        "description": "Corrige une régression sur l'analyse de la partie domaine de l'URI."
+    }, 
+
+    "release-notes.enhancements.2.0.5-1": {
+        "message": "Nouvelle localisation : russe (fournie par 'Капелька Яда').",
+        "description": "Nouvelle localisation : russe (fournie par 'Капелька Яда')."
+    }, 
+    "release-notes.enhancements.2.0.5-2": {
+        "message": "Amélioration du support des langues asiatiques.",
+        "description": "Amélioration du support des langues asiatiques."
+    }, 
+    "release-notes.enhancements.2.0.5-3": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "La liste des domaines de premier niveau a été mise à jour."
+    }, 
+
+    "release-notes.enhancements.2.0.4-1": {
+        "message": "Amélioration de la détection des URIs.",
+        "description": "Amélioration de la détection des URIs."
+    }, 
+
+    "release-notes.enhancements.2.0.3-1": {
+        "message": "Optimisation du traitement des pages pour le support de Firefox 32.",
+        "description": "Optimisation du traitement des pages pour le support de Firefox 32."
+    }, 
+    "release-notes.enhancements.2.0.3-2": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "La liste des domaines de premier niveau a été mise à jour."
+    }, 
+
+    "release-notes.enhancements.2.0.2-1": {
+        "message": "Ajout du support des documents du type XHTML.",
+        "description": "Ajout du support des documents du type XHTML."
+    }, 
+    "release-notes.enhancements.2.0.2-2": {
+        "message": "Ajout du support des namespaces dans les documents.",
+        "description": "Ajout du support des namespaces dans les documents."
+    }, 
+    "release-notes.enhancements.2.0.2-3": {
+        "message": "Support de Firefox 32.",
+        "description": "Support de Firefox 32."
+    }, 
+    "release-notes.enhancements.2.0.2-4": {
+        "message": "Plusieurs bogues concernant le traitement des éléments 'en ligne' ont été corrigés.",
+        "description": "Plusieurs bogues concernant le traitement des éléments 'en ligne' ont été corrigés."
+    }, 
+    "release-notes.enhancements.2.0.2-5": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "La liste des domaines de premier niveau a été mise à jour."
+    }, 
+
+    "release-notes.enhancements.2.0.1-1": {
+        "message": "La liste des domaines de premier niveau a été mise à jour et la gestion a été améliorée.",
+        "description": "La liste des domaines de premier niveau a été mise à jour et la gestion a été améliorée."
+    }, 
+    "release-notes.enhancements.2.0.1-2": {
+        "message": "Les entrées du menu contextuel du widget affichent maintenant le raccourci clavier associé, si il existe.",
+        "description": "Les entrées du menu contextuel du widget affichent maintenant le raccourci clavier associé, si il existe."
+    }, 
+    "release-notes.enhancements.2.0.1-3": {
+        "message": "Plusieurs bogues mineurs ont été corrigés.",
+        "description": "Plusieurs bogues mineurs ont été corrigés."
+    }, 
+
+    "release-notes.new_features.2.0.0-1": {
+        "message": "Support de la nouvelle interface de Firefox (Australis). Le comportement du widget de Linkificator est strictement identique à celui des widgets natifs de l'interface Australis.<br/>Le nouveau mode de fonctionnement des widgets oblige à modifier les possibilités de configuration de la souris : Il n'est plus possible de configurer le boution gauche de la souris car il est réservé à l'affichage du menu contextuel.",
+        "description": "Support de la nouvelle interface de Firefox (Australis). Le comportement du widget de Linkificator est strictement identique à celui des widgets natifs de l'interface Australis.<br/>Le nouveau mode de fonctionnement des widgets oblige à modifier les possibilités de configuration de la souris : Il n'est plus possible de configurer le boution gauche de la souris car il est réservé à l'affichage du menu contextuel."
+    }, 
+    "release-notes.new_features.2.0.0-2": {
+        "message": "Il est maintenant possible de traiter une page ignorée (du fait des règles de filtrage: listes blanche ou noire). Pour cela, l'action 'Inclure' peut être utilisé (raccourci clavier ou entrée dans le menu contextuel du widget).<br/>NOTA: l'action 'Inclure' ne s'applique qu'à l'URL courant. Les règles prédéfinies de filtrage s'appliqueront dès qu'un changement intervient à la page chargée.",
+        "description": "Il est maintenant possible de traiter une page ignorée (du fait des règles de filtrage: listes blanche ou noire). Pour cela, l'action 'Inclure' peut être utilisé (raccourci clavier ou entrée dans le menu contextuel du widget).<br/>NOTA: l'action 'Inclure' ne s'applique qu'à l'URL courant. Les règles prédéfinies de filtrage s'appliqueront dès qu'un changement intervient à la page chargée."
+    }, 
+    "release-notes.enhancements.2.0.0-1": {
+        "message": "Optimisation de la gestion du widget en mode multi-fenêtres.",
+        "description": "Optimisation de la gestion du widget en mode multi-fenêtres."
+    }, 
+    "release-notes.limitations.2.0.0-1": {
+        "message": "Lors de la mise à jour vers cette nouvelle version majeure à partir d'une ancienne version (1.*), la configuration des boutons de la souris est perdue.",
+        "description": "Lors de la mise à jour vers cette nouvelle version majeure à partir d'une ancienne version (1.*), la configuration des boutons de la souris est perdue."
+    }, 
+
+    "release-notes.enhancements.1.6.3-1": {
+        "message": "Optimisation de la gestion du widget en mode multi-fenêtres.",
+        "description": "Optimisation de la gestion du widget en mode multi-fenêtres."
+    }, 
+    "release-notes.limitations.1.6.3-1": {
+        "message": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>.",
+        "description": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>."
+    }, 
+
+    "release-notes.enhancements.1.6.2-1": {
+        "message": "Optimisation du traitement du document.",
+        "description": "Optimisation du traitement du document."
+    }, 
+    "release-notes.limitations.1.6.2-1": {
+        "message": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>.",
+        "description": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>."
+    }, 
+
+    "release-notes.enhancements.1.6.1-1": {
+        "message": "Il est maintenant possible de désactiver le traitement automatique des changements dynamiques (voir 'Réglages avancés', onglet 'Liens').",
+        "description": "Il est maintenant possible de désactiver le traitement automatique des changements dynamiques (voir 'Réglages avancés', onglet 'Liens')."
+    }, 
+    "release-notes.enhancements.1.6.1-2": {
+        "message": "Optimisation du traitement automatique pour éviter tout ralentissement.",
+        "description": "Optimisation du traitement automatique pour éviter tout ralentissement."
+    }, 
+    "release-notes.limitations.1.6.1-1": {
+        "message": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>.",
+        "description": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>."
+    }, 
+
+    "release-notes.new_features.1.6.0-1": {
+        "message": "Les changements dynamiques de la page en cours sont maintenant détectés et traités automatiquement.",
+        "description": "Les changements dynamiques de la page en cours sont maintenant détectés et traités automatiquement."
+    }, 
+    "release-notes.limitations.1.6.0-1": {
+        "message": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>.",
+        "description": "Du fait d'un nouveau mode de génération du module, la version minimum de Firefox prise en charge est maintenant la <b>version 21</b>."
+    }, 
+
+    "release-notes.enhancements.1.5.3-1": {
+        "message": "Correction du traitement des éléments en ligne.",
+        "description": "Correction du traitement des éléments en ligne."
+    }, 
+    "release-notes.limitations.1.5.3-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.enhancements.1.5.2-1": {
+        "message": "Par défaut, pour réduire encore les faux positifs, les URLs ne contenant que l'autorité (i.e. serveur:port) ne sont plus traités, même si elles contiennent un domaine de premier niveau valide.<br/>L'option 'Réglages Avancés->Liens->Traiter les URL contenant uniquement l'autorité' permet d'activer ce traitement.",
+        "description": "Par défaut, pour réduire encore les faux positifs, les URLs ne contenant que l'autorité (i.e. serveur:port) ne sont plus traités, même si elles contiennent un domaine de premier niveau valide.<br/>L'option 'Réglages Avancés->Liens->Traiter les URL contenant uniquement l'autorité' permet d'activer ce traitement."
+    }, 
+    "release-notes.enhancements.1.5.2-2": {
+        "message": "Amélioration de la détection des URIs.",
+        "description": "Amélioration de la détection des URIs."
+    }, 
+    "release-notes.enhancements.1.5.2-3": {
+        "message": "Amélioration de la vitesse de traitement lorsque les domaines de premier niveau sont utilisés.",
+        "description": "Amélioration de la vitesse de traitement lorsque les domaines de premier niveau sont utilisés."
+    }, 
+    "release-notes.limitations.1.5.2-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.enhancements.1.5.1-1": {
+        "message": "Amélioration de la détection du début des URIs.",
+        "description": "Amélioration de la détection du début des URIs."
+    }, 
+    "release-notes.enhancements.1.5.1-2": {
+        "message": "Amélioration de la reconnaissance des domaines de premier niveau.",
+        "description": "Amélioration de la reconnaissance des domaines de premier niveau."
+    }, 
+    "release-notes.limitations.1.5.1-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.new_features.1.5.0-1": {
+        "message": "Pour réduire les faux positifs, les URIs sont maintenant reconnus uniquement si le domaine se termine par un nom de domaine de premier niveau connu.<br/>Il est possible de désactiver ce mode (et donc de revenir au fonctionnement de la version précédente) via 'Réglages avancés', onglet 'Liens'.",
+        "description": "Pour réduire les faux positifs, les URIs sont maintenant reconnus uniquement si le domaine se termine par un nom de domaine de premier niveau connu.<br/>Il est possible de désactiver ce mode (et donc de revenir au fonctionnement de la version précédente) via 'Réglages avancés', onglet 'Liens'."
+    }, 
+    "release-notes.limitations.1.5.0-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.enhancements.1.4.2-1": {
+        "message": "Amélioration de la vitesse de traitement des éléments en ligne qui permet de réduire considérablement les potentiels gels de Firefox.",
+        "description": "Amélioration de la vitesse de traitement des éléments en ligne qui permet de réduire considérablement les potentiels gels de Firefox."
+    }, 
+    "release-notes.enhancements.1.4.2-2": {
+        "message": "Pour une meilleure compatibilité avec le navigateur <a href=\"http://www.palemoon.org\">'Pale Moon'</a>, le test de version de Firefox a été légèrement changé pour permettre de désactiver le panel sur toutes les versions 20.",
+        "description": "Pour une meilleure compatibilité avec le navigateur <a href=\"http://www.palemoon.org\">'Pale Moon'</a>, le test de version de Firefox a été légèrement changé pour permettre de désactiver le panel sur toutes les versions 20."
+    }, 
+    "release-notes.limitations.1.4.2-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.enhancements.1.4.1-1": {
+        "message": "Amélioration de la gestion de l'historique de navigation (boutons Reculer/Avancer).",
+        "description": "Amélioration de la gestion de l'historique de navigation (boutons Reculer/Avancer)."
+    }, 
+    "release-notes.limitations.1.4.1-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.new_features.1.4.0-1": {
+        "message": "Le clic gauche est maintenant configurable. En conséquence, le menu contextuel peut maintenant être assigné à n'importe quel bouton de la souris.<br/>Par défaut, pour rester compatible avec les versions précédentes, l'affichage du menu est assigné au clic gauche.",
+        "description": "Le clic gauche est maintenant configurable. En conséquence, le menu contextuel peut maintenant être assigné à n'importe quel bouton de la souris.<br/>Par défaut, pour rester compatible avec les versions précédentes, l'affichage du menu est assigné au clic gauche."
+    }, 
+    "release-notes.enhancements.1.4.0-1": {
+        "message": "La navigation privée par fenêtre est maintenant supportée mais avec certaines restrictions sur <b>Firefox 20</b> en raison des limitations du SDK spécifiquement pour cette version.",
+        "description": "La navigation privée par fenêtre est maintenant supportée mais avec certaines restrictions sur <b>Firefox 20</b> en raison des limitations du SDK spécifiquement pour cette version."
+    }, 
+    "release-notes.limitations.1.4.0-1": {
+        "message": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator.",
+        "description": "La navigation privée sur <b>Firefox 20</b> n'est pas compatible avec la fonctionnalité des panels du SDK. Cette fonctionnalité est nécessaire à la gestion du menu contextuel de Linkificator.<br/>En conséquence, sur Firefox 20, le menu contextuel de Linkificator est désactivé. Il est donc fortement <b>recommandé</b> de mettre à jour Firefox vers la <b>version 21</b> ou suivantes pour avoir un fonctionnel complet de Linkificator."
+    }, 
+
+    "release-notes.new_features.1.3.0-1": {
+        "message": "Intégration au menu contextuel de page : Il est maintenant possible d'actualiser les liens via le menu contextuel de la page (configurable).",
+        "description": "Intégration au menu contextuel de page : Il est maintenant possible d'actualiser les liens via le menu contextuel de la page (configurable)."
+    }, 
+    "release-notes.new_features.1.3.0-2": {
+        "message": "Le clic central sur le widget est maintenant configurable. Par défaut aucune action n'est exécutée.",
+        "description": "Le clic central sur le widget est maintenant configurable. Par défaut aucune action n'est exécutée."
+    }, 
+    "release-notes.enhancements.1.3.0-1": {
+        "message": "Changement du comportement de l'état désactivé : les actions de Linkificator sont annulées lorsque l'on désactive Linkificator.",
+        "description": "Changement du comportement de l'état désactivé : les actions de Linkificator sont annulées lorsque l'on désactive Linkificator."
+    }, 
+    "release-notes.enhancements.1.3.0-2": {
+        "message": "Correction des messages erronés affichés par le tooltip.",
+        "description": "Correction des messages erronés affichés par le tooltip."
+    }, 
+    "release-notes.limitations.1.3.0-1": {
+        "message": "La navigation privée par fenêtre (Firefox 20+) n'est pas supportée due à un bogue du Add-on SDK (see 816257).<br/>Le support sera ajouté dés que le bogue du SDK sera corrigé (prévu pour la version 1.15 du SDK).",
+        "description": "La navigation privée par fenêtre (Firefox 20+) n'est pas supportée due à un bogue du Add-on SDK (see 816257).<br/>Le support sera ajouté dés que le bogue du SDK sera corrigé (prévu pour la version 1.15 du SDK)."
+    }, 
+
+    "release-notes.new_features.1.2.0-1": {
+        "message": "Possibilité de désacriver/réactiver le traitement de la page courante.<br/>Cette action peut être lancée via le menu du widget (Exclure/Inclure) ou le raccourci clavier control-shift-x (configurable).",
+        "description": "Possibilité de désacriver/réactiver le traitement de la page courante.<br/>Cette action peut être lancée via le menu du widget (Exclure/Inclure) ou le raccourci clavier control-shift-x (configurable)."
+    }, 
+    "release-notes.enhancements.1.2.0-1": {
+        "message": "Amélioration la génération du tag &lt;a&gt; dans le cas d'éléments en ligne.",
+        "description": "Amélioration la génération du tag &lt;a&gt; dans le cas d'éléments en ligne."
+    }, 
+    "release-notes.enhancements.1.2.0-2": {
+        "message": "Ajout du tag &lt;wbr&gt; aux éléments en ligne.",
+        "description": "Ajout du tag &lt;wbr&gt; aux éléments en ligne."
+    }, 
+
+    "release-notes.new_features.1.1.1-1": {
+        "message": "Possibilité d'actualiser la page courante sans la recharger.<br/>Cette action peut être lancée via un clic droit sur le widget ou via le raccourci clavier control-shift-u (configurable).",
+        "description": "Possibilité d'actualiser la page courante sans la recharger.<br/>Cette action peut être lancée via un clic droit sur le widget ou via le raccourci clavier control-shift-u (configurable)."
+    }, 
+    "release-notes.new_features.1.1.1-2": {
+        "message": "Un clic gauche sur le widget affiche maintenant un menu pour un accès facilité aux opérations les plus courantes ainsi que la page d'options.",
+        "description": "Un clic gauche sur le widget affiche maintenant un menu pour un accès facilité aux opérations les plus courantes ainsi que la page d'options."
+    }, 
+    "release-notes.new_features.1.1.1-3": {
+        "message": "Une action peut être directement exécutée via un clic droit sur le widget. Cette action est configurable (voir la page d'options).",
+        "description": "Une action peut être directement exécutée via un clic droit sur le widget. Cette action est configurable (voir la page d'options)."
+    }, 
+    "release-notes.enhancements.1.1.1-1": {
+        "message": "Correction de la gestion de la checkbox pour les règles utilisateurs sur MacOS.",
+        "description": "Correction de la gestion de la checkbox pour les règles utilisateurs sur MacOS."
+    }, 
+
+    "release-notes.enhancements.1.0.3-1": {
+        "message": "Ajout de la possibilité d'éditer les règles utilisateur sur Mac OS.",
+        "description": "Ajout de la possibilité d'éditer les règles utilisateur sur Mac OS."
+    }, 
+    "release-notes.enhancements.1.0.3-2": {
+        "message": "Amélioration de la gestion des statistiques.",
+        "description": "Amélioration de la gestion des statistiques."
+    }, 
+    "release-notes.enhancements.1.0.3-3": {
+        "message": "Correction d'un traitement erroné des éléments en ligne.",
+        "description": "Correction d'un traitement erroné des éléments en ligne."
+    }, 
+
+    "release-notes.enhancements.1.0.2-1": {
+        "message": "Amélioration de l'analyse des URLs.",
+        "description": "Amélioration de l'analyse des URLs."
+    }, 
+    "release-notes.enhancements.1.0.2-2": {
+        "message": "Réduction des besoins en ressources et de potentiels gels de l'interface graphique.",
+        "description": "Réduction des besoins en ressources et de potentiels gels de l'interface graphique."
+    }, 
+
+    "release-notes.enhancements.1.0.1-1": {
+        "message": "Le tag &lt;span&gt; est maintenant traité en tant qu'élément en ligne.",
+        "description": "Le tag &lt;span&gt; est maintenant traité en tant qu'élément en ligne."
+    }, 
+    "release-notes.enhancements.1.0.1-2": {
+        "message": "Amélioration de la localisation de certains messages.",
+        "description": "Amélioration de la localisation de certains messages."
+    }, 
+
+    "release-notes.new_features.1.0.0-1": {
+        "message": "Les elements en ligne, tel que &lt;big&gt; ou &lt;strong&gt;, sont maintenant reconnus et correctement traités lors de l'analyse des URL.",
+        "description": "Les elements en ligne, tel que &lt;big&gt; ou &lt;strong&gt;, sont maintenant reconnus et correctement traités lors de l'analyse des URL."
+    }, 
+    "release-notes.new_features.1.0.0-2": {
+        "message": "Les Pages existantes sont maintenant automatiquement traitées lorsque l'extension est installée ou re-activée. Il n'est plus nécessaire de recharger la page manuellement.",
+        "description": "Les Pages existantes sont maintenant automatiquement traitées lorsque l'extension est installée ou re-activée. Il n'est plus nécessaire de recharger la page manuellement."
+    }, 
+    "release-notes.enhancements.1.0.0-1": {
+        "message": "Les documents multi-frames sont maintenant correctement traités dans tous les cas.",
+        "description": "Les documents multi-frames sont maintenant correctement traités dans tous les cas."
+    }, 
+    "release-notes.enhancements.1.0.0-2": {
+        "message": "Les documents texte sont reconnus et traités.",
+        "description": "Les documents texte sont reconnus et traités."
     }
 }
