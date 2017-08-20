@@ -77,6 +77,83 @@
         "description": "Reset all settings to default values"
     },
 
+    "advanced-settings.title": {
+        "message": "Расширенные настройки Linkificator",
+        "description": "Linkificator Advanced Options"
+    },
+    "advanced-settings.milliseconds" :{
+        "message": "ms",
+        "description": "ms"
+    },
+    "advanced-settings.tab-links": {
+        "message": "Ссылки",
+        "description": "Links"
+    },
+    "advanced-settings.tab-custom-rules": {
+        "message": "Пользовательские правила",
+        "description": "Custom Rules"
+    },
+    "advanced-settings.tab-configuration": {
+        "message": "Конфигурация",
+        "description": "Configuration"
+    },
+    "advanced-settings.links.predefined-rules": {
+        "message": "Применять предопределённые правила для:",
+        "description": "Apply Predefined Rules for:"
+    },
+    "advanced-settings.links.predefined-rules.email-address": {
+        "message": "Адреса электронной почты",
+        "description": "Email addresses"
+    },
+    "advanced-settings.links.predefined-rules.standard-urls": {
+        "message": "Стандартные URL-адреса",
+        "description": "Standard URLs"
+    },
+    "advanced-settings.links.predefined-rules.URI-use-subdomains": {
+        "message": "Использовать поддомены для определения протокола",
+        "description": ""
+    },
+    "advanced-settings.links.predefined-rules.URI-use-TLD": {
+        "message": "Использовать домены верхнего уровня",
+        "description": "Use top level domains"
+    },
+    "advanced-settings.links.predefined-rules.URI-linkify-authority": {
+        "message": "Подчёркивать URL, содержащие единственную часть (т.е. host:port)",
+        "description": "Linkify URL containing the alone authority (i.e. host:port)"
+    },
+    "advanced-settings.links.custom-rules": {
+        "message": "Применять пользовательские правила для:",
+        "description": "Apply Custom Rules for:"
+    },
+    "advanced-settings.links.custom-rules.before-predefined": {
+        "message": "Перед списком предопределённых правил",
+        "description": "Before predefined rules list"
+    },
+    "advanced-settings.links.custom-rules.after-predefined": {
+        "message": "После списка предопределённых правил",
+        "description": "After predefined rules list"
+    },
+    "advanced-settings.links.extra-features": {
+        "message": "Extra Features",
+        "description": "Extra Features"
+    },
+    "advanced-settings.links.extra-features.inline-elements": {
+        "message": "Обрабатывать встроенные элементы",
+        "description": "Handle inline elements"
+    },
+    "advanced-settings.links.extra-features.automatic-linkification": {
+        "message": "Автоматически обрабатывать динамические изменения",
+        "description": "Automatically process dynamic changes"
+    },
+    "advanced-settings.links.extra-features.automatic-linkification.refresh-interval": {
+        "message": "Обработка динамических изменений каждые:",
+        "description": "Process dynamic changes every:"
+    },
+    "advanced-settings.links.extra-features.automatic-linkification.refresh-threshold": {
+        "message": "Отключить обработку динамических изменений, если она занимает больше, чем:",
+        "description": "Disable the processing of dynamic changes if it takes longer than:"
+    },
+
     "stats.0links": {
         "message": "0 \u0441\u0441\u044b\u043b\u043e\u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043e",
         "description": "zero links processed" 

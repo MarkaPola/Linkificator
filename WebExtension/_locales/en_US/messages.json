@@ -145,7 +145,7 @@
         "message": "Automatically process dynamic changes",
         "description": "Automatically process dynamic changes"
     },
-    "!ENTITY advanced-settings.links.extra-features.automatic-linkification.refresh-interval": {
+    "advanced-settings.links.extra-features.automatic-linkification.refresh-interval": {
         "message": "Process dynamic changes every:",
         "description": "Process dynamic changes every:"
     },
