@@ -345,19 +345,6 @@ function Parser (properties) {
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^" + end_uri_delimiter + "]))|[^" + end_uri_delimiter + "])";
     
     // define sub-classes from PatternRule for the various URI formats
-    function AboutRule () {
-        PatternRule.call(this, "(about:[\\w?=-]+)");
-    }
-    AboutRule.prototype = new PatternRule;
-    AboutRule.prototype.test = function(regex) {
-        return properties.predefinedRules.support.about.active && regex[this._index] !== undefined;
-    };
-    AboutRule.prototype.getURL = function(regex) {
-        if (regex[this._index])
-            return regex[this._index];
-        else
-            return null; 
-    };
     ///// e-mail without protocol specification
     function MailRule () {
         PatternRule.call(this, "((?:[\\w\\-_.!#$%&'*+/=?^`{|}~]+@)" + "(?:" + mail_domain + "|" + IP + "))");
@@ -502,8 +489,6 @@ function Parser (properties) {
     var pattern = Pattern ("(^|[" + start_uri_delimiter + "]+)");
     if (properties.customRules.support.before)
         buildCustomRules(pattern, properties.customRules.rules.beforeList);
-    if (properties.predefinedRules.support.about.active)
-        pattern.push(new AboutRule);
     pattern.push(new FullMailRule);
     pattern.push(new NewsRule);
     pattern.push(new FullProtocolRule);
@@ -593,43 +578,12 @@ function Linkify (document, statistics, properties, style, completed) {
 }
 Linkify.prototype = {
     newAnchor: function (url) {
-        const PAGES = ["about", "addons", "apps", "debugging", "cache", "compartments", "config", "crashes",
-                       "memory", "newtab", "permissions", "plugins", "preferences", "privatebrowsing",
-                       "sessionrestore", "support", "sync-log", "sync-progress", "sync-tabs"];
-        function isAboutURL (url) {
-            let about = "about:";
-            if (url.indexOf(about) === 0) {
-                let page = url.substr(about.length);
-                
-                return PAGES.some(function(item) {return item.indexOf(page) === 0;});
-            } else {
-                return false;
-            }
-        }
-
-        function openURL (event) {
-            if (event.button == 2 || event.altKey || event.ctrlKey || event.metaKey)
-                // no custom action, propagate this event
-                return true;
-
-            event.stopPropagation();
-            event.preventDefault();
-
-            port.postMessage({id: 'open-url', button: event.button == 0 ? 'left' : 'middle', url: this.href});
-
-            return false;
-        }
-
         let anchor = this.document.createElement('a');
         anchor.setAttribute('title', 'Linkificator: ' + url);
         anchor.setAttribute('href', url);
         anchor.setAttribute('class', 'linkificator-ext');
         if (this.style.length != 0) {
             anchor.setAttribute('style', this.style);
-        }
-        if (isAboutURL(url)) {
-            // attach special action to enable about: page opening on mouse click
-            anchor.addEventListener('mouseup', openURL, false);
         }
 
         return anchor;

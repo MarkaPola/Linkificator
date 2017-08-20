@@ -56,9 +56,6 @@ function Configurator () {
                     active: true, 
                     useTLD: true
                 },
-                about: {
-                    active: true
-                },
                 standard: {
                     active: true,
                     useSubdomains: true, 
