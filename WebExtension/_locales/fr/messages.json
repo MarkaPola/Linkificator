@@ -56,6 +56,10 @@
         "message": "Remplacer la couleur du fond",
         "description": "To change background color of hyperlinks"
     },
+    "settings.advanced-settings": {
+        "message": "Réglages avancés...">
+        "description": "Advanced settings...">
+    }, 
     "settings.prefs-management": {
         "message": "Gestion des réglages",
         "description": "Settings management"

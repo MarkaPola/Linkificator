@@ -18,12 +18,12 @@ form {
     margin-right: 0;
 }
 
-.settings-entry input, select {
+.settings-entry input, select, button {
 	vertical-align: top;
 	font-size: 1em;
 	color: #333;
 }
-.settings-entry input {
+.settings-entry input, button {
     border-style: solid;
     border-width: 1px;
 	border-radius: 2px;
@@ -56,6 +56,19 @@ form {
 .settings-entry select option:checked {
 	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
 }
+.settings-entry button {
+    background-color: white;
+    cursor: pointer;
+}
+.settings-entry button:hover {
+    background-color: #f1f1f1;
+}
+.settings-entry button:active {
+    background-color: #dadada;
+}
+.settings-entry button::-moz-focus-inner {
+	border: 0;
+}
 
 .settings-entry label {
 	display: inline-block;
@@ -76,26 +89,14 @@ form > hr {
 }
 
 .reset-button {
-    background-color: white;
 	/* top right bottom left */
 	padding: 3px 3px 0px 6px;
-    border-style: solid;
-    border-width: 1px;
-	border-color: #c1c1c1;
-	border-radius: 2px;
-    cursor: pointer;
 }
 .reset-button img {
 	position: relative;
 	left: -1px;
 }
-.reset-button:hover, .dropdown-button:focus {
-    background-color: #f1f1f1;
-}
-.reset-button:active {
-    background-color: #dadada;
-}
-.reset-button::-moz-focus-inner {
-	border: 0;
-}
-
+/*
+#advanced-settings {
+	margin-left: 226px;
+}*/

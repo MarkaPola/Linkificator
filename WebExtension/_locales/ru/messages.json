@@ -56,6 +56,10 @@
         "message": "Изменить цвет фона",
         "description": "To change background color of hyperlinks"
     },
+    "settings.advanced-settings": {
+        "message": "Расширенные настройки...">
+        "description": "Advanced settings...">
+    }, 
     "settings.prefs-management": {
         "message": "Управление настройками",
         "description": "Settings management"

@@ -56,6 +56,10 @@
         "message": "Override text color",
         "description": "To change background color of hyperlinks"
     },
+    "settings.advanced-settings": {
+        "message": "Advanced settings...">
+        "description": "Advanced settings...">
+    }, 
     "settings.prefs-management": {
         "message": "Settings management",
         "description": "Settings management"
