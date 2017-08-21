@@ -68,13 +68,13 @@
 		<div class="settings-entry indent">
 		  <label for="automatic-linkification.refresh-interval" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-interval">Process dynamic changes every:</label>
 		  <input checked type="checkbox" id="automatic-linkification.refresh-interval">
-		  <input type="number" min="0" step="10" id="automatic-linkification.refresh-interval.value">
+		  <input class="secondary-input" type="number" min="0" step="10" id="automatic-linkification.refresh-interval.value">
 		  <label class="secondary-label" for="automatic-linkification.refresh-interval.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
 		</div>
 		<div class="settings-entry indent">
 		  <label for="automatic-linkification.refresh-threshold" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-threshold">Disable the processing of dynamic changes if it takes longer than:</label>
 		  <input checked type="checkbox" id="automatic-linkification.refresh-threshold">
-		  <input type="number" min="0" step="100" id="automatic-linkification.refresh-threshold.value">
+		  <input class="secondary-input" type="number" min="0" step="100" id="automatic-linkification.refresh-threshold.value">
 		  <label class="secondary-label" for="automatic-linkification.refresh-threshold.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
 		</div>
 	  </fieldset>
@@ -82,12 +82,76 @@
 
 	<div id="custom-rules" class="tabcontent">
 	  <h3>Custom Rules</h3>
-	  <p>Custom rules management.</p>
+	  <p>Not yet supported...</p>
 	</div>
 
 	<div id="configuration" class="tabcontent">
-	  <h3>Configuration</h3>
-	  <p>Configuration.</p>
+	  <fieldset>
+		<legend data-l10n-id="advanced-settings.configuration.general">General</legend>
+		<div class="settings-entry settings-entry2">
+		  <label for="required-characters" data-l10n-id="advanced-settings.configuration.general.required-characters">Required Characters</label>
+		  <input type="text" name="required-characters" id="required-characters">
+		  <button type="button" class="reset-button" id="required-characters-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="protocols" data-l10n-id="advanced-settings.configuration.general.protocols">Protocols</label>
+		  <input type="text" name="protocols" id="protocols">
+		  <button type="button" class="reset-button" id="protocols-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="subdomains" data-l10n-id="advanced-settings.configuration.general.subdomains">Subdomains</label>
+		  <input type="text" name="subdomains" id="subdomains">
+		  <button type="button" class="reset-button" id="subdomains-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="excluded-elements" data-l10n-id="advanced-settings.configuration.general.excluded-elements">Excluded Elements</label>
+		  <input type="text" name="excluded-elements" id="excluded-elements">
+		  <button type="button" class="reset-button" id="excluded-elements-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="inline-elements" data-l10n-id="advanced-settings.configuration.general.inline-elements">Inline Elements</label>
+		  <input type="text" name="inline-elements" id="inline-elements">
+		  <button type="button" class="reset-button" id="inline-elements-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="max-data-size" data-l10n-id="advanced-settings.configuration.general.max-data-size">Maximum data size</label>
+		  <input type="number" min="0" step="1000" name="max-data-size" id="max-data-size">
+		  <button type="button" class="reset-button" id="max-data-size-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+	  </fieldset>
+	  <fieldset>
+		<legend data-l10n-id="advanced-settings.configuration.top-level-domains">Top-Level Domains</legend>
+		<div class="settings-entry settings-entry2">
+		  <label for="generics" data-l10n-id="advanced-settings.configuration.top-level-domains.generics">Generics</label>
+		  <input checked type="checkbox" name="generics" id="generics">
+		  <textarea title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
+		  <button type="button" class="reset-button" id="generics-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="country-codes" data-l10n-id="advanced-settings.configuration.top-level-domains.country-codes">Country Codes</label>
+		  <input checked type="checkbox" name="country-codes" id="country-codes">
+		  <textarea title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
+		  <button type="button" class="reset-button" id="country-codes-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="geographics" data-l10n-id="advanced-settings.configuration.top-level-domains.geographics">Geographics</label>
+		  <input checked type="checkbox" name="geographics" id="geographics">
+		  <textarea title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
+		  <button type="button" class="reset-button" id="geographics-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="communities" data-l10n-id="advanced-settings.configuration.top-level-domains.communities">Communities</label>
+		  <input checked type="checkbox" name="communities" id="communities">
+		  <textarea title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
+		  <button type="button" class="reset-button" id="communities-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+		<div class="settings-entry settings-entry2">
+		  <label for="brands" data-l10n-id="advanced-settings.configuration.top-level-domains.brands">Brands</label>
+		  <input checked type="checkbox" name="brands" id="brands">
+		  <textarea title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
+		  <button type="button" class="reset-button" id="brands-reset" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		</div>
+	  </fieldset>
 	</div>
 	
 	<script src="/resources/js/localization.js"></script>

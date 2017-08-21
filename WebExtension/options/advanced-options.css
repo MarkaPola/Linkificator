@@ -78,7 +78,7 @@ div.tab button.active {
 legend {
 	padding-left: 10px;
 	padding-right: 10px;
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 }
 
 
@@ -90,12 +90,12 @@ legend {
     margin-right: 0;
 }
 
-.settings-entry input, select {
+.settings-entry input, select, button {
 	vertical-align: top;
-	font-size: 1em;
+	font-size: 0.8rem;
 	color: #333;
 }
-.settings-entry input {
+.settings-entry input, button {
     border-style: solid;
     border-width: 1px;
 	border-radius: 2px;
@@ -105,13 +105,14 @@ legend {
 	border-color: rgba(0, 149, 221, 0.8);
 }
 .settings-entry > input[type="text"] {
-	width: calc(50% - 200px);
+	text-align: left;
+	width: calc(50% - 400px);
 }
 .settings-entry > input.long-text {
-	width: calc(95% - 200px);
+	width: calc(95% - 400px);
 }
-.settings-entry  input[type="color"] {
-	margin-left: 15px;
+.settings-entry > input[type="number"] {
+	text-align: right;
 }
 .settings-entry select {
     border-style: solid;
@@ -128,6 +129,19 @@ legend {
 .settings-entry select option:checked {
 	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
 }
+.settings-entry button {
+    background-color: white;
+    cursor: pointer;
+}
+.settings-entry button:hover {
+    background-color: #f1f1f1;
+}
+.settings-entry button:active {
+    background-color: #dadada;
+}
+.settings-entry button::-moz-focus-inner {
+	border: 0;
+}
 
 .settings-entry label {
 	display: inline-block;
@@ -138,12 +152,28 @@ legend {
 	text-align: left;
 }
 
+.settings-entry2 {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.settings-entry2 label {
+	width: 200px;
+}
+.settings-entry2 > input[type="text"] {
+	width: calc(70% - 200px);
+}
+.settings-entry2 > textarea {
+	margin-left: 6px;
+	width: calc(70% - 200px);
+	height: 6em;
+}
+
 .indent label {
 	margin-left: 22px;
 	margin-right: 4px;
 }
 
-.settings-entry input[type="number"] {
+.secondary-input {
 	margin-left: 20px;
 	width: 4em;
 }
@@ -151,4 +181,13 @@ legend {
 .secondary-label {
 	margin-left: 6px !important;
 	width: 50px !important;
+}
+
+.reset-button {
+	float: right;
+	padding: 3px;
+}
+
+#max-data-size {
+	width: 8em;
 }

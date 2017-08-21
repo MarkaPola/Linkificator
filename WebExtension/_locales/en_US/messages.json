@@ -57,8 +57,8 @@
         "description": "To change background color of hyperlinks"
     },
     "settings.advanced-settings": {
-        "message": "Advanced settings...">
-        "description": "Advanced settings...">
+        "message": "Advanced settings...", 
+        "description": "Advanced settings..."
     }, 
     "settings.prefs-management": {
         "message": "Settings management",
@@ -157,7 +157,63 @@
         "message": "Disable the processing of dynamic changes if it takes longer than:",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
-    
+    "advanced-settings.configuration.reset-button": {
+        "message": "Reset to Default", 
+        "description": "Reset to Default"
+    }, 
+    "advanced-settings.configuration.general": {
+        "message": "General",
+        "description": "General"
+    },
+    "advanced-settings.configuration.general.required-characters": {
+        "message": "Required Characters", 
+        "description": "Required Characters"
+    }, 
+    "advanced-settings.configuration.general.protocols": {
+        "message": "Protocols", 
+        "description": "Protocols"
+    }, 
+    "advanced-settings.configuration.general.subdomains": {
+        "message": "Subdomains", 
+        "description": "Subdomains"
+    }, 
+    "advanced-settings.configuration.general.excluded-elements": {
+        "message": "Excluded Elements", 
+        "description": "Excluded Elements"
+    }, 
+    "advanced-settings.configuration.general.inline-elements": {
+        "message": "Inline Elements", 
+        "description": "Inline Elements"
+    }, 
+    "advanced-settings.configuration.general.max-data-size": {
+        "message": "Maximum data size", 
+        "description": "Maximum data size"
+    }, 
+    "advanced-settings.configuration.top-level-domains": {
+        "message": "Top-Level Domains",
+        "description": "Top-Level Domains"
+    },
+    "advanced-settings.configuration.top-level-domains.generics": {
+        "message": "Generics", 
+        "description": "Generics"
+    }, 
+    "advanced-settings.configuration.top-level-domains.country-codes": {
+        "message": "Country Codes", 
+        "description": "Country Codes"
+    }, 
+    "advanced-settings.configuration.top-level-domains.geographics": {
+        "message": "Geographics", 
+        "description": "Geographics"
+    }, 
+    "advanced-settings.configuration.top-level-domains.communities": {
+        "message": "Communities", 
+        "description": "Communities"
+    }, 
+    "advanced-settings.configuration.top-level-domains.brands": {
+        "message": "Brands", 
+        "description": "Brands"
+    }, 
+
     "stats.0links": {
         "message": "0 links processsed",
         "description": "zero links processed"

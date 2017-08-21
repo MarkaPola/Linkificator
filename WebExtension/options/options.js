@@ -145,6 +145,22 @@ function managePreferences () {
     addColorManager('text');
     addColorManager('background');
 
+    // advanced settings
+    $('advanced-settings').addEventListener('click', event => {
+        // check if Advanced options tab is already opened
+        browser.tabs.query({url: browser.extension.getURL('/options/advanced-options.html')}).then(tabs => {
+            if (tabs.length > 0) {
+                return browser.tabs.update(tabs[0].id, {active: true}); 
+            } else {
+                // create advanced settings tabs next to the options tab
+                return browser.tabs.getCurrent().then(tab => {
+                    return browser.tabs.create({active: true, index: tab.index+1,
+                                                url: '/options/advanced-options.html'});
+                });
+            }
+        }).catch(reason => console.error(reason));
+    });
+    
     // settings management
     let prefsSync = $('prefs-sync');
     let prefsDefault = $('prefs-defaults');
@@ -167,7 +183,7 @@ browser.storage.onChanged.addListener((changes, area) => {
             updatePreference('disabled', changes.disabled.newValue);
     }
 
-     if (area === properties.area) {
+    if (area === properties.area) {
         if (changes.hasOwnProperty('manual'))
             updatePreference('manual', changes.manual.newValue);
     }

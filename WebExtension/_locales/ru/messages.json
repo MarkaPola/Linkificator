@@ -57,8 +57,8 @@
         "description": "To change background color of hyperlinks"
     },
     "settings.advanced-settings": {
-        "message": "Расширенные настройки...">
-        "description": "Advanced settings...">
+        "message": "Расширенные настройки...", 
+        "description": "Advanced settings..."
     }, 
     "settings.prefs-management": {
         "message": "Управление настройками",
@@ -157,6 +157,62 @@
         "message": "Отключить обработку динамических изменений, если она занимает больше, чем:",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
+    "advanced-settings.configuration.reset-button": {
+        "message": "Сброс по умолчанию", 
+        "description": "Reset to Default"
+    }, 
+    "advanced-settings.configuration.general": {
+        "message": "Общие",
+        "description": "General"
+    },
+    "advanced-settings.configuration.general.requiredCharacters": {
+        "message": "Необходимые символы", 
+        "description": "Required Characters"
+    }, 
+    "advanced-settings.configuration.general.protocols": {
+        "message": "Протоколы", 
+        "description": "Protocols"
+    }, 
+    "advanced-settings.configuration.general.subdomains": {
+        "message": "Поддомены", 
+        "description": "Subdomains"
+    }, 
+    "advanced-settings.configuration.general.excludedElements": {
+        "message": "Исключённые элементы", 
+        "description": "Excluded Elements"
+    }, 
+    "advanced-settings.configuration.general.inlineElements": {
+        "message": "Встроенные элементы", 
+        "description": "Inline Elements"
+    }, 
+    "advanced-settings.configuration.general.maxDataSize": {
+        "message": "Максимальный размер данных", 
+        "description": "Maximum data size"
+    }, 
+    "advanced-settings.configuration.topLevelDomains": {
+        "message": "Домены верхнего уровня",
+        "description": "Top-Level Domains"
+    },
+    "advanced-settings.configuration.topLevelDomains.generics": {
+        "message": "Основные", 
+        "description": "Generics"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.countryCodes": {
+        "message": "Коды стран", 
+        "description": "Country Codes"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.geographics": {
+        "message": "Географические", 
+        "description": "Geographics"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.communities": {
+        "message": "Общественные", 
+        "description": "Communities"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.brands": {
+        "message": "Бренды", 
+        "description": "Brands"
+    }, 
 
     "stats.0links": {
         "message": "0 \u0441\u0441\u044b\u043b\u043e\u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043e",

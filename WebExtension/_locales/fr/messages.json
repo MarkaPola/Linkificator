@@ -57,8 +57,8 @@
         "description": "To change background color of hyperlinks"
     },
     "settings.advanced-settings": {
-        "message": "Réglages avancés...">
-        "description": "Advanced settings...">
+        "message": "Réglages avancés...", 
+        "description": "Advanced settings..."
     }, 
     "settings.prefs-management": {
         "message": "Gestion des réglages",
@@ -157,6 +157,62 @@
         "message": "Désactiver le traitement des changements dynamiques si il prend plus de :",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
+    "advanced-settings.configuration.reset-button": {
+        "message": "Remettre par défaut", 
+        "description": "Reset to Default"
+    }, 
+    "advanced-settings.configuration.general": {
+        "message": "Général",
+        "description": "General"
+    },
+    "advanced-settings.configuration.general.requiredCharacters": {
+        "message": "Caractères requis", 
+        "description": "Required Characters"
+    }, 
+    "advanced-settings.configuration.general.protocols": {
+        "message": "Protocoles", 
+        "description": "Protocols"
+    }, 
+    "advanced-settings.configuration.general.subdomains": {
+        "message": "Sous-domaines", 
+        "description": "Subdomains"
+    }, 
+    "advanced-settings.configuration.general.excludedElements": {
+        "message": "Eléments exclus", 
+        "description": "Excluded Elements"
+    }, 
+    "advanced-settings.configuration.general.inlineElements": {
+        "message": "Eléments en ligne", 
+        "description": "Inline Elements"
+    }, 
+    "advanced-settings.configuration.general.maxDataSize": {
+        "message": "Taille maximum des données", 
+        "description": "Maximum data size"
+    }, 
+    "advanced-settings.configuration.topLevelDomains": {
+        "message": "Domaines de premier niveau",
+        "description": "Top-Level Domains"
+    },
+    "advanced-settings.configuration.topLevelDomains.generics": {
+        "message": "Génériques", 
+        "description": "Generics"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.countryCodes": {
+        "message": "Codes de Pays", 
+        "description": "Country Codes"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.geographics": {
+        "message": "Géographiques", 
+        "description": "Geographics"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.communities": {
+        "message": "Communautés", 
+        "description": "Communities"
+    }, 
+    "advanced-settings.configuration.topLevelDomains.brands": {
+        "message": "Marques Commerciales", 
+        "description": "Brands"
+    }, 
 
     "stats.0links": {
         "message": "0 liens trait\u00e9s",

@@ -1,5 +1,4 @@
 {
-
     "manifest_version": 2,
     "name": "Linkificator",
     "version": "3.0",
@@ -15,7 +14,7 @@
     "applications": {
         "gecko": {
             "id": "linkificator@markapola",
-            "strict_min_version": "54.0"
+            "strict_min_version": "55.0"
         }
     }, 
 
