@@ -147,15 +147,23 @@ function managePreferences () {
 
     // advanced settings
     $('advanced-settings').addEventListener('click', event => {
+        const url = browser.extension.getURL('/options/advanced-options.html');
+        
         // check if Advanced options tab is already opened
-        browser.tabs.query({url: browser.extension.getURL('/options/advanced-options.html')}).then(tabs => {
+        browser.tabs.query({url: url}).then(tabs => {
             if (tabs.length > 0) {
-                return browser.tabs.update(tabs[0].id, {active: true}); 
+                return browser.tabs.update(tabs[0].id, {active: true}).then(() => {
+                    return browser.history.deleteUrl({url: url});
+                }); 
             } else {
                 // create advanced settings tabs next to the options tab
                 return browser.tabs.getCurrent().then(tab => {
-                    return browser.tabs.create({active: true, index: tab.index+1,
-                                                url: '/options/advanced-options.html'});
+                    return browser.tabs.create({active: true,
+                                                index: tab.index+1,
+                                                url: url}).then(() => {
+                                                    // don't keep this url in history
+                                                    return browser.history.deleteUrl({url: url});
+                                                });
                 });
             }
         }).catch(reason => console.error(reason));

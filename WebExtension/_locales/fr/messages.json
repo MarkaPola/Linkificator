@@ -40,7 +40,7 @@
         "message": "Ne pas traiter les domaines de la liste noire",
         "description": "Domain filtering mode: black list"
     },
-    "settings.domain-filtering-mode.domains-list": {
+    "settings.domain-filtering-mode.domains-list.label": {
         "message": "Domaines",
         "description": "List of domains for filtering (white or black)"
     },

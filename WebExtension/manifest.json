@@ -19,7 +19,7 @@
     }, 
 
     "permissions": [
-        "tabs", "contextMenus", "storage", "alarms"
+        "tabs", "contextMenus", "history", "storage", "alarms"
     ],
     
     "options_ui": {

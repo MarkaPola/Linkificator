@@ -40,7 +40,7 @@
         "message": "Never linkify for domains in Blacklist",
         "description": "Domain filtering mode: black list"
     },
-    "settings.domain-filtering-mode.domains-list": {
+    "settings.domain-filtering-mode.domains-list.label": {
         "message": "Domains",
         "description": "List of domains for filtering (white or black)"
     },
