@@ -6,16 +6,16 @@
  * author: MarkaPola
  */
 
-html {
-	font-family: "Segoe UI";
-}
-
 *, html {
 	margin: 0;
 	padding: 0;
 }
 
 * {box-sizing: border-box}
+
+body {
+	font-family: "Arial";
+}
 
 
 /* Style the tab */
@@ -73,7 +73,7 @@ div.tab button.active {
 	padding-top: 10px;
 	padding-bottom: 25px;
 	float:left;
-	width: 90%;
+	width: 95%;
 }
 
 legend {
@@ -130,6 +130,7 @@ legend {
 
 .reset-button {
 	float: right;
+	margin-right: 20px;
 }
 
 #max-data-size {

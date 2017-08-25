@@ -184,11 +184,11 @@ function managePreferences () {
     });
 }
 
-// audit storage changes for some preferences which can be changes outside options page
+// audit storage changes for some preferences which can be changed outside options page
 browser.storage.onChanged.addListener((changes, area) => {
     if (area === 'local') {
-        if (changes.hasOwnProperty('disabled'))
-            updatePreference('disabled', changes.disabled.newValue);
+        if (changes.hasOwnProperty('activated'))
+            updatePreference('activated', changes.activated.newValue);
     }
 
     if (area === properties.area) {
@@ -202,8 +202,10 @@ document.addEventListener("DOMContentLoaded",
                           () => {
                               // UI tweak for windows
                               browser.runtime.getPlatformInfo().then(platformInfo => {
-                                  if (platformInfo.os === 'win')
+                                  if (platformInfo.os === 'win') {
+                                      $('linkificator-settings').style['font-family'] = 'Segoe UI';
                                       $('linkificator-settings').style['font-size'] = '1.25rem';
+                                  }
                               });
                               initializePreferences().then(() => {
                                   managePreferences();

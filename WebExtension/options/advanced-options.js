@@ -104,26 +104,29 @@ function updatePreference (id, value) {
         setInput('protocols', joinProtocols(properties.predefinedRules.protocols));
         setInput('subdomains', joinSubdomains(properties.predefinedRules.subdomains));
         setInput('excluded-elements', properties.predefinedRules.excludedElements.join(' '));
-        setInput('generics-value', properties.predefinedRules.topLevelDomains.gTLDs.domains.join(' '));
-        setCheckbox('generics', properties.predefinedRules.topLevelDomains.gTLDs.active,
+        break;
+    case 'topLevelDomains':
+        /// tab Configuration
+        setInput('generics-value', properties.topLevelDomains.generics.domains.join(' '));
+        setCheckbox('generics', properties.topLevelDomains.generics.active,
                     ['generics-value',
-                     'generics-reset']);
-        setInput('country-codes-value', properties.predefinedRules.topLevelDomains.ccTLDs.domains.join(' '));
-        setCheckbox('country-codes', properties.predefinedRules.topLevelDomains.ccTLDs.active,
+                     'reset-generics']);
+        setInput('country-codes-value', properties.topLevelDomains.countryCodes.domains.join(' '));
+        setCheckbox('country-codes', properties.topLevelDomains.countryCodes.active,
                     ['country-codes-value',
-                     'country-codes-reset']);
-        setInput('geographics-value', properties.predefinedRules.topLevelDomains.geoTLDs.domains.join(' '));
-        setCheckbox('geographics', properties.predefinedRules.topLevelDomains.geoTLDs.active,
+                     'reset-country-codes']);
+        setInput('geographics-value', properties.topLevelDomains.geographics.domains.join(' '));
+        setCheckbox('geographics', properties.topLevelDomains.geographics.active,
                     ['geographics-value',
-                     'geographics-reset']);
-        setInput('communities-value', properties.predefinedRules.topLevelDomains.communityTLDs.domains.join(' '));
-        setCheckbox('communities', properties.predefinedRules.topLevelDomains.communityTLDs.active,
+                     'reset-geographics']);
+        setInput('communities-value', properties.topLevelDomains.communities.domains.join(' '));
+        setCheckbox('communities', properties.topLevelDomains.communities.active,
                     ['communities-value',
-                     'communities-reset']);
-        setInput('brands-value', properties.predefinedRules.topLevelDomains.brandTLDs.domains.join(' '));
-        setCheckbox('brands', properties.predefinedRules.topLevelDomains.brandTLDs.active,
+                     'reset-communities']);
+        setInput('brands-value', properties.topLevelDomains.brands.domains.join(' '));
+        setCheckbox('brands', properties.topLevelDomains.brands.active,
                     ['brands-value',
-                     'brands-reset']);
+                     'reset-brands']);
         break;
         // custom rules
     case 'customRules':
@@ -187,26 +190,57 @@ function managePreferences () {
             update(input.value);
         });
     }
+    function store (property) {
+        browser.storage[properties.area].set(property).catch(reason => console.error(reason));
+    }
+    function addResetManager(id, preference = id) {
+        $(`reset-${id}`).addEventListener('click', event => {
+            browser.runtime.sendMessage({id: `reset-${preference}`}).catch(reason => console.error(reason));
+        });
+    }
+    
 
     addInputManager('required-characters',
-                    (value) => { properties.requiredCharacters = value.split(''); });
-
+                    (value) => {
+                        properties.requiredCharacters = value.split('');
+                        store({requiredCharacters: properties.requiredCharacters});
+                    });
+    addResetManager('required-characters', 'requiredCharacters');
+    
     // predefined rules settings
     //// tab Links
     addCheckboxManager('email-address.use-TLD',
-                       (value) => { properties.predefinedRules.support.email.useTLD = value; });
+                       (value) => {
+                           properties.predefinedRules.support.email.useTLD = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       });
     addCheckboxManager('email-address',
-                       (value) => { properties.predefinedRules.support.email.active = value; },
+                       (value) => {
+                           properties.predefinedRules.support.email.active = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       },
                        ['email-address.use-TLD']);
 
     addCheckboxManager('standard-urls.use-subdomains',
-                       (value) => { properties.predefinedRules.support.standard.useSubdomains = value; });
+                       (value) => {
+                           properties.predefinedRules.support.standard.useSubdomains = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       });
     addCheckboxManager('standard-urls.use-TLD',
-                       (value) => { properties.predefinedRules.support.standard.useTLD = value; });
+                       (value) => {
+                           properties.predefinedRules.support.standard.useTLD = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       });
     addCheckboxManager('standard-urls.linkify-authority',
-                       (value) => { properties.predefinedRules.support.standard.linkifyAuthority = value; });
+                       (value) => {
+                           properties.predefinedRules.support.standard.linkifyAuthority = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       });
     addCheckboxManager('standard-urls',
-                       (value) => { properties.predefinedRules.support.standard.active = value; },
+                       (value) => {
+                           properties.predefinedRules.support.standard.active = value;
+                           store({predefinedRules: properties.predefinedRules});
+                       },
                        ['standard-urls.use-subdomains',
                         'standard-urls.use-TLD',
                         'standard-urls.linkify-authority']);
@@ -221,7 +255,9 @@ function managePreferences () {
                                 protocols.push({pattern: a[0], term: a[1]});
                         }
                         properties.predefinedRules.protocols = protocols;
+                        store({predefinedRules: properties.predefinedRules});
                     });
+    addResetManager('protocols');
     addInputManager('subdomains',
                     (value) => {
                         let subdomains = [];
@@ -232,74 +268,166 @@ function managePreferences () {
                                 subdomains.push({filter: a[0], pattern: a[1], term: a[2]});
                         }
                         properties.predefinedRules.subdomains = subdomains;
+                        store({predefinedRules: properties.predefinedRules});
                     });
+    addResetManager('subdomains');
     addInputManager('excluded-elements',
                     (value) => {
                         properties.predefinedRules.excludedElements = value.split(' ');
+                        store({predefinedRules: properties.predefinedRules});
                     });
+    addResetManager('excluded-elements', 'excludedElements');
+    // Top level domqins
+    //// tab Configuration
     addCheckboxManager('generics',
-                       (value) => { properties.predefinedRules.topLevelDomains.gTLDs.active = value; },
+                       (value) => {
+                           properties.topLevelDomains.generics.active = value;
+                           store({topLevelDomains: properties.topLevelDomains});
+                       },
                        ['generics-value',
-                        'generics-reset']);
+                        'reset-generics']);
     addInputManager('generics-value',
-                    (value) => { properties.predefinedRules.topLevelDomains.gTLDs.domains = value.split(' '); });
+                    (value) => {
+                        properties.topLevelDomains.generics.domains = value.split(' ');
+                        store({topLevelDomains: properties.topLevelDomains});
+                    });
+    addResetManager('generics');
     addCheckboxManager('country-codes',
-                       (value) => { properties.predefinedRules.topLevelDomains.ccTLDs.active = value; },
+                       (value) => {
+                           properties.topLevelDomains.countryCodes.active = value;
+                           store({topLevelDomains: properties.topLevelDomains});
+                       },
                        ['country-codes-value',
-                        'country-codes-reset']);
+                        'reset-country-codes']);
     addInputManager('country-codes-value',
-                    (value) => { properties.predefinedRules.topLevelDomains.ccTLDs.domains = value.split(' '); });
+                    (value) => {
+                        properties.topLevelDomains.countryCodes.domains = value.split(' ');
+                        store({topLevelDomains: properties.topLevelDomains});
+                    });
+    addResetManager('country-codes', 'countryCodes');
     addCheckboxManager('geographics',
-                       (value) => { properties.predefinedRules.topLevelDomains.geoTLDs.active = value; },
+                       (value) => {
+                           properties.topLevelDomains.geographics.active = value;
+                           store({topLevelDomains: properties.topLevelDomains});
+                       },
                        ['geographics-value',
-                        'geographics-reset']);
+                        'reset-geographics']);
     addInputManager('geographics-value',
-                    (value) => { properties.predefinedRules.topLevelDomains.geoTLDs.domains = value.split(' '); });
+                    (value) => {
+                        properties.topLevelDomains.geographics.domains = value.split(' ');
+                        store({topLevelDomains: properties.topLevelDomains});
+                    });
+    addResetManager('geographics');
     addCheckboxManager('communities',
-                       (value) => { properties.predefinedRules.topLevelDomains.communityTLDs.active = value; },
+                       (value) => {
+                           properties.topLevelDomains.communities.active = value;
+                           store({topLevelDomains: properties.topLevelDomains});
+                       },
                        ['communities-value',
-                        'communities-reset']);
+                        'reset-communities']);
     addInputManager('communities-value',
-                    (value) => { properties.predefinedRules.topLevelDomains.communityTLDs.domains = value.split(' '); });
-    addCheckboxManager('brands',
-                       (value) => { properties.predefinedRules.topLevelDomains.brandTLDs.active = value; },
+                    (value) => {
+                        properties.topLevelDomains.communities.domains = value.split(' ');
+                        store({topLevelDomains: properties.topLevelDomains});
+                    });
+    addResetManager('communities');
+     addCheckboxManager('brands',
+                       (value) => {
+                           properties.topLevelDomains.brands.active = value;
+                           store({topLevelDomains: properties.topLevelDomains});
+                       },
                        ['brands-value',
-                        'brands-reset']);
+                        'reset-brands']);
     addInputManager('brands-value',
-                    (value) => { properties.predefinedRules.topLevelDomains.brandTLDs.domains = value.split(' '); });
+                    (value) => {
+                        properties.topLevelDomains.brands.domains = value.split(' ');
+                        store({topLevelDomains: properties.topLevelDomains});
+                    });
+    addResetManager('brands');
 
     // custom rules
     //// tab Links
     addCheckboxManager('before-predefined',
-                       (value) => { properties.customRules.support.before = value; });
+                       (value) => {
+                           properties.customRules.support.before = value;
+                           store({customRules: properties.customRules});
+                       });
     addCheckboxManager('after-predefined',
-                       (value) => { properties.customRules.support.after = value; });
+                       (value) => {
+                           properties.customRules.support.after = value;
+                           store({customRules: properties.customRules});
+                       });
 
     // extra features
     //// tab Links
     addCheckboxManager('inline-elements',
-                       (value) => { properties.extraFeatures.support.inlineElements = value; });
+                       (value) => {
+                           properties.extraFeatures.support.inlineElements = value;
+                           store({extraFeatures: properties.extraFeatures});
+                       });
     addInputManager('automatic-linkification.refresh-interval.value',
-                    (value) => { properties.extraFeatures.autoLinkification.interval.value = Number(value); });
+                    (value) => {
+                        properties.extraFeatures.autoLinkification.interval.value = Number(value);
+                        store({extraFeatures: properties.extraFeatures});
+                    });
     addCheckboxManager('automatic-linkification.refresh-interval',
-                       (value) => { properties.extraFeatures.autoLinkification.interval.active = value; },
+                       (value) => {
+                           properties.extraFeatures.autoLinkification.interval.active = value;
+                           store({extraFeatures: properties.extraFeatures});
+                       },
                        ['automatic-linkification.refresh-interval.value']);
     addInputManager('automatic-linkification.refresh-threshold.value',
-                    (value) => { properties.extraFeatures.autoLinkification.threshold.value = Number(value); });
-    addCheckboxManager('automatic-linkification.refresh-threshold', properties.extraFeatures.autoLinkification.threshold.active,
+                    (value) => {
+                        properties.extraFeatures.autoLinkification.threshold.value = Number(value);
+                        store({extraFeatures: properties.extraFeatures});
+                    });
+    addCheckboxManager('automatic-linkification.refresh-threshold',
+                       (value) => {
+                           properties.extraFeatures.autoLinkification.threshold.active = value;
+                           store({extraFeatures: properties.extraFeatures});
+                       },                           
                        ['automatic-linkification.refresh-threshold.value']);
     addCheckboxManager('automatic-linkification',
-                       (value) => { properties.extraFeatures.support.autoLinkification = value; },
+                       (value) => {
+                           properties.extraFeatures.support.autoLinkification = value;
+                           store({extraFeatures: properties.extraFeatures});
+                       },
                        ['automatic-linkification.refresh-interval',
                         'automatic-linkification.refresh-interval.value',
                         'automatic-linkification.refresh-threshold',
                         'automatic-linkification.refresh-threshold.value']);
     //// tab Configuration
     addCheckboxManager('inline-elements-list',
-                       (value) => { properties.extraFeatures.inlineElements = value.split(' '); });
+                       (value) => {
+                           properties.extraFeatures.inlineElements = value.split(' ');
+                           store({extraFeatures: properties.extraFeatures});
+                       });
+    addResetManager('inline-elements', 'inlineElements');
     addCheckboxManager('max-data-size',
-                       (value) => { properties.extraFeatures.maxDataSize = value; });    
+                       (value) => {
+                           properties.extraFeatures.maxDataSize = value;
+                           store({extraFeatures: properties.extraFeatures});
+                       });    
+    addResetManager('max-data-size', 'maxDataSize');
 }
+
+
+// audit storage changes which can be done outside advanced options page
+browser.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local') {
+        if (changes.hasOwnProperty('sync'))
+            properties.area = changes.sync.newValue ? 'sync' : 'local';
+        
+        if (changes.hasOwnProperty('activated'))
+            properties.activated = changes.activated.newValue;
+    }
+
+    if (area === properties.area) {
+        for (let key in changes) {
+            updatePreference(key, changes[key].newValue);
+        }
+    }
+});
 
 
 document.addEventListener("DOMContentLoaded",

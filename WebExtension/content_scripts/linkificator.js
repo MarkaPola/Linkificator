@@ -325,7 +325,7 @@ function Parser (properties) {
     const domain_class = "@?#\\s()<>[\\]{}/.:";
     const domain_element = "(?:[^-"+domain_class+"](?:[^"+domain_class+"]{1,}[^-\\\\"+domain_class+"]|[^-\\\\"+domain_class+"])?)";
 
-    const tld = "(?:\\.(?:" + properties.predefinedRules.topLevelDomains.domains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
+    const tld = "(?:\\.(?:" + properties.topLevelDomains.domains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
@@ -1103,7 +1103,7 @@ browser.storage.local.get('sync').then(result => {
         properties.document = {contentType: Document(window.document).contentType};
 
         // join all active domains
-        properties.predefinedRules.topLevelDomains.domains = getActiveDomains (properties.predefinedRules.topLevelDomains);
+        properties.topLevelDomains.domains = getActiveDomains (properties.topLevelDomains);
 
         // properties are now available, let start processing
         connect();
@@ -1116,8 +1116,8 @@ browser.storage.onChanged.addListener((changes,  areaName) => {
         for (let key in changes) {
             properties[key] =  changes[key].newValue;
 
-            if (key === 'predefinedRules') {
-                properties.predefinedRules.topLevelDomains.domains = getActiveDomains (properties.predefinedRules.topLevelDomains);
+            if (key === 'topLevelDomains') {
+                properties.topLevelDomains.domains = getActiveDomains (properties.topLevelDomains);
             }
         }
     }
