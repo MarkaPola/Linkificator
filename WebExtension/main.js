@@ -193,6 +193,11 @@ Configurator().then(config => {
                                          statistics: workers.getStatistics(tab)});
                 }
                 break;
+            case 'document-changed':
+                if (controler.isActive() && worker.isValidDocument) {
+                    port.postMessage ({id: controler.linkifyURL(tab) ? 're-parse' : 'undo'});
+                }
+                break;
             }
         });
 
