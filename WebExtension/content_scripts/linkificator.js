@@ -16,7 +16,7 @@ RegExp.escape = function(string) {
 
 // state parsing management
 function State (document) {
-	const statusLabel = "linkificator-status";
+	const statusLabel = 'data-linkificator-status';
 
 	var body = document.body;
 
@@ -26,7 +26,7 @@ function State (document) {
 		        // parsing is already in process or done
 		        return false;
             }
-	        if (action === 're-parse' && (!body.hasAttribute(statusLabel) || (body.getAttribute(statusLabel) != "complete" && body.getAttribute(statusLabel) != "configured"))) {
+	        if (action === 're-parse' && (!body.hasAttribute(statusLabel) || (body.getAttribute(statusLabel) != "complete" && body.getAttribute(statusLabel) !== 'configured'))) {
 		        // parsing is not yet started or is in process
 		        return false;
 	        }
@@ -40,31 +40,31 @@ function State (document) {
         },
         
         process: function () {
-            body.setAttribute(statusLabel, "in-process");
+            body.setAttribute(statusLabel, 'in-process');
         }, 
 		inProcess: function () {
 			return body.hasAttribute(statusLabel)
-				&& body.getAttribute(statusLabel) === "in-process";
+				&& body.getAttribute(statusLabel) === 'in-process';
 		},
 
 		configured: function () {
-			body.setAttribute(statusLabel, "configured");
+			body.setAttribute(statusLabel, 'configured');
 		},
 		isConfigured: function () {
 			return body.hasAttribute(statusLabel)
-				&& body.getAttribute(statusLabel) === "configured";
+				&& body.getAttribute(statusLabel) === 'configured';
 		},
         
 		complete: function () {
-			body.setAttribute(statusLabel, "complete");
+			body.setAttribute(statusLabel, 'complete');
 		},
 		isComplete:  function() {
 			return body.hasAttribute(statusLabel)
-				&& body.getAttribute(statusLabel) === "complete";
+				&& body.getAttribute(statusLabel) === 'complete';
 		},
 
         undo: function () {
-			body.setAttribute(statusLabel, "in-undo");
+			body.setAttribute(statusLabel, 'in-undo');
         },
         
 		reset: function () {
