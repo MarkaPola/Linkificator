@@ -1036,7 +1036,7 @@ threads.detach = function (thread) {
 // manage communication with background script
 var port;
 function connect () {
-    port = browser.runtime.connect();
+    port = browser.runtime.connect({name: 'linkificator'});
     
     port.onMessage.addListener(message => {
         switch (message.id) {

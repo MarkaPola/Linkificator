@@ -78,9 +78,7 @@ function initializePreferences () {
             for (let id in result)
                 updatePreference(id, result[id]);
 
-            return new Promise((resolve, reject) => {
-                resolve();
-            });
+            return true;
         });
     });
 }
@@ -178,9 +176,11 @@ function managePreferences () {
         }).catch(reason => console.error(reason));
     });
     prefsDefault.addEventListener('click', event => {
-        browser.runtime.sendMessage({id: 'reset-defaults'}).then(message => {
-            initializePreferences();
-        }).catch(reason => console.error(reason));
+        if (window.confirm(browser.i18n.getMessage('settings.prefs-defaults.confirm.content'))) {
+            browser.runtime.sendMessage({id: 'reset-defaults'}).then(message => {
+                initializePreferences();
+            }).catch(reason => console.error(reason));
+        }
     });
 }
 

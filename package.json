@@ -1,0 +1,34 @@
+
+{
+    "title": "Linkificator", 
+    "name": "linkificator",
+    "icon": "icon48.png", 
+    "version": "3.0.0",
+    "license": "MPL 2.0", 
+    "author": "MarkaPola",
+    "id": "linkificator@markapola", 
+    "description": "Converts text links into clickable links...",
+    "contributors": ["Icons from www.fasticon.com  (http://www.fasticon.com)",
+                     "Localization infrastructure: Crowdin.com (http://crowdin.com)"],
+    "translators": ["MarkaPola", "Капелька Яда"], 
+    "engines": {
+        "firefox": ">=55.0"
+    }, 
+    "permissions": {                                                                      
+        "private-browsing": true,
+        "multiprocess": true
+    }, 
+    "hasEmbeddedWebExtension": true,
+    "locales": {
+        "en-US": {
+            "description": "Converts text links into clickable links..."
+        }, 
+        "fr": {
+            "description": "Transforme les liens textuels en liens hypertexte cliquables..."
+        }, 
+        "ru": {
+            "description": "Преобразует текстовые ссылки в кликабельные."
+        }
+    }, 
+    "main": "./main.js"
+}

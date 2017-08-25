@@ -164,9 +164,7 @@ function initializePreferences () {
             for (let id in result)
                 updatePreference(id, result[id]);
 
-            return new Promise((resolve, reject) => {
-                resolve();
-            });
+            return true;
         });
     });
 }

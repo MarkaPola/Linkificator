@@ -20,8 +20,6 @@ function Configurator () {
         widgetMiddleClick: "toggle", 
         widgetRightClick: "none",
         hotKeys: {
-            name: "toggle", 
-            value: "control-shift-y", 
             toggle: "control-shift-y", 
             manual: "control-shift-o", 
             manage: "control-shift-x", 
@@ -114,7 +112,7 @@ function Configurator () {
                 "a", "applet", "area", "audio", "embed", "frame", "frameset", "head",
                 "iframe", "img", "map", "meta", "noscript", "object", "option", "param",
                 "pre", "script", "select", "style", "textarea", "title", "video",
-                "^[@onclick]", "^[@onmousedown]", "^[@onmouseup]"
+                "*[@onclick]", "*[@onmousedown]", "*[@onmouseup]"
             ]
         }, 
         topLevelDomains: {
@@ -231,9 +229,8 @@ function Configurator () {
         }
     }
 
-    
-    function initializePreferences ()
-    {
+
+    function setPreferences () {
         return browser.storage[properties.area].get().then(result => {
             result.area = properties.area;
             result.activated = properties.activated;
@@ -248,10 +245,15 @@ function Configurator () {
 
             let {area, activated, ...settings} = properties;
             return browser.storage[properties.area].set(settings).then(() => {
-                return new Promise((resolve, reject) => {
-                    resolve({configurator: new ConfiguratorManager(), properties: properties});
-                });
+                return properties;
             });
+        });
+    }
+    
+    function initializePreferences ()
+    {
+        return setPreferences().then(properties => {
+            return {configurator: new ConfiguratorManager(), properties: properties};
         });
     }
     
@@ -275,7 +277,7 @@ function Configurator () {
             browser.storage.local.set({sync: message.sync}).then(result => {
                 properties.area = message.sync ? 'sync' : 'local';
 
-                initializePreferences().then(result => {
+                setPreferences().then(result => {
                     sendResponse({id: 'change-area'});
                 });
             }).catch(reason => console.error(reason));

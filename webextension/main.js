@@ -150,7 +150,7 @@ Configurator().then(config => {
 
     // handle content_scripts
     browser.runtime.onConnect.addListener(port => {
-        if (port.sender.tab.id === browser.tabs.TAB_ID_NONE) {
+        if (port.name !== 'linkificator' || port.sender.tab.id === browser.tabs.TAB_ID_NONE) {
             return;
         }
 

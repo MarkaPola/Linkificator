@@ -1,6 +1,7 @@
 
 # temporary files
 *~
+.DS-Store
 
 # previous xpi
 *.xpi

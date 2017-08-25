@@ -80,6 +80,14 @@
         "message": "Restore defaults",
         "description": "Reset all settings to default values"
     },
+    "settings.prefs-defaults.confirm.title": {
+        "message": "Linkificator - Restore Default Settings",
+        "description": "Linkificator - Restore Default Settings"
+    },
+    "settings.prefs-defaults.confirm.content": {
+        "message": "You are about to reset settings to default values.\u000aAre you sure you want to continue?",
+        "description": "You are about to reset settings to default values.\u000aAre you sure you want to continue?"
+    },
 
     "advanced-settings.title": {
         "message": "Linkificator Advanced Options",
