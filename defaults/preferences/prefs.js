@@ -9,10 +9,6 @@
 pref("extensions.linkificator@markapola.activated", true);
 pref("extensions.linkificator@markapola.manual", false);
 pref("extensions.linkificator@markapola.contextMenuIntegration", true);
-pref("extensions.linkificator@markapola.widgetMiddleClick", "toggle");
-pref("extensions.linkificator@markapola.widgetRightClick", "none");
-pref("extensions.linkificator@markapola.hotkeyName", "hotkeyToggle");
-pref("extensions.linkificator@markapola.hotkeyValue", "control-shift-y");
 pref("extensions.linkificator@markapola.hotkeyToggle", "control-shift-y");
 pref("extensions.linkificator@markapola.hotkeyManual", "control-shift-o");
 pref("extensions.linkificator@markapola.hotkeyManage", "control-shift-x");
@@ -63,10 +59,6 @@ pref("extensions.linkificator@markapola.brandTLDs", "aaa;aarp;abb;abbott;accentu
 // sync management, deactivated by default
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.manual", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.contextMenuIntegration", false);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetMiddleClick", false);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.widgetRightClick", false);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyName", false);
-pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyValue", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyToggle", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyManual", false);
 pref("services.sync.prefs.sync.extensions.linkificator@markapola.hotkeyManage", false);

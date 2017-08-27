@@ -204,10 +204,22 @@ function sendPreferences (port) {
 }
 
 
-webext.startup().then(({browser}) => {
-  browser.runtime.onConnect.addListener(port => {
-    if (port.name === "sync-preferences") {
-      sendPreferences(port);
-    }
-  });
-});
+exports.main = function (options) {
+    console.log(options);
+	// for new installation or upgrade, show an informational page
+	if (options.loadReason == 'install' || options.loadReason == 'upgrade') {
+		require('sdk/timers').setTimeout(function() {
+	        let tabs = require('sdk/tabs');
+            
+            tabs.open("chrome://linkificator/content/release-notes.xhtml");
+		}, 2000);
+	}
+    
+    webext.startup().then(({browser}) => {
+        browser.runtime.onConnect.addListener(port => {
+            if (port.name === "sync-preferences") {
+                sendPreferences(port);
+            }
+        });
+    });
+};

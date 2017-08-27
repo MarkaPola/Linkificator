@@ -64,7 +64,7 @@ function updatePreference (id, value) {
         break;
     case 'sync':
         // settings management
-        setCheckbox('prefs-sync', properties.sync);
+        setCheckbox('sync-settings', properties.sync);
         
     }
 }
@@ -132,6 +132,7 @@ function managePreferences () {
             domainList.disabled = false;
             domainList.value = properties.domains.list[select.value].join(' ');
         }
+        browser.storage[properties.area].set({domains: properties.domains}).catch(reason => console.error(reason));
     });
     domainList.addEventListener('change', event => {
         properties.domains.list[properties.domains.type] = domainList.value.split(' ');
@@ -144,13 +145,32 @@ function managePreferences () {
     addColorManager('background');
 
     // advanced settings
+    function advancedOptionsOpened (url) {
+        return browser.runtime.getBrowserInfo().then(info => {
+            if (info.version < 56.0) {
+                // moz-extension: schema not accepted
+                return browser.tabs.query({}).then(tabs => {
+                    return tabs.find(tab => { return tab.url === url; });
+                });
+            } else {
+                return browser.tabs.query({url: url}).then(tabs => {
+                    return tabs.length > 0 ? tabs[0] : undefined;
+                });
+            }
+        });
+    }
     $('advanced-settings').addEventListener('click', event => {
         const url = browser.extension.getURL('/options/advanced-options.html');
         
         // check if Advanced options tab is already opened
-        browser.tabs.query({url: url}).then(tabs => {
-            if (tabs.length > 0) {
-                return browser.tabs.update(tabs[0].id, {active: true}).then(() => {
+        // browser.tabs.query({url: url}).then(tabs => {
+        //     if (tabs.length > 0) {
+        //         return browser.tabs.update(tabs[0].id, {active: true}).then(() => {
+        //             return browser.history.deleteUrl({url: url});
+        //         }); 
+        advancedOptionsOpened(url).then(tab => {
+            if (tab) {
+                return browser.tabs.update(tab.id, {active: true}).then(() => {
                     return browser.history.deleteUrl({url: url});
                 }); 
             } else {
@@ -168,19 +188,17 @@ function managePreferences () {
     });
     
     // settings management
-    let prefsSync = $('prefs-sync');
-    let prefsDefault = $('prefs-defaults');
-    prefsSync.addEventListener('change', event => {
-        browser.runtime.sendMessage({id: 'change-area', sync: prefsSync.checked}).then(message => {
+    let syncSettings = $('sync-settings');
+    syncSettings.addEventListener('change', event => {
+        browser.storage.local.set({sync: syncSettings.checked}).then(() => {
             initializePreferences();
         }).catch(reason => console.error(reason));
     });
-    prefsDefault.addEventListener('click', event => {
-        if (window.confirm(browser.i18n.getMessage('settings.prefs-defaults.confirm.content'))) {
-            browser.runtime.sendMessage({id: 'reset-defaults'}).then(message => {
-                initializePreferences();
-            }).catch(reason => console.error(reason));
-        }
+    let resetDefault = $('reset-defaults');
+    resetDefault.addEventListener('click', event => {
+        browser.runtime.sendMessage({id: 'reset-defaults'}).then(message => {
+            if (message.done) initializePreferences();
+        }).catch(reason => console.error(reason));
     });
 }
 
@@ -204,7 +222,7 @@ document.addEventListener("DOMContentLoaded",
                               browser.runtime.getPlatformInfo().then(platformInfo => {
                                   if (platformInfo.os === 'win') {
                                       $('linkificator-settings').style['font-family'] = 'Segoe UI';
-                                      $('linkificator-settings').style['font-size'] = '1.25rem';
+                                      // $('linkificator-settings').style['font-size'] = '1.25rem';
                                   }
                               });
                               initializePreferences().then(() => {

@@ -11,7 +11,7 @@ form {
 }
 
 .settings-entry input, select, button {
-	font-size: 1em;
+	font-size: 0.95em;
 }
 .settings-entry > input[type="text"] {
 	width: calc(50% - 200px);
@@ -32,10 +32,8 @@ form > .settings-entry {
 }
 
 form > hr {
-	color: #fff;
+	background-color: #c1c1c1;
+	height: 1px;
+	border: none;
 	width: 100%;
-}
-
-.reset-button img {
-	position: relative;
 }

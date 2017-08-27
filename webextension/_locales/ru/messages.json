@@ -60,31 +60,19 @@
         "message": "Расширенные настройки...", 
         "description": "Advanced settings..."
     }, 
-    "settings.prefs-management": {
-        "message": "Управление настройками",
-        "description": "Settings management"
-    },
-    "settings.prefs-sync": {
+    "settings.sync-settings": {
         "message": "Настройки синхронизации",
         "description": "To active multi devices synchronization of settings"
     },
-    "settings.prefs-import": {
-        "message": "Импорт настроек...",
-        "description": "Imports settings from the selected file"
-    },
-    "settings.prefs-export": {
-        "message": "Экспорт настроек...",
-        "description": "Exports settings to selected file"
-    },
-    "settings.prefs-defaults": {
+    "settings.reset-defaults": {
         "message": "Восстановить по умолчанию",
         "description": "Reset all settings to default values"
     },
-    "settings.prefs-defaults.confirm.title": {
+    "settings.reset-defaults.confirm.title": {
         "message": "Linkificator - \u0412\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e",
         "description": "Linkificator - Restore Default Settings"
     },
-    "settings.prefs-defaults.confirm.content": {
+    "settings.reset-defaults.confirm.content": {
         "message": "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0441\u0431\u0440\u043e\u0441\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e?", 
         "description": "You are about to reset settings to default values.\u000aAre you sure you want to continue?"
     },

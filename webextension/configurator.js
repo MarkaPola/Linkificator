@@ -259,8 +259,17 @@ function Configurator () {
     
     // handle preferences changes
     browser.storage.onChanged.addListener((changes, area) => {
-        if (area === 'local' && changes.hasOwnProperty('activated')) {
-            properties.activated = changes.activated.newValue;
+        if (area === 'local') {
+            if (changes.hasOwnProperty('activated')) {
+                properties.activated = changes.activated.newValue;
+            }
+            
+            if (changes.hasOwnProperty('sync')) {
+                properties.area = changes.sync.newValue ? 'sync' : 'local';
+                setPreferences();
+
+                return;
+            }
         }
         
         if (area === properties.area) {
@@ -273,20 +282,14 @@ function Configurator () {
     // handle preferences management events
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         switch (message.id) {
-        case 'change-area':
-            browser.storage.local.set({sync: message.sync}).then(result => {
-                properties.area = message.sync ? 'sync' : 'local';
-
-                setPreferences().then(result => {
-                    sendResponse({id: 'change-area'});
-                });
-            }).catch(reason => console.error(reason));
-            break;
         case 'reset-defaults':
             browser.storage[properties.area].set(defaultPreferences).then(result => {
-                sendResponse({id: 'reset-defaults'});
-            }).catch(reason => console.error(reason));
-            break;
+                sendResponse({id: 'reset-defaults', done: true});
+            }).catch(reason => {
+                console.error(reason);
+                sendResponse({id: 'reset-defaults', done: false});
+            });
+        break;
         case 'reset-requiredCharacters':
             browser.storage[properties.area].set({requiredCharacters: defaultPreferences.requiredCharacters}).catch(reason => console.error(reason));
             break;
