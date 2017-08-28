@@ -8,15 +8,22 @@
 
     
 // Display release-notes on install or update
+function displayReleaseNotes () {
+    function display(alarm) {
+        if (alarm.name === 'linkificator-release-notes') {
+            browser.alarms.clear('linkificator-release-notes');
+            browser.alarms.onAlarm.removeListener(display);
+            browser.tabs.create({url: "/resources/doc/release-notes.html", active: true});
+        }
+    }
+    
+    browser.alarms.onAlarm.addListener(display);
+    browser.alarms.create('linkificator-release-notes', {when: Date.now()+2000});
+}
+
 browser.runtime.onInstalled.addListener(details => {
     if ((details.reason === 'install' || details.reason === 'update') && !details.temporary) {
-        browser.alarms.onAlarm.addListener(alarm => {
-            if (alarm.name === 'linkificator-release-notes') {
-                browser.alarms.clear('linkificator-release-notes');
-                browser.tabs.create({url: "/resources/doc/release-notes.html", active: true});
-            }
-        });
-        browser.alarms.create('linkificator-release-notes', {when: Date.now()+2000});
+        displayReleaseNotes();
     }
 });
 
@@ -125,6 +132,20 @@ Configurator().then(config => {
     var workers = new Workers();
 
     var controler = Controler(config);
+
+
+    // TEMPORARY: Handle communication with legacy part of add-on
+    let legacyChannel = browser.runtime.connect({name: 'legacy-channel'});
+    legacyChannel.onMessage.addListener(message => {
+        switch(message.id) {
+        case 'show-release-notes':
+            displayReleaseNotes();
+            break;
+        case 'set-preferences':
+            configurator.updateProperties(message.preferences);
+            break;
+        }
+    });
 
     
     // handle tabs events

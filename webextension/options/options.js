@@ -135,7 +135,7 @@ function managePreferences () {
         browser.storage[properties.area].set({domains: properties.domains}).catch(reason => console.error(reason));
     });
     domainList.addEventListener('change', event => {
-        properties.domains.list[properties.domains.type] = domainList.value.split(' ');
+        properties.domains.list[properties.domains.type] = domainList.value.split(' ').filter((value, index, self) => self.indexOf(value) === index);
 
         browser.storage[properties.area].set({domains: properties.domains}).catch(reason => console.error(reason));
     });
@@ -223,6 +223,9 @@ document.addEventListener("DOMContentLoaded",
                                   if (platformInfo.os === 'win') {
                                       $('linkificator-settings').style['font-family'] = 'Segoe UI';
                                       // $('linkificator-settings').style['font-size'] = '1.25rem';
+                                  } else if (platformInfo.os === 'mac') {
+                                      $('linkificator-settings').style['font-family'] = 'Arial';
+                                      $('linkificator-settings').style['font-size'] = '0.95rem';
                                   }
                               });
                               initializePreferences().then(() => {

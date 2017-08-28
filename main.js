@@ -79,7 +79,7 @@ function sendPreferences (port) {
 		return elements;
 	}
     function splitTopLevelDomains (data) {
-        return data.split(';').sort().uniq();
+        return data.split(';').sort().filter((value, index, self) => self.indexOf(value) === index);
     }
 
     
@@ -195,29 +195,27 @@ function sendPreferences (port) {
 	}
 
     port.postMessage({
-        config: {
-            sync: prefs.sync, 
-            activated: prefs.activated
-        },
-        preferences: settings
+        id: 'set-preferences', 
+        preferences: {
+            config: {
+                sync: prefs.sync, 
+                activated: prefs.activated
+            },
+            settings: settings
+        }
     });
 }
 
 
 exports.main = function (options) {
-    console.log(options);
-	// for new installation or upgrade, show an informational page
-	if (options.loadReason == 'install' || options.loadReason == 'upgrade') {
-		require('sdk/timers').setTimeout(function() {
-	        let tabs = require('sdk/tabs');
-            
-            tabs.open("chrome://linkificator/content/release-notes.xhtml");
-		}, 2000);
-	}
-    
     webext.startup().then(({browser}) => {
         browser.runtime.onConnect.addListener(port => {
-            if (port.name === "sync-preferences") {
+            if (port.name === "legacy-channel") {
+                // for new installation or upgrade, show an informational page
+                if (options.loadReason == 'install' || options.loadReason == 'upgrade') {
+                    port.postMessage({id: 'show-release-notes'});
+                }
+                
                 sendPreferences(port);
             }
         });

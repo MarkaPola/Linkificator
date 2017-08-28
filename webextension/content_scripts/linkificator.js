@@ -1089,9 +1089,7 @@ function getActiveDomains (tlds) {
         }
     }
 
-    return domains.sort().filter((value, index, self) => {
-        return self.indexOf(value) === index;
-    });
+    return domains.sort().filter((value, index, self) => self.indexOf(value) === index);
 }
 
 

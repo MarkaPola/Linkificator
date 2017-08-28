@@ -204,6 +204,16 @@ function Configurator () {
         constructor () {
         }
 
+        // TEMPORARY: to update properties from legacy part
+        updateProperties (preferences) {
+            properties.area = preferences.config.sync ? 'sync' : 'local';
+            properties.activated = preferences.config.activated;
+
+            browser.storage[properties.area].set(preferences.settings).then(() => {
+                browser.storage.local.set(preferences.config);
+            }).catch(reason => console.error(reason));
+        }
+        
         linkifyURL (url) {
             if (properties.domains.type === 'none')
 			    return true;
