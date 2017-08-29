@@ -157,6 +157,18 @@
         "message": "Désactiver le traitement des changements dynamiques si il prend plus de :",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
+    "advancedSettings@customRules@beforePredefinedRules": {
+        "message": "Avant les règles prédéfinies",
+        "description": "Before predefined rules"
+    },    
+    "advancedSettings@customRules@afterPredefinedRules": {
+        "message": "Après les règles prédéfinies",
+        "description": "After predefined rules"
+    },    
+    "advancedSettings@customRules@addRule": {
+        "message": "Ajouter une règle",
+        "description": "Add Rule"
+    },    
     "advancedSettings@configuration@general": {
         "message": "Général",
         "description": "General"

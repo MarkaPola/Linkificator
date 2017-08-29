@@ -157,6 +157,18 @@
         "message": "Отключить обработку динамических изменений, если она занимает больше, чем:",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
+    "advancedSettings@customRules@beforePredefinedRules": {
+        "message": "Перед предопределёнными правилами",
+        "description": "Before predefined rules"
+    },    
+    "advancedSettings@customRules@afterPredefinedRules": {
+        "message": "После предопределённых правил",
+        "description": "After predefined rules"
+    },    
+    "advancedSettings@customRules@addRule": {
+        "message": "Добавить правило",
+        "description": "Add Rule"
+    },    
     "advancedSettings@configuration@general": {
         "message": "Общие",
         "description": "General"
