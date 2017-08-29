@@ -173,8 +173,8 @@ function Controler (config) {
                                  : {16: 'resources/icons/link16-off.png',
                                     32: 'resources/icons/link32-off.png'},
                 badge: isActive() && displayBadge() ? "0" : "", 
-                tooltip: isActive() ?  browser.i18n.getMessage("stats.0links") + " " + browser.i18n.getMessage("stats.time", 0)
-                                    : browser.i18n.getMessage("stats.not_processed")
+                tooltip: isActive() ?  browser.i18n.getMessage("stats@0links") + " " + browser.i18n.getMessage("stats@time", 0)
+                                    : browser.i18n.getMessage("stats@not_processed")
             };
         }
         function getCurrent (request) {
@@ -187,7 +187,7 @@ function Controler (config) {
 					current.icon = {16: 'resources/icons/link16-excluded.png',
                                     32: 'resources/icons/link32-excluded.png'},
                     current.badge = "";
-					current.tooltip = browser.i18n.getMessage("stats.excluded");
+					current.tooltip = browser.i18n.getMessage("stats@excluded");
 				} else if (includedURLs.isIncluded(tab) || configurator.linkifyURL(tab.url)) {
 					current.state = 'processed';
 					current.icon = isManual() ? { 16: 'resources/icons/link16-manual.png',
@@ -195,13 +195,13 @@ function Controler (config) {
                                                : {16: 'resources/icons/link16-on.png',
                                                   32: 'resources/icons/link32-on.png'}, 
                     current.badge = displayBadge() ? "0" : "";
-					current.tooltip = browser.i18n.getMessage("stats.0links") + " " + browser.i18n.getMessage("stats.time", 0);
+					current.tooltip = browser.i18n.getMessage("stats@0links") + " " + browser.i18n.getMessage("stats@time", 0);
 				} else {
 					current.state = 'filtered';
 					current.icon = {16: 'resources/icons/link16-excluded.png',
                                     32: 'resources/icons/link32-excluded.png'}, 
                     current.badge = "";
-					current.tooltip = browser.i18n.getMessage("stats.filtered");
+					current.tooltip = browser.i18n.getMessage("stats@filtered");
 				}
 			} else {
 				current.icon = isActive() ? (isManual() ? { 16: 'resources/icons/link16-manual.png',
@@ -212,7 +212,7 @@ function Controler (config) {
                                              32: 'resources/icons/link32-off.png'};
 				current.state = 'not_processed';
                 current.badge = "";
-				current.tooltip = browser.i18n.getMessage("stats.not_processed");
+				current.tooltip = browser.i18n.getMessage("stats@not_processed");
 			}
 
             return current;
@@ -224,7 +224,7 @@ function Controler (config) {
                     let state = getDefault();
                                         
                     browser.browserAction.setIcon({path: state.icon});
-                    browser.browserAction.setTitle({title: browser.i18n.getMessage("stats.not_processed")});
+                    browser.browserAction.setTitle({title: browser.i18n.getMessage("stats@not_processed")});
                     browser.browserAction.setBadgeText({text: ""});
                 } else if (request.hasOwnProperty('manual')) {
                     if (isActive()) {
@@ -266,15 +266,15 @@ function Controler (config) {
                         
                         switch (stats.links) {
                         case 0:
-                            tooltip = browser.i18n.getMessage("stats.0links");
+                            tooltip = browser.i18n.getMessage("stats@0links");
                             break;
                         case 1:
-                            tooltip = browser.i18n.getMessage("stats.1link");
+                            tooltip = browser.i18n.getMessage("stats@1link");
                             break;
                         default:
-                            tooltip = browser.i18n.getMessage("stats.links", stats.links);
+                            tooltip = browser.i18n.getMessage("stats@links", stats.links);
                         }
-                        tooltip += " " + browser.i18n.getMessage("stats.time", stats.time);
+                        tooltip += " " + browser.i18n.getMessage("stats@time", stats.time);
 
                         let tabId = request.tab.id;
                         browser.browserAction.setTitle({tabId: tabId, title: tooltip});
@@ -312,7 +312,7 @@ function Controler (config) {
                     contexts: ['tab', 'page'],
                     documentUrlPatterns: ["*://*/*", "file:///*"],
                     enabled: false, 
-                    title: browser.i18n.getMessage("menu.linkify")
+                    title: browser.i18n.getMessage("menu@linkify")
                 });
 
                 browser.contextMenus.onClicked.addListener(this._onClicked);

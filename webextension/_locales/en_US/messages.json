@@ -4,221 +4,233 @@
         "description": "Description of the extension."
     }, 
 
-    "settings.activated": {
+    "settings@activated": {
         "message": "Activated",
         "description": "Activated"
     },
-    "settings.on-demand": {
+    "settings@onDemand": {
         "message": "Linkify only on demand",
         "description": "Linkify only on demand"
     },
-    "settings.display-counter": {
+    "settings@displayCounter": {
         "message": "Display counter",
         "description": "Display number of links linkified as icon badge"
     },
-    "settings.context-menu-integration": {
+    "settings@contextMenuIntegration": {
         "message": "Page context menu integration",
         "description": "Page context menu integration"
     },
-    "settings.use-regular-expressions": {
+    "settings@useRegularExpressions": {
         "message": "Use regular expressions for domains",
         "description": "Use regular expressions for domains filtering"
     },
-    "settings.domain-filtering-mode": {
+    "settings@domainFilteringMode": {
         "message": "Domain filtering mode",
         "description": "Domain filtering mode"
     },
-    "settings.domain-filtering-mode.none": {
+    "settings@domainFilteringMode@none": {
         "message": "None",
         "description": "Domain filtering mode: no filtering"
     },
-    "settings.domain-filtering-mode.whitelist": {
+    "settings@domainFilteringMode@whitelist": {
         "message": "Only linkify for domains in Whitelist",
         "description": "Domain filtering mode: while list"
     },
-    "settings.domain-filtering-mode.blacklist": {
+    "settings@domainFilteringMode@blacklist": {
         "message": "Never linkify for domains in Blacklist",
         "description": "Domain filtering mode: black list"
     },
-    "settings.domain-filtering-mode.domains-list.label": {
+    "settings@domainFilteringMode@domainList@label": {
         "message": "Domains",
         "description": "List of domains for filtering (white or black)"
     },
-    "settings.domain-filtering-mode.domains-list.title": {
+    "settings@domainFilteringMode@domainList": {
+        "message": "NOT USED. DO NOT TRANSLATE",
+        "description": "NOT USED. DO NOT TRANSLATE"
+    }, 
+    "settings@domainFilteringMode@domainList@title": {
         "message": "Separate domains with a space",
         "description": "Separate domains with a space"
     }, 
-    "settings.override-text-color": {
+    "settings@overrideTextColor": {
         "message": "Override text color",
         "description": "To change text color of hyperlinks"
     },
-    "settings.override-background-color": {
+    "settings@overrideBackgroundColor": {
         "message": "Override text color",
         "description": "To change background color of hyperlinks"
     },
-    "settings.advanced-settings": {
+    "settings@advancedSettings": {
         "message": "Advanced settings...", 
         "description": "Advanced settings..."
     }, 
-    "settings.sync-settings": {
+    "settings@syncSettings": {
         "message": "Sync settings",
         "description": "To active multi devices synchronization of settings"
     },
-    "settings.reset-defaults": {
+    "settings@resetDefaults": {
         "message": "Restore defaults",
         "description": "Reset all settings to default values"
     },
-    "settings.reset-defaults.confirm.title": {
+    "settings@resetDefaults@confirm@title": {
         "message": "Linkificator - Restore Default Settings",
         "description": "Linkificator - Restore Default Settings"
     },
-    "settings.reset-defaults.confirm.content": {
+    "settings@resetDefaults@confirm@content": {
         "message": "You are about to reset settings to default values.\u000aAre you sure you want to continue?",
         "description": "You are about to reset settings to default values.\u000aAre you sure you want to continue?"
     },
 
-    "advanced-settings.title": {
+    "advancedSettings@title": {
         "message": "Linkificator Advanced Options",
         "description": "Linkificator Advanced Options"
     },
-    "advanced-settings.milliseconds" :{
+    "advancedSettings@milliseconds" :{
         "message": "ms",
         "description": "ms"
     },
-    "advanced-settings.tab-links": {
+    "advancedSettings@tabLinks": {
         "message": "Links",
         "description": "Links"
     },
-    "advanced-settings.tab-custom-rules": {
+    "advancedSettings@tabCustomRules": {
         "message": "Custom Rules",
         "description": "Custom Rules"
     },
-    "advanced-settings.tab-configuration": {
+    "advancedSettings@tabConfiguration": {
         "message": "Configuration",
         "description": "Configuration"
     },
-    "advanced-settings.links.predefined-rules": {
+    "advancedSettings@links@predefinedRules": {
         "message": "Apply Predefined Rules for:",
         "description": "Apply Predefined Rules for:"
     },
-    "advanced-settings.links.predefined-rules.email-address": {
+    "advancedSettings@links@predefinedRules@emailAddress": {
         "message": "Email addresses",
         "description": "Email addresses"
     },
-    "advanced-settings.links.predefined-rules.standard-urls": {
+    "advancedSettings@links@predefinedRules@standardUrls": {
         "message": "Standard URLs",
         "description": "Standard URLs"
     },
-    "advanced-settings.links.predefined-rules.URI-use-subdomains": {
+    "advancedSettings@links@predefinedRules@URIUseSubdomains": {
         "message": "Use subdomains to identify protocol",
         "description": ""
     },
-    "advanced-settings.links.predefined-rules.URI-use-TLD": {
+    "advancedSettings@links@predefinedRules@URIUseTLD": {
         "message": "Use top level domains",
         "description": "Use top level domains"
     },
-    "advanced-settings.links.predefined-rules.URI-linkify-authority": {
+    "advancedSettings@links@predefinedRules@URILinkifyAuthority": {
         "message": "Linkify URL containing the alone authority (i.e. host:port)",
         "description": "Linkify URL containing the alone authority (i.e. host:port)"
     },
-    "advanced-settings.links.custom-rules": {
+    "advancedSettings@links@customRules": {
         "message": "Apply Custom Rules for:",
         "description": "Apply Custom Rules for:"
     },
-    "advanced-settings.links.custom-rules.before-predefined": {
+    "advancedSettings@links@customRules@beforePredefined": {
         "message": "Before predefined rules list",
         "description": "Before predefined rules list"
     },
-    "advanced-settings.links.custom-rules.after-predefined": {
+    "advancedSettings@links@customRules@afterPredefined": {
         "message": "After predefined rules list",
         "description": "After predefined rules list"
     },
-    "advanced-settings.links.extra-features": {
+    "advancedSettings@links@extraFeatures": {
         "message": "Extra Features",
         "description": "Extra Features"
     },
-    "advanced-settings.links.extra-features.inline-elements": {
+    "advancedSettings@links@extraFeatures@inlineElements": {
         "message": "Handle inline elements",
         "description": "Handle inline elements"
     },
-    "advanced-settings.links.extra-features.automatic-linkification": {
+    "advancedSettings@links@extraFeatures@automaticLinkification": {
         "message": "Automatically process dynamic changes",
         "description": "Automatically process dynamic changes"
     },
-    "advanced-settings.links.extra-features.automatic-linkification.refresh-interval": {
+    "advancedSettings@links@extraFeatures@automaticLinkification@refreshInterval": {
         "message": "Process dynamic changes every:",
         "description": "Process dynamic changes every:"
     },
-    "advanced-settings.links.extra-features.automatic-linkification.refresh-threshold": {
+    "advancedSettings@links@extraFeatures@automaticLinkification@refreshThreshold": {
         "message": "Disable the processing of dynamic changes if it takes longer than:",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
-    "advanced-settings.configuration.reset-button": {
-        "message": "Reset to Default", 
-        "description": "Reset to Default"
-    }, 
-    "advanced-settings.configuration.general": {
+    "advancedSettings@configuration@general": {
         "message": "General",
         "description": "General"
     },
-    "advanced-settings.configuration.general.required-characters": {
+    "advancedSettings@configuration@resetButton": {
+        "message": "Reset to Default", 
+        "description": "Reset to Default"
+    }, 
+    "advancedSettings@configuration@list": {
+        "message": "NOT USED. DO NOT TRANSLATE",
+        "description": "NOT USED. DO NOT TRANSLATE"
+    }, 
+    "advancedSettings@configuration@list@title": {
+        "message": "Separate elements with a space",
+        "description": "Separate elements with a space"
+    }, 
+    "advancedSettings@configuration@general@requiredCharacters": {
         "message": "Required Characters", 
         "description": "Required Characters"
     }, 
-    "advanced-settings.configuration.general.protocols": {
+    "advancedSettings@configuration@general@protocols": {
         "message": "Protocols", 
         "description": "Protocols"
     }, 
-    "advanced-settings.configuration.general.subdomains": {
+    "advancedSettings@configuration@general@subdomains": {
         "message": "Subdomains", 
         "description": "Subdomains"
     }, 
-    "advanced-settings.configuration.general.excluded-elements": {
+    "advancedSettings@configuration@general@excludedElements": {
         "message": "Excluded Elements", 
         "description": "Excluded Elements"
     }, 
-    "advanced-settings.configuration.general.inline-elements": {
+    "advancedSettings@configuration@general@inlineElements": {
         "message": "Inline Elements", 
         "description": "Inline Elements"
     }, 
-    "advanced-settings.configuration.general.max-data-size": {
+    "advancedSettings@configuration@general@maxDataSize": {
         "message": "Maximum data size", 
         "description": "Maximum data size"
     }, 
-    "advanced-settings.configuration.top-level-domains": {
+    "advancedSettings@configuration@topLevelDomains": {
         "message": "Top-Level Domains",
         "description": "Top-Level Domains"
     },
-    "advanced-settings.configuration.top-level-domains.generics": {
+    "advancedSettings@configuration@topLevelDomains@generics": {
         "message": "Generics", 
         "description": "Generics"
     }, 
-    "advanced-settings.configuration.top-level-domains.country-codes": {
+    "advancedSettings@configuration@topLevelDomains@countryCodes": {
         "message": "Country Codes", 
         "description": "Country Codes"
     }, 
-    "advanced-settings.configuration.top-level-domains.geographics": {
+    "advancedSettings@configuration@topLevelDomains@geographics": {
         "message": "Geographics", 
         "description": "Geographics"
     }, 
-    "advanced-settings.configuration.top-level-domains.communities": {
+    "advancedSettings@configuration@topLevelDomains@communities": {
         "message": "Communities", 
         "description": "Communities"
     }, 
-    "advanced-settings.configuration.top-level-domains.brands": {
+    "advancedSettings@configuration@topLevelDomains@brands": {
         "message": "Brands", 
         "description": "Brands"
     }, 
 
-    "stats.0links": {
+    "stats@0links": {
         "message": "0 links processsed",
         "description": "zero links processed"
     }, 
-    "stats.1link": {
+    "stats@1link": {
         "message": "1 link processsed",
         "description": "one link processed"
     }, 
-    "stats.links": {
+    "stats@links": {
         "message": "$COUNT$ links processed", 
         "description": "number of links processed", 
         "placeholders": {
@@ -228,7 +240,7 @@
             }
         }
     }, 
-    "stats.time": {
+    "stats@time": {
         "message": "in $TIME$ ms",
         "description": "elapsed time of processing",
         "placeholders": {
@@ -238,485 +250,498 @@
             }
         }
     }, 
-    "stats.excluded": {
+    "stats@excluded": {
         "message": "page excluded",
         "description": "page excluded"
     }, 
-    "stats.filtered": {
+    "stats@filtered": {
         "message": "page ignored",
         "description": "page ignored"
     }, 
-    "stats.not_processed": {
+    "stats@not_processed": {
         "message": "page not processed",
         "description": "page not processed"
     },
 
-    "menu.linkify": {
+    "menu@linkify": {
         "message": "Update links",
         "desription": "Update links"
     }, 
 
-    "panel.options": {
+    "panel@options": {
         "message": "Options...",
         "desription": "Open add-on options page"
     }, 
-    "panel.manual": {
+    "panel@manual": {
         "message": "On Demand",
         "desription": "Toggle on demand mode"
     }, 
-    "panel.activate": {
+    "panel@activate": {
         "message": "Activate",
         "desription": "Activate add-on"
     }, 
-    "panel.deactivate": {
+    "panel@deactivate": {
         "message": "Deactivate",
         "desription": "Deactivate add-on"
     }, 
-    "panel.include": {
+    "panel@include": {
         "message": "Include",
         "desription": "Add current tab URL as supported url"
     }, 
-    "panel.exclude": {
+    "panel@exclude": {
         "message": "Exclude",
         "desription": "Exclude current tab URL as spported url"
     }, 
-    "panel.linkify": {
+    "panel@linkify": {
         "message": "Update",
         "desription": "re-launch document linkification"
     },
 
     
-    "release-notes.new_version": {
+    "releaseNotes@new_version": {
         "message": "New version installed.",
         "desription": "New version installed."
     },
-    "release-notes.thank_you": {
+    "releaseNotes@thank_you": {
         "message": "Thank you for using Linkificator.",
         "desription": "Thank you for using Linkificator."
     },
-    "release-notes.localization": {
+    "releaseNotes@localization": {
         "message": "Localization infrastructure is now fully operational. Any help is welcomed... Send-me an <a href=\"mailto:linkificator@gmail.com\">e-mail</a> to request translation materials.",
         "desription": ""
     },
-    "release-notes.more_information": {
+    "releaseNotes@more_information": {
         "message": "Please visit the <a href=\"https://addons.mozilla.org/en-US/firefox/addon/linkificator\">Add-on page</a> for more informations.",
         "desription": ""
     }, 
-    "release-notes.history": {
+    "releaseNotes@history": {
         "message": "History of changes",
         "desription": "History of changes"
     },
-    "release-notes.version": {
+    "releaseNotes@version": {
         "message": "Version",
         "desription": "Version"
     },
-    "release-notes.new_features": {
+    "releaseNotes@new_features": {
         "message": "New features",
         "desription": "New features"
     }, 
-    "release-notes.enhancements": {
+    "releaseNotes@enhancements": {
         "message": "Enhancements and bug fixes",
         "desription": "Enhancements and bug fixes"
     }, 
-    "release-notes.limitations": {
+    "releaseNotes@limitations": {
         "message": "Limitations",
         "desription": "Limitations"
     },
     
-    "release-notes.enhancements.2.3.2-1": {
+    "releaseNotes@new_features@3_0_0@1": {
+        "message": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+.",
+        "description": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."
+    }, 
+    "releaseNotes@limitations@3_0_0@1": {
+        "message": "Due to various limiations and restrictions imposed by WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li><li>Various Widget clicks customizations</li><li>about: protocol support</li><li>Import/Export of settings</li></lu><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API.",
+        "description": "Due to various limiations and restrictions imposed by WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li>li>Various Widget clicks customizations</li><li>about: protocol is not handled anymore</li><<li>Import/Export of settings</li>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
+    },
+    "releaseNotes@limitations@3_0_0@2": {
+        "message": "Currently, custom rules are no longer editable but this limitation will be suppressed in a future version.",
+        "description": "Currently, custom rules are no longer editable but this limitation will be suppressed in a future version."
+    },
+    
+    "releaseNotes@enhancements@2_3_2@1": {
         "message": "Fixes a regression, regarding text/plain documents, introduced in version 2.3.1.",
         "desription": "Fixes a regression, regarding text/plain documents, introduced in version 2.3.1."
     },
     
-    "release-notes.enhancements.2.3.1-1": {
+    "releaseNotes@enhancements@2_3_1@1": {
         "message": "Multi-process Firefox (Electrolysis project) support.",
         "description": "Multi-process Firefox (Electrolysis project) support."
     },
-    "release-notes.enhancements.2.3.1-2": {
+    "releaseNotes@enhancements@2_3_1@2": {
         "message": "Top level domains list is updated.",
         "description": "Top level domains list is updated."
     }, 
-    "release-notes.limitations.2.3.1-1": {
+    "releaseNotes@limitations@2_3_1@1": {
         "message": "Drop support for Firefox versions before 38.0.",
         "description": "Drop support for Firefox versions before 38.0."
     },
     
-    "release-notes.new_features.2.3.0-1": {
+    "releaseNotes@new_features@2_3_0@1": {
         "message": "For a minimal resources consumption, it is now possible to process the documents only on demand.",
         "description": "For a minimal resources consumption, it is now possible to process the documents only on demand."
     }, 
-    "release-notes.enhancements.2.3.0-1": {
+    "releaseNotes@enhancements@2_3_0@1": {
         "message": "Multi-process Firefox (Electrolysis project) support.",
         "description": "Multi-process Firefox (Electrolysis project) support."
     }, 
-    "release-notes.enhancements.2.3.0-2": {
+    "releaseNotes@enhancements@2_3_0@2": {
         "message": "Top level domains list reorganized and updated.",
         "description": "Top level domains list reorganized and updated."
     }, 
-    "release-notes.limitations.2.3.0-1": {
+    "releaseNotes@limitations@2_3_0@1": {
         "message": "Drop support for Firefox versions before 31.0.",
         "description": "Drop support for Firefox versions before 31.0."
     },
     
-    "release-notes.enhancements.2.2.1-1": {
+    "releaseNotes@enhancements@2_2_1@1": {
         "message": "Firefox 40+ compatibility.",
         "description": "Firefox 40+ compatibility."
     }, 
 
-    "release-notes.new_features.2.2.0-1": {
+    "releaseNotes@new_features@2_2_0@1": {
         "message": "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options).",
         "description": "It is now possible to save and restore Linkificator settings as well as restoring defaults (see 'Settings management' in add-on Options)."
     }, 
 
-    "release-notes.enhancements.2.1.4-1": {
+    "releaseNotes@enhancements@2_1_4@1": {
         "message": "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1.",
         "description": "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1."
     }, 
 
-    "release-notes.enhancements.2.1.3-1": {
+    "releaseNotes@enhancements@2_1_3@1": {
         "message": "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1.",
         "description": "Fixes a regression, regarding plain/text documents, introduced in version 2.1.1."
     }, 
-    "release-notes.enhancements.2.1.3-2": {
+    "releaseNotes@enhancements@2_1_3@2": {
         "message": "Enhances, for Firefox 30.0 and newer, the restoration of the original content of pages when add-on is disabled or removed.",
         "description": "Enhances, for Firefox 30.0 and newer, the restoration of the original content of pages when add-on is disabled or removed."
     }, 
 
-    "release-notes.enhancements.2.1.2-1": {
+    "releaseNotes@enhancements@2_1_2@1": {
         "message": "Fixes a regression, regarding Firefox navigation, introduced in version 2.1.1.",
         "description": "Fixes a regression, regarding Firefox navigation, introduced in version 2.1.1."
     }, 
-    "release-notes.enhancements.2.1.1-1": {
+    "releaseNotes@enhancements@2_1_1@1": {
         "message": "Enhances UI for black/white lists management.",
         "description": "Enhances UI for black/white lists management."
     }, 
-    "release-notes.enhancements.2.1.1-2": {
+    "releaseNotes@enhancements@2_1_1@2": {
         "message": "Reduces, dramatically for some pages, resources consumption for processing.",
         "description": "Reduces, dramatically for some pages, resources consumption for processing."
     }, 
-    "release-notes.enhancements.2.1.1-3": {
+    "releaseNotes@enhancements@2_1_1@3": {
         "message": "Optimizes the restoration of the original content of pages when add-on is disabled or removed and, for Firefox 30.0 and newer, avoids to reload pages.",
         "description": "Optimizes the restoration of the original content of pages when add-on is disabled or removed and, for Firefox 30.0 and newer, avoids to reload pages."
     }, 
-    "release-notes.enhancements.2.1.1-4": {
+    "releaseNotes@enhancements@2_1_1@4": {
         "message": "Top level domains list is updated.",
         "description": "Top level domains list is updated."
     }, 
 
-    "release-notes.new_features.2.1.0-1": {
+    "releaseNotes@new_features@2_1_0@1": {
         "message": "Automatic linkification behavior can now be adjusted to your taste (see Advanced Settings, Links tab).",
         "description": "Automatic linkification behavior can now be adjusted to your taste (see Advanced Settings, Links tab)."
     }, 
-    "release-notes.enhancements.2.1.0-1": {
+    "releaseNotes@enhancements@2_1_0@1": {
         "message": "Enhances news protocol URIs parsing.",
         "description": "Enhances news protocol URIs parsing."
     }, 
-    "release-notes.enhancements.2.1.0-2": {
+    "releaseNotes@enhancements@2_1_0@2": {
         "message": "Enhances asian languages support.",
         "description": "Enhances asian languages support."
     }, 
 
-    "release-notes.enhancements.2.0.6-1": {
+    "releaseNotes@enhancements@2_0_6@1": {
         "message": "Fixes regression on URI domain part parsing.",
         "description": "Fixes regression on URI domain part parsing."
     }, 
 
-    "release-notes.enhancements.2.0.5-1": {
+    "releaseNotes@enhancements@2_0_5@1": {
         "message": "New localization: russian (provided by 'Капелька Яда').",
         "description": "New localization: russian (provided by 'Капелька Яда')."
     }, 
-    "release-notes.enhancements.2.0.5-2": {
+    "releaseNotes@enhancements@2_0_5@2": {
         "message": "Enhances asian languages support.",
         "description": "Enhances asian languages support."
     }, 
-    "release-notes.enhancements.2.0.5-3": {
+    "releaseNotes@enhancements@2_0_5@3": {
         "message": "Top level domains list is updated.",
         "description": "Top level domains list is updated."
     }, 
 
-    "release-notes.enhancements.2.0.4-1": {
+    "releaseNotes@enhancements@2_0_4@1": {
         "message": "Enhances URIs parsing.",
         "description": "Enhances URIs parsing."
     }, 
 
-    "release-notes.enhancements.2.0.3-1": {
+    "releaseNotes@enhancements@2_0_3@1": {
         "message": "Updates page content processing for Firefox 32 support.",
         "description": "Updates page content processing for Firefox 32 support."
     }, 
-    "release-notes.enhancements.2.0.3-2": {
+    "releaseNotes@enhancements@2_0_3@2": {
         "message": "Top level domains list is updated.",
         "description": "Top level domains list is updated."
     }, 
 
-    "release-notes.enhancements.2.0.2-1": {
+    "releaseNotes@enhancements@2_0_2@1": {
         "message": "Adds support of XHTML documents.",
         "description": "Adds support of XHTML documents."
     }, 
-    "release-notes.enhancements.2.0.2-2": {
+    "releaseNotes@enhancements@2_0_2@2": {
         "message": "Adds support of namespaces in documents.",
         "description": "Adds support of namespaces in documents."
     }, 
-    "release-notes.enhancements.2.0.2-3": {
+    "releaseNotes@enhancements@2_0_2@3": {
         "message": "Firefox 32 support.",
         "description": "Firefox 32 support."
     }, 
-    "release-notes.enhancements.2.0.2-4": {
+    "releaseNotes@enhancements@2_0_2@4": {
         "message": "Various bugs fixes on inline elements handling.",
         "description": "Various bugs fixes on inline elements handling."
     }, 
-    "release-notes.enhancements.2.0.2-5": {
+    "releaseNotes@enhancements@2_0_2@5": {
         "message": "Top level domains list is updated.",
         "description": "Top level domains list is updated."
     }, 
 
-    "release-notes.enhancements.2.0.1-1": {
+    "releaseNotes@enhancements@2_0_1@1": {
         "message": "Top level domains list is updated and its management is enhanced.",
         "description": "Top level domains list is updated and its management is enhanced."
     }, 
-    "release-notes.enhancements.2.0.1-2": {
+    "releaseNotes@enhancements@2_0_1@2": {
         "message": "Entries in widget contextual menu show now the keyboard shortcut, if any.",
         "description": "Entries in widget contextual menu show now the keyboard shortcut, if any."
     }, 
-    "release-notes.enhancements.2.0.1-3": {
+    "releaseNotes@enhancements@2_0_1@3": {
         "message": "Various minor bug fixes.",
         "description": "Various minor bug fixes."
     }, 
 
-    "release-notes.new_features.2.0.0-1": {
+    "releaseNotes@new_features@2_0_0@1": {
         "message": "Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu.",
         "description": "Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu."
     }, 
-    "release-notes.new_features.2.0.0-2": {
+    "releaseNotes@new_features@2_0_0@2": {
         "message": "It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes.",
         "description": "It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes."
     }, 
-    "release-notes.enhancements.2.0.0-1": {
+    "releaseNotes@enhancements@2_0_0@1": {
         "message": "Enhances widget behavior in multi-windows mode.",
         "description": "Enhances widget behavior in multi-windows mode."
     }, 
-    "release-notes.limitations.2.0.0-1": {
+    "releaseNotes@limitations@2_0_0@1": {
         "message": "During upgrade to this major new version from a previous one (1.*), mouse buttons customization will be lost.",
         "description": "During upgrade to this major new version from a previous one (1.*), mouse buttons customization will be lost."
     }, 
 
-    "release-notes.enhancements.1.6.3-1": {
+    "releaseNotes@enhancements@1_6_3@1": {
         "message": "Enhances widget handling in multi-windows mode.",
         "description": "Enhances widget handling in multi-windows mode."
     }, 
-    "release-notes.limitations.1.6.3-1": {
+    "releaseNotes@limitations@1_6_3@1": {
         "message": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
         "description": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     }, 
 
-    "release-notes.enhancements.1.6.2-1": {
+    "releaseNotes@enhancements@1_6_2@1": {
         "message": "Optimizes document processing.",
         "description": "Optimizes document processing."
     }, 
-    "release-notes.limitations.1.6.2-1": {
+    "releaseNotes@limitations@1_6_2@1": {
         "message": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
         "description": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     }, 
 
-    "release-notes.enhancements.1.6.1-1": {
+    "releaseNotes@enhancements@1_6_1@1": {
         "message": "It is now possible to deactivate automatic processing of dynamic changes (see 'Advanced settings', 'Links' tab).",
         "description": "It is now possible to deactivate automatic processing of dynamic changes (see 'Advanced settings', 'Links' tab)."
     }, 
-    "release-notes.enhancements.1.6.1-2": {
+    "releaseNotes@enhancements@1_6_1@2": {
         "message": "Optimizes automatic processing to avoid potential lags.",
         "description": "Optimizes automatic processing to avoid potential lags."
     }, 
-    "release-notes.limitations.1.6.1-1": {
+    "releaseNotes@limitations@1_6_1@1": {
         "message": "Due to new add-on packaging, minimal version supported is now <b>Firefox </b>.",
         "description": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     }, 
 
-    "release-notes.new_features.1.6.0-1": {
+    "releaseNotes@new_features@1_6_0@1": {
         "message": "The dynamic changes of current page are now detected and automatically processed.",
         "description": "The dynamic changes of current page are now detected and automatically processed."
     }, 
-    "release-notes.limitations.1.6.0-1": {
+    "releaseNotes@limitations@1_6_0@1": {
         "message": "Due to new add-on packaging, minimal version supported is now <b>Firefox </b>.",
         "description": "Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     }, 
 
-    "release-notes.enhancements.1.5.3-1": {
+    "releaseNotes@enhancements@1_5_3@1": {
         "message": "Fix erroneous handling of inline elements.",
         "description": "Fix erroneous handling of inline elements."
     }, 
-    "release-notes.limitations.1.5.3-1": {
+    "releaseNotes@limitations@1_5_3@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.enhancements.1.5.2-1": {
+    "releaseNotes@enhancements@1_5_2@1": {
         "message": "By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment.",
         "description": "By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment."
     }, 
-    "release-notes.enhancements.1.5.2-2": {
+    "releaseNotes@enhancements@1_5_2@2": {
         "message": "Enhances matching of URIs.",
         "description": "Enhances matching of URIs."
     }, 
-    "release-notes.enhancements.1.5.2-3": {
+    "releaseNotes@enhancements@1_5_2@3": {
         "message": "Speed-up processing when Top Level Domains are used.",
         "description": "Speed-up processing when Top Level Domains are used."
     }, 
-    "release-notes.limitations.1.5.2-1": {
+    "releaseNotes@limitations@1_5_2@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.enhancements.1.5.1-1": {
+    "releaseNotes@enhancements@1_5_1@1": {
         "message": "Enhances identification of start of URIs.",
         "description": "Enhances identification of start of URIs."
     }, 
-    "release-notes.enhancements.1.5.1-2": {
+    "releaseNotes@enhancements@1_5_1@2": {
         "message": "Enhances Top Level Domain matching.",
         "description": "Enhances Top Level Domain matching."
     }, 
-    "release-notes.limitations.1.5.1-1": {
+    "releaseNotes@limitations@1_5_1@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.new_features.1.5.0-1": {
+    "releaseNotes@new_features@1_5_0@1": {
         "message": "To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'.",
         "description": "To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'."
     }, 
-    "release-notes.limitations.1.5.0-1": {
+    "releaseNotes@limitations@1_5_0@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.enhancements.1.4.2-1": {
+    "releaseNotes@enhancements@1_4_2@1": {
         "message": "Speeds up the processing of inline tags to reduce drastically the potential freezes of Firefox.",
         "description": "Speeds up the processing of inline tags to reduce drastically the potential freezes of Firefox."
     }, 
-    "release-notes.enhancements.1.4.2-2": {
+    "releaseNotes@enhancements@1_4_2@2": {
         "message": "For a better compatibility with <a href=\"http://www.palemoon.org\">'Pale Moon'</a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20.",
         "description": "For a better compatibility with <a href=\"http://www.palemoon.org\">'Pale Moon'</a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20."
     }, 
-    "release-notes.limitations.1.4.2-1": {
+    "releaseNotes@limitations@1_4_2@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.enhancements.1.4.1-1": {
+    "releaseNotes@enhancements@1_4_1@1": {
         "message": "Enhance page history navigation handling (Back/Forward buttons).",
         "description": "Enhance page history navigation handling (Back/Forward buttons)."
     }, 
-    "release-notes.limitations.1.4.1-1": {
+    "releaseNotes@limitations@1_4_1@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.new_features.1.4.0-1": {
+    "releaseNotes@new_features@1_4_0@1": {
         "message": "Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br/>By default, for compatibility purpose, menu display is binded to left click.",
         "description": "Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br/>By default, for compatibility purpose, menu display is binded to left click."
     }, 
-    "release-notes.enhancements.1.4.0-1": {
+    "releaseNotes@enhancements@1_4_0@1": {
         "message": "Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20</b> due to SDK limitations specifically on this version.",
         "description": "Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20</b> due to SDK limitations specifically on this version."
     }, 
-    "release-notes.limitations.1.4.0-1": {
+    "releaseNotes@limitations@1_4_0@1": {
         "message": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
         "description": "Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     }, 
 
-    "release-notes.new_features.1.3.0-1": {
+    "releaseNotes@new_features@1_3_0@1": {
         "message": "Page context menu integration: it is possible to update links through page context menu (customizable).",
         "description": "Page context menu integration: it is possible to update links through page context menu (customizable)."
     }, 
-    "release-notes.new_features.1.3.0-2": {
+    "releaseNotes@new_features@1_3_0@2": {
         "message": "Middle click on Widget is now configurable. No action is binded by default.",
         "description": "Middle click on Widget is now configurable. No action is binded by default."
     }, 
-    "release-notes.enhancements.1.3.0-1": {
+    "releaseNotes@enhancements@1_3_0@1": {
         "message": "Change behavior of disabled state : linkificator actions are now reverted when Linkificator is disabled.",
         "description": "Change behavior of disabled state : linkificator actions are now reverted when Linkificator is disabled."
     }, 
-    "release-notes.enhancements.1.3.0-2": {
+    "releaseNotes@enhancements@1_3_0@2": {
         "message": "Fix erroneous handling of status tooltip.",
         "description": "Fix erroneous handling of status tooltip."
     }, 
-    "release-notes.limitations.1.3.0-1": {
+    "releaseNotes@limitations@1_3_0@1": {
         "message": "Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version).",
         "description": "Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version)."
     }, 
 
-    "release-notes.new_features.1.2.0-1": {
+    "releaseNotes@new_features@1_2_0@1": {
         "message": "Possibility to toggle processing of the current page.<br/>This action can be launched through widget menu (Exclude/Include) or the hot key control-shift-x (customizable).",
         "description": "Possibility to toggle processing of the current page.<br/>This action can be launched through widget menu (Exclude/Include) or the hot key control-shift-x (customizable)."
     }, 
-    "release-notes.enhancements.1.2.0-1": {
+    "releaseNotes@enhancements@1_2_0@1": {
         "message": "Enhance anchor handling when inline elements are involved.",
         "description": "Enhance anchor handling when inline elements are involved."
     }, 
-    "release-notes.enhancements.1.2.0-2": {
+    "releaseNotes@enhancements@1_2_0@2": {
         "message": "Add tag &lt;wbr&gt; to inline elements.",
         "description": "Add tag &lt;wbr&gt; to inline elements."
     }, 
 
-    "release-notes.new_features.1.1.1-1": {
+    "releaseNotes@new_features@1_1_1@1": {
         "message": "Possibility to update the current page without reloading it.<br/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable).",
         "description": "Possibility to update the current page without reloading it.<br/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable)."
     }, 
-    "release-notes.new_features.1.1.1-2": {
+    "releaseNotes@new_features@1_1_1@2": {
         "message": "Left click on the widget now display a menu for an easy access to the most common operations as well as the options page.",
         "description": "Left click on the widget now display a menu for an easy access to the most common operations as well as the options page."
     }, 
-    "release-notes.new_features.1.1.1-3": {
+    "releaseNotes@new_features@1_1_1@3": {
         "message": "An action can be directly executed with a right click on the widget. This action is customizable (see Options).",
         "description": "An action can be directly executed with a right click on the widget. This action is customizable (see Options)."
     }, 
-    "release-notes.enhancements.1.1.1-1": {
+    "releaseNotes@enhancements@1_1_1@1": {
         "message": "Fix custom rule checkbox handling on Mac OS.",
         "description": "Fix custom rule checkbox handling on Mac OS."
     }, 
 
-    "release-notes.enhancements.1.0.3-1": {
+    "releaseNotes@enhancements@1_0_3@1": {
         "message": "Enable custom rules edition on Mac OS.",
         "description": "Enable custom rules edition on Mac OS."
     }, 
-    "release-notes.enhancements.1.0.3-2": {
+    "releaseNotes@enhancements@1_0_3@2": {
         "message": "Enhance statistics handling.",
         "description": "Enhance statistics handling."
     }, 
-    "release-notes.enhancements.1.0.3-3": {
+    "releaseNotes@enhancements@1_0_3@3": {
         "message": "Fix erroneous inline elements processing.",
         "description": "Fix erroneous inline elements processing."
     }, 
 
-    "release-notes.enhancements.1.0.2-1": {
+    "releaseNotes@enhancements@1_0_2@1": {
         "message": "Enhance URLs parsing.",
         "description": "Enhance URLs parsing."
     }, 
-    "release-notes.enhancements.1.0.2-2": {
+    "releaseNotes@enhancements@1_0_2@2": {
         "message": "Reduce resources consumption and potential UI freezes.",
         "description": "Reduce resources consumption and potential UI freezes."
     }, 
 
-    "release-notes.enhancements.1.0.1-1": {
+    "releaseNotes@enhancements@1_0_1@1": {
         "message": "Tag &lt;span&gt; is now handled has an inline element.",
         "description": "Tag &lt;span&gt; is now handled has an inline element."
     }, 
-    "release-notes.enhancements.1.0.1-2": {
+    "releaseNotes@enhancements@1_0_1@2": {
         "message": "Enhance localization messages.",
         "description": "Enhance localization messages."
     }, 
 
-    "release-notes.new_features.1.0.0-1": {
+    "releaseNotes@new_features@1_0_0@1": {
         "message": "Inline elements, like &lt;big&gt; or &lt;strong&gt;, are now recognized and correctly handled during URLs parsing.",
         "description": "Inline elements, like &lt;big&gt; or &lt;strong&gt;, are now recognized and correctly handled during URLs parsing."
     }, 
-    "release-notes.new_features.1.0.0-2": {
+    "releaseNotes@new_features@1_0_0@2": {
         "message": "Existing pages are now automatically parsed when add-on is installed or re-enabled. It is no longer required to manually reload the page.",
         "description": "Existing pages are now automatically parsed when add-on is installed or re-enabled. It is no longer required to manually reload the page."
     }, 
-    "release-notes.enhancements.1.0.0-1": {
+    "releaseNotes@enhancements@1_0_0@1": {
         "message": "Multi-frames documents are now correctly handled in all cases.",
         "description": "Multi-frames documents are now correctly handled in all cases."
     }, 
-    "release-notes.enhancements.1.0.0-2": {
+    "releaseNotes@enhancements@1_0_0@2": {
         "message": "Plain text documents are now recognized and parsed.",
         "description": "Plain text documents are now recognized and parsed."
     }

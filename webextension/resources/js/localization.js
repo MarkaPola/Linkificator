@@ -8,7 +8,7 @@
 
 function translateElementAttributes(element) {
     const attributes = [ 'title', 'accesskey', 'alt', 'label', 'placeholder', 'abbr', 'content', 'download', 'srcdoc', 'value' ];
-    const separator = '.';
+    const separator = '@';
 
     const presentAttributes = element.dataset.l10nAttrs.split(",");
 

@@ -8,75 +8,75 @@
 	<link rel="stylesheet" href="/resources/css/common.css">
 	<link rel="stylesheet" href="advanced-options.css">
 
-	<title data-l10n-id="advanced-settings.title">Linkificator Advanced Options</title>
+	<title data-l10n-id="advancedSettings@title">Linkificator Advanced Options</title>
   </head>
   <body>	
 	<div class="tab">
-	  <button class="tablinks" id="tab-links" data-l10n-id="advanced-settings.tab-links">Links</button>
-	  <button class="tablinks" id="tab-custom-rules" data-l10n-id="advanced-settings.tab-custom-rules">Custom Rules</button>
-	  <button class="tablinks" id="tab-configuration" data-l10n-id="advanced-settings.tab-configuration">Configuration</button>
+	  <button class="tablinks" id="tab-links" data-l10n-id="advancedSettings@tabLinks">Links</button>
+	  <button class="tablinks" id="tab-custom-rules" data-l10n-id="advancedSettings@tabCustomRules">Custom Rules</button>
+	  <button class="tablinks" id="tab-configuration" data-l10n-id="advancedSettings@tabConfiguration">Configuration</button>
 	</div>
 
 	<div id="links" class="tabcontent">
 	  <fieldset>
-		<legend data-l10n-id="advanced-settings.links.predefined-rules">Apply Predefined Rules for:</legend>
+		<legend data-l10n-id="advancedSettings@links@predefinedRules">Apply Predefined Rules for:</legend>
 		<div class="settings-entry">
-		  <label for="email-address" data-l10n-id="advanced-settings.links.predefined-rules.email-address">Email addresses</label>
+		  <label for="email-address" data-l10n-id="advancedSettings@links@predefinedRules@emailAddress">Email addresses</label>
 		  <input checked type="checkbox" id="email-address">
 		</div>
 		<div class="settings-entry indent">
-		  <label for="email-address.use-TLD" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-TLD">Use top level domains</label>
+		  <label for="email-address.use-TLD" data-l10n-id="advancedSettings@links@predefinedRules@URIUseTLD">Use top level domains</label>
 		  <input checked type="checkbox" id="email-address.use-TLD">
 		</div>
 		<div class="settings-entry">
-		  <label for="standrad-urls" data-l10n-id="advanced-settings.links.predefined-rules.standard-urls">Standard URLs</label>
+		  <label for="standrad-urls" data-l10n-id="advancedSettings@links@predefinedRules@standardUrls">Standard URLs</label>
 		  <input checked type="checkbox" id="standard-urls">
 		</div>
 		<div class="settings-entry indent">
-		  <label for="standard-urls.use-subdomains" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-subdomains">Use subdomains to identify protocol</label>
+		  <label for="standard-urls.use-subdomains" data-l10n-id="advancedSettings@links@predefinedRules@URIUseSubdomains">Use subdomains to identify protocol</label>
 		  <input checked type="checkbox" id="standard-urls.use-subdomains">
 		</div>
 		<div class="settings-entry indent">
-		  <label for="standard-urls.use-TLD" data-l10n-id="advanced-settings.links.predefined-rules.URI-use-TLD">Use top level domains</label>
+		  <label for="standard-urls.use-TLD" data-l10n-id="advancedSettings@links@predefinedRules@URIUseTLD">Use top level domains</label>
 		  <input checked type="checkbox" id="standard-urls.use-TLD">
 		</div>
 		<div class="settings-entry indent">
-		  <label for="standard-urls.linkify-authority" data-l10n-id="advanced-settings.links.predefined-rules.URI-linkify-authority">Linkify URL containing the alone authority (i.e. host:port)</label>
+		  <label for="standard-urls.linkify-authority" data-l10n-id="advancedSettings@links@predefinedRules@URILinkifyAuthority">Linkify URL containing the alone authority (i.e. host:port)</label>
 		  <input type="checkbox" id="standard-urls.linkify-authority">
 		</div>
 	  </fieldset>
 	  <fieldset>
-		<legend data-l10n-id="advanced-settings.links.custom-rules">Apply Custom Rules for:</legend>
+		<legend data-l10n-id="advancedSettings@links@customRules">Apply Custom Rules for:</legend>
 		<div class="settings-entry">
-		  <label for="before-predefined" data-l10n-id="advanced-settings.links.custom-rules.before-predefined">Before predefined rules list</label>
+		  <label for="before-predefined" data-l10n-id="advancedSettings@links@customRules@beforePredefined">Before predefined rules list</label>
 		  <input type="checkbox" id="before-predefined">
 		</div>
 		<div class="settings-entry">
-		  <label for="after-predefined" data-l10n-id="advanced-settings.links.custom-rules.after-predefined">After predefined rules list</label>
+		  <label for="after-predefined" data-l10n-id="advancedSettings@links@customRules@afterPredefined">After predefined rules list</label>
 		  <input type="checkbox" id="after-predefined">
 		</div>
 	  </fieldset>
 	  <fieldset>
-		<legend data-l10n-id="advanced-settings.links.extra-features">Extra Features</legend>
+		<legend data-l10n-id="advancedSettings@links@extraFeatures">Extra Features</legend>
 		<div class="settings-entry">
-		  <label for="inline-elements" data-l10n-id="advanced-settings.links.extra-features.inline-elements">Handle inline elements</label>
+		  <label for="inline-elements" data-l10n-id="advancedSettings@links@extraFeatures@inlineElements">Handle inline elements</label>
 		  <input checked type="checkbox" id="inline-elements">
 		</div>
 		<div class="settings-entry">
-		  <label for="automatic-linkification" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification">Automatically process dynamic changes</label>
+		  <label for="automatic-linkification" data-l10n-id="advancedSettings@links@extraFeatures@automaticLinkification">Automatically process dynamic changes</label>
 		  <input checked type="checkbox" id="automatic-linkification">
 		</div>
 		<div class="settings-entry indent">
-		  <label for="automatic-linkification.refresh-interval" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-interval">Process dynamic changes every:</label>
+		  <label for="automatic-linkification.refresh-interval" data-l10n-id="advancedSettings@links@extraFeatures@automaticLinkification@refreshInterval">Process dynamic changes every:</label>
 		  <input checked type="checkbox" id="automatic-linkification.refresh-interval">
 		  <input class="secondary-input" type="number" min="0" max="9999" step="10" id="automatic-linkification.refresh-interval.value">
-		  <label class="secondary-label" for="automatic-linkification.refresh-interval.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
+		  <label class="secondary-label" for="automatic-linkification.refresh-interval.value" data-l10n-id="advancedSettings@milliseconds">ms</label>
 		</div>
 		<div class="settings-entry indent">
-		  <label for="automatic-linkification.refresh-threshold" data-l10n-id="advanced-settings.links.extra-features.automatic-linkification.refresh-threshold">Disable the processing of dynamic changes if it takes longer than:</label>
+		  <label for="automatic-linkification.refresh-threshold" data-l10n-id="advancedSettings@links@extraFeatures@automaticLinkification@refreshThreshold">Disable the processing of dynamic changes if it takes longer than:</label>
 		  <input checked type="checkbox" id="automatic-linkification.refresh-threshold">
 		  <input class="secondary-input" type="number" min="0" max="9999" step="100" id="automatic-linkification.refresh-threshold.value">
-		  <label class="secondary-label" for="automatic-linkification.refresh-threshold.value" data-l10n-id="advanced-settings.milliseconds">ms</label>
+		  <label class="secondary-label" for="automatic-linkification.refresh-threshold.value" data-l10n-id="advancedSettings@milliseconds">ms</label>
 		</div>
 	  </fieldset>
 	</div>
@@ -88,69 +88,73 @@
 
 	<div id="configuration" class="tabcontent">
 	  <fieldset>
-		<legend data-l10n-id="advanced-settings.configuration.general">General</legend>
+		<legend data-l10n-id="advancedSettings@configuration@general">General</legend>
 		<div class="settings-entry settings-entry2">
-		  <label for="required-characters" data-l10n-id="advanced-settings.configuration.general.required-characters">Required Characters</label>
+		  <label for="required-characters" data-l10n-id="advancedSettings@configuration@general@requiredCharacters">Required Characters</label>
 		  <input type="text" name="required-characters" id="required-characters">
-		  <button type="button" class="reset-button" id="reset-required-characters" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <button type="button" class="reset-button" id="reset-required-characters" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="protocols" data-l10n-id="advanced-settings.configuration.general.protocols">Protocols</label>
-		  <input type="text" name="protocols" id="protocols">
-		  <button type="button" class="reset-button" id="reset-protocols" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <label for="protocols" data-l10n-id="advancedSettings@configuration@general@protocols">Protocols</label>
+		  <input type="text" name="protocols" id="protocols"
+				 title="Separate elements with a space" data-l10n-attrs="title" data-l10n-id="advancedSettings@configuration@list">
+		  <button type="button" class="reset-button" id="reset-protocols" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="subdomains" data-l10n-id="advanced-settings.configuration.general.subdomains">Subdomains</label>
-		  <input type="text" name="subdomains" id="subdomains">
-		  <button type="button" class="reset-button" id="reset-subdomains" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <label for="subdomains" data-l10n-id="advancedSettings@configuration@general@subdomains">Subdomains</label>
+		  <input type="text" name="subdomains" id="subdomains"
+				 title="Separate elements with a space" data-l10n-attrs="title" data-l10n-id="advancedSettings@configuration@list">
+		  <button type="button" class="reset-button" id="reset-subdomains" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="excluded-elements" data-l10n-id="advanced-settings.configuration.general.excluded-elements">Excluded Elements</label>
-		  <input type="text" name="excluded-elements" id="excluded-elements">
-		  <button type="button" class="reset-button" id="reset-excluded-elements" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <label for="excluded-elements" data-l10n-id="advancedSettings@configuration@general@excludedElements">Excluded Elements</label>
+		  <input type="text" name="excluded-elements" id="excluded-elements"
+				 title="Separate elements with a space" data-l10n-attrs="title" data-l10n-id="advancedSettings@configuration@list">
+		  <button type="button" class="reset-button" id="reset-excluded-elements" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="inline-elements-list" data-l10n-id="advanced-settings.configuration.general.inline-elements">Inline Elements</label>
-		  <input type="text" name="inline-elements-list" id="inline-elements-list">
-		  <button type="button" class="reset-button" id="reset-inline-elements" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <label for="inline-elements-list" data-l10n-id="advancedSettings@configuration@general@inlineElements">Inline Elements</label>
+		  <input type="text" name="inline-elements-list" id="inline-elements-list"
+				 title="Separate elements with a space" data-l10n-attrs="title" data-l10n-id="advancedSettings@configuration@list">
+		  <button type="button" class="reset-button" id="reset-inline-elements" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="max-data-size" data-l10n-id="advanced-settings.configuration.general.max-data-size">Maximum data size</label>
+		  <label for="max-data-size" data-l10n-id="advancedSettings@configuration@general@maxDataSize">Maximum data size</label>
 		  <input type="number" min="0" step="1000" name="max-data-size" id="max-data-size">
-		  <button type="button" class="reset-button" id="reset-max-data-size" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <button type="button" class="reset-button" id="reset-max-data-size" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 	  </fieldset>
 	  <fieldset>
-		<legend data-l10n-id="advanced-settings.configuration.top-level-domains">Top-Level Domains</legend>
+		<legend data-l10n-id="advancedSettings@configuration@topLevelDomains">Top-Level Domains</legend>
 		<div class="settings-entry settings-entry2">
-		  <label for="generics" data-l10n-id="advanced-settings.configuration.top-level-domains.generics">Generics</label>
+		  <label for="generics" data-l10n-id="advancedSettings@configuration@topLevelDomains@generics">Generics</label>
 		  <input checked type="checkbox" name="generics" id="generics">
-		  <textarea id="generics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
-		  <button type="button" class="reset-button" id="reset-generics" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <textarea id="generics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
+		  <button type="button" class="reset-button" id="reset-generics" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="country-codes" data-l10n-id="advanced-settings.configuration.top-level-domains.country-codes">Country Codes</label>
+		  <label for="country-codes" data-l10n-id="advancedSettings@configuration@topLevelDomains@countryCodes">Country Codes</label>
 		  <input checked type="checkbox" name="country-codes" id="country-codes">
-		  <textarea id="country-codes-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
-		  <button type="button" class="reset-button" id="reset-country-codes" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <textarea id="country-codes-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
+		  <button type="button" class="reset-button" id="reset-country-codes" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="geographics" data-l10n-id="advanced-settings.configuration.top-level-domains.geographics">Geographics</label>
+		  <label for="geographics" data-l10n-id="advancedSettings@configuration@topLevelDomains@geographics">Geographics</label>
 		  <input checked type="checkbox" name="geographics" id="geographics">
-		  <textarea id="geographics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
-		  <button type="button" class="reset-button" id="reset-geographics" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <textarea id="geographics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
+		  <button type="button" class="reset-button" id="reset-geographics" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="communities" data-l10n-id="advanced-settings.configuration.top-level-domains.communities">Communities</label>
+		  <label for="communities" data-l10n-id="advancedSettings@configuration@topLevelDomains@communities">Communities</label>
 		  <input checked type="checkbox" name="communities" id="communities">
-		  <textarea id="communities-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
-		  <button type="button" class="reset-button" id="reset-communities" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <textarea id="communities-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
+		  <button type="button" class="reset-button" id="reset-communities" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
-		  <label for="brands" data-l10n-id="advanced-settings.configuration.top-level-domains.brands">Brands</label>
+		  <label for="brands" data-l10n-id="advancedSettings@configuration@topLevelDomains@brands">Brands</label>
 		  <input checked type="checkbox" name="brands" id="brands">
-		  <textarea id="brands-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"></textarea> 
-		  <button type="button" class="reset-button" id="reset-brands" data-l10n-id="advanced-settings.configuration.reset-button">Reset to Default</button>
+		  <textarea id="brands-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
+		  <button type="button" class="reset-button" id="reset-brands" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 	  </fieldset>
 	</div>

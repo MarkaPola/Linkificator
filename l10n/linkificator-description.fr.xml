@@ -13,12 +13,6 @@ Transforme les liens textuels en liens hypertexte cliquables...
 
 	  <strong>ATTENTION</strong>: Dans la mesure où ce module réalise les même transformations que le module Linkification, il est <strong>recommandé</strong> de désactiver ou désinstaller ce module pour un fonctionnement correct.
 
-	  Cette version contient les bogues et limitations suivants :
-	]]>
-	<ul>
-      <li>Du fait des limitations du Add-on SDK, jusqu'à la version 28 de Firefox, Il n'est pas possible d'enlever le widget de Linkificator de la barre des modules en utilisant la méthode standard. Il faut, à la place, utiliser l'option 'Afficher le widget dans la barre des modules' de Linkificator.
-      A partir de la version 29.0 de Firefox, cette limitation a été supprimée et la méthode standard de personnalisation de Firefox peut être utilisée pour gérer le widget de Linkificator.</li>
-	</ul>
 	<![CDATA[
 	  Icones fournies par <a href="http://www.fasticon.com">FastIcon.com</a>
 	  Infrastructure de localisation : <a href="http://crowdin.com">Crowdin.com</a>
@@ -51,13 +45,7 @@ Transforme les liens textuels en liens hypertexte cliquables...
 	<ul>
 	  <li>Fonctionnalités court terme
 	  <ul>
-		<li>Ajout de la possibilité de sauvegarder et restaurer la configuration</li>
 		<li>Ajout de nouvelles localisations (locales actuellement supportées : en-US, fr et ru)</li>
-	  </ul>
-	  </li>
-	  <li>Fonctionnalités long terme
-	  <ul>
-		<li>Support des produits SeaMonkey et Thunderbird</li>
 	  </ul>
 	  </li>
 	</ul>

@@ -12,63 +12,62 @@
   <body>	
 	<form name="linkificator-settings" id="linkificator-settings">
 	  <div class="settings-entry">
-		<label for="activated" data-l10n-id="settings.activated">Activated</label>
+		<label for="activated" data-l10n-id="settings@activated">Activated</label>
 		<input checked type="checkbox" id="activated">
 	  </div>
 	  <div class="settings-entry">
-		<label for="on-demand" data-l10n-id="settings.on-demand">Linkify only on demand</label>
+		<label for="on-demand" data-l10n-id="settings@onDemand">Linkify only on demand</label>
 		<input type="checkbox" name="on-demand" id="on-demand"/>
 	  </div>
 	  <div class="settings-entry">
-		<label for="display-counter" data-l10n-id="settings.display-counter">Display counter</label>
+		<label for="display-counter" data-l10n-id="settings@displayCounter">Display counter</label>
 		<input checked type="checkbox" name="display-counter" id="display-counter"/>
 	  </div>
 	  <div class="settings-entry">
-		<label for="context-menu" data-l10n-id="settings.context-menu-integration">Page context menu integration</label>
+		<label for="context-menu" data-l10n-id="settings@contextMenuIntegration">Page context menu integration</label>
 		<input checked type="checkbox" name="context-menu" id="context-menu"/>
 	  </div>
 	  <hr>
 	  <div class="settings-entry">
-		<label for="use-regexp" data-l10n-id="settings.use-regular-expressions">Use regular expressions for domains</label>
+		<label for="use-regexp" data-l10n-id="settings@useRegularExpressions">Use regular expressions for domains</label>
 		<input checked type="checkbox" name="use-regexp" id="use-regexp"/>
 	  </div>
 	  <div class="settings-entry">
-		<label for="domain-filtering-mode" data-l10n-id="settings.domain-filtering-mode">Domain filtering mode</label>
+		<label for="domain-filtering-mode" data-l10n-id="settings@domainFilteringMode">Domain filtering mode</label>
 		<select id="domain-filtering-mode">
-		  <option value="none" data-l10n-id="settings.domain-filtering-mode.none" >None</option>
-		  <option value="white" data-l10n-id="settings.domain-filtering-mode.whitelist">Only linkify for domains in Whitelist</option>
-		  <option selected value="black" data-l10n-id="settings.domain-filtering-mode.blacklist">Never linkify for domains in Blacklist</option>
+		  <option value="none" data-l10n-id="settings@domainFilteringMode@none" >None</option>
+		  <option value="white" data-l10n-id="settings@domainFilteringMode@whitelist">Only linkify for domains in Whitelist</option>
+		  <option selected value="black" data-l10n-id="settings@domainFilteringMode@blacklist">Never linkify for domains in Blacklist</option>
 		</select>
 	  </div>
 	  <div class="settings-entry">
-		<label for="domains-list" data-l10n-id="settings.domain-filtering-mode.domains-list.label">Domains</label>
+		<label for="domains-list" data-l10n-id="settings@domainFilteringMode@domainList@label">Domains</label>
 		<input type="text" name="domains-list" id="domains-list" class="long-text"
-			   title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings.domain-filtering-mode.domains-list"/>
+			   title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"/>
 	  </div>
 	  <hr>
       <div class="settings-entry">
-		<label for="override-text-color" data-l10n-id="settings.override-text-color">Override text color</label>
+		<label for="override-text-color" data-l10n-id="settings@overrideTextColor">Override text color</label>
 		<input type="checkbox" name="override-text-color" id="override-text-color"/>
 		<input type="color" name="href-text-color" id="href-text-color"/>
 	  </div>
       <div class="settings-entry">
-		<label for="override-background-color" data-l10n-id="settings.override-background-color">Override background color</label>
+		<label for="override-background-color" data-l10n-id="settings@overrideBackgroundColor">Override background color</label>
 		<input type="checkbox" name="override-background-color" id="override-background-color"/>
 		<input type="color" name="href-background-color" id="href-background-color"/>
 	  </div>
 	  <hr>
       <div class="settings-entry">
 		<label for="advanced-settings"></label>
-		<button type="button" id="advanced-settings" data-l10n-id="settings.advanced-settings">Advanced Settings...</button>
+		<button type="button" id="advanced-settings" data-l10n-id="settings@advancedSettings">Advanced Settings...</button>
 	  </div>
 	  <hr>
 	  <div class="settings-entry">
-		<label for="sync-settings" data-l10n-id="settings.sync-settings">Sync settings</label>
+		<label for="sync-settings" data-l10n-id="settings@syncSettings">Sync settings</label>
 		<input type="checkbox" id="sync-settings">
 	  </div>
 	  <div class="settings-entry">
-		<label for="reset-defaults" data-l10n-id="settings.reset-defaults">Restore defaults</label>
-		<!--button type="button" id="reset-defaults" class="reset-button"><img src="arrow-circle.png" alt=""></button-->
+		<label for="reset-defaults" data-l10n-id="settings@resetDefaults">Restore defaults</label>
 		<input type="image" id="reset-defaults" src="arrow-circle.png" alt="">
 	  </div>
 	</form>

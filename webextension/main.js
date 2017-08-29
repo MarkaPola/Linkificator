@@ -22,7 +22,7 @@ function displayReleaseNotes () {
 }
 
 browser.runtime.onInstalled.addListener(details => {
-    if ((details.reason === 'install' || details.reason === 'update') && !details.temporary) {
+    if ((details.reason === 'install' || details.reason === 'update')) {
         displayReleaseNotes();
     }
 });
