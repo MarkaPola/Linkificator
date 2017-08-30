@@ -6,6 +6,7 @@
 .version-changes {
 	position: relative;
 	left: 5%;
+	max-width: 90%;
 }
 
 .feature-list-title {

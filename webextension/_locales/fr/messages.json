@@ -129,6 +129,42 @@
         "message": "Appliquer les règles utilisateur pour :",
         "description": "Apply Custom Rules for:"
     },
+    "advancedSettings@links@customRules": {
+        "message": "Apply Custom Rules for:",
+        "description": "Apply Custom Rules for:"
+    },
+    "advancedSettings@links@customRules@ruleEditor@name": {
+        "message": "Nom",
+        "description": "Name"
+    },
+    "advancedSettings@links@customRules@ruleEditor@name@placeholder": {
+        "message": "Identification de la règle",
+        "description": "Rule identification"
+    },
+    "advancedSettings@links@customRules@ruleEditor@pattern": {
+        "message": "Modèle",
+        "description": "Pattern"
+    },
+    "advancedSettings@links@customRules@ruleEditor@pattern@placeholder": {
+        "message": "Expression régulière",
+        "description": "Regular expression"
+    },
+    "advancedSettings@links@customRules@ruleEditor@url": {
+        "message": "URL",
+        "description": "URL"
+    },
+    "advancedSettings@links@customRules@ruleEditor@url@placeholder": {
+        "message": "Expression régulière",
+        "description": "Regular expression"
+    },
+    "advancedSettings@links@customRules@ruleEditor@OK": {
+        "message": "OK",
+        "description": "OK"
+    },
+    "advancedSettings@links@customRules@ruleEditor@cancel": {
+        "message": "Annuler",
+        "description": "Cancel"
+    },
     "advancedSettings@links@customRules@beforePredefined": {
         "message": "Liste Avant les règles prédéfinies",
         "description": "Before predefined rules list"
@@ -347,12 +383,12 @@
     },
 
     "releaseNotes@new_features@3_0_0@1": {
-        "message": "Linkificator s'appuie maintenant sur l'API WebExtension et est donc parfaitement compatible avec Firefox 57+.",
+        "message": "Linkificator s'appuie maintenant sur l'API WebExtension et est donc parfaitement compatible avec Firefox 57+.<br><strong>Remarque</strong>: Cette version est une version hybride (i.e. affiché comme OBSOLÈTE dans Firefox) pour permettre la transmittion des réglages actuels vers le nouvel environnement. La prochaine version sera un module exclusivement basé sur l'API WebExtension.",
         "description": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."
     }, 
     "releaseNotes@limitations@3_0_0@1": {
-        "message": "Du fait des diverses limitations et restrictions imposées par l'API WebExtension, les fonctionnalitées suivantes ne sont plus disponibles:<ul><li>Raccourcis clavier</li><li>Les diverses configurations des clics sur le Widget</li><li>support du protocole about:</li><li>Importation/Exportation des réglages</li></lu><br>J'espère que certaines limitations pourront être levées dans l'avenir avec les évolutions de l'API WebExtension.",
-        "description": "Due to various limiations and restrictions imposed by WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li>li>Various Widget clicks customizations</li><li>about: protocol is not handled anymore</li><<li>Import/Export of settings</li>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
+        "message": "Du fait des diverses limitations et restrictions imposées par l'API WebExtension, les fonctionnalitées suivantes ne sont plus disponibles:<ul><li>Raccourcis clavier</li><li>Les diverses configurations des clics sur le Widget</li><li>support du protocole about:</li><li>Importation/Exportation des réglages</li></ul><br>J'espère que certaines limitations pourront être levées dans l'avenir avec les évolutions de l'API WebExtension.",
+        "description": "Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li><li>Various Widget clicks customizations</li><li>about: protocol support</li><li>Import/Export of settings</li></ul><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
     },
     "releaseNotes@limitations@3_0_0@2": {
         "message": "Actuellement, les règles utilisateurs ne sont plus configurables mais cette limitation disparaîtra dans une prochaine version.",

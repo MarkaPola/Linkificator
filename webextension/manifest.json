@@ -9,6 +9,11 @@
         "48": "resources/icons/icon48.png"
     }, 
 
+    "developer": {
+        "name": "MarkaPola",
+        "url": "https://github.com/MarkaPola/Linkificator"
+    },
+    
     "default_locale": "en_US", 
 
     "applications": {
