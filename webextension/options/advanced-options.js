@@ -10,10 +10,6 @@
 // Manage the options page of the add-on
 //
 
-// utility functions
-function $ (id) {
-	return document.getElementById(id);
-}
 
 function openTab (event, tabName) {
     let tabcontent, tablinks;
@@ -42,6 +38,22 @@ $('tab-configuration').addEventListener('click', event => openTab(event, 'config
 
 //=============== settings management =====================
 var properties = {};
+
+//var beforeCustomRules, afterCustomRules, currentCustomRules;
+function updateCustomRules (manager, kind) {
+    let rules = properties.customRules.rules[kind];
+    rules.splice(0, rules.length, ...manager.rules);
+
+    browser.storage[properties.area].set({customRules: properties.customRules}).catch(reason => console.error(reason));
+}    
+
+var beforeCustomRules = new RulesManager ({id: 'rules-before',
+                                           display: false,
+                                           onChange: () => updateCustomRules(beforeCustomRules, 'beforeList')});
+var afterCustomRules = new RulesManager ({id: 'rules-after',
+                                          display: true,
+                                          onChange: () => updateCustomRules(afterCustomRules, 'afterList')});
+var currentCustomRules = afterCustomRules;
 
 
 function updatePreference (id, value) {
@@ -79,7 +91,7 @@ function updatePreference (id, value) {
 
         return result;
     }
-    
+
     properties[id] = value;
         
     switch (id) {
@@ -130,8 +142,12 @@ function updatePreference (id, value) {
         break;
         // custom rules
     case 'customRules':
+        // tab Links
         setCheckbox('before-predefined', properties.customRules.support.before);
         setCheckbox('after-predefined', properties.customRules.support.after);
+        // tab Custom Rules
+        beforeCustomRules.update(properties.customRules.rules.beforeList);
+        afterCustomRules.update(properties.customRules.rules.afterList);
         break;
         // extra features
     case 'extraFeatures':
@@ -242,6 +258,25 @@ function managePreferences () {
                        ['standard-urls.use-subdomains',
                         'standard-urls.use-TLD',
                         'standard-urls.linkify-authority']);
+
+    //// tab Custom Rules
+    $('custom-rules.add-rule').addEventListener('click', event => currentCustomRules.addRule());
+
+    let select = $('custom-rules.list-selection');
+    select.addEventListener('change', event => {
+        if (select.value == 'before') {
+            afterCustomRules.hide();
+            beforeCustomRules.show();
+            
+            currentCustomRules = beforeCustomRules;
+        } else {
+            beforeCustomRules.hide();
+            afterCustomRules.show();
+            
+            currentCustomRules = afterCustomRules;
+        }
+    });
+    
     //// tab Configuration
     addInputManager('protocols',
                     (value) => {

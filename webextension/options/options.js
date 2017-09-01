@@ -9,10 +9,6 @@
 // Manage the options page of the add-on
 //
 
-// utility functions
-function $ (id) {
-	return document.getElementById(id);
-}
 
 //=============== settings management =====================
 var properties = {};

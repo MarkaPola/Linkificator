@@ -6,6 +6,90 @@
  * author: MarkaPola
  */
 
+/*
+ * Utilitu classes
+ */
+.hidden {
+	display: none;
+}
+
+
+/*
+ * Global configuration for some elements
+ */
+input, select, button {
+	color: #333;
+}
+input, button {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
+	border-color: #c1c1c1;
+}
+
+input:focus {
+	border-color: rgba(0, 149, 221, 0.8);
+}
+input[type="text"] {
+	text-align: left;
+}
+input[type="number"] {
+	text-align: right;
+}
+input[type="image"] {
+	padding: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+input[type="image"]:hover {
+    background-color: #f1f1f1;
+}
+input[type="image"]:active {
+    background-color: #dadada;
+}
+input[type="image"]:disabled {
+    background-color: #f1f1f1;
+	color: #666666;
+	cursor: inherit;
+}
+input[type="image"]::-moz-focus-inner {
+	border: 0;
+}
+select {
+    border-style: solid;
+    border-width: 1px;
+	border-color: #c1c1c1;
+	border-radius: 2px;
+}
+select:hover {
+    background-color: #f1f1f1;
+}
+select option:hover {
+	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset;
+}
+select option:checked {
+	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
+}
+button {
+	padding: 6px;
+    background-color: white;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #f1f1f1;
+}
+button:active {
+    background-color: #dadada;
+}
+button:disabled {
+    background-color: #f1f1f1;
+	color: #666666;
+	cursor: inherit;
+}
+button::-moz-focus-inner {
+	border: 0;
+}
+
 
 .settings-entry {
 	display: block;
@@ -17,9 +101,9 @@
 
 .settings-entry input, select, button {
 	vertical-align: top;
-	color: #333;
+	/*color: #333;*/
 }
-.settings-entry input, button {
+/*.settings-entry input, button {
     border-style: solid;
     border-width: 1px;
 	border-radius: 2px;
@@ -87,7 +171,7 @@
 .settings-entry button::-moz-focus-inner {
 	border: 0;
 }
-
+*/
 .settings-entry label {
 	display: inline-block;
 	margin-left: 9px;

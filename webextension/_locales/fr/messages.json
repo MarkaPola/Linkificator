@@ -129,42 +129,6 @@
         "message": "Appliquer les règles utilisateur pour :",
         "description": "Apply Custom Rules for:"
     },
-    "advancedSettings@links@customRules": {
-        "message": "Apply Custom Rules for:",
-        "description": "Apply Custom Rules for:"
-    },
-    "advancedSettings@links@customRules@ruleEditor@name": {
-        "message": "Nom",
-        "description": "Name"
-    },
-    "advancedSettings@links@customRules@ruleEditor@name@placeholder": {
-        "message": "Identification de la règle",
-        "description": "Rule identification"
-    },
-    "advancedSettings@links@customRules@ruleEditor@pattern": {
-        "message": "Modèle",
-        "description": "Pattern"
-    },
-    "advancedSettings@links@customRules@ruleEditor@pattern@placeholder": {
-        "message": "Expression régulière",
-        "description": "Regular expression"
-    },
-    "advancedSettings@links@customRules@ruleEditor@url": {
-        "message": "URL",
-        "description": "URL"
-    },
-    "advancedSettings@links@customRules@ruleEditor@url@placeholder": {
-        "message": "Expression régulière",
-        "description": "Regular expression"
-    },
-    "advancedSettings@links@customRules@ruleEditor@OK": {
-        "message": "OK",
-        "description": "OK"
-    },
-    "advancedSettings@links@customRules@ruleEditor@cancel": {
-        "message": "Annuler",
-        "description": "Cancel"
-    },
     "advancedSettings@links@customRules@beforePredefined": {
         "message": "Liste Avant les règles prédéfinies",
         "description": "Before predefined rules list"
@@ -192,6 +156,38 @@
     "advancedSettings@links@extraFeatures@automaticLinkification@refreshThreshold": {
         "message": "Désactiver le traitement des changements dynamiques si il prend plus de :",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
+    },
+    "advancedSettings@customRules@ruleEditor@name": {
+        "message": "Nom",
+        "description": "Name"
+    },
+    "advancedSettings@customRules@ruleEditor@name@placeholder": {
+        "message": "Identification de la règle",
+        "description": "Rule identification"
+    },
+    "advancedSettings@customRules@ruleEditor@pattern": {
+        "message": "Modèle",
+        "description": "Pattern"
+    },
+    "advancedSettings@customRules@ruleEditor@pattern@placeholder": {
+        "message": "Expression régulière",
+        "description": "Regular expression"
+    },
+    "advancedSettings@customRules@ruleEditor@url": {
+        "message": "URL",
+        "description": "URL"
+    },
+    "advancedSettings@customRules@ruleEditor@url@placeholder": {
+        "message": "Expression régulière",
+        "description": "Regular expression"
+    },
+    "advancedSettings@customRules@ruleEditor@OK": {
+        "message": "OK",
+        "description": "OK"
+    },
+    "advancedSettings@customRules@ruleEditor@cancel": {
+        "message": "Annuler",
+        "description": "Cancel"
     },
     "advancedSettings@customRules@beforePredefinedRules": {
         "message": "Avant les règles prédéfinies",

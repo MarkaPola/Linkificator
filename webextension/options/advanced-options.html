@@ -84,6 +84,63 @@
 	<div id="custom-rules" class="tabcontent">
 	  <h3>Custom Rules</h3>
 	  <p>Not yet supported...</p>
+
+	  <div id="rule-editor" class="modal">
+		<div class="modal-content">
+		  <form>
+			<div class="settings-entry rule-entry">
+			  <label for="rule-editor.rule-name" data-l10n-id="advancedSettings@customRules@ruleEditor@name">Name</label>
+			  <input type="text" name="rule-editor.rule-name" id="rule-editor.rule-name"
+					 placeholder="Rule identification"
+					 data-l10n-attrs="placeholder"
+					 data-l10n-id="advancedSettings@customRules@ruleEditor@name"/>
+			</div>
+			<div class="settings-entry rule-entry">
+			  <label for="rule-editor.rule-pattern" data-l10n-id="advancedSettings@customRules@ruleEditor@pattern">Pattern</label>
+			  <input type="text" name="rule-editor.rule-pattern" id="rule-editor.rule-pattern"
+					 placeholder="Regular expression"
+					 data-l10n-attrs="placeholder"
+					 data-l10n-id="advancedSettings@customRules@ruleEditor@pattern"/>
+			</div>
+			<div class="settings-entry rule-entry">
+			  <label for="rule-editor.rule-url" data-l10n-id="advancedSettings@customRules@ruleEditor@url">URL</label>
+			  <input type="text" name="rule-editor.rule-url" id="rule-editor.rule-url"
+					 placeholder="Regular expression"
+					 data-l10n-attrs="placeholder"
+					 data-l10n-id="advancedSettings@customRules@ruleEditor@url"/>
+			</div>
+		  </form>
+		  <div class="rule-editor.buttons">
+			<button type="button" id="rule-editor.cancel" data-l10n-id="advancedSettings@customRules@ruleEditor@Cancel">Cancel</button>
+			<button type="button" id="rule-editor.OK" data-l10n-id="advancedSettings@customRules@ruleEditor@OK">OK</button>
+		  </div>
+		</div>
+	  </div>
+
+	  <template id="custom-rule-template">
+		<div class="settings-rule">
+		  <input type="checkbox" class="rule-active">
+		  <div class="rule-name" draggable="true" data-pattern="" data-url=""></div>
+		  <input type="image" class="delete-button" src="empty.png">
+		  <input type="image" class="edit-button" src="empty.png">
+		</div>
+	  </template>
+	  
+	  <div class="rules-container">
+		<div class="rules-commands">
+		  <select id="custom-rules.list-selection">
+			<option value="before" data-l10n-id="advancedSettings@customRules@beforePredefinedRules">Before predefined rules</option>
+			<option selected value="after" data-l10n-id="advancedSettings@customRules@afterPredefinedRules">After predefined rules</option>
+		  </select>
+		  <button type="button" id="custom-rules.add-rule" data-l10n-id="advancedSettings@customRules@addRule">Add Rule</button>
+		</div>
+		<div class="rules-list">
+		  <table id="rules-before" class="rules-table hidden">
+		  </table>
+		  <table id="rules-after" class="rules-table">
+		  </table>
+		</div>
+	  </div>
 	</div>
 
 	<div id="configuration" class="tabcontent">
@@ -159,7 +216,9 @@
 	  </fieldset>
 	</div>
 	
+	<script src="/resources/js/DOMutils.js"></script>
 	<script src="/resources/js/localization.js"></script>
+	<script src="custom-rules.js"></script>
 	<script src="advanced-options.js"></script>
   </body>
 </html>

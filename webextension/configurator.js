@@ -184,7 +184,8 @@ function Configurator () {
                     },
                     {
                         name: "URN:NBN Resolver, All Links",
-                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+\",\"url\":\"http://nbn-resolving.org/$&",
+                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+",
+                        url: "http://nbn-resolving.org/$&",
                         active: false
                     }
                 ]
@@ -253,7 +254,7 @@ function Configurator () {
                 }
             }
 
-            let {area, activated, ...settings} = properties;
+            let {area, activated, sync, ...settings} = properties;
             return browser.storage[properties.area].set(settings).then(() => {
                 return properties;
             });
@@ -263,32 +264,32 @@ function Configurator () {
     function initializePreferences ()
     {
         return setPreferences().then(properties => {
+            // can now attach handle to manage preferences changes
+            browser.storage.onChanged.addListener((changes, area) => {
+                if (area === 'local') {
+                    if (changes.hasOwnProperty('activated')) {
+                        properties.activated = changes.activated.newValue;
+                    }
+                    
+                    if (changes.hasOwnProperty('sync')) {
+                        properties.area = changes.sync.newValue ? 'sync' : 'local';
+                        setPreferences();
+
+                        return;
+                    }
+                }
+                
+                if (area === properties.area) {
+                    for (let key in changes) {
+                        properties[key] =  changes[key].newValue;
+                    }
+                }
+            });
+
             return {configurator: new ConfiguratorManager(), properties: properties};
         });
     }
     
-    // handle preferences changes
-    browser.storage.onChanged.addListener((changes, area) => {
-        if (area === 'local') {
-            if (changes.hasOwnProperty('activated')) {
-                properties.activated = changes.activated.newValue;
-            }
-            
-            if (changes.hasOwnProperty('sync')) {
-                properties.area = changes.sync.newValue ? 'sync' : 'local';
-                setPreferences();
-
-                return;
-            }
-        }
-        
-        if (area === properties.area) {
-            for (let key in changes) {
-                properties[key] =  changes[key].newValue;
-            }
-        }
-    });
-
     // handle preferences management events
     browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
         switch (message.id) {

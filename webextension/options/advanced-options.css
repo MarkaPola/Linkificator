@@ -136,3 +136,146 @@ legend {
 #max-data-size {
 	width: 8em;
 }
+
+
+/*
+ * Custom Rules Tab
+ */
+
+/*** Rule editor : Modal window ***/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+	display: block;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-style: solid;
+    border-width: 1px;
+	border-radius: 6px;
+	border-color: #888;
+    width: 700px;
+	overflow: hidden;
+}
+
+.rule-entry label {
+	width: 80px !important;
+}
+.rule-entry > input[type="text"] {
+	width: calc(90% - 80px) !important;
+}
+
+.modal-content .rule-editor\.buttons {
+	width: 100%;
+}
+
+.rule-editor\.buttons button {
+	float: right;
+	margin: 8px;
+}
+#rule-editor\.cancel {
+	margin-right: calc(10% - 37px);
+}
+
+.modal-content button {
+	vertical-align: top;
+	font-size: 0.95em;
+}
+
+/*** Rules List ***/
+.rules-container {
+	margin-left: 10%;
+	width: 80%;
+}
+
+.rules-container  > .rules-commands {
+	margin-bottom: 20px;
+}
+
+div.rules-commands button {
+	float: right;
+}
+
+.rules-container > .rules-list {
+	padding: 40%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+div.rules-list {
+	border-style: solid;
+    border-width: 1px;
+	border-radius: 2px;
+	border-color: #c1c1c1;
+
+	overflow: auto;
+}
+
+.rules-list > table {
+	width: 100%;
+}
+.rules-table  {
+	position: absolute;
+	top: 0;
+	left: 0;
+	table-layout: fixed;
+}
+
+td div {
+	display: inline-block;
+	width: 100%;
+}
+
+.rules-table tr:hover {
+	background-color: rgba(0, 149, 221, 0.25);
+}
+
+.settings-rule {
+	width: calc(100% - 10px);
+	margin-left: 5px;
+}
+
+.rule-name {
+	margin-left: 10px;
+	width: calc(100% - 80px);
+}
+.settings-rule input[type="checkbox"] {
+	float: left;
+}
+.settings-rule input[type="image"] {
+	border-style: none;
+	float: right;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    width: 16px;
+    height: 16px;
+	margin-right: 5px;
+}
+
+.edit-button {
+    background-image: url(edit.png);
+}
+.edit-button:hover,
+.edit-button:active,
+.edit-button:focus {
+	background-image: url(edit-hover.png);
+}
+
+.delete-button {
+    background-image: url(delete.png);
+}
+.delete-button:hover,
+.delete-button:active,
+.delete-button:focus {
+	background-image: url(delete-hover.png);
+}

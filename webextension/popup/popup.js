@@ -9,11 +9,6 @@
 // Manage the options page of the add-on
 //
 
-// utility functions
-function $ (id) {
-	return document.getElementById(id);
-}
-
 
 function managePopup (context) {
     $('panel-options').addEventListener('click', event => {

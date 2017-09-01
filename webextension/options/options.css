@@ -19,7 +19,7 @@ form {
 .settings-entry > input.long-text {
 	width: calc(95% - 200px);
 }
-.settings-entry  input[type="color"] {
+.settings-entry input[type="color"] {
 	margin-left: 15px;
 }
 
