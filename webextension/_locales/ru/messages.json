@@ -186,8 +186,24 @@
         "description": "OK"
     },
     "advancedSettings@customRules@ruleEditor@cancel": {
-        "message": "Annuler",
-        "description": "Отмена"
+        "message": "Отмена",
+        "description": "Cancel"
+    },
+    "advancedSettings@customRules@ruleEditor@emptyField": {
+        "message": "Поля не должны быть пустыми",
+        "description": "Fields must not be empty"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidRE": {
+        "message": "Ошибки в регулярных выражениях",
+        "description": "Errors on regular expressions"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidPattern": {
+        "message": "Шаблон не является допустимым регулярным выражением",
+        "description": "Pattern is not a valid regular expression"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidURL": {
+        "message": "адрес не является допустимым регулярным выражением",
+        "description": "URL is not a valid regular expression"
     },
     "advancedSettings@customRules@beforePredefinedRules": {
         "message": "Перед предопределёнными правилами",

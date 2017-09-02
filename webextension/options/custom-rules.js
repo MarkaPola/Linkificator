@@ -1,4 +1,8 @@
 
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 
 // author: MarkaPola
 
@@ -14,9 +18,33 @@ class RuleEditor {
         this._pattern = $('rule-editor.rule-pattern');
         this._url = $('rule-editor.rule-url');
 
+        this._error = $('rule-editor.error');
+        
         this._onDefaultCancel = options.onCancel;
         this._onDefaultOK = options.onOK;
+
+        ///// error message management
+        // handle alarm event to clear error message
+        browser.alarms.onAlarm.addListener(alarm => {
+            if (alarm.name === 'rule-editor.clear-error');
+            $('rule-editor.error').textContent = "";
+        });
         
+        // handle event focus on various fields to clean-up error message
+        this._name.addEventListener('focus', event => {
+            $('rule-editor.error').textContent = "";
+            browser.alarms.clear('rule-editor.clear-error');
+        });
+        this._pattern.addEventListener('focus', event => {
+            $('rule-editor.error').textContent = "";
+            browser.alarms.clear('rule-editor.clear-error');
+        });
+        this._url.addEventListener('focus', event => {
+            $('rule-editor.error').textContent = "";
+            browser.alarms.clear('rule-editor.clear-error');
+        });
+
+        // handle buttons
         $('rule-editor.cancel').addEventListener('click', event => {
             this._editor.style.display = 'none';
             if (this._onCancel) {
@@ -29,6 +57,39 @@ class RuleEditor {
             this._onOK = undefined;
         });
         $('rule-editor.OK').addEventListener('click', event => {
+		    function check (regex) {
+			    try {
+				    new RegExp (regex);
+				    return true;
+			    } catch (e) {
+				    return false;
+			    }
+		    }
+            function displayError (id) {
+                $('rule-editor.error').textContent = browser.i18n.getMessage(id);
+                // create an alarm to erase error message
+                browser.alarms.create('rule-editor.clear-error', {when: Date.now()+5000});
+            }
+            
+            if (this._name.value.length === 0
+                || this._pattern.value.length === 0
+                || this._url.value.length === 0) {
+                displayError('advancedSettings@customRules@ruleEditor@emptyField');
+                
+                return;
+            }
+
+            let patternValid = check(this._pattern.value);
+		    let urlValid = check(this._url.value);
+
+		    if (!patternValid || !urlValid) {
+                if (!patternValid && !urlValid) displayError('advancedSettings@customRules@ruleEditor@invalidRE');
+                else if (!patternValid) displayError('advancedSettings@customRules@ruleEditor@invalidPattern');
+                else displayError('advancedSettings@customRules@ruleEditor@invalidURL');
+                
+			    return;
+            }
+            
             this._editor.style.display = 'none';
             if (this._onOK) {
                 this._onOK(event, {name: this._name.value,
@@ -56,6 +117,8 @@ class RuleEditor {
         this._pattern.value = options.rule.pattern;
         this._url.value = options.rule.url;
 
+        this._error.textContent = "";
+        
         this._editor.style.display = 'block';
     }
     
@@ -125,12 +188,14 @@ class RulesManager {
         display ? this.show() : this.hide();
 
         this._onChange = options.onChange;
-        
-        for (let rule of rules) {
-            let r = new CustomRule({rule: rule,
-                                    onEdit: this._editRow.bind(this),
-                                    onDelete: this._deleteRow.bind(this)});
-            this._table.insertRow(-1).insertCell(0).appendChild(r.node);
+
+        if (rules) {
+            for (let rule of rules) {
+                let r = new CustomRule({rule: rule,
+                                        onEdit: this._editRow.bind(this),
+                                        onDelete: this._deleteRow.bind(this)});
+                this._table.insertRow(-1).insertCell(0).appendChild(r.node);
+            }
         }
     }
     
@@ -151,8 +216,8 @@ class RulesManager {
                                     onDelete: this._deleteRow.bind(this)});
             if (index < size) {
                 // update current row
-                let old = this._table.rows[index].cells[0].firstChild;
-                this._table.rows[index].cells[0].replaceChild(r.node, old);
+                let cell = this._table.rows[index].cells[0];
+                cell.replaceChild(r.node, cell.querySelector('.settings-rule'));
                 index++;
             } else {
                 this._table.insertRow(-1).insertCell(0).appendChild(r.node);
@@ -182,16 +247,15 @@ class RulesManager {
     get rules () {
         let result = [];
 
-        for (let i = 0, row; row = this._table.rows[i]; i++) {
-            for (let j = 0, cell; cell = row.cells[j]; j++) {
-                let rule = cell.querySelector('.rule-name');
-                let checked = cell.querySelector('.rule-active').checked;
-                
-                result.push({name: rule.textContent,
-                             pattern: rule.dataset.pattern,
-                             url: rule.dataset.url,
-                             active: checked});
-            }
+        for (let i = 0, rows = this._table.rows; i < rows.length; i++) {
+            let cell = rows[i].cells[0];
+            let rule = cell.querySelector('.rule-name');
+            let checked = cell.querySelector('.rule-active').checked;
+            
+            result.push({name: rule.textContent,
+                         pattern: rule.dataset.pattern,
+                         url: rule.dataset.url,
+                         active: checked});
         }
         
         return result;

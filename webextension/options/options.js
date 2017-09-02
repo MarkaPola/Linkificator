@@ -198,7 +198,7 @@ function managePreferences () {
     });
 }
 
-// audit storage changes for some preferences which can be changed outside options page
+// audit storage changes
 browser.storage.onChanged.addListener((changes, area) => {
     if (area === 'local') {
         if (changes.hasOwnProperty('activated'))
@@ -206,8 +206,9 @@ browser.storage.onChanged.addListener((changes, area) => {
     }
 
     if (area === properties.area) {
-        if (changes.hasOwnProperty('manual'))
-            updatePreference('manual', changes.manual.newValue);
+        for (let key in changes) {
+            properties[key] =  changes[key].newValue;
+        }
     }
 });
 

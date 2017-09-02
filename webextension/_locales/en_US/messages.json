@@ -189,6 +189,22 @@
         "message": "Cancel",
         "description": "Cancel"
     },
+    "advancedSettings@customRules@ruleEditor@emptyField": {
+        "message": "Fields must not be empty",
+        "description": "Fields must not be empty"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidRE": {
+        "message": "Errors on regular expressions",
+        "description": "Errors on regular expressions"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidPattern": {
+        "message": "Pattern is not a valid regular expression",
+        "description": "Pattern is not a valid regular expression"
+    },
+    "advancedSettings@customRules@ruleEditor@invalidURL": {
+        "message": "URL is not a valid regular expression",
+        "description": "URL is not a valid regular expression"
+    },
     "advancedSettings@customRules@beforePredefinedRules": {
         "message": "Before predefined rules",
         "description": "Before predefined rules"

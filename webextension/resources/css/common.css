@@ -101,77 +101,8 @@ button::-moz-focus-inner {
 
 .settings-entry input, select, button {
 	vertical-align: top;
-	/*color: #333;*/
 }
-/*.settings-entry input, button {
-    border-style: solid;
-    border-width: 1px;
-	border-radius: 2px;
-	border-color: #c1c1c1;
-}
-.settings-entry input:focus {
-	border-color: rgba(0, 149, 221, 0.8);
-}
-.settings-entry input[type="text"] {
-	text-align: left;
-}
-.settings-entry input[type="number"] {
-	text-align: right;
-}
-.settings-entry input[type="image"] {
-	padding: 4px;
-    background-color: white;
-    cursor: pointer;
-}
-.settings-entry input[type="image"]:hover {
-    background-color: #f1f1f1;
-}
-.settings-entry input[type="image"]:active {
-    background-color: #dadada;
-}
-.settings-entry input[type="image"]:disabled {
-    background-color: #f1f1f1;
-	color: #666666;
-	cursor: inherit;
-}
-.settings-entry input[type="image"]::-moz-focus-inner {
-	border: 0;
-}
-.settings-entry select {
-    border-style: solid;
-    border-width: 1px;
-	border-color: #c1c1c1;
-	border-radius: 2px;
-}
-.settings-entry select:hover {
-    background-color: #f1f1f1;
-}
-.settings-entry select option:hover {
-	box-shadow: 0 0 10px 100px rgba(0, 149, 221, 0.25) inset;
-}
-.settings-entry select option:checked {
-	box-shadow: 0 0 10px 100px rgb(0, 149, 221) inset;
-}
-.settings-entry button {
-	padding: 6px;
-    background-color: white;
-    cursor: pointer;
-}
-.settings-entry button:hover {
-    background-color: #f1f1f1;
-}
-.settings-entry button:active {
-    background-color: #dadada;
-}
-.settings-entry button:disabled {
-    background-color: #f1f1f1;
-	color: #666666;
-	cursor: inherit;
-}
-.settings-entry button::-moz-focus-inner {
-	border: 0;
-}
-*/
+
 .settings-entry label {
 	display: inline-block;
 	margin-left: 9px;

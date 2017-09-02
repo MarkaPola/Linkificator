@@ -12,3 +12,45 @@
 function $ (id) {
 	return document.getElementById(id);
 }
+
+
+/*
+ * Retrieve MIME type from DOM Document
+ *
+ * @param [object] document: DOM Document object
+ */
+
+function Document (doc) {
+    "use strict";
+
+    var document = doc;
+
+    return {
+        get contentType () {
+            let contentType = null;
+
+            if (document) {
+                let ct = document.querySelector('meta[http-equiv="content-type" i]');
+                if (ct) {
+                    let content = ct.getAttribute('content');
+                    if (content) {
+                        contentType = content.trim().split(/;|\s/)[0];
+                    }
+                }
+
+                if (! contentType) {
+                    // Check possible plain text page
+                    if (document.querySelector('link[href="resource://gre-resources/plaintext.css"]')) {
+                        contentType = 'text/plain';
+                    }
+                }
+            }
+            
+            if (! contentType) {
+                contentType = 'text/html';
+            }
+            
+            return contentType;
+        }
+    };
+}

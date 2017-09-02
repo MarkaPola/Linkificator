@@ -41,9 +41,8 @@ var properties = {};
 
 //var beforeCustomRules, afterCustomRules, currentCustomRules;
 function updateCustomRules (manager, kind) {
-    let rules = properties.customRules.rules[kind];
-    rules.splice(0, rules.length, ...manager.rules);
-
+    properties.customRules.rules[kind] = manager.rules;
+    
     browser.storage[properties.area].set({customRules: properties.customRules}).catch(reason => console.error(reason));
 }    
 
@@ -259,24 +258,6 @@ function managePreferences () {
                         'standard-urls.use-TLD',
                         'standard-urls.linkify-authority']);
 
-    //// tab Custom Rules
-    $('custom-rules.add-rule').addEventListener('click', event => currentCustomRules.addRule());
-
-    let select = $('custom-rules.list-selection');
-    select.addEventListener('change', event => {
-        if (select.value == 'before') {
-            afterCustomRules.hide();
-            beforeCustomRules.show();
-            
-            currentCustomRules = beforeCustomRules;
-        } else {
-            beforeCustomRules.hide();
-            afterCustomRules.show();
-            
-            currentCustomRules = afterCustomRules;
-        }
-    });
-    
     //// tab Configuration
     addInputManager('protocols',
                     (value) => {
@@ -310,7 +291,7 @@ function managePreferences () {
                         store({predefinedRules: properties.predefinedRules});
                     });
     addResetManager('excluded-elements', 'excludedElements');
-    // Top level domqins
+    // Top level domains
     //// tab Configuration
     addCheckboxManager('generics',
                        (value) => {
@@ -390,6 +371,23 @@ function managePreferences () {
                            properties.customRules.support.after = value;
                            store({customRules: properties.customRules});
                        });
+    //// tab Custom Rules
+    $('custom-rules.add-rule').addEventListener('click', event => currentCustomRules.addRule());
+
+    let select = $('custom-rules.list-selection');
+    select.addEventListener('change', event => {
+        if (select.value == 'before') {
+            afterCustomRules.hide();
+            beforeCustomRules.show();
+            
+            currentCustomRules = beforeCustomRules;
+        } else {
+            beforeCustomRules.hide();
+            afterCustomRules.show();
+            
+            currentCustomRules = afterCustomRules;
+        }
+    });    
 
     // extra features
     //// tab Links

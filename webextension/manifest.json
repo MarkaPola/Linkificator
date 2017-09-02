@@ -53,7 +53,7 @@
             "run_at": "document_end", 
             "js": [
                 "resources/js/thread.js", 
-                "resources/js/document.js", 
+                "resources/js/DOMutils.js", 
                 "content_scripts/statistics.js", 
                 "content_scripts/linkificator.js"]
         }

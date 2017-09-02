@@ -65,11 +65,11 @@ div.tab button.active {
 }
 
 .tabcontent > fieldset {
-	border-top:2px solid #c1c1c1;
+	border-top: 2px solid #c1c1c1;
 	border-bottom: none;
 	border-left: none;
 	border-right: none;
-	padding-left:2em;
+	padding-left: 2em;
 	padding-top: 10px;
 	padding-bottom: 25px;
 	float:left;
@@ -147,7 +147,7 @@ legend {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 999; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 20%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -172,7 +172,7 @@ legend {
 	width: 80px !important;
 }
 .rule-entry > input[type="text"] {
-	width: calc(90% - 80px) !important;
+	width: calc(100% - 140px) !important;
 }
 
 .modal-content .rule-editor\.buttons {
@@ -184,7 +184,15 @@ legend {
 	margin: 8px;
 }
 #rule-editor\.cancel {
-	margin-right: calc(10% - 37px);
+	margin-right: 31px;
+}
+
+#rule-editor\.error {
+	width: 70%;
+	height: 1em;
+	margin-left: 9px;
+	font-weight: bold;
+	color: red;
 }
 
 .modal-content button {
@@ -194,6 +202,7 @@ legend {
 
 /*** Rules List ***/
 .rules-container {
+    margin-top: 0.5em;
 	margin-left: 10%;
 	width: 80%;
 }
@@ -246,6 +255,7 @@ td div {
 }
 
 .rule-name {
+	cursor: default;
 	margin-left: 10px;
 	width: calc(100% - 80px);
 }
