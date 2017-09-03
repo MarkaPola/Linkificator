@@ -143,7 +143,7 @@ class CustomRule {
 
         // attach actions for edition/deletion
         this._node.querySelector('.edit-button').addEventListener('click', event => {
-            let rule = event.target.parentNode.querySelector('.rule-name');
+            let rule = event.target.parentNode.parentNode.querySelector('.rule-name');
             
             function updateRule (event, newRule) {
                 rule.textContent = newRule.name;
@@ -161,7 +161,7 @@ class CustomRule {
         });
 
         function deleteNode (event) {
-            if (onDelete) onDelete(event.target.parentNode);
+            if (onDelete) onDelete(event.target.parentNode.parentNode);
         }
         this._node.querySelector('.delete-button').addEventListener('click', deleteNode.bind(this));
     }

@@ -86,6 +86,9 @@ legend {
 .settings-entry input, select, button {
 	font-size: 0.9rem;
 }
+.settings-entry > input[type="checkbox"] {
+	margin-top: 3px;
+}
 .settings-entry > input[type="text"] {
 	width: calc(50% - 400px);
 }
@@ -175,24 +178,21 @@ legend {
 	width: calc(100% - 140px) !important;
 }
 
-.modal-content .rule-editor\.buttons {
-	width: 100%;
-}
-
-.rule-editor\.buttons button {
-	float: right;
-	margin: 8px;
-}
-#rule-editor\.cancel {
-	margin-right: 31px;
-}
-
 #rule-editor\.error {
 	width: 70%;
 	height: 1em;
 	margin-left: 9px;
 	font-weight: bold;
 	color: red;
+}
+
+.rule-editor\.buttons {
+	float: right;
+	margin-right: 22px;
+}
+
+.rule-editor\.buttons button {
+	margin: 8px;
 }
 
 .modal-content button {
@@ -251,6 +251,8 @@ td div {
 
 .settings-rule {
 	width: calc(100% - 10px);
+	margin-top: 4px;
+	margin-bottom: 4px;
 	margin-left: 5px;
 }
 
@@ -259,16 +261,26 @@ td div {
 	margin-left: 10px;
 	width: calc(100% - 80px);
 }
+
 .settings-rule input[type="checkbox"] {
 	float: left;
+	margin-top: 3px;
+}
+
+.rule\.buttons {
+	float: right;
+	width: auto;
+	display: inline-block;
 }
 .settings-rule input[type="image"] {
 	border-style: none;
-	float: right;
+	/*float: right;*/
+	background-color: rgba(0,0,0,0.0);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     width: 16px;
     height: 16px;
+	margin-top: 3px;
 	margin-right: 5px;
 }
 

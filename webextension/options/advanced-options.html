@@ -113,8 +113,8 @@
 			</form>
 			<div id="rule-editor.error"></div>
 			<div class="rule-editor.buttons">
-			  <button type="button" id="rule-editor.cancel" data-l10n-id="advancedSettings@customRules@ruleEditor@Cancel">Cancel</button>
 			  <button type="button" id="rule-editor.OK" data-l10n-id="advancedSettings@customRules@ruleEditor@OK">OK</button>
+			  <button type="button" id="rule-editor.cancel" data-l10n-id="advancedSettings@customRules@ruleEditor@Cancel">Cancel</button>
 			</div>
 		  </div>
 		</div>
@@ -123,8 +123,10 @@
 		  <div class="settings-rule">
 			<input type="checkbox" class="rule-active">
 			<div class="rule-name" draggable="true" data-pattern="" data-url=""></div>
-			<input type="image" class="delete-button" src="empty.png">
-			<input type="image" class="edit-button" src="empty.png">
+			<div class="rule.buttons">
+			  <input type="image" class="edit-button" src="empty.png">
+			  <input type="image" class="delete-button" src="empty.png">
+			</div>
 		  </div>
 		</template>
 		
