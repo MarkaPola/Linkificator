@@ -120,9 +120,9 @@
 		</div>
 
 		<template id="custom-rule-template">
-		  <div class="settings-rule">
+		  <div class="settings-rule" draggable="true">
 			<input type="checkbox" class="rule-active">
-			<div class="rule-name" draggable="true" data-pattern="" data-url=""></div>
+			<div class="rule-name" data-pattern="" data-url=""></div>
 			<div class="rule.buttons">
 			  <input type="image" class="edit-button" src="empty.png">
 			  <input type="image" class="delete-button" src="empty.png">
@@ -138,7 +138,7 @@
 			</select>
 			<button type="button" id="custom-rules.add-rule" data-l10n-id="advancedSettings@customRules@addRule">Add Rule</button>
 		  </div>
-		  <div class="rules-list">
+		  <div id="rules-list" class="rules-list">
 			<table id="rules-before" class="rules-table hidden">
 			</table>
 			<table id="rules-after" class="rules-table">

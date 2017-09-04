@@ -134,7 +134,7 @@ class CustomRule {
         let {rule, onEdit, onDelete} = options;
         
         // create DOM object tree
-        this._node = document.importNode(document.getElementById('custom-rule-template').content, true);
+        this._node = document.importNode(document.getElementById('custom-rule-template').content, true).querySelector('.settings-rule');
         this._node.querySelector('.rule-active').checked = rule.active;
         let ruleName = this._node.querySelector('.rule-name');
         ruleName.textContent = rule.name;
@@ -172,6 +172,62 @@ class CustomRule {
 }
 
 class RulesManager {
+    _dragStart (event) {
+        console.log('DRAGSTART');
+        event.dataTransfer.setData('Text', event.target.id);
+        event.dataTransfer.effectAllowed = 'move';
+    }
+    _dragEnter (event) {
+        console.log('DRAGENTER');
+        this.classList.add('dragover');
+
+        event.preventDefault();
+    }
+    _dragLeave (event) {
+        console.log('DRAGLEAVE');
+        // this.classList.remove('dragover');
+        event = event.originalEvent || event;
+        var currentElement = document.elementFromPoint(event.pageX, event.pageY);
+        if (!this.contains(currentElement)) {
+			this.classList.remove('dragover');
+        }
+    }
+    _dragOver (event) {
+        console.log('DRAGOVER');
+        event.preventDefault(); // Necessary. Allows us to drop.
+        
+        event.dataTransfer.dropEffect = 'move';
+
+        return false;
+    }
+    _dragEnd (event) {
+        console.log('DRAGEND');
+         // target is the source node
+        let nodes = this._table.querySelectorAll('.settings-rule');
+        for (let node of nodes) {
+            node.classList.remove('dragover');
+        }
+    }
+    _drop (event) {
+        console.log('DROP');
+        event.stopPropagation(); // stops the browser from redirecting.
+
+        return false;
+    }
+    
+    _newRule (options) {
+        let rule = new CustomRule(options).node;
+
+        // Drag n drop management
+        rule.addEventListener('dragstart', this._dragStart, false);
+        rule.addEventListener('dragenter', this._dragEnter, false);
+        rule.addEventListener('dragover', this._dragOver, false);
+        rule.addEventListener('dragleave', this._dragLeave, false);
+        rule.addEventListener('dragend', this._dragEnd.bind(this), false);
+        rule.addEventListener('drop', this._drop, false);
+
+        return rule;
+    }
     _editRow (node) {
         if (this._onChange) this._onChange();
     }
@@ -180,7 +236,7 @@ class RulesManager {
 
         if (this._onChange) this._onChange();
     }
-        
+
     constructor (options) {
         let {id, rules, display} = options;
 
@@ -191,10 +247,12 @@ class RulesManager {
 
         if (rules) {
             for (let rule of rules) {
-                let r = new CustomRule({rule: rule,
-                                        onEdit: this._editRow.bind(this),
-                                        onDelete: this._deleteRow.bind(this)});
-                this._table.insertRow(-1).insertCell(0).appendChild(r.node);
+                let r = this._newRule({rule: rule,
+                                       onEdit: this._editRow.bind(this),
+                                       onDelete: this._deleteRow.bind(this)});
+                                      
+                this._table.insertRow(-1).insertCell(0).appendChild(r);
+
             }
         }
     }
@@ -211,16 +269,17 @@ class RulesManager {
         let index = 0;
         
         for (let rule of rules) {
-            let r = new CustomRule({rule: rule,
-                                    onEdit: this._editRow.bind(this),
-                                    onDelete: this._deleteRow.bind(this)});
+            let r = this._newRule({rule: rule,
+                                   onEdit: this._editRow.bind(this),
+                                   onDelete: this._deleteRow.bind(this)});
+            
             if (index < size) {
                 // update current row
                 let cell = this._table.rows[index].cells[0];
-                cell.replaceChild(r.node, cell.querySelector('.settings-rule'));
+                cell.replaceChild(r, cell.querySelector('.settings-rule'));
                 index++;
             } else {
-                this._table.insertRow(-1).insertCell(0).appendChild(r.node);
+                this._table.insertRow(-1).insertCell(0).appendChild(r);
             }
         }
 

@@ -240,7 +240,7 @@ div.rules-list {
 	table-layout: fixed;
 }
 
-td div {
+.rules-table tr td div {
 	display: inline-block;
 	width: 100%;
 }
@@ -250,16 +250,17 @@ td div {
 }
 
 .settings-rule {
-	width: calc(100% - 10px);
+	width: calc(100% - 10px) !important;
 	margin-top: 4px;
 	margin-bottom: 4px;
 	margin-left: 5px;
+	-moz-user-select: none;
+	cursor: move;
 }
 
 .rule-name {
-	cursor: default;
 	margin-left: 10px;
-	width: calc(100% - 80px);
+	width: calc(100% - 80px) !important;
 }
 
 .settings-rule input[type="checkbox"] {
@@ -267,11 +268,6 @@ td div {
 	margin-top: 3px;
 }
 
-.rule\.buttons {
-	float: right;
-	width: auto;
-	display: inline-block;
-}
 .settings-rule input[type="image"] {
 	border-style: none;
 	/*float: right;*/
@@ -282,6 +278,12 @@ td div {
     height: 16px;
 	margin-top: 3px;
 	margin-right: 5px;
+}
+
+.rule\.buttons {
+	float: right;
+	width: auto !important;
+	display: inline-block;
 }
 
 .edit-button {
@@ -300,4 +302,10 @@ td div {
 .delete-button:active,
 .delete-button:focus {
 	background-image: url(delete-hover.png);
+}
+
+
+/* Drag n drop customization */
+.settings-rule.dragover {
+	border: 2px dashed #000;
 }
