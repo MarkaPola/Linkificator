@@ -74,6 +74,7 @@ div.tab button.active {
 	padding-bottom: 25px;
 	float:left;
 	width: 95%;
+	height: 100%;
 }
 
 legend {
@@ -204,7 +205,9 @@ legend {
 .rules-container {
     margin-top: 0.5em;
 	margin-left: 10%;
+	
 	width: 80%;
+	height: 70%;
 }
 
 .rules-container  > .rules-commands {
@@ -216,35 +219,38 @@ div.rules-commands button {
 }
 
 .rules-container > .rules-list {
-	padding: 40%;
-	box-sizing: border-box;
-	position: relative;
+	height: 100%;
 }
 
-div.rules-list {
+.rules-list {
 	border-style: solid;
     border-width: 1px;
 	border-radius: 2px;
 	border-color: #c1c1c1;
 
 	overflow: auto;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.remain {
+	flex-grow: 1;
 }
 
 .rules-list > table {
 	width: 100%;
 }
+
 .rules-table  {
-	position: absolute;
-	top: 0;
-	left: 0;
 	table-layout: fixed;
+	border-collapse: collapse;
 }
 
 .rules-table tr td div {
 	display: inline-block;
 	width: 100%;
 }
-
 .rules-table tr:hover {
 	background-color: rgba(0, 149, 221, 0.25);
 }
@@ -256,6 +262,9 @@ div.rules-list {
 	margin-left: 5px;
 	-moz-user-select: none;
 	cursor: move;
+	border-width: 2px;
+	border-style: dashed;
+	border-color: rgba(0,0,0,0.0);
 }
 
 .rule-name {
@@ -270,7 +279,6 @@ div.rules-list {
 
 .settings-rule input[type="image"] {
 	border-style: none;
-	/*float: right;*/
 	background-color: rgba(0,0,0,0.0);
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -307,5 +315,5 @@ div.rules-list {
 
 /* Drag n drop customization */
 .settings-rule.dragover {
-	border: 2px dashed #000;
+	border-color: #000;
 }
