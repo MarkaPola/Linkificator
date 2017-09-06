@@ -174,18 +174,20 @@ class CustomRule {
 class RulesManager {
     _dragStart (event) {
         console.log('DRAGSTART');
-        event.dataTransfer.setData('Text', event.target.id);
+        event.target.style.opacity = '0.4';
+        
+        event.dataTransfer.setData('text', event.target.parentNode.parentNode.rowIndex.toString());
         event.dataTransfer.effectAllowed = 'move';
     }
     _dragEnter (event) {
         console.log('DRAGENTER');
-        this.classList.add('dragover');
-
+        // if (event.target.parentNode.parentNode.rowIndex != event.dataTransfer.getData('Text')) {
+            this.classList.add('dragover');
+        // }
         event.preventDefault();
     }
     _dragLeave (event) {
         console.log('DRAGLEAVE');
-        // this.classList.remove('dragover');
         event = event.originalEvent || event;
         var currentElement = document.elementFromPoint(event.pageX, event.pageY);
         if (!this.contains(currentElement)) {
@@ -202,7 +204,9 @@ class RulesManager {
     }
     _dragEnd (event) {
         console.log('DRAGEND');
-         // target is the source node
+        // target is the source node
+        event.target.style.opacity = '1.0';
+        
         let nodes = this._table.querySelectorAll('.settings-rule');
         for (let node of nodes) {
             node.classList.remove('dragover');
@@ -211,6 +215,7 @@ class RulesManager {
     _drop (event) {
         console.log('DROP');
         event.stopPropagation(); // stops the browser from redirecting.
+        event.preventDefault();
 
         return false;
     }
@@ -271,6 +276,7 @@ class RulesManager {
         rulesArea.addEventListener('drop', event => {
             console.log('DROP REMAIN');
             event.stopPropagation(); // stops the browser from redirecting.
+            event.preventDefault();
         }, false);
     }
     

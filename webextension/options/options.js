@@ -68,7 +68,8 @@ function updatePreference (id, value) {
 function initializePreferences () {
     return browser.storage.local.get({sync: false, activated: true}).then(result => {
         properties.area = result.sync ? 'sync' : 'local';
-        properties.activated = result.activated;
+        updatePreference('sync', result.sync);
+        updatePreference('activated', result.activated);
         
         return browser.storage[properties.area].get().then(result => {
             for (let id in result)
@@ -201,6 +202,8 @@ function managePreferences () {
 // audit storage changes
 browser.storage.onChanged.addListener((changes, area) => {
     if (area === 'local') {
+        if (changes.hasOwnProperty('sync'))
+            updatePreference('sync', changes.sync.newValue);
         if (changes.hasOwnProperty('activated'))
             updatePreference('activated', changes.activated.newValue);
     }

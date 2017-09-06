@@ -194,7 +194,8 @@ function Configurator () {
         }
     };
 
-    let properties = {area: 'local',
+    let properties = {sync: false,
+                      area: 'local',
                       activated: true};
 
 
@@ -204,6 +205,7 @@ function Configurator () {
 
         // TEMPORARY: to update properties from legacy part
         updateProperties (preferences) {
+            properties.sync = preferences.config.sync;
             properties.area = preferences.config.sync ? 'sync' : 'local';
             properties.activated = preferences.config.activated;
 
@@ -269,13 +271,14 @@ function Configurator () {
                     }
                     
                     if (changes.hasOwnProperty('sync')) {
+                        properties.sync = changes.sync.newValue;
                         properties.area = changes.sync.newValue ? 'sync' : 'local';
                         if (properties.area === 'sync') {
                             // retrieve sync values
                             setPreferences();
                         } else {
                             // propagate current settings to local
-                            let {area, activated, sync, ...settings} = properties;
+                            let {area, sync, ...settings} = properties;
                             browser.storage.local.set(settings);
                         }
 
@@ -343,17 +346,16 @@ function Configurator () {
 
     
     return browser.storage.local.get(['sync', 'activated']).then(result => {
-        if (result.sync === undefined) {
-            properties.area = 'local';
-            browser.storage.local.set({sync: false}).catch(reason => console.error(reason));
-        } else {
+        if (result.hasOwnProperty('sync')) {
+            properties.sync = result.sync;
             properties.area = result.sync ? 'sync' : 'local';
-        }
-        if (result.activated === undefined) {
-            properties.activaed = true;
-            browser.storage.local.set({activated: true}).catch(reason => console.error(reason));
         } else {
+            browser.storage.local.set({sync: properties.sync}).catch(reason => console.error(reason));
+        }
+        if (result.hasOwnProperty('activated')) {
             properties.activated = result.activated;
+        } else {
+            browser.storage.local.set({activated: properties.activated}).catch(reason => console.error(reason));
         }
         
         return initializePreferences();
