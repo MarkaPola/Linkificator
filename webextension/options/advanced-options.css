@@ -20,6 +20,7 @@ body {
 
 /* Style the tab */
 div.tab {
+	position: fixed;
     float: left;
 	background-color: #424f5a;
 	width: 200px;
@@ -74,7 +75,6 @@ div.tab button.active {
 	padding-bottom: 25px;
 	float:left;
 	width: 95%;
-	height: 100%;
 }
 
 legend {
@@ -201,6 +201,11 @@ legend {
 	font-size: 0.95em;
 }
 
+/*** special configuration for tabcontent ***/
+#custom-rules.tabcontent > fieldset {
+	height: 100%;
+}
+
 /*** Rules List ***/
 .rules-container {
     margin-top: 0.5em;
@@ -234,7 +239,7 @@ div.rules-commands button {
 	flex-direction: column;
 }
 
-.remain {
+.overflow {
 	flex-grow: 1;
 }
 

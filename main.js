@@ -103,7 +103,7 @@ function sendPreferences (port) {
 		type: prefs.filterMode,
 		list: {
             white: prefs.whitelist.split(' '),
-			black: prefs.blacklist.split(' ')
+			black: prefs.blacklist.split(' ').filter(item => item !== '^about:')
         }
 	};
 
@@ -135,28 +135,26 @@ function sendPreferences (port) {
 		subdomains: splitSubdomains(prefs.subdomains),
 		excludedElements: splitExcludedElements(prefs.excludedElements)
 	};
-
-    settings.topLevelDomains = {
-        generics: {
-            active: prefs.useGTLDs,
-            domains: splitTopLevelDomains(prefs.gTLDs)
-        }, 
-        countryCodes: {
-            active: prefs.useCcTLDs,
-            domains: splitTopLevelDomains(prefs.ccTLDs)
-        }, 
-        geographics: {
-            active: prefs.useGeoTLDs,
-            domains: splitTopLevelDomains(prefs.geoTLDs)
-        }, 
-        communities: {
-            active: prefs.useCommunityTLDs,
-            domains: splitTopLevelDomains(prefs.communityTLDs)
-        }, 
-        brands: {
-            active: prefs.useBrandTLDs,
-            domains: splitTopLevelDomains(prefs.brandTLDs)
-        }
+    
+    settings.tldGenerics = {
+        active: prefs.useGTLDs,
+        domains: splitTopLevelDomains(prefs.gTLDs)
+    }; 
+    settings.tldCountryCodes = {
+        active: prefs.useCcTLDs,
+        domains: splitTopLevelDomains(prefs.ccTLDs)
+    };
+    settings.tldGgeographics = {
+        active: prefs.useGeoTLDs,
+        domains: splitTopLevelDomains(prefs.geoTLDs)
+    }; 
+    settings.tldCommunities = {
+        active: prefs.useCommunityTLDs,
+        domains: splitTopLevelDomains(prefs.communityTLDs)
+    }; 
+    settings.tldBrands = {
+        active: prefs.useBrandTLDs,
+        domains: splitTopLevelDomains(prefs.brandTLDs)
     };
 
     settings.customRules = {

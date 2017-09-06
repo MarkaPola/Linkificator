@@ -116,26 +116,34 @@ function updatePreference (id, value) {
         setInput('subdomains', joinSubdomains(properties.predefinedRules.subdomains));
         setInput('excluded-elements', properties.predefinedRules.excludedElements.join(' '));
         break;
-    case 'topLevelDomains':
         /// tab Configuration
-        setInput('generics-value', properties.topLevelDomains.generics.domains.join(' '));
-        setCheckbox('generics', properties.topLevelDomains.generics.active,
+    case 'tldGenerics':
+        setInput('generics-value', properties.tldGenerics.domains.join(' '));
+        setCheckbox('generics', properties.tldGenerics.active,
                     ['generics-value',
                      'reset-generics']);
-        setInput('country-codes-value', properties.topLevelDomains.countryCodes.domains.join(' '));
-        setCheckbox('country-codes', properties.topLevelDomains.countryCodes.active,
+        break;
+    case 'tldCountryCodes':
+        setInput('country-codes-value', properties.tldCountryCodes.domains.join(' '));
+        setCheckbox('country-codes', properties.tldCountryCodes.active,
                     ['country-codes-value',
                      'reset-country-codes']);
-        setInput('geographics-value', properties.topLevelDomains.geographics.domains.join(' '));
-        setCheckbox('geographics', properties.topLevelDomains.geographics.active,
+        break;
+    case 'tldGeographics':
+        setInput('geographics-value', properties.tldGeographics.domains.join(' '));
+        setCheckbox('geographics', properties.tldGeographics.active,
                     ['geographics-value',
                      'reset-geographics']);
-        setInput('communities-value', properties.topLevelDomains.communities.domains.join(' '));
-        setCheckbox('communities', properties.topLevelDomains.communities.active,
+        break;
+    case 'tldCommunities':
+        setInput('communities-value', properties.tldCommunities.domains.join(' '));
+        setCheckbox('communities', properties.tldCommunities.active,
                     ['communities-value',
                      'reset-communities']);
-        setInput('brands-value', properties.topLevelDomains.brands.domains.join(' '));
-        setCheckbox('brands', properties.topLevelDomains.brands.active,
+        break;
+    case 'tldBrands':
+        setInput('brands-value', properties.tldBrands.domains.join(' '));
+        setCheckbox('brands', properties.tldBrands.active,
                     ['brands-value',
                      'reset-brands']);
         break;
@@ -295,69 +303,69 @@ function managePreferences () {
     //// tab Configuration
     addCheckboxManager('generics',
                        (value) => {
-                           properties.topLevelDomains.generics.active = value;
-                           store({topLevelDomains: properties.topLevelDomains});
+                           properties.tldGenerics.active = value;
+                           store({tldGenerics: properties.tldGenerics});
                        },
                        ['generics-value',
                         'reset-generics']);
     addInputManager('generics-value',
                     (value) => {
-                        properties.topLevelDomains.generics.domains = value.split(' ');
-                        store({topLevelDomains: properties.topLevelDomains});
+                        properties.tldGenerics.domains = value.split(' ');
+                        store({tldGenerics: properties.tldGenerics});
                     });
-    addResetManager('generics');
+    addResetManager('generics', 'tldGenerics');
     addCheckboxManager('country-codes',
                        (value) => {
-                           properties.topLevelDomains.countryCodes.active = value;
-                           store({topLevelDomains: properties.topLevelDomains});
+                           properties.tldCountryCodes.active = value;
+                           store({tldCountryCodes: properties.tldCountryCodes});
                        },
                        ['country-codes-value',
                         'reset-country-codes']);
     addInputManager('country-codes-value',
                     (value) => {
-                        properties.topLevelDomains.countryCodes.domains = value.split(' ');
-                        store({topLevelDomains: properties.topLevelDomains});
+                        properties.tldCountryCodes.domains = value.split(' ');
+                        store({tldCountryCodes: properties.tldCountryCodes});
                     });
-    addResetManager('country-codes', 'countryCodes');
+    addResetManager('country-codes', 'tldCountryCodes');
     addCheckboxManager('geographics',
                        (value) => {
-                           properties.topLevelDomains.geographics.active = value;
-                           store({topLevelDomains: properties.topLevelDomains});
+                           properties.tldGeographics.active = value;
+                           store({tldGeographics: properties.tldGeographics});
                        },
                        ['geographics-value',
                         'reset-geographics']);
     addInputManager('geographics-value',
                     (value) => {
-                        properties.topLevelDomains.geographics.domains = value.split(' ');
-                        store({topLevelDomains: properties.topLevelDomains});
+                        properties.tldGeographics.domains = value.split(' ');
+                        store({tldGeographics: properties.tldGeographics});
                     });
-    addResetManager('geographics');
+    addResetManager('geographics', 'tldGeographics');
     addCheckboxManager('communities',
                        (value) => {
-                           properties.topLevelDomains.communities.active = value;
-                           store({topLevelDomains: properties.topLevelDomains});
+                           properties.tldCommunities.active = value;
+                           store({tldCommunities: properties.tldCommunities});
                        },
                        ['communities-value',
                         'reset-communities']);
     addInputManager('communities-value',
                     (value) => {
-                        properties.topLevelDomains.communities.domains = value.split(' ');
-                        store({topLevelDomains: properties.topLevelDomains});
+                        properties.tldCommunities.domains = value.split(' ');
+                        store({tldCommunities: properties.tldCommunities});
                     });
-    addResetManager('communities');
+    addResetManager('communities', 'tldCommunities');
      addCheckboxManager('brands',
                        (value) => {
-                           properties.topLevelDomains.brands.active = value;
-                           store({topLevelDomains: properties.topLevelDomains});
+                           properties.tldBrands.active = value;
+                           store({tldBrands: properties.tldBrands});
                        },
                        ['brands-value',
                         'reset-brands']);
     addInputManager('brands-value',
                     (value) => {
-                        properties.topLevelDomains.brands.domains = value.split(' ');
-                        store({topLevelDomains: properties.topLevelDomains});
+                        properties.tldBrands.domains = value.split(' ');
+                        store({tldBrands: properties.tldBrands});
                     });
-    addResetManager('brands');
+    addResetManager('brands', 'tldBrands');
 
     // custom rules
     //// tab Links

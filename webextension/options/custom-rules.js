@@ -255,6 +255,23 @@ class RulesManager {
 
             }
         }
+
+        // handle drag n' drop on rules overflow area
+        let rulesArea = $('rules-overflow');
+        rulesArea.addEventListener('dragenter', event => {
+            console.log('DRAGENTER REMAIN');
+            event.preventDefault();
+        }, false);
+        rulesArea.addEventListener('dragover', event => {
+            console.log('DRAGOVER REMAIN');
+            event.preventDefault();
+        
+            event.dataTransfer.dropEffect = 'move';
+        }, false);
+        rulesArea.addEventListener('drop', event => {
+            console.log('DROP REMAIN');
+            event.stopPropagation(); // stops the browser from redirecting.
+        }, false);
     }
     
     show () {

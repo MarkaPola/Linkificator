@@ -325,7 +325,7 @@ function Parser (properties) {
     const domain_class = "@?#\\s()<>[\\]{}/.:";
     const domain_element = "(?:[^-"+domain_class+"](?:[^"+domain_class+"]{1,}[^-\\\\"+domain_class+"]|[^-\\\\"+domain_class+"])?)";
 
-    const tld = "(?:\\.(?:" + properties.topLevelDomains.domains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
+    const tld = "(?:\\.(?:" + properties.domains.join('|') + ")(?=(?:$|[" + start_path_delimiter + end_uri_delimiter + "])))";
             
     const mail_domain = properties.predefinedRules.support.email.useTLD ? "(?:" + domain_element + "(?:\\." + domain_element + ")*" + tld +")"
                                                                         : "(?:" + domain_element + "(?:\\." + domain_element + ")*)";
@@ -1077,15 +1077,18 @@ function connect () {
 
 
 // properties management
+const topLevelDomains = ['tldGenerics', 'tldCountryCodes', 'tldGeographics',
+                         'tldCommunities', 'tldBrands'];
+
 var area = 'local';
 var properties = {};
 
-function getActiveDomains (tlds) {
+function getActiveDomains (properties) {
     let domains = [];
     
-    for (let tld in tlds) {
-        if (tlds[tld].active) {
-            domains = domains.concat(tlds[tld].domains);
+    for (let tld of topLevelDomains) {
+        if (properties[tld].active) {
+            domains = domains.concat(properties[tld].domains);
         }
     }
 
@@ -1101,7 +1104,7 @@ browser.storage.local.get('sync').then(result => {
         properties.document = {contentType: Document(window.document).contentType};
 
         // join all active domains
-        properties.topLevelDomains.domains = getActiveDomains (properties.topLevelDomains);
+        properties.domains = getActiveDomains (properties);
 
         // properties are now available, let start processing
         connect();
@@ -1114,8 +1117,8 @@ browser.storage.onChanged.addListener((changes,  areaName) => {
         for (let key in changes) {
             properties[key] =  changes[key].newValue;
 
-            if (key === 'topLevelDomains') {
-                properties.topLevelDomains.domains = getActiveDomains (properties.topLevelDomains);
+            if (topLevelDomains.includes(key)) {
+                properties.domains = getActiveDomains (properties);
             }
         }
     }

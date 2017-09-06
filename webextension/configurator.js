@@ -13,7 +13,6 @@
 function Configurator () {
     // Initialization of preferences
     let defaultPreferences = {
-        activated: true,
         manual: false, 
         displayBadge: true, 
         contextMenuIntegration: true, 
@@ -31,7 +30,7 @@ function Configurator () {
             list: {
                 white: [], 
                 black: [
-                    '^about:', 'localhost', 'www\\.google\\..*',
+                    'localhost', 'www\\.google\\..*',
                     'encrypted\\.google\\.com', 'www\\.yahoo\\..*',
                     'www\\.yandex\\..*', 'www\\.deezer\\.com.*'
                 ]
@@ -115,37 +114,35 @@ function Configurator () {
                 "*[@onclick]", "*[@onmousedown]", "*[@onmouseup]"
             ]
         }, 
-        topLevelDomains: {
-            generics: {
-                active: true,
-                domains: [
-                    "academy", "accountant", "accountants", "active", "actor", "adult", "aero", "agency", "airforce", "allfinanz", "analytics", "app", "army", "arpa", "asia", "associates", "attorney", "auction", "audio", "author", "band", "bargains", "beer", "best", "bid", "bike", "bio", "biz", "black", "blackfriday", "blue", "boats", "boo", "book", "bot", "boutique", "broker", "build", "builders", "business", "buy", "buzz", "cab", "call", "camera", "camp", "cancerresearch", "capital", "cards", "car", "care", "career", "careers", "cars", "casa", "cash", "cat", "catering", "center", "ceo", "channel", "chat", "cheap", "christmas", "church", "circle", "citic", "city", "cityeats", "claims", "cleaning", "click", "clinic", "clothing", "cloud", "club", "codes", "coffee", "college", "com", "community", "company", "compare", "computer", "construction", "contact", "contractors", "cooking", "cool", "coop", "country", "coupons", "courses", "credit", "creditcard", "cricket", "cruises", "dance", "date", "dating", "day", "deals", "degree", "delivery", "democrat", "dental", "dentist", "desi", "design", "dev", "diamonds", "diet", "digital", "direct", "directory", "discount", "docs", "domains", "download", "drive", "earth", "eat", "edu", "education", "email", "energy", "engineer", "engineering", "enterprises", "equipment", "esq", "estate", "events", "exchange", "expert", "exposed", "express", "fail", "family", "farm", "fashion", "feedback", "film", "final", "finance", "financial", "fish", "fishing", "fit", "fitness", "flights", "florist", "flowers", "fly", "foo", "forsale", "forum", "foundation", "frogans", "fund", "furniture", "futbol", "fyi", "gallery", "game", "garden", "gift", "gifts", "gives", "giving", "glass", "global", "globo", "gmo", "gop", "got", "gov", "graphics", "gratis", "gripe", "group", "guide", "guitars", "guru", "haus", "health", "healthcare", "help", "here", "hiphop", "hiv", "holdings", "holiday", "homes", "horse", "host", "hosting", "hoteles", "house", "how", "immo", "immobilien", "industries", "info", "ing", "institute", "insure", "int", "international", "investments", "java", "jetzt", "jewelry", "jobs", "jot", "joy", "juegos", "kaufen", "kim", "kitchen", "kiwi", "kred", "land", "law", "lease", "legal", "life", "lifeinsurance", "lighting", "like", "limited", "limo", "link", "live", "living", "loan", "loans", "lotto", "love", "ltd", "luxe", "luxury", "makeup", "management", "mango", "market", "markets", "marketing", "mba", "med", "media", "meet", "meme", "memorial", "men", "menu", "mil", "mobi", "moda", "moe", "moi", "monash", "money", "mortage", "museum", "motorcycles", "mov", "movie", "movistar", "name", "navy", "net", "network", "neustar", "new", "news", "ninja", "one", "ong", "onl", "online", "org", "organic", "partners", "parts", "party", "photo", "photography", "photos", "pics", "pictures", "pin", "pid", "pink", "play", "plumbing", "porn", "post", "press", "pro", "prod", "productions", "prof", "promo", "properties", "property", "protection", "pub", "qpon", "read", "recipes", "red", "rehab", "reise", "reisen", "ren", "rent", "rentals", "repair", "report", "rest", "review", "reviews", "rich", "rip", "rocks", "rodeo", "room", "rsvp", "ruhr", "ryukyu", "safe", "safety", "sale", "salon", "scholarships", "school", "science", "schule", "security", "services", "sew", "sex", "sexy", "shiksha", "shoes", "show", "singles", "site", "skin", "smile", "social", "software", "sohu", "solar", "solutions", "soy", "space", "study", "style", "supplies", "supply", "support", "surgery", "systems", "tattoo", "tax", "tech", "technology", "tel", "tienda", "tips", "tires", "today", "tools", "top", "town", "toys", "trade", "trading", "training", "travel", "trust", "tube", "university", "uno", "vacations", "vegas", "ventures", "versicherung", "vet", "viajes", "video", "villas", "vision", "vodka", "vote", "voting", "voto", "voyage", "wang", "watch", "weather", "webcam", "website", "wed", "wedding", "wiki", "work", "works", "world", "wtc", "wtf", "xxx", "xyz", "yachts", "yoga", "zero", "zip", "zone"
-                ]
-            },
-            countryCodes: {
-                active: true,
-                domains: [
-                    "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "aq", "ar", "as", "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec", "ee", "eg", "er", "es", "et", "eu", "fi", "fj", "fk", "fm", "fo", "fr", "ga", "gb", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mg", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx", "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps", "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "su", "sv", "sx", "sy", "sz", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl", "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "za", "zm", "zw"
-                ]
-            }, 
-            geographics: {
-                active: true,
-                domains: [
-                    "abudhabi", "africa", "alsace", "amsterdam", "aquitaine", "bar", "barcelona", "bayern", "berlin", "boston", "brussels", "budapest", "bzh", "capetown", "catalonia", "cologne", "cymru", "doha", "dubai", "durban", "frl", "gent", "hamburg", "helsinki", "ist", "istanbul", "joburg", "koeln", "kyoto", "london", "madrid", "melbourne", "miami", "moscow", "nagoya", "nrw", "nyc", "okinawa", "osaka", "paris", "place", "quebec", "rio", "roma", "saarland", "scot", "stockholm", "sydney", "taipei", "tirol", "tokyo", "tui", "vlaanderen", "wales", "wien", "zuerich", "yokohama"
-                ]
-            }, 
-            communities: {
-                active: true,
-                domains: [
-                    "abogado", "aco", "android", "apartments", "archi", "art", "auto", "autos", "bank", "bcn", "bet", "bible", "bingo", "broadway", "bzh", "cafe", "caravan", "casino", "catholic", "cern", "cfd", "chrome", "coach", "corp", "corsica", "cpa", "crs", "dad", "dog", "eco", "edeka", "eurovision", "eus", "faith", "fan", "fans", "football", "gal", "gay", "gea", "gmbh", "gold", "golf", "gree", "green", "halal", "hockey", "hotel", "ieee", "ikano", "immo", "inc", "insurance", "irish", "islam", "ismaili", "kids", "lat", "lds", "lgbt", "llc", "llp", "lol", "ltda", "med", "mls", "mom", "mormon", "music", "ngo", "ong", "ooo", "ovh", "page", "pars", "pet", "pharmacy", "physio", "pizza", "plus", "poker", "racing", "radio", "realtor", "realty", "reit", "republican", "restaurant", "run", "sarl", "shia", "shop", "ski", "sky", "soccer", "spa", "sport", "spreadbetting", "srl", "storage", "studio", "sucks", "surf", "swiss", "taxi", "tatar", "team", "tennis", "thai", "theater", "theatre", "tickets", "tours", "versicherung", "vin", "vip", "wanggou", "watches", "webs", "whoswho", "win", "wine", "xin"
-                ]
-            }, 
-            brands: {
-                active: true,
-                domains: [
-                    "aaa", "aarp", "abb", "abbott", "accenture", "aco", "adac", "ads", "aeg", "afl", "aig", "airtel", "alibaba", "alipay", "amica", "apple", "aquarelle", "aramco", "arte", "audi", "axa", "azure", "baidu", "barclaycard", "barclays", "bauhaus", "bbb", "bbc", "bbva", "beats", "bentley", "bharti", "bing", "bloomberg", "bms", "bmw", "bnl", "bnpparibas", "boehringer", "bom", "bond", "boots", "bosch", "bostik", "bradesco", "bridgestone", "brother", "bugatti", "cal", "canon", "cartier", "cba", "cbn", "ceb", "cfa", "chanel", "chloe", "cipriani", "cisco", "clinique", "clubmed", "commbank", "comsec", "creditunion", "crown", "csc", "cuisinella", "cyou", "dabur", "datsun", "dclk", "dealer", "dell", "deloitte", "delta", "doosan", "dvag", "edeka", "emerck", "epson", "erni", "everbank", "fage", "fairwinds", "fast", "ferrero", "firestone", "firmdale", "flsmidth", "ford", "forex", "fox", "fresenius", "frontier", "gbiz", "gdn", "genting", "ggee", "gle", "gmail", "gmx", "goldpoint", "goo", "goog", "google", "grainger", "gucci", "guge", "hangout", "hermes", "hitachi", "homedepot", "honda", "hotmail", "hsbc", "hyundai", "ibm", "icbc", "ice", "icu", "ifm", "iinet", "infiniti", "ipiranga", "iselect", "itau", "iwc", "jaguar", "jcb", "jlc", "jll", "jmp", "jprs", "kfh", "kia", "kddi", "kinder", "komatsu", "kpn", "krd", "lacaixa", "lamer", "lamborghini", "lancaster", "landrover", "lanxess", "lasalle", "latrobe", "leclerc", "lexus", "liaison", "lidl", "lincoln", "linde", "lixil", "lotte", "lupin", "maif", "man", "marriott", "meo", "merck", "microsoft", "mini", "mma", "mobily", "montblanc", "mtn", "mtpc", "mtr", "mutuelle", "nadex", "nec", "netbank", "nexus", "nhk", "nico", "nikon", "nissan", "nokia", "norton", "nowruz", "nra", "ntt", "obi", "office", "omega", "oracle", "orange", "origins", "otsuka", "pamperedchef", "panerai", "philips", "piaget", "pictet", "ping", "playstation", "pohl", "praxi", "quest", "redstone", "redumbrella", "rexroth", "ricoh", "rocher", "rwe", "samsung", "sakura", "sandvik", "sandvikcoromant", "sanofi", "sap", "sapo", "sas", "saxo", "sbs", "sca", "scb", "schaeffler", "schmidt", "schwarz", "scor", "seat", "seek", "select", "sener", "seven", "sfr", "sharp", "shell", "shriram", "skype", "sncf", "softbank", "sony", "spiegel", "stada", "star", "starhub", "statefarm", "statoil", "stc", "stcgroup", "suzuki", "swatch", "symantec", "tab", "taobao", "tatamotors", "tci", "telephonica", "temasek", "thd", "tiffany", "tmall", "toray", "toshiba", "toyota", "travelers", "travelersinsurance", "trv", "tushu", "ubs", "unicom", "uol", "vana", "verisign", "virgin", "vista", "vistaprint", "viva", "volkswagen", "walter", "weatherchannel", "weber", "weir", "williamhill", "windows", "wme", "xbox", "xerox", "xperia", "yamaxun", "yandex", "yodobashi", "youtube", "zara"
-                ]
-            }
+        tldGenerics: {
+            active: true,
+            domains: [
+                "academy", "accountant", "accountants", "active", "actor", "adult", "aero", "agency", "airforce", "allfinanz", "analytics", "app", "army", "arpa", "asia", "associates", "attorney", "auction", "audio", "author", "band", "bargains", "beer", "best", "bid", "bike", "bio", "biz", "black", "blackfriday", "blue", "boats", "boo", "book", "bot", "boutique", "broker", "build", "builders", "business", "buy", "buzz", "cab", "call", "camera", "camp", "cancerresearch", "capital", "cards", "car", "care", "career", "careers", "cars", "casa", "cash", "cat", "catering", "center", "ceo", "channel", "chat", "cheap", "christmas", "church", "circle", "citic", "city", "cityeats", "claims", "cleaning", "click", "clinic", "clothing", "cloud", "club", "codes", "coffee", "college", "com", "community", "company", "compare", "computer", "construction", "contact", "contractors", "cooking", "cool", "coop", "country", "coupons", "courses", "credit", "creditcard", "cricket", "cruises", "dance", "date", "dating", "day", "deals", "degree", "delivery", "democrat", "dental", "dentist", "desi", "design", "dev", "diamonds", "diet", "digital", "direct", "directory", "discount", "docs", "domains", "download", "drive", "earth", "eat", "edu", "education", "email", "energy", "engineer", "engineering", "enterprises", "equipment", "esq", "estate", "events", "exchange", "expert", "exposed", "express", "fail", "family", "farm", "fashion", "feedback", "film", "final", "finance", "financial", "fish", "fishing", "fit", "fitness", "flights", "florist", "flowers", "fly", "foo", "forsale", "forum", "foundation", "frogans", "fund", "furniture", "futbol", "fyi", "gallery", "game", "garden", "gift", "gifts", "gives", "giving", "glass", "global", "globo", "gmo", "gop", "got", "gov", "graphics", "gratis", "gripe", "group", "guide", "guitars", "guru", "haus", "health", "healthcare", "help", "here", "hiphop", "hiv", "holdings", "holiday", "homes", "horse", "host", "hosting", "hoteles", "house", "how", "immo", "immobilien", "industries", "info", "ing", "institute", "insure", "int", "international", "investments", "java", "jetzt", "jewelry", "jobs", "jot", "joy", "juegos", "kaufen", "kim", "kitchen", "kiwi", "kred", "land", "law", "lease", "legal", "life", "lifeinsurance", "lighting", "like", "limited", "limo", "link", "live", "living", "loan", "loans", "lotto", "love", "ltd", "luxe", "luxury", "makeup", "management", "mango", "market", "markets", "marketing", "mba", "med", "media", "meet", "meme", "memorial", "men", "menu", "mil", "mobi", "moda", "moe", "moi", "monash", "money", "mortage", "museum", "motorcycles", "mov", "movie", "movistar", "name", "navy", "net", "network", "neustar", "new", "news", "ninja", "one", "ong", "onl", "online", "org", "organic", "partners", "parts", "party", "photo", "photography", "photos", "pics", "pictures", "pin", "pid", "pink", "play", "plumbing", "porn", "post", "press", "pro", "prod", "productions", "prof", "promo", "properties", "property", "protection", "pub", "qpon", "read", "recipes", "red", "rehab", "reise", "reisen", "ren", "rent", "rentals", "repair", "report", "rest", "review", "reviews", "rich", "rip", "rocks", "rodeo", "room", "rsvp", "ruhr", "ryukyu", "safe", "safety", "sale", "salon", "scholarships", "school", "science", "schule", "security", "services", "sew", "sex", "sexy", "shiksha", "shoes", "show", "singles", "site", "skin", "smile", "social", "software", "sohu", "solar", "solutions", "soy", "space", "study", "style", "supplies", "supply", "support", "surgery", "systems", "tattoo", "tax", "tech", "technology", "tel", "tienda", "tips", "tires", "today", "tools", "top", "town", "toys", "trade", "trading", "training", "travel", "trust", "tube", "university", "uno", "vacations", "vegas", "ventures", "versicherung", "vet", "viajes", "video", "villas", "vision", "vodka", "vote", "voting", "voto", "voyage", "wang", "watch", "weather", "webcam", "website", "wed", "wedding", "wiki", "work", "works", "world", "wtc", "wtf", "xxx", "xyz", "yachts", "yoga", "zero", "zip", "zone"
+            ]
+        },
+        tldCountryCodes: {
+            active: true,
+            domains: [
+                "ac", "ad", "ae", "af", "ag", "ai", "al", "am", "ao", "aq", "ar", "as", "at", "au", "aw", "ax", "az", "ba", "bb", "bd", "be", "bf", "bg", "bh", "bi", "bj", "bm", "bn", "bo", "br", "bs", "bt", "bv", "bw", "by", "bz", "ca", "cc", "cd", "cf", "cg", "ch", "ci", "ck", "cl", "cm", "cn", "co", "cr", "cu", "cv", "cw", "cx", "cy", "cz", "de", "dj", "dk", "dm", "do", "dz", "ec", "ee", "eg", "er", "es", "et", "eu", "fi", "fj", "fk", "fm", "fo", "fr", "ga", "gb", "gd", "ge", "gf", "gg", "gh", "gi", "gl", "gm", "gn", "gp", "gq", "gr", "gs", "gt", "gu", "gw", "gy", "hk", "hm", "hn", "hr", "ht", "hu", "id", "ie", "il", "im", "in", "io", "iq", "ir", "is", "it", "je", "jm", "jo", "jp", "ke", "kg", "kh", "ki", "km", "kn", "kp", "kr", "kw", "ky", "kz", "la", "lb", "lc", "li", "lk", "lr", "ls", "lt", "lu", "lv", "ly", "ma", "mc", "md", "me", "mg", "mh", "mk", "ml", "mm", "mn", "mo", "mp", "mq", "mr", "ms", "mt", "mu", "mv", "mw", "mx", "my", "mz", "na", "nc", "ne", "nf", "ng", "ni", "nl", "no", "np", "nr", "nu", "nz", "om", "pa", "pe", "pf", "pg", "ph", "pk", "pl", "pm", "pn", "pr", "ps", "pt", "pw", "py", "qa", "re", "ro", "rs", "ru", "rw", "sa", "sb", "sc", "sd", "se", "sg", "sh", "si", "sj", "sk", "sl", "sm", "sn", "so", "sr", "st", "su", "sv", "sx", "sy", "sz", "tc", "td", "tf", "tg", "th", "tj", "tk", "tl", "tm", "tn", "to", "tr", "tt", "tv", "tw", "tz", "ua", "ug", "uk", "us", "uy", "uz", "va", "vc", "ve", "vg", "vi", "vn", "vu", "wf", "ws", "ye", "yt", "za", "zm", "zw"
+            ]
+        }, 
+        tldGeographics: {
+            active: true,
+            domains: [
+                "abudhabi", "africa", "alsace", "amsterdam", "aquitaine", "bar", "barcelona", "bayern", "berlin", "boston", "brussels", "budapest", "bzh", "capetown", "catalonia", "cologne", "cymru", "doha", "dubai", "durban", "frl", "gent", "hamburg", "helsinki", "ist", "istanbul", "joburg", "koeln", "kyoto", "london", "madrid", "melbourne", "miami", "moscow", "nagoya", "nrw", "nyc", "okinawa", "osaka", "paris", "place", "quebec", "rio", "roma", "saarland", "scot", "stockholm", "sydney", "taipei", "tirol", "tokyo", "tui", "vlaanderen", "wales", "wien", "zuerich", "yokohama"
+            ]
+        }, 
+        tldCommunities: {
+            active: true,
+            domains: [
+                "abogado", "aco", "android", "apartments", "archi", "art", "auto", "autos", "bank", "bcn", "bet", "bible", "bingo", "broadway", "bzh", "cafe", "caravan", "casino", "catholic", "cern", "cfd", "chrome", "coach", "corp", "corsica", "cpa", "crs", "dad", "dog", "eco", "edeka", "eurovision", "eus", "faith", "fan", "fans", "football", "gal", "gay", "gea", "gmbh", "gold", "golf", "gree", "green", "halal", "hockey", "hotel", "ieee", "ikano", "immo", "inc", "insurance", "irish", "islam", "ismaili", "kids", "lat", "lds", "lgbt", "llc", "llp", "lol", "ltda", "med", "mls", "mom", "mormon", "music", "ngo", "ong", "ooo", "ovh", "page", "pars", "pet", "pharmacy", "physio", "pizza", "plus", "poker", "racing", "radio", "realtor", "realty", "reit", "republican", "restaurant", "run", "sarl", "shia", "shop", "ski", "sky", "soccer", "spa", "sport", "spreadbetting", "srl", "storage", "studio", "sucks", "surf", "swiss", "taxi", "tatar", "team", "tennis", "thai", "theater", "theatre", "tickets", "tours", "versicherung", "vin", "vip", "wanggou", "watches", "webs", "whoswho", "win", "wine", "xin"
+            ]
+        }, 
+        tldBrands: {
+            active: true,
+            domains: [
+                "aaa", "aarp", "abb", "abbott", "accenture", "aco", "adac", "ads", "aeg", "afl", "aig", "airtel", "alibaba", "alipay", "amica", "apple", "aquarelle", "aramco", "arte", "audi", "axa", "azure", "baidu", "barclaycard", "barclays", "bauhaus", "bbb", "bbc", "bbva", "beats", "bentley", "bharti", "bing", "bloomberg", "bms", "bmw", "bnl", "bnpparibas", "boehringer", "bom", "bond", "boots", "bosch", "bostik", "bradesco", "bridgestone", "brother", "bugatti", "cal", "canon", "cartier", "cba", "cbn", "ceb", "cfa", "chanel", "chloe", "cipriani", "cisco", "clinique", "clubmed", "commbank", "comsec", "creditunion", "crown", "csc", "cuisinella", "cyou", "dabur", "datsun", "dclk", "dealer", "dell", "deloitte", "delta", "doosan", "dvag", "edeka", "emerck", "epson", "erni", "everbank", "fage", "fairwinds", "fast", "ferrero", "firestone", "firmdale", "flsmidth", "ford", "forex", "fox", "fresenius", "frontier", "gbiz", "gdn", "genting", "ggee", "gle", "gmail", "gmx", "goldpoint", "goo", "goog", "google", "grainger", "gucci", "guge", "hangout", "hermes", "hitachi", "homedepot", "honda", "hotmail", "hsbc", "hyundai", "ibm", "icbc", "ice", "icu", "ifm", "iinet", "infiniti", "ipiranga", "iselect", "itau", "iwc", "jaguar", "jcb", "jlc", "jll", "jmp", "jprs", "kfh", "kia", "kddi", "kinder", "komatsu", "kpn", "krd", "lacaixa", "lamer", "lamborghini", "lancaster", "landrover", "lanxess", "lasalle", "latrobe", "leclerc", "lexus", "liaison", "lidl", "lincoln", "linde", "lixil", "lotte", "lupin", "maif", "man", "marriott", "meo", "merck", "microsoft", "mini", "mma", "mobily", "montblanc", "mtn", "mtpc", "mtr", "mutuelle", "nadex", "nec", "netbank", "nexus", "nhk", "nico", "nikon", "nissan", "nokia", "norton", "nowruz", "nra", "ntt", "obi", "office", "omega", "oracle", "orange", "origins", "otsuka", "pamperedchef", "panerai", "philips", "piaget", "pictet", "ping", "playstation", "pohl", "praxi", "quest", "redstone", "redumbrella", "rexroth", "ricoh", "rocher", "rwe", "samsung", "sakura", "sandvik", "sandvikcoromant", "sanofi", "sap", "sapo", "sas", "saxo", "sbs", "sca", "scb", "schaeffler", "schmidt", "schwarz", "scor", "seat", "seek", "select", "sener", "seven", "sfr", "sharp", "shell", "shriram", "skype", "sncf", "softbank", "sony", "spiegel", "stada", "star", "starhub", "statefarm", "statoil", "stc", "stcgroup", "suzuki", "swatch", "symantec", "tab", "taobao", "tatamotors", "tci", "telephonica", "temasek", "thd", "tiffany", "tmall", "toray", "toshiba", "toyota", "travelers", "travelersinsurance", "trv", "tushu", "ubs", "unicom", "uol", "vana", "verisign", "virgin", "vista", "vistaprint", "viva", "volkswagen", "walter", "weatherchannel", "weber", "weir", "williamhill", "windows", "wme", "xbox", "xerox", "xperia", "yamaxun", "yandex", "yodobashi", "youtube", "zara"
+            ]
         },
         extraFeatures: {
             support: {
@@ -273,7 +270,14 @@ function Configurator () {
                     
                     if (changes.hasOwnProperty('sync')) {
                         properties.area = changes.sync.newValue ? 'sync' : 'local';
-                        setPreferences();
+                        if (properties.area === 'sync') {
+                            // retrieve sync values
+                            setPreferences();
+                        } else {
+                            // propagate current settings to local
+                            let {area, activated, sync, ...settings} = properties;
+                            browser.storage.local.set(settings);
+                        }
 
                         return;
                     }
@@ -285,7 +289,7 @@ function Configurator () {
                     }
                 }
             });
-
+            
             return {configurator: new ConfiguratorManager(), properties: properties};
         });
     }
@@ -323,16 +327,15 @@ function Configurator () {
                 browser.storage[properties.area].set({extraFeatures: preferences}).catch(reason => console.error(reason));
             }
             break;
-        case 'reset-generics':
-        case 'reset-countryCodes':
-        case 'reset-geographics':
-        case 'reset-communities':
-        case 'reset-brands':
+        case 'reset-tldGenerics':
+        case 'reset-tldCountryCodes':
+        case 'reset-tldGeographics':
+        case 'reset-tldCommunities':
+        case 'reset-tldBrands':
             {
                 let id = message.id.substring(6);
-                let preferences = properties.topLevelDomains;
-                preferences[id].domains = defaultPreferences.topLevelDomains[id].domains;
-                browser.storage[properties.area].set({topLevelDomains: preferences}).catch(reason => console.error(reason));
+                properties[id].domains = defaultPreferences[id].domains;
+                browser.storage[properties.area].set({[id]: properties[id]}).catch(reason => console.error(reason));
             }
             break;
         }        

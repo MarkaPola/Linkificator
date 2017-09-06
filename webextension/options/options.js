@@ -207,7 +207,7 @@ browser.storage.onChanged.addListener((changes, area) => {
 
     if (area === properties.area) {
         for (let key in changes) {
-            properties[key] =  changes[key].newValue;
+            updatePreference(key, changes[key].newValue);
         }
     }
 });
