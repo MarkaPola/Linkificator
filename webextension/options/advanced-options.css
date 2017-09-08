@@ -271,6 +271,10 @@ div.rules-commands button {
 	border-style: dashed;
 	border-color: rgba(0,0,0,0.0);
 }
+/* Drag n drop customization */
+.settings-rule.dragover {
+	border-color: #000;
+}
 
 .rule-name {
 	margin-left: 10px;
@@ -317,8 +321,3 @@ div.rules-commands button {
 	background-image: url(delete-hover.png);
 }
 
-
-/* Drag n drop customization */
-.settings-rule.dragover {
-	border-color: #000;
-}
