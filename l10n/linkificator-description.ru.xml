@@ -7,14 +7,23 @@
   </paragraph>
   <paragraph title="Description">
 	<![CDATA[
-
 Это дополнение разбирает текстовые части HTML-страниц для сопоставления гипертекстовым шаблонам и преобразует их в кликабельные ссылки в соответствии с заданными правилами.
 
-Имеет такой же функционал, как у дополнения <a href="https://addons.mozilla.org/en-US/firefox/addon/linkification/?src=ss">Linkification</a>, которое, кажется, больше не поддерживается. Дополнение Linkificator может использоваться в качестве его замены.
+<strong>IMPORTANT NOTICE FOR USERS OF PREVIOUS VERSIONS - PLEASE READ</strong>
 
-<strong>ВНИМАНИЕ</strong>: Поскольку это дополнение делает те же преобразования, что и дополнение Linkification, для корректной работы <strong>необходимо</strong> оставить включенным только одно из этих дополнений!
-
+Linkificator was developed from the ground up as so-called WebExtension. This makes Linkificator compatible with Firefox 57 and later. Not all options of the previous version are currently available as WebExtension. As soon as Mozilla implements support for missing functionalities in Firefox, they will be integrated in a future update of Linkificator.
+As a result, some features are no longer available:
+	]]>
+	<ul>
+	  <li>Keyboard shortcuts</li>
+	  <li>Various Widget clicks customizations</li>
+	  <li>about: protocol support</li>
+	  <li>Import/Export of settings</li>
+	</ul>
 	<![CDATA[
+<strong>Compatibility</strong>: The extension requires at least Firefox 55. Because the extension makes use of modern web technologies and the latest WebExtension APIs, support for older versions of Firefox is not possible for technical reasons.
+	
+The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.
 
 Значки: <a href="http://www.fasticon.com">FastIcon.com</a>
 Система локализации: <a href="http://crowdin.com">Crowdin.com</a>

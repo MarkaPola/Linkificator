@@ -7,11 +7,26 @@ Converts text links into clickable links...
   </paragraph>
   <paragraph title="Description">
 	<![CDATA[
-	This add-on parses text parts of HTML pages to match hypertext patterns not correctly encoded (i.e. not part of an anchor) and add an anchor to enable a standard mouse click to access the target as specified by the hypertext.
+This add-on parses text parts of HTML pages to match hypertext patterns not correctly encoded (i.e. not part of an anchor) and add an anchor to enable a standard mouse click to access the target as specified by the hypertext.
 
+<strong>IMPORTANT NOTICE FOR USERS OF PREVIOUS VERSIONS - PLEASE READ</strong>
+
+Linkificator was developed from the ground up as so-called WebExtension. This makes Linkificator compatible with Firefox 57 and later. Not all options of the previous version are currently available as WebExtension. As soon as Mozilla implements support for missing functionalities in Firefox, they will be integrated in a future update of Linkificator.
+As a result, some features are no longer available:
+	]]>
+	<ul>
+	  <li>Keyboard shortcuts</li>
+	  <li>Various Widget clicks customizations</li>
+	  <li>about: protocol support</li>
+	  <li>Import/Export of settings</li>
+	</ul>
 	<![CDATA[
-	Icons by: <a href="http://www.fasticon.com">FastIcon.com</a>
-	Localization infrastructure: <a href="http://crowdin.com">Crowdin.com</a>
+<strong>Compatibility</strong>: The extension requires at least Firefox 55. Because the extension makes use of modern web technologies and the latest WebExtension APIs, support for older versions of Firefox is not possible for technical reasons.
+	
+The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.
+	
+Icons by: <a href="http://www.fasticon.com">FastIcon.com</a>
+Localization infrastructure: <a href="http://crowdin.com">Crowdin.com</a>
 	]]>
   </paragraph>
   <paragraph title="Technical Details">
