@@ -196,28 +196,23 @@ class CustomRule {
 
 class RulesManager {
     _dragStart (event) {
-        console.log('DRAGSTART');
         event.currentTarget.style.opacity = '0.4';
         
         event.dataTransfer.setData('text', event.currentTarget.rowIndex.toString());
         event.dataTransfer.effectAllowed = 'move';
     }
     _dragEnter (event) {
-        console.log('DRAGENTER');
         if (event.currentTarget.rowIndex != event.dataTransfer.getData('text')) {
             event.currentTarget.querySelector('.settings-rule').classList.add('dragover');
         }
-        event.preventDefault();
     }
     _dragLeave (event) {
-        console.log('DRAGLEAVE');
         let currentElement = document.elementFromPoint(event.pageX, event.pageY);
         if (!event.currentTarget.contains(currentElement)) {
 			event.currentTarget.querySelector('.settings-rule').classList.remove('dragover');
         }
     }
     _dragOver (event) {
-        console.log('DRAGOVER');
         if (event.currentTarget.rowIndex != event.dataTransfer.getData('text')) {
             event.preventDefault(); // Necessary. Allows us to drop.
         
@@ -229,18 +224,17 @@ class RulesManager {
         return false;
     }
     _dragEnd (event) {
-        console.log('DRAGEND');
-
         for (let row of this._table.rows) {
             row.style.opacity = '';
             row.querySelector('.settings-rule').classList.remove('dragover');
         }
     }
     _drop (event) {
-        console.log('DROP');
         event.stopPropagation(); // stops the browser from redirecting.
         event.preventDefault();
 
+        this.moveRow(event.dataTransfer.getData('text'), event.currentTarget.rowIndex);
+        
         return false;
     }
     
@@ -260,8 +254,10 @@ class RulesManager {
         let {id, rules, display} = options;
 
         this._rows = new Map();
+
+        this._container = $(id);
+        this._table =  this._container.querySelector('.rules-table');
         
-        this._table = $(id);
         display ? this.show() : this.hide();
 
         this._onChange = options.onChange;
@@ -276,7 +272,6 @@ class RulesManager {
 
         // handle drag n' drop on rules overflow area
         function dragOverOverflow (event) {
-            console.log('DRAGOVER REMAIN');
             if (event.dataTransfer.getData('text') < (this._table.rows.length-1)) {
                 event.preventDefault(); // Necessary. Allows us to drop.
         
@@ -285,17 +280,17 @@ class RulesManager {
             else
                 event.dataTransfer.dropEffect = 'none';
         }
-        let rulesArea = $('rules-overflow');
-        rulesArea.addEventListener('dragenter', event => {
-            console.log('DRAGENTER REMAIN');
-            event.preventDefault();
-        }, false);
-        rulesArea.addEventListener('dragover', dragOverOverflow.bind(this));
-        rulesArea.addEventListener('drop', event => {
-            console.log('DROP REMAIN');
+        function dropOverflow (event) {
             event.stopPropagation(); // stops the browser from redirecting.
             event.preventDefault();
-        }, false);
+
+            this.moveRow(event.dataTransfer.getData('text'), -1);
+
+            return false;
+        }
+        let rulesArea = this._container.querySelector('.overflow');
+        rulesArea.addEventListener('dragover', dragOverOverflow.bind(this));
+        rulesArea.addEventListener('drop', dropOverflow.bind(this));
     }
 
     insertRow (index, options) {
@@ -329,7 +324,7 @@ class RulesManager {
     moveRow (source,  target) {
         let sourceRow = this._table.rows[source];
         let rule = this._rows.get(sourceRow);
-
+        
         this._table.deleteRow(source);
         this._rows.delete(sourceRow);
 
@@ -344,6 +339,8 @@ class RulesManager {
         targetRow.addEventListener('drop', this._drop.bind(this));
 
         targetRow.insertCell(0).appendChild(rule.node);
+
+        if (this._onChange) this._onChange();
     }
     
     deleteRow (index) {
@@ -420,9 +417,9 @@ class RulesManager {
     }
     
     show () {
-        this._table.classList.remove('hidden');
+        this._container.classList.remove('hidden');
     }
     hide () {
-        this._table.classList.add('hidden');
+        this._container.classList.add('hidden');
     }
 }

@@ -10,7 +10,7 @@
  * Utilitu classes
  */
 .hidden {
-	display: none;
+	display: none !important;
 }
 
 
