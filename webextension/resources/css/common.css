@@ -17,8 +17,9 @@
 /*
  * Global configuration for some elements
  */
-input, select, button {
+input, select, option, button {
 	color: #333;
+	font-size: 0.95rem;
 }
 input, button {
 	border-style: solid;

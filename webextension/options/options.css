@@ -10,9 +10,6 @@ form {
 	background-color: #fbfbfb;
 }
 
-.settings-entry input, select, button {
-	font-size: 0.95em;
-}
 .settings-entry > input[type="text"] {
 	width: calc(50% - 200px);
 }

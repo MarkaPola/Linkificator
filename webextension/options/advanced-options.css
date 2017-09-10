@@ -84,9 +84,6 @@ legend {
 }
 
 
-.settings-entry input, select, button {
-	font-size: 0.9rem;
-}
 .settings-entry > input[type="checkbox"] {
 	margin-top: 3px;
 }

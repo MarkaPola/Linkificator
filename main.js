@@ -209,12 +209,14 @@ exports.main = function (options) {
     webext.startup().then(({browser}) => {
         browser.runtime.onConnect.addListener(port => {
             if (port.name === "legacy-channel") {
-                // for new installation or upgrade, show an informational page
+                // for new installation or upgrade,
+                //   show an informational page
+                //   forward current settings to new extension
                 if (options.loadReason == 'install' || options.loadReason == 'upgrade') {
                     port.postMessage({id: 'show-release-notes'});
+
+                    sendPreferences(port);
                 }
-                
-                sendPreferences(port);
             }
         });
     });
