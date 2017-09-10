@@ -19,7 +19,7 @@
  */
 input, select, option, button {
 	color: #333;
-	font-size: 0.95rem;
+	font-size: inherit;
 }
 input, button {
 	border-style: solid;
