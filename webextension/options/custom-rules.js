@@ -107,8 +107,8 @@ class RuleEditor {
     }
 
     editRule (options) {
-        let onCancel = this._onCancel;
-        let onOK = this._onOK;
+        this._onCancel = this._onDefaultCancel;
+        this._onOK = this._onDefaultOK;
 
         if (options.onCancel) this._onCancel = options.onCancel;
         if (options.onOK) this._onOK = options.onOK;
@@ -133,7 +133,7 @@ class CustomRule {
     _editRule (event) {
         let rule = this._node.querySelector('.rule-name');
             
-        function updateRule (newRule) {
+        function updateRule (event, newRule) {
             rule.textContent = newRule.name;
             rule.dataset.pattern = newRule.pattern;
             rule.dataset.url = newRule.url;

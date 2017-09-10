@@ -11,7 +11,7 @@
 	background-color: #fbfbfb;
     box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.3);
     z-index: 1;
-    width: 180px;
+    width: 150px;
 }
 
 .popup-content > .popup-entry {
@@ -32,7 +32,7 @@
 .popup-content label {
 	vertical-align: top;
 	text-align: left;
-	min-width: 120px;
+	min-width: 90px;
 	margin-left: 10px;
 	width: auto;
 	float: left;

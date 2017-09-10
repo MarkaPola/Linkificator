@@ -168,7 +168,7 @@ function sendPreferences (port) {
     settings.extraFeatures = {
 		support: {
             inlineElements: prefs.supportInlineElements,
-            automaticLinkification: prefs.automaticLinkification
+            autoLinkification: prefs.automaticLinkification
         },
 		inlineElements: prefs.inlineElements.split(";"),
         maxDataSize: prefs.maxDataSize,

@@ -147,7 +147,7 @@ function Configurator () {
         extraFeatures: {
             support: {
                 inlineElements: true, 
-                automaticLinkification: true
+                autoLinkification: true
             },
             inlineElements: [
                 "b", "i", "big", "small", "em", "strong", "tt", "span", "wbr"
@@ -175,13 +175,13 @@ function Configurator () {
                 afterList: [
                     {
                         name: "URN:NBN Resolver, Redirect to document itself",
-                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+",
+                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\]{}<>\\\\|~^\"`\\s]+",
                         url: "http://nbn-resolving.org/redirect/$&",
                         active: true
                     },
                     {
                         name: "URN:NBN Resolver, All Links",
-                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\\\]{}<>\\\\\\\\|~^\\\"`\\\\s]+",
+                        pattern: "urn:nbn:[a-z0-9]{2,}[:-][^[\\]{}<>\\\\|~^\"`\\s]+",
                         url: "http://nbn-resolving.org/$&",
                         active: false
                     }

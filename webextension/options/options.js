@@ -142,29 +142,20 @@ function managePreferences () {
     addColorManager('background');
 
     // advanced settings
+    // check if Advanced options tab is already opened
     function advancedOptionsOpened (url) {
         return browser.runtime.getBrowserInfo().then(info => {
-            if (info.version < 56.0) {
+            if (parseInt(info.version) < 56) {
                 // moz-extension: schema not accepted
-                return browser.tabs.query({}).then(tabs => {
-                    return tabs.find(tab => { return tab.url === url; });
-                });
+                return browser.tabs.query({}).then(tabs => tabs.find(tab => tab.url === url));
             } else {
-                return browser.tabs.query({url: url}).then(tabs => {
-                    return tabs.length > 0 ? tabs[0] : undefined;
-                });
+                return browser.tabs.query({url: url}).then(tabs => tabs.length > 0 ? tabs[0] : undefined);
             }
         });
     }
     $('advanced-settings').addEventListener('click', event => {
         const url = browser.extension.getURL('/options/advanced-options.html');
         
-        // check if Advanced options tab is already opened
-        // browser.tabs.query({url: url}).then(tabs => {
-        //     if (tabs.length > 0) {
-        //         return browser.tabs.update(tabs[0].id, {active: true}).then(() => {
-        //             return browser.history.deleteUrl({url: url});
-        //         }); 
         advancedOptionsOpened(url).then(tab => {
             if (tab) {
                 return browser.tabs.update(tab.id, {active: true}).then(() => {

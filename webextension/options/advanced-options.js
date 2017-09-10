@@ -59,7 +59,7 @@ function updatePreference (id, value) {
     function setCheckbox (id, checked, childs) {
         $(id).checked = checked;
 
-        if (childs !== undefined) {
+        if (childs) {
             for (let child of childs) {
                 $(child).disabled = !checked;
             }
@@ -161,16 +161,20 @@ function updatePreference (id, value) {
         /// tab Links
         setCheckbox('inline-elements', properties.extraFeatures.support.inlineElements);
         setInput('automatic-linkification.refresh-interval.value', properties.extraFeatures.autoLinkification.interval.value);
-        setCheckbox('automatic-linkification.refresh-interval', properties.extraFeatures.autoLinkification.interval.active,
-                    ['automatic-linkification.refresh-interval.value']);
         setInput('automatic-linkification.refresh-threshold.value', properties.extraFeatures.autoLinkification.threshold.value);
-        setCheckbox('automatic-linkification.refresh-threshold', properties.extraFeatures.autoLinkification.threshold.active,
-                    ['automatic-linkification.refresh-threshold.value']);
-        setCheckbox('automatic-linkification', properties.extraFeatures.support.automaticLinkification,
-                    ['automatic-linkification.refresh-interval',
-                     'automatic-linkification.refresh-interval.value',
-                     'automatic-linkification.refresh-threshold',
-                     'automatic-linkification.refresh-threshold.value']);
+        if (properties.extraFeatures.support.autoLinkification) {
+            setCheckbox('automatic-linkification', properties.extraFeatures.support.autoLinkification);
+            setCheckbox('automatic-linkification.refresh-interval', properties.extraFeatures.autoLinkification.interval.active,
+                        ['automatic-linkification.refresh-interval.value']);
+            setCheckbox('automatic-linkification.refresh-threshold', properties.extraFeatures.autoLinkification.threshold.active,
+                        ['automatic-linkification.refresh-threshold.value']);
+        } else {
+            setCheckbox('automatic-linkification', properties.extraFeatures.support.autoLinkification,
+                        ['automatic-linkification.refresh-interval',
+                         'automatic-linkification.refresh-interval.value',
+                         'automatic-linkification.refresh-threshold',
+                         'automatic-linkification.refresh-threshold.value']);
+        }
         /// tab Configuration
         setInput('inline-elements-list', properties.extraFeatures.inlineElements.join(' '));
         setInput('max-data-size', properties.extraFeatures.maxDataSize);
@@ -430,23 +434,33 @@ function managePreferences () {
                        (value) => {
                            properties.extraFeatures.support.autoLinkification = value;
                            store({extraFeatures: properties.extraFeatures});
-                       },
-                       ['automatic-linkification.refresh-interval',
-                        'automatic-linkification.refresh-interval.value',
-                        'automatic-linkification.refresh-threshold',
-                        'automatic-linkification.refresh-threshold.value']);
-    //// tab Configuration
-    addCheckboxManager('inline-elements-list',
-                       (value) => {
-                           properties.extraFeatures.inlineElements = value.split(' ');
-                           store({extraFeatures: properties.extraFeatures});
+
+                           if (value) {
+                               $('automatic-linkification.refresh-interval').disabled = false;
+                               $('automatic-linkification.refresh-interval.value').disabled = !properties.extraFeatures.autoLinkification.interval.active;
+                               $('automatic-linkification.refresh-threshold').disabled = false;
+                               $('automatic-linkification.refresh-threshold.value').disabled = !properties.extraFeatures.autoLinkification.threshold.active;
+                           } else {
+                               for (let id of ['automatic-linkification.refresh-interval',
+                                               'automatic-linkification.refresh-interval.value',
+                                               'automatic-linkification.refresh-threshold',
+                                               'automatic-linkification.refresh-threshold.value']) {
+                                   $(id).disabled = true;
+                               }
+                           }
                        });
+    //// tab Configuration
+    addInputManager('inline-elements-list',
+                    (value) => {
+                        properties.extraFeatures.inlineElements = value.split(' ');
+                        store({extraFeatures: properties.extraFeatures});
+                    });
     addResetManager('inline-elements', 'inlineElements');
-    addCheckboxManager('max-data-size',
-                       (value) => {
-                           properties.extraFeatures.maxDataSize = value;
-                           store({extraFeatures: properties.extraFeatures});
-                       });    
+    addInputManager('max-data-size',
+                    (value) => {
+                        properties.extraFeatures.maxDataSize = value;
+                        store({extraFeatures: properties.extraFeatures});
+                    });    
     addResetManager('max-data-size', 'maxDataSize');
 }
 

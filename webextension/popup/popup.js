@@ -9,18 +9,20 @@
 // Manage the options page of the add-on
 //
 
+Promise.prototype.finally = function (cb) {
+   return this.then(v => Promise.resolve(cb(v)),
+                    v => Promise.reject(cb(v)));
+};
 
 function managePopup (context) {
     $('panel-options').addEventListener('click', event => {
-        browser.runtime.openOptionsPage();
-        window.close();
+        browser.runtime.openOptionsPage().finally(() => window.close());
     });
 
     let manual = $('panel-manual');
     manual.checked = context.manual;
     manual.addEventListener('click', event => {
-        browser.storage[context.area].set({manual: manual.checked});
-        window.close();
+        browser.storage[context.area].set({manual: manual.checked}).finally(() => window.close());
     });
 
     let activate = $('panel-activate');
@@ -28,14 +30,12 @@ function managePopup (context) {
     if (context.activated) {
         $('entry-activate').setAttribute('style', 'display: none');
         $('panel-deactivate').addEventListener('click', event => {
-            browser.storage[context.area].set({activated: false});
-            window.close();
+            browser.storage[context.area].set({activated: false}).finally(() => window.close());
         });
     } else {
         $('entry-deactivate').setAttribute('style', 'display: none');
         $('panel-activate').addEventListener('click', event => {
-            browser.storage[context.area].set({activated: true});
-            window.close();
+            browser.storage[context.area].set({activated: true}).finally(() => window.close());
         });
     }
 
@@ -54,15 +54,13 @@ function managePopup (context) {
         manage.setAttribute('src', 'empty.png');
     }
     manage.addEventListener('click', event => {
-        browser.runtime.sendMessage({id: 'manage-url', info: context}).catch(reason => console.error(reason));
-        window.close();
+        browser.runtime.sendMessage({id: 'manage-url', info: context}).catch(reason => console.error(reason)).finally(() => window.close());
     });
     
     let linkify = $('panel-linkify');
     if (context.status === 'processed') {
         linkify.addEventListener('click', event => {
-            browser.storage[context.area].set({activated: true});
-            window.close();
+            browser.runtime.sendMessage({id: 're-parse', info: context}).catch(reason => console.error(reason)).finally(() => window.close());
         });
     } else {
         $('entry-linkify').classList.add('popup-entry-disabled');

@@ -115,6 +115,7 @@ legend {
 	margin-left: 6px;
 	width: calc(70% - 200px);
 	height: 6em;
+	resize: vertical;
 }
 
 .indent label {

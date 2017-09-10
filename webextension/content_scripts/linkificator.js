@@ -977,7 +977,7 @@ function parse (properties) {
     {
         execute('parse', properties);
     
-        if (properties.extraFeatures.support.automaticLinkification) {
+        if (properties.extraFeatures.support.autoLinkification) {
             documentObserver.observe(properties.extraFeatures.autoLinkification);
         }
     }
@@ -1050,7 +1050,7 @@ function connect () {
             let date = Date.now();
             execute('re-parse', properties);
             
-            if (!properties.manual && properties.extraFeatures.support.automaticLinkification) {
+            if (!properties.manual && properties.extraFeatures.support.autoLinkification) {
                 if (properties.extraFeatures.autoLinkification.threshold.active
                     && (Date.now()-date > properties.extraFeatures.autoLinkification.threshold.value))
                     // processing time is too costly, deactivate auto linkification

@@ -380,7 +380,10 @@ function Controler (config) {
         case 'manage-url':
             manageURL(message.info);
             break;
-        }        
+        case 're-parse':
+            updateListeners.every({action: 're-parse', tab: message.info.tab});
+            break;
+        }
     });
 
     // handle preferences changes
