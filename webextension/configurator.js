@@ -253,7 +253,11 @@ function Configurator () {
                 }
             }
 
-            let {area, activated, sync, ...settings} = properties;
+            let settings = Object.assign({}, properties);
+            delete settings.area;
+            delete settings.actiavted;
+            delete settings.sync;
+            //let {area, activated, sync, ...settings} = properties;
             return browser.storage[properties.area].set(settings).then(() => {
                 return properties;
             });
@@ -278,7 +282,10 @@ function Configurator () {
                             setPreferences();
                         } else {
                             // propagate current settings to local
-                            let {area, sync, ...settings} = properties;
+                            let settings = Object.assign({}, properties);
+                            delete settings.area;
+                            delete settings.sync;
+                            //let {area, sync, ...settings} = properties;
                             browser.storage.local.set(settings);
                         }
 

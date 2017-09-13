@@ -6,7 +6,9 @@
     "icons": {
         "16": "resources/icons/link16-on.png", 
         "32": "resources/icons/link32-on.png", 
-        "48": "resources/icons/icon48.png"
+        "48": "resources/icons/icon48.png", 
+        "64": "resources/icons/icon64.png", 
+        "128": "resources/icons/icon128.png"
     }, 
 
     "developer": {

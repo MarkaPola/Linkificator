@@ -227,7 +227,7 @@ function managePreferences () {
 
     addInputManager('required-characters',
                     (value) => {
-                        properties.requiredCharacters = value.split('');
+                        properties.requiredCharacters = value.trim().split('');
                         store({requiredCharacters: properties.requiredCharacters});
                     });
     addResetManager('required-characters', 'requiredCharacters');
@@ -275,7 +275,7 @@ function managePreferences () {
                     (value) => {
                         let protocols = [];
 
-                        for (let v of value.split(' ')) {
+                        for (let v of value.trim().split(/\s+/)) {
                             let a = v.split('~');
                             if (a.length === 2)
                                 protocols.push({pattern: a[0], term: a[1]});
@@ -288,7 +288,7 @@ function managePreferences () {
                     (value) => {
                         let subdomains = [];
 
-                        for (let v of value.split(' ')) {
+                        for (let v of value.trim().split(/\s+/)) {
                             let a = v.split('~');
                             if (a.length === 3)
                                 subdomains.push({filter: a[0], pattern: a[1], term: a[2]});
@@ -299,7 +299,7 @@ function managePreferences () {
     addResetManager('subdomains');
     addInputManager('excluded-elements',
                     (value) => {
-                        properties.predefinedRules.excludedElements = value.split(' ');
+                        properties.predefinedRules.excludedElements = value.trim().split(/\s+/);
                         store({predefinedRules: properties.predefinedRules});
                     });
     addResetManager('excluded-elements', 'excludedElements');
@@ -314,7 +314,7 @@ function managePreferences () {
                         'reset-generics']);
     addInputManager('generics-value',
                     (value) => {
-                        properties.tldGenerics.domains = value.split(' ');
+                        properties.tldGenerics.domains = value.trim().split(/\s+/);
                         store({tldGenerics: properties.tldGenerics});
                     });
     addResetManager('generics', 'tldGenerics');
@@ -327,7 +327,7 @@ function managePreferences () {
                         'reset-country-codes']);
     addInputManager('country-codes-value',
                     (value) => {
-                        properties.tldCountryCodes.domains = value.split(' ');
+                        properties.tldCountryCodes.domains = value.trim().split(/\s+/);
                         store({tldCountryCodes: properties.tldCountryCodes});
                     });
     addResetManager('country-codes', 'tldCountryCodes');
@@ -340,7 +340,7 @@ function managePreferences () {
                         'reset-geographics']);
     addInputManager('geographics-value',
                     (value) => {
-                        properties.tldGeographics.domains = value.split(' ');
+                        properties.tldGeographics.domains = value.trim().split(/\s+/);
                         store({tldGeographics: properties.tldGeographics});
                     });
     addResetManager('geographics', 'tldGeographics');
@@ -353,7 +353,7 @@ function managePreferences () {
                         'reset-communities']);
     addInputManager('communities-value',
                     (value) => {
-                        properties.tldCommunities.domains = value.split(' ');
+                        properties.tldCommunities.domains = value.trim().split(/\s+/);
                         store({tldCommunities: properties.tldCommunities});
                     });
     addResetManager('communities', 'tldCommunities');
@@ -366,7 +366,7 @@ function managePreferences () {
                         'reset-brands']);
     addInputManager('brands-value',
                     (value) => {
-                        properties.tldBrands.domains = value.split(' ');
+                        properties.tldBrands.domains = value.trim().split(/\s+/);
                         store({tldBrands: properties.tldBrands});
                     });
     addResetManager('brands', 'tldBrands');
@@ -452,7 +452,7 @@ function managePreferences () {
     //// tab Configuration
     addInputManager('inline-elements-list',
                     (value) => {
-                        properties.extraFeatures.inlineElements = value.split(' ');
+                        properties.extraFeatures.inlineElements = value.trim().split(/\s+/);
                         store({extraFeatures: properties.extraFeatures});
                     });
     addResetManager('inline-elements', 'inlineElements');
