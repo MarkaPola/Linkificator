@@ -360,11 +360,11 @@
         "desription":"Thank you for using Linkificator."
     },
     "releaseNotes@localization":{
-        "message":"Система локализации уже полностью функционирует. Любая помощь приветствуется... Отправьте мне по <a href=\"mailto:linkificator@gmail.com\">электронной почте<\/a> запрос на предоставление локализуемых материалов.",
+        "message":"Система локализации уже полностью функционирует. Любая помощь приветствуется... Отправьте мне по <a href=\"mailto:linkificator@gmail.com\">электронной почте</a> запрос на предоставление локализуемых материалов.",
         "desription":""
     },
     "releaseNotes@more_information":{
-        "message":"Пожалуйста, посетите <a href=\"https:\/\/addons.mozilla.org\/ru\/firefox\/addon\/linkificator\">страницу дополнения<\/a> для получения дополнительной информации.",
+        "message":"Пожалуйста, посетите <a href=\"https://addons.mozilla.org/ru/firefox/addon/linkificator\">страницу дополнения</a> для получения дополнительной информации.",
         "desription":""
     },
     "releaseNotes@history":{
@@ -388,12 +388,12 @@
         "desription":"Limitations"
     },
     "releaseNotes@new_features@3_0_0@1":{
-        "message":"Linkificator теперь основан на WebExtension API и поэтому полностью совместим с Firefox 57+.<br><strong>Примечание<\/strong>: Текущая версия является гибридной (т.е. отображается как УСТАРЕВШЕЕ в Firefox), чтобы иметь возможность применить текущие настройки в новой среде. Следующая версия будет полноценным WebExtension дополнением.",
+        "message":"Linkificator теперь основан на WebExtension API и поэтому полностью совместим с Firefox 57+.<br><strong>Примечание</strong>: Текущая версия является гибридной (т.е. отображается как УСТАРЕВШЕЕ в Firefox), чтобы иметь возможность применить текущие настройки в новой среде. Следующая версия будет полноценным WebExtension дополнением.",
         "description":"Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."
     },
     "releaseNotes@limitations@3_0_0@1":{
-        "message":"Из-за различных ограничений, связанных с переходом на WebExtension API, следующие функции больше недоступны:<ul><li>Горячие клавиши<\/li><li>Различные настройки виджета<\/li><li>Поддержка about: протокола<\/li><li>Импорт\/экспорт настроек<\/li><\/ul><br>Но я надеюсь, что некоторые ограничения будут сняты в будущем с развитием WebExtension API.",
-        "description":"Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts<\/li><li>Various Widget clicks customizations<\/li><li>about: protocol support<\/li><li>Import\/Export of settings<\/li><\/ul><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
+        "message":"Из-за различных ограничений, связанных с переходом на WebExtension API, следующие функции больше недоступны:<ul><li>Горячие клавиши</li><li>Различные настройки виджета</li><li>Поддержка about: протокола</li><li>Импорт/экспорт настроек</li></ul><br>Но я надеюсь, что некоторые ограничения будут сняты в будущем с развитием WebExtension API.",
+        "description":"Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li><li>Various Widget clicks customizations</li><li>about: protocol support</li><li>Import/Export of settings</li></ul><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
     },
     "releaseNotes@limitations@3_0_0@2":{
         "message":"В настоящее время пользовательские правила больше не редактируются, но это ограничение будет снято в будущей версии.",
@@ -401,7 +401,7 @@
     },
     "releaseNotes@enhancements@2_3_2@1":{
         "message":"Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 2.3.1.",
-        "desription":"Fixes a regression, regarding text\/plain documents, introduced in version 2.3.1."
+        "desription":"Fixes a regression, regarding text/plain documents, introduced in version 2.3.1."
     },
     "releaseNotes@enhancements@2_3_1@1":{
         "message":"Поддержка мульти-процессов в Firefox (проект Electrolysis).",
@@ -441,11 +441,11 @@
     },
     "releaseNotes@enhancements@2_1_4@1":{
         "message":"Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.",
-        "description":"Fixes a regression, regarding plain\/text documents, introduced in version 2.1.1."
+        "description":"Fixes a regression, regarding plain/text documents, introduced in version 2.1.1."
     },
     "releaseNotes@enhancements@2_1_3@1":{
         "message":"Исправлена ​​регрессия в отношении обычных и текстовых документов, появившаяся в версии 2.1.1.",
-        "description":"Fixes a regression, regarding plain\/text documents, introduced in version 2.1.1."
+        "description":"Fixes a regression, regarding plain/text documents, introduced in version 2.1.1."
     },
     "releaseNotes@enhancements@2_1_3@2":{
         "message":"Улучшено восстановление первоначального содержания страниц, когда дополнение отключено или удалено в Firefox 30.0 и выше.",
@@ -456,8 +456,8 @@
         "description":"Fixes a regression, regarding Firefox navigation, introduced in version 2.1.1."
     },
     "releaseNotes@enhancements@2_1_1@1":{
-        "message":"Улучшен интерфейс для управления чёрным\/белым списками.",
-        "description":"Enhances UI for black\/white lists management."
+        "message":"Улучшен интерфейс для управления чёрным/белым списками.",
+        "description":"Enhances UI for black/white lists management."
     },
     "releaseNotes@enhancements@2_1_1@2":{
         "message":"Существенно уменьшено потребление ресурсов для обработки некоторых страниц.",
@@ -544,12 +544,12 @@
         "description":"Various minor bug fixes."
     },
     "releaseNotes@new_features@2_0_0@1":{
-        "message":"Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br\/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu.",
-        "description":"Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br\/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu."
+        "message":"Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu.",
+        "description":"Support of the new Firefox UI (Australis). The Linkificator's widget behavior is strictly identical to native widgets on Australis UI.<br/>The new behavior of widgets requires to change the configuration options of the mouse: It is no longer possible to configure the left boution mouse because it is reserved for displaying the context menu."
     },
     "releaseNotes@new_features@2_0_0@2":{
-        "message":"It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br\/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes.",
-        "description":"It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br\/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes."
+        "message":"It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes.",
+        "description":"It is now possible to linkify an ignored page (blacklisted or not whitelisted). For that purpose, action 'Include' can be used (keyboard shortcut or widget context menu entry).<br/>NOTA: 'Include' action concerns only the current URL. Default filtering rules will be applied as soon as the page changes."
     },
     "releaseNotes@enhancements@2_0_0@1":{
         "message":"Enhances widget behavior in multi-windows mode.",
@@ -564,16 +564,16 @@
         "description":"Enhances widget handling in multi-windows mode."
     },
     "releaseNotes@limitations@1_6_3@1":{
-        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>.",
-        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>."
+        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
+        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     },
     "releaseNotes@enhancements@1_6_2@1":{
         "message":"Optimizes document processing.",
         "description":"Optimizes document processing."
     },
     "releaseNotes@limitations@1_6_2@1":{
-        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>.",
-        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>."
+        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
+        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     },
     "releaseNotes@enhancements@1_6_1@1":{
         "message":"It is now possible to deactivate automatic processing of dynamic changes (see 'Advanced settings', 'Links' tab).",
@@ -584,28 +584,28 @@
         "description":"Optimizes automatic processing to avoid potential lags."
     },
     "releaseNotes@limitations@1_6_1@1":{
-        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>.",
-        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>."
+        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
+        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     },
     "releaseNotes@new_features@1_6_0@1":{
         "message":"The dynamic changes of current page are now detected and automatically processed.",
         "description":"The dynamic changes of current page are now detected and automatically processed."
     },
     "releaseNotes@limitations@1_6_0@1":{
-        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>.",
-        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21<\/b>."
+        "message":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>.",
+        "description":"Due to new add-on packaging, minimal version supported is now <b>Firefox 21</b>."
     },
     "releaseNotes@enhancements@1_5_3@1":{
         "message":"Fix erroneous handling of inline elements.",
         "description":"Fix erroneous handling of inline elements."
     },
     "releaseNotes@limitations@1_5_3@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@enhancements@1_5_2@1":{
-        "message":"By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br\/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment.",
-        "description":"By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br\/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment."
+        "message":"By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment.",
+        "description":"By default, to reduce even more the false positives, the URLs containing only the authority (i.e. host:port) are no longer linkified, even if they contain a valid top level domain.<br/>The option 'Advanced Options->Links->Linkify URL containing the alone authority' enables to activate this treatment."
     },
     "releaseNotes@enhancements@1_5_2@2":{
         "message":"Enhances matching of URIs.",
@@ -616,8 +616,8 @@
         "description":"Speed-up processing when Top Level Domains are used."
     },
     "releaseNotes@limitations@1_5_2@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@enhancements@1_5_1@1":{
         "message":"Enhances identification of start of URIs.",
@@ -628,48 +628,48 @@
         "description":"Enhances Top Level Domain matching."
     },
     "releaseNotes@limitations@1_5_1@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@new_features@1_5_0@1":{
-        "message":"To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br\/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'.",
-        "description":"To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br\/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'."
+        "message":"To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'.",
+        "description":"To reduce false positives, URI are now recognized only if the domain part is terminated with a known top level domain.<br/>It is possible to de-activate this mode (and so, reverting to the behavior of the previous version) through 'Advanced settings', tab 'Links'."
     },
     "releaseNotes@limitations@1_5_0@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@enhancements@1_4_2@1":{
         "message":"Speeds up the processing of inline tags to reduce drastically the potential freezes of Firefox.",
         "description":"Speeds up the processing of inline tags to reduce drastically the potential freezes of Firefox."
     },
     "releaseNotes@enhancements@1_4_2@2":{
-        "message":"For a better compatibility with <a href=\"http:\/\/www.palemoon.org\">'Pale Moon'<\/a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20.",
-        "description":"For a better compatibility with <a href=\"http:\/\/www.palemoon.org\">'Pale Moon'<\/a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20."
+        "message":"For a better compatibility with <a href=\"http://www.palemoon.org\">'Pale Moon'</a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20.",
+        "description":"For a better compatibility with <a href=\"http://www.palemoon.org\">'Pale Moon'</a> browser, changes slightly the checking of version of Firefox to disable the panel on version 20."
     },
     "releaseNotes@limitations@1_4_2@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@enhancements@1_4_1@1":{
-        "message":"Enhance page history navigation handling (Back\/Forward buttons).",
-        "description":"Enhance page history navigation handling (Back\/Forward buttons)."
+        "message":"Enhance page history navigation handling (Back/Forward buttons).",
+        "description":"Enhance page history navigation handling (Back/Forward buttons)."
     },
     "releaseNotes@limitations@1_4_1@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@new_features@1_4_0@1":{
-        "message":"Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br\/>By default, for compatibility purpose, menu display is binded to left click.",
-        "description":"Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br\/>By default, for compatibility purpose, menu display is binded to left click."
+        "message":"Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br/>By default, for compatibility purpose, menu display is binded to left click.",
+        "description":"Left click is now configurable. As a result, menu can now be assigned to any mouse button.<br/>By default, for compatibility purpose, menu display is binded to left click."
     },
     "releaseNotes@enhancements@1_4_0@1":{
-        "message":"Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20<\/b> due to SDK limitations specifically on this version.",
-        "description":"Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20<\/b> due to SDK limitations specifically on this version."
+        "message":"Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20</b> due to SDK limitations specifically on this version.",
+        "description":"Per window private browsing mode is now fully supported but have some restrictions on <b>Firefox 20</b> due to SDK limitations specifically on this version."
     },
     "releaseNotes@limitations@1_4_0@1":{
-        "message":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator.",
-        "description":"Per window private browsing mode on <b>Firefox 20<\/b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br\/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly<\/b> recommended to upgrade to <b>Firefox 21<\/b> and above to have a fully operational Linkificator."
+        "message":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator.",
+        "description":"Per window private browsing mode on <b>Firefox 20</b> is not compatible with SDK panels feature. This feature is used by Linkificator for context menu.<br/>So, on Firefox 20, Linkificator context menu is deactivated. It is <b>strongly</b> recommended to upgrade to <b>Firefox 21</b> and above to have a fully operational Linkificator."
     },
     "releaseNotes@new_features@1_3_0@1":{
         "message":"Page context menu integration: it is possible to update links through page context menu (customizable).",
@@ -688,12 +688,12 @@
         "description":"Fix erroneous handling of status tooltip."
     },
     "releaseNotes@limitations@1_3_0@1":{
-        "message":"Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br\/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version).",
-        "description":"Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br\/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version)."
+        "message":"Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version).",
+        "description":"Per window private browsing mode (Firefox 20+) is not supported due to an Add-on SDK bug (see 816257).<br/>The support will be added as soon as SDK bug is fixed (planned for SDK 1.15 version)."
     },
     "releaseNotes@new_features@1_2_0@1":{
-        "message":"Possibility to toggle processing of the current page.<br\/>This action can be launched through widget menu (Exclude\/Include) or the hot key control-shift-x (customizable).",
-        "description":"Possibility to toggle processing of the current page.<br\/>This action can be launched through widget menu (Exclude\/Include) or the hot key control-shift-x (customizable)."
+        "message":"Possibility to toggle processing of the current page.<br/>This action can be launched through widget menu (Exclude/Include) or the hot key control-shift-x (customizable).",
+        "description":"Possibility to toggle processing of the current page.<br/>This action can be launched through widget menu (Exclude/Include) or the hot key control-shift-x (customizable)."
     },
     "releaseNotes@enhancements@1_2_0@1":{
         "message":"Enhance anchor handling when inline elements are involved.",
@@ -704,8 +704,8 @@
         "description":"Add tag &lt;wbr&gt; to inline elements."
     },
     "releaseNotes@new_features@1_1_1@1":{
-        "message":"Possibility to update the current page without reloading it.<br\/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable).",
-        "description":"Possibility to update the current page without reloading it.<br\/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable)."
+        "message":"Possibility to update the current page without reloading it.<br/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable).",
+        "description":"Possibility to update the current page without reloading it.<br/>This action can be launched by a right click on the Linkificator widget or through the hot key control-shift-u (customizable)."
     },
     "releaseNotes@new_features@1_1_1@2":{
         "message":"Left click on the widget now display a menu for an easy access to the most common operations as well as the options page.",

@@ -399,7 +399,7 @@
         "description": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."
     }, 
     "releaseNotes@limitations@3_0_0@1": {
-        "message": "Du fait des diverses limitations et restrictions imposées par l'API WebExtension, les fonctionnalitées suivantes ne sont plus disponibles:<ul><li>Raccourcis clavier</li><li>Les diverses configurations des clics sur le Widget</li><li>support du protocole about:</li><li>Importation/Exportation des réglages</li></ul><br>J'espère que certaines limitations pourront être levées dans l'avenir avec les évolutions de l'API WebExtension.",
+        "message": "Du fait des diverses limitations et restrictions imposées par l'API WebExtension, les fonctionnalitées suivantes ne sont plus disponibles :<ul><li>Raccourcis clavier</li><li>Les diverses configurations des clics sur le Widget</li><li>support du protocole about:</li><li>Importation/Exportation des réglages</li></ul><br>J'espère que certaines limitations pourront être levées dans l'avenir avec les évolutions de l'API WebExtension.",
         "description": "Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li><li>Various Widget clicks customizations</li><li>about: protocol support</li><li>Import/Export of settings</li></ul><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
     },
     "releaseNotes@limitations@3_0_0@2": {
