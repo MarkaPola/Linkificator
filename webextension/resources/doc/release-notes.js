@@ -13,8 +13,9 @@ function translateElements() {
     for(let child of children) {
         if(!child.dataset.l10nNocontent) {
             const data = browser.i18n.getMessage(child.dataset.l10nId);
-            if(data && data != "??") {
-                child.innerHTML = data;
+            if(data && data.length != 0) {
+                let fragment = document.createRange().createContextualFragment(data);
+                child.insertBefore(fragment, child.firstChild);
             }
         }
     }

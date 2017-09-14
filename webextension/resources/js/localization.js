@@ -19,7 +19,7 @@ function translateElementAttributes(element) {
             data = browser.i18n.getMessage(element.dataset.l10nId + separator + attribute);
         }
         
-        if(data && data != "??") {
+        if(data && data.length != 0) {
             element.setAttribute(attribute, data);
         }
     }
@@ -30,7 +30,7 @@ function translateElements() {
     for(let child of children) {
         if(!child.dataset.l10nNocontent) {
             const data = browser.i18n.getMessage(child.dataset.l10nId);
-            if(data && data != "??") {
+            if(data && data.length != 0) {
                 child.textContent = data;
             }
         }

@@ -1,7 +1,7 @@
 
 # temporary files
 *~
-.DS-Store
+.DS_Store
 
 # previous xpi
 *.xpi
@@ -12,6 +12,7 @@ legacy
 l10n
 integration
 NEW
+web-ext-artifacts
 
 # jpm stuff
 .jpmignore

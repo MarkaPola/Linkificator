@@ -35,7 +35,7 @@ function sendPreferences (port) {
         }
         
         let result = [];
-        for (let element of data.split(';')) {
+        for (let element of data.trim().split(';')) {
 			let protocol = Element(element);
 			if (protocol)
 				result.push (protocol);
@@ -59,7 +59,7 @@ function sendPreferences (port) {
 		}
 		
         let result = [];
-        for (let element of data.split(';')) {
+        for (let element of data.trim().split(';')) {
 			let subdomain = Element(element);
 			if (subdomain)
 				result.push (subdomain);
@@ -68,7 +68,7 @@ function sendPreferences (port) {
         return result;
     }
     function splitExcludedElements (data) {
-		let elements = data.split(';');
+		let elements = data.trim().split(';');
 
         for (let index = 0; index < elements.length; ++index) {
 			let element = elements[index];
@@ -79,7 +79,7 @@ function sendPreferences (port) {
 		return elements;
 	}
     function splitTopLevelDomains (data) {
-        return data.split(';').sort().filter((value, index, self) => self.indexOf(value) === index);
+        return data.trim().split(';').sort().filter((value, index, self) => self.indexOf(value) === index);
     }
 
     
@@ -102,8 +102,8 @@ function sendPreferences (port) {
 		useRegExp: prefs.useRegExp,
 		type: prefs.filterMode,
 		list: {
-            white: prefs.whitelist.split(' '),
-			black: prefs.blacklist.split(' ').filter(item => item !== '^about:')
+            white: prefs.whitelist.trim().split(/\s+/),
+			black: prefs.blacklist.trim().split(/\s+/).filter(item => item !== '^about:')
         }
 	};
 
@@ -170,7 +170,7 @@ function sendPreferences (port) {
             inlineElements: prefs.supportInlineElements,
             autoLinkification: prefs.automaticLinkification
         },
-		inlineElements: prefs.inlineElements.split(";"),
+		inlineElements: prefs.inlineElements.trim().split(";"),
         maxDataSize: prefs.maxDataSize,
         autoLinkification: {
             delay: prefs.autoLinkificationDelay,

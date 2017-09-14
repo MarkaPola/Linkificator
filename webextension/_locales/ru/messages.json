@@ -392,8 +392,28 @@
         "description":"Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."
     },
     "releaseNotes@limitations@3_0_0@1":{
-        "message":"Из-за различных ограничений, связанных с переходом на WebExtension API, следующие функции больше недоступны:<ul><li>Горячие клавиши</li><li>Различные настройки виджета</li><li>Поддержка about: протокола</li><li>Импорт/экспорт настроек</li></ul><br>Но я надеюсь, что некоторые ограничения будут сняты в будущем с развитием WebExtension API.",
-        "description":"Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:<ul><li>Keyboard shortcuts</li><li>Various Widget clicks customizations</li><li>about: protocol support</li><li>Import/Export of settings</li></ul><br>But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
+        "message":"Из-за различных ограничений, связанных с переходом на WebExtension API, следующие функции больше недоступны:",
+        "description":"Due to various limiations and restrictions imposed by the WebExtension API, the following features are no longer available:"
+    },
+    "releaseNotes@limitations@3_0_0@1_1": {
+        "message": "Горячие клавиши",
+        "description": "Keyboard shortcuts"
+    },
+    "releaseNotes@limitations@3_0_0@1_2": {
+        "message": "Различные настройки виджета",
+        "description": "Various Widget clicks customizations"
+    },
+    "releaseNotes@limitations@3_0_0@1_3": {
+        "message": "Поддержка about: протокол",
+        "description": "about: protocol support"
+    },
+    "releaseNotes@limitations@3_0_0@1_4": {
+        "message": "Импорт/экспорт настроек",
+        "description": "Import/Export of settings"
+    },
+    "releaseNotes@limitations@3_0_0@1_5": {
+        "message": "Но я надеюсь, что некоторые ограничения будут сняты в будущем с развитием WebExtension API",
+        "description": "But I hope that some limitations will be suppressed in the future with the evolutions of WebExtension API."
     },
     "releaseNotes@limitations@3_0_0@2":{
         "message":"В настоящее время пользовательские правила больше не редактируются, но это ограничение будет снято в будущей версии.",
