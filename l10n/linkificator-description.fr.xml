@@ -11,7 +11,7 @@ Ce module analyse les parties texte des pages HTML pour identifier les modèles 
 
 <strong>NOTE IMPORTANTE POUR LES UTILISATEURS DES PRECEDENTES VERSIONS - A LIRE</strong>
 
-Linkificator a été entièrement re-développé en s'appuyant sur la technologie WebExtension pour permettre la compatibilité avec Firefox 57+. Certaines fonctionnalitées, disponibles dans les versions précédentes, ne peuvent plus être offertes dans le cadre de WebExtension. Celles-ci seront de nouveau intégrées à Linkificator dés que Mozilla offre de nouvelles possibilitées à WebExtension.
+Linkificator a été entièrement re-développé en s'appuyant sur la technologie WebExtension pour permettre la compatibilité avec Firefox 57+. Certaines fonctionnalités, disponibles dans les versions précédentes, ne peuvent plus être offertes dans le cadre de WebExtension. Celles-ci seront de nouveau intégrées à Linkificator dés que Mozilla offre de nouvelles possibilitées à WebExtension.
 Les fonctionnalitées suivantes ne sont donc plus disponibles:
     ]]>
 	<ul>
@@ -21,7 +21,7 @@ Les fonctionnalitées suivantes ne sont donc plus disponibles:
 	  <li>Importation/Exportation des réglages</li>
 	</ul>
 	<![CDATA[
-<strong>Compatibilité</strong>: Cette module nécessite, au minimum, la version 55 de Firefox due à la mise en œuvre de technologies nouvelles (WebExtension). Le support des versions plus anciennes n'est donc pas possible pour des raisons techniques.
+<strong>Compatibilité</strong>: Ce module nécessite, au minimum, la version 55 de Firefox due à la mise en œuvre de technologies nouvelles (WebExtension). Le support des versions plus anciennes n'est donc pas possible pour des raisons techniques.
 
 Cette version est une version hybride (i.e. affiché comme OBSOLÈTE dans Firefox) pour permettre la transmittion des réglages actuels vers le nouvel environnement. La prochaine version sera un module exclusivement basé sur l'API WebExtension.
 
