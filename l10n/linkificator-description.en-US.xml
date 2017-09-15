@@ -23,7 +23,7 @@ As a result, some features are no longer available:
 	<![CDATA[
 <strong>Compatibility</strong>: The extension requires at least Firefox 55. Because the extension makes use of modern web technologies and the latest WebExtension APIs, support for older versions of Firefox is not possible for technical reasons.
 	
-The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.
+The current version is an hybrid version (i.e. displayed as <strong>LEGACY</strong> in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.
 	
 Icons by: <a href="http://www.fasticon.com">FastIcon.com</a>
 Localization infrastructure: <a href="http://crowdin.com">Crowdin.com</a>

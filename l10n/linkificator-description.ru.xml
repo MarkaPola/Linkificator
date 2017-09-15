@@ -9,21 +9,21 @@
 	<![CDATA[
 Это дополнение разбирает текстовые части HTML-страниц для сопоставления гипертекстовым шаблонам и преобразует их в кликабельные ссылки в соответствии с заданными правилами.
 
-<strong>IMPORTANT NOTICE FOR USERS OF PREVIOUS VERSIONS - PLEASE READ</strong>
+<strong>ВАЖНОЕ ЗАМЕЧАНИЕ ДЛЯ ПОЛЬЗОВАТЕЛЕЙ ПРЕДЫДУЩИХ ВЕРСИЙ - ПОЖАЛУЙСТА, ПРОЧИТАЙТЕ</strong>
 
-Linkificator was developed from the ground up as so-called WebExtension. This makes Linkificator compatible with Firefox 57 and later. Not all options of the previous version are currently available as WebExtension. As soon as Mozilla implements support for missing functionalities in Firefox, they will be integrated in a future update of Linkificator.
-As a result, some features are no longer available:
+Linkificator был разработан с нуля, как так называемый WebExtension. Это делает Linkificator совместимым с Firefox 57 и более поздними версиями. Не все опции предыдущей версии в настоящее время доступны для WebExtension. Как только Mozilla реализует поддержку отсутствующих функциональных возможностей в Firefox, они будут интегрированы в будущие версии Linkificator.
+В результате некоторые функции больше недоступны:
 	]]>
 	<ul>
-	  <li>Keyboard shortcuts</li>
-	  <li>Various Widget clicks customizations</li>
-	  <li>about: protocol support</li>
-	  <li>Import/Export of settings</li>
+	  <li>Горячие клавиши</li>
+	  <li>Различные настройки виджета</li>
+	  <li>Поддержка about: протокола</li>
+	  <li>Импорт/Экспорт настроек</li>
 	</ul>
 	<![CDATA[
-<strong>Compatibility</strong>: The extension requires at least Firefox 55. Because the extension makes use of modern web technologies and the latest WebExtension APIs, support for older versions of Firefox is not possible for technical reasons.
+<strong>Совместимость</strong>: Для расширения требуется Firefox 55 или более поздняя версия. Поскольку расширение использует современные веб-технологии и последние API-интерфейсы WebExtension, поддержка старых версий Firefox невозможна по техническим причинам.
 	
-The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.
+Текущая версия представляет собой гибридную версию (т.е. отображаемую как <strong>УСТАРЕВШЕЕ</strong> в Firefox), чтобы включить применение текущих настроек в новой среде. Следующая версия будет чистым дополнением WebExtension.
 
 Значки: <a href="http://www.fasticon.com">FastIcon.com</a>
 Система локализации: <a href="http://crowdin.com">Crowdin.com</a>
@@ -39,7 +39,7 @@ The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) t
   </paragraph>
   <paragraph title="Screenshots">
 	<ul>
-	  <li>Подсказкаp показывает, какой URL будет использоваться</li>
+	  <li>Подсказка показывает, какой URL будет использоваться</li>
 	  <li>Виджет предоставляет некоторую информацию об обработке</li>
 	  <li>Меню виджета</li>
 	  <li>Виджет предоставляет некоторую информацию об обработке</li>
