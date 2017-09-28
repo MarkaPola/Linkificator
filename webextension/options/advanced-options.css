@@ -15,6 +15,7 @@
 
 body {
 	font-family: "Arial";
+	background-color: #f9f9fa;
 }
 
 
@@ -22,20 +23,47 @@ body {
 div.tab {
 	position: fixed;
     float: left;
-	background-color: #424f5a;
-	width: 200px;
+	width: 230px;
 	height: 100vh;
-	padding-top: 39px;
+	padding-top: 70px;
 }
 
 /* Style the buttons inside the tab */
+.tablinks {
+	display: inline-flex;
+    background-color: inherit;
+    color: #0c0c0d;
+	fill: #0c0c0d;
+	margin-left: 34px;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 15px;
+    padding-bottom: 15px;
+    width: calc(100% - 34px);
+    border: none;
+	border-radius: 2px;
+    outline: none;
+	font-size: 1rem;
+    transition: background-color 150ms;
+	-moz-user-select: none;
+}
+
+.tablinks svg {
+	margin-right: 10px;
+}
+
 div.tab button {
     display: block;
     background-color: inherit;
-    color: #c1c1c1;
-    padding: 10px 16px;
-    width: 100%;
+    color: #0c0c0d;
+	margin-left: 34px;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 15px;
+    padding-bottom: 15px;
+    width: calc(100% - 34px);
     border: none;
+	border-radius: 2px;
     outline: none;
     text-align: left;
 	font-size: 1rem;
@@ -44,23 +72,54 @@ div.tab button {
 }
 
 /* Change background color of buttons on hover */
+.tablinks:hover {
+    background-color: rgba(12, 12, 13, 0.1);
+}
+.tablinks:active:hover {
+	color: #0060df;
+	fill: #0060df;
+    background-color: rgba(12, 12, 13, 0.15);
+}
+
 div.tab button:hover {
-    background-color: #5e6972;
+    background-color: rgba(12, 12, 13, 0.1);
+}
+div.tab button:active:hover {
+	color: #0060df;
+    background-color: rgba(12, 12, 13, 0.15);
 }
 
 /* Create an active/current "tab button" class */
+.tablinks.active {
+	color: #0a84ff;
+	fill: #0a84ff;
+}
+.tablinks.active:hover {
+	color: #0a84ff;
+	fill: #0a84ff;
+    background-color: rgba(12, 12, 13, 0.20);
+}
+.tablinks.active:active:hover {
+	color: #0060df;
+	fill: #0060df;
+}
+
 div.tab button.active {
-    background-color: #343f48;
-	color: #f2f2f2;
-	padding-inline-start: 11px;
-	border-inline-start: solid 4px #ff9500;
+	color: #0a84ff;
+}
+div.tab button.active:hover {
+	color: #0a84ff;
+    background-color: rgba(12, 12, 13, 0.20);
+}
+div.tab button.active:active:hover {
+	color: #0060df;
 }
 
 /* Style the tab content */
 .tabcontent {
-	margin-left: 200px;
+	margin-left: 230px;
     padding: 30px 12px;
-	width: calc(100% - 200px);
+	width: calc(100% - 230px);
     border-left: none;
 	height: 100vh;
 }

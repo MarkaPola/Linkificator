@@ -395,6 +395,11 @@
         "desription": "Limitations"
     },
     
+    "releaseNotes@new_features@3_1_0@1": {
+        "message": "Linkificator is now fully based on WebExtension API and so is compatible with Firefox 57+.",
+        "description": "Linkificator is now fully based on WebExtension API and so is compatible with Firefox 57+."
+    }, 
+    
     "releaseNotes@new_features@3_0_0@1": {
         "message": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+.<br><strong>Remark</strong>: The current version is an hybrid version (i.e. displayed as LEGACY in Firefox) to enable to propagate current settings to the new environment. Next version will be a pure WebExtension add-on.",
         "description": "Linkificator is now based on WebExtension API and so is fully compatible with Firefox 57+."

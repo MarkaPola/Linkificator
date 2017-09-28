@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded",
                               browser.runtime.getPlatformInfo().then(platformInfo => {
                                   if (platformInfo.os === 'win') {
                                       $('linkificator-settings').style['font-family'] = 'Segoe UI';
-                                      // $('linkificator-settings').style['font-size'] = '1.25rem';
+                                      $('linkificator-settings').style['font-size'] = '1.25rem';
                                   } else if (platformInfo.os === 'mac') {
                                       $('linkificator-settings').style['font-family'] = 'Arial';
                                       $('linkificator-settings').style['font-size'] = '0.9rem';
