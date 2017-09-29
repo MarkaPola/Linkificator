@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded",
                                       $('linkificator-settings').style['font-size'] = '1.25rem';
                                   } else if (platformInfo.os === 'mac') {
                                       $('linkificator-settings').style['font-family'] = 'Arial';
-                                      $('linkificator-settings').style['font-size'] = '0.9rem';
+                                      $('linkificator-settings').style['font-size'] = '1.1rem';
                                   }
                               });
                               initializePreferences().then(() => {

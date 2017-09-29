@@ -7,7 +7,8 @@
  */
 
 form {
-	background-color: #fbfbfb;
+	color: #0c0c0d;
+	background-color: #f9f9fa;
 }
 
 .settings-entry > input[type="text"] {
