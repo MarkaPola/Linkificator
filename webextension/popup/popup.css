@@ -51,11 +51,12 @@
 .popup-content input {
 	vertical-align: top;
 	font-size: 1.25rem;
-	width: 16px;
 	float: left;
 }
 .popup-content input[type="image"] {
 	margin-right: 6px;
+	width: 16px;
+	height: 16px;
 }
 
 
@@ -65,4 +66,8 @@
 }
 .popup-entry-disabled:hover {
 	background-color: #e7e7e7 !important;
+}
+
+.popup-entry-disabled input[type="image"] {
+	visibility: hidden;
 }

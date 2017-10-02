@@ -206,7 +206,8 @@
 		</div>
 		<div class="settings-entry settings-entry2">
 		  <label for="max-data-size" data-l10n-id="advancedSettings@configuration@general@maxDataSize">Maximum data size</label>
-		  <input type="number" min="0" step="1000" name="max-data-size" id="max-data-size">
+		  <input type="number" min="0" max="999999999999" step="1000" name="max-data-size" id="max-data-size">
+		  <div class="flex-space"></div>
 		  <button type="button" class="reset-button" id="reset-max-data-size" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 	  </fieldset>
@@ -214,31 +215,31 @@
 		<legend data-l10n-id="advancedSettings@configuration@topLevelDomains">Top-Level Domains</legend>
 		<div class="settings-entry settings-entry2">
 		  <label for="generics" data-l10n-id="advancedSettings@configuration@topLevelDomains@generics">Generics</label>
-		  <input checked type="checkbox" name="generics" id="generics">
+		  <input checked type="checkbox" class="tld-checkbox" name="generics" id="generics">
 		  <textarea id="generics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
 		  <button type="button" class="reset-button" id="reset-generics" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
 		  <label for="country-codes" data-l10n-id="advancedSettings@configuration@topLevelDomains@countryCodes">Country Codes</label>
-		  <input checked type="checkbox" name="country-codes" id="country-codes">
+		  <input checked type="checkbox" class="tld-checkbox" name="country-codes" id="country-codes">
 		  <textarea id="country-codes-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
 		  <button type="button" class="reset-button" id="reset-country-codes" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
 		  <label for="geographics" data-l10n-id="advancedSettings@configuration@topLevelDomains@geographics">Geographics</label>
-		  <input checked type="checkbox" name="geographics" id="geographics">
+		  <input checked type="checkbox" class="tld-checkbox" name="geographics" id="geographics">
 		  <textarea id="geographics-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
 		  <button type="button" class="reset-button" id="reset-geographics" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
 		  <label for="communities" data-l10n-id="advancedSettings@configuration@topLevelDomains@communities">Communities</label>
-		  <input checked type="checkbox" name="communities" id="communities">
+		  <input checked type="checkbox" class="tld-checkbox" name="communities" id="communities">
 		  <textarea id="communities-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
 		  <button type="button" class="reset-button" id="reset-communities" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>
 		<div class="settings-entry settings-entry2">
 		  <label for="brands" data-l10n-id="advancedSettings@configuration@topLevelDomains@brands">Brands</label>
-		  <input checked type="checkbox" name="brands" id="brands">
+		  <input checked type="checkbox" class="tld-checkbox" name="brands" id="brands">
 		  <textarea id="brands-value" title="Separate domains with a space" data-l10n-attrs="title" data-l10n-id="settings@domainFilteringMode@domainList"></textarea> 
 		  <button type="button" class="reset-button" id="reset-brands" data-l10n-id="advancedSettings@configuration@resetButton">Reset to Default</button>
 		</div>

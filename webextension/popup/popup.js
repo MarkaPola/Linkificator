@@ -51,7 +51,6 @@ function managePopup (context) {
     }
     if (context.status === 'not_processed') {
         entry.classList.add('popup-entry-disabled');
-        manage.setAttribute('src', 'empty.png');
     }
     manage.addEventListener('click', event => {
         browser.runtime.sendMessage({id: 'manage-url', info: context}).catch(reason => console.error(reason)).finally(() => window.close());
@@ -64,7 +63,6 @@ function managePopup (context) {
         });
     } else {
         $('entry-linkify').classList.add('popup-entry-disabled');
-        linkify.setAttribute('src', 'empty.png');
     }
 }
 

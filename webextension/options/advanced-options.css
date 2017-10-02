@@ -122,18 +122,27 @@ legend {
 .settings-entry2 {
 	margin-top: 1em;
 	margin-bottom: 1em;
+	display: flex;
+	flex-direction: row;
 }
 .settings-entry2 label {
 	width: 200px;
 }
 .settings-entry2 > input[type="text"] {
-	width: calc(70% - 200px);
+	flex-grow: 1;
+	height: 2em;
 }
 .settings-entry2 > textarea {
 	margin-left: 6px;
-	width: calc(70% - 200px);
+	flex-grow: 1;
 	height: 6em;
 	resize: vertical;
+}
+.settings-entry2 .flex-space {
+	flex-grow: 1;
+}
+.settings-entry2 > input[type="number"] {
+	height: 2em;
 }
 
 .indent label {
@@ -151,8 +160,14 @@ legend {
 	width: 50px !important;
 }
 
+.tld-checkbox {
+	height: 1em;
+}
+
 .reset-button {
 	float: right;
+	height: 2em;
+	margin-left: 30px;
 	margin-right: 20px;
 }
 
