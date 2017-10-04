@@ -35,20 +35,7 @@ function Statistics (document, action) {
 			}
         };
 	}
-
-	if (action == 'get-statistics') {
-		return {
-			get: function () {
-				if (body.hasAttribute(countLabel)) {
-					return getStats(body.getAttribute(countLabel),
-									body.getAttribute(timeLabel));
-				} else {
-					return getStats(0, 0);
-				}
-			}
-		};
-	}
-
+    
 	var elapse = 0;
 	var startTime = Date.now();
 

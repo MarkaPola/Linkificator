@@ -1064,10 +1064,6 @@ function connect () {
             documentObserver.disconnect();
             undo();
             break;
-
-        case 'get-statistics':
-            port.postMessage({id: 'statistics', statistics: Statistics(window.document, 'get-statistics').get()});
-            break;
         }
     });
 
