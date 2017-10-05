@@ -83,16 +83,18 @@ function isValidDocument (properties) {
 
 // Handle dynamic document changes using MutationObserver interface
 var documentObserver = (function () {
-    var config = {childList: true, subtree: true};
-    var observing = false;
-    var interval = {active: true, value: 2000};
-    var delay = 300;
-    var date = Date.now();
+    let config = {childList: true, subtree: true};
+    let observing = false;
+    let interval = {active: true, value: 2000};
+    let delay = 300;
+    let date = Date.now();
     
-    var observer = new MutationObserver ((function () {
+    let observer = new MutationObserver ((function (mutations) {
         observing = false;
         observer.disconnect();
-
+        // empties record queue
+        observer.takeRecords();
+        
         let delta = Date.now() - date;
         date = Date.now();
 
