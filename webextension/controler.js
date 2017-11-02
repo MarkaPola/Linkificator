@@ -309,7 +309,7 @@ function Controler (config) {
         activate () {
             if (!this._contextMenu) {
                 this._contextMenu = browser.contextMenus.create({
-                    contexts: ['tab', 'page'],
+                    contexts: ['page'],
                     documentUrlPatterns: ["*://*/*", "file:///*"],
                     enabled: false, 
                     title: browser.i18n.getMessage("menu@linkify")

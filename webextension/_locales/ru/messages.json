@@ -387,6 +387,10 @@
     "message":"Ограничения",
     "desription":"Limitations"
   },
+  "releaseNotes@enhancements@3_1_1@1": {
+    "message": "Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 3.1.0.",
+    "description": "Fixes a regression, regarding text/plain documents, introduced in version 3.1.0."
+  },
   "releaseNotes@new_features@3_1_0@1":{
     "message":"Linkificator теперь полностью основан на WebExtension API и поэтому совместим с Firefox 57+.",
     "description":"Linkificator is now fully based on WebExtension API and so is compatible with Firefox 57+."

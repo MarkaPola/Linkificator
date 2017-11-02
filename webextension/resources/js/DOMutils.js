@@ -30,14 +30,19 @@ function Document (doc) {
             let contentType = null;
 
             if (document) {
-                let ct = document.querySelector('meta[http-equiv="content-type" i]');
-                if (ct) {
-                    let content = ct.getAttribute('content');
-                    if (content) {
-                        contentType = content.trim().split(/;|\s/)[0];
+                contentType = document.contentType;
+
+                if (!contentType) {
+                    // try to get content type for head section
+                    let ct = document.querySelector('meta[http-equiv="content-type" i]');
+                    if (ct) {
+                        let content = ct.getAttribute('content');
+                        if (content) {
+                            contentType = content.trim().split(/;|\s/)[0];
+                        }
                     }
                 }
-
+                
                 if (! contentType) {
                     // Check possible plain text page
                     if (document.querySelector('link[href="resource://gre-resources/plaintext.css"]')) {

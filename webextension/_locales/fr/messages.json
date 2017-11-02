@@ -394,6 +394,11 @@
         "desription": ""
     },
 
+    "releaseNotes@enhancements@3_1_1@1": {
+        "message": "Correction d'une régression, concernant les documents texte, introduite dans la version 3.1.0.",
+        "description": "Fixes a regression, regarding text/plain documents, introduced in version 3.1.0."
+    }, 
+    
     "releaseNotes@new_features@3_1_0@1": {
         "message": "Linkificator s'appuie maintenant complètement sur l'API WebExtension et est donc parfaitement compatible avec Firefox 57+.",
         "description": "Linkificator is now fully based on WebExtension API and so is compatible with Firefox 57+."
