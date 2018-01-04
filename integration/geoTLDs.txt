@@ -2,7 +2,6 @@ abudhabi
 africa
 alsace
 amsterdam
-aquitaine
 bar
 barcelona
 bayern
@@ -10,9 +9,7 @@ berlin
 boston
 brussels
 budapest
-bzh
 capetown
-catalonia
 cologne
 cymru
 doha
@@ -41,7 +38,6 @@ paris
 place
 quebec
 rio
-roma
 saarland
 scot
 stockholm
@@ -53,5 +49,5 @@ tui
 vlaanderen
 wales
 wien
-zuerich
 yokohama
+zuerich
