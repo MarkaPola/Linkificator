@@ -155,6 +155,10 @@
     "message":"Отключить обработку динамических изменений, если она занимает больше, чем:",
     "description":"Disable the processing of dynamic changes if it takes longer than:"
   },
+  "advancedSettings@links@extraFeatures@documentReferrer": {
+      "message": "Enable 'HTTP referrer' header field",
+      "description": "Enable 'HTTP referrer' header field"
+  },
   "advancedSettings@customRules@ruleEditor@name":{
     "message":"Имя",
     "description":"Name"
@@ -386,6 +390,10 @@
   "releaseNotes@limitations":{
     "message":"Ограничения",
     "desription":"Limitations"
+  },
+  "releaseNotes@new_features@3_2_0@1":{
+    "message":"The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated.",
+    "description":"The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated."
   },
   "releaseNotes@enhancements@3_1_1@1": {
     "message": "Исправлена ​​регрессия в навигации Firefox, появившаяся в версии 3.1.0.",

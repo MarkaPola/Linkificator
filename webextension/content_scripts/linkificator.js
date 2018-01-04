@@ -550,7 +550,8 @@ function Linkify (document, statistics, properties, style, completed) {
         ref.count = 0;
         ref.document = document;
         ref.style = style;
-
+        ref.documentReferrer = properties.extraFeatures.support.documentReferrer;
+        
         return {
             execute: function () {
                 // return false until text node is fully linkified
@@ -587,7 +588,10 @@ Linkify.prototype = {
         if (this.style.length != 0) {
             anchor.setAttribute('style', this.style);
         }
-
+        if (! this.documentReferrer) {
+            anchor.setAttribute('rel', 'noreferrer');
+        }
+        
         return anchor;
     }
 };

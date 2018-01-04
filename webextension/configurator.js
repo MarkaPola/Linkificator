@@ -147,7 +147,8 @@ function Configurator () {
         extraFeatures: {
             support: {
                 inlineElements: true, 
-                autoLinkification: true
+                autoLinkification: true,
+                documentReferrer: false
             },
             inlineElements: [
                 "b", "i", "big", "small", "em", "strong", "tt", "span", "wbr"

@@ -175,6 +175,7 @@ function updatePreference (id, value) {
                          'automatic-linkification.refresh-threshold',
                          'automatic-linkification.refresh-threshold.value']);
         }
+        setCheckbox('document-referrer', properties.extraFeatures.support.documentReferrer);
         /// tab Configuration
         setInput('inline-elements-list', properties.extraFeatures.inlineElements.join(' '));
         setInput('max-data-size', properties.extraFeatures.maxDataSize);
@@ -448,6 +449,11 @@ function managePreferences () {
                                    $(id).disabled = true;
                                }
                            }
+                       });
+    addCheckboxManager('document-referrer',
+                       (value) => {
+                           properties.extraFeatures.support.documentReferrer = value;
+                           store({extraFeatures: properties.extraFeatures});
                        });
     //// tab Configuration
     addInputManager('inline-elements-list',

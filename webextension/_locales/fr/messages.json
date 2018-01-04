@@ -157,6 +157,10 @@
         "message": "Désactiver le traitement des changements dynamiques si il prend plus de :",
         "description": "Disable the processing of dynamic changes if it takes longer than:"
     },
+    "advancedSettings@links@extraFeatures@documentReferrer": {
+        "message": "Authorise le champ d'en-tête 'HTTP referrer'",
+        "description": "Enable 'HTTP referrer' header field"
+    },
     "advancedSettings@customRules@ruleEditor@name": {
         "message": "Nom",
         "description": "Name"
@@ -393,6 +397,11 @@
         "message": "Limitations", 
         "desription": ""
     },
+
+    "releaseNotes@new_features@3_2_0@1": {
+        "message": "La génération du champ d'en-tête 'HTTP referrer' peut maintenant être contrôlée. Par défaut, celui-ci n'est pas généré.", 
+        "description": "The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated."
+    }, 
 
     "releaseNotes@enhancements@3_1_1@1": {
         "message": "Correction d'une régression, concernant les documents texte, introduite dans la version 3.1.0.",
