@@ -399,6 +399,15 @@
         "desription": "Limitations"
     },
     
+    "releaseNotes@enhancements@3_2_1@1": {
+        "message": "'file://' URIs are now correctly handled.",
+        "description": "'file://' URIs are now correctly handled."
+    },
+    "releaseNotes@enhancements@3_2_1@2": {
+        "message": "Top level domains list is updated.",
+        "description": "Top level domains list is updated."
+    },
+
     "releaseNotes@new_features@3_2_0@1": {
         "message": "The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated.",
         "description": "The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated."

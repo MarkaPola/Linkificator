@@ -341,7 +341,7 @@ function Parser (properties) {
     const port = "(?::[\\d]{1,5})?";
 
     const IP_host = IP + port;
-    const domain_host = domain + port;
+    const domain_host = "(?:" + domain + "|localhost)" + port;
     const full_domain_host = full_domain + port;
 
     const subpath = "(?:(?:(?:[^\\s()<>]+|\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\))+(?:\\((?:[^\\s()<>]+|(?:\\([^\\s()<>]+\\)))*\\)|[^" + end_uri_delimiter + "]))|[^" + end_uri_delimiter + "])";
@@ -378,6 +378,21 @@ function Parser (properties) {
         return properties.predefinedRules.support.standard.active && regex[this._index] !== undefined;
     };
     NewsRule.prototype.getURL = function(regex) {
+        if (regex[this._index])
+            return regex[this._index];
+        else
+            return null; 
+    };
+
+    ///// file URI scheme
+    function FileRule () {
+        PatternRule.call(this, "(file://(?:" + domain_host + "|" + IP_host + ")?" + "(?:/" + subpath + "))");
+    }
+    FileRule.prototype = new PatternRule;
+    FileRule.prototype.test = function(regex) {
+        return properties.predefinedRules.support.standard.active && regex[this._index] !== undefined;
+    };
+    FileRule.prototype.getURL = function(regex) {
         if (regex[this._index])
             return regex[this._index];
         else
@@ -493,6 +508,7 @@ function Parser (properties) {
         buildCustomRules(pattern, properties.customRules.rules.beforeList);
     pattern.push(new FullMailRule);
     pattern.push(new NewsRule);
+    pattern.push(new FileRule);
     pattern.push(new FullProtocolRule);
     pattern.push(new AuthenticatedDomainRule);
     pattern.push(new DomainRule);

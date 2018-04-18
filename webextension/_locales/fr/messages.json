@@ -398,6 +398,15 @@
         "desription": ""
     },
 
+    "releaseNotes@enhancements@3_2_1@1": {
+        "message": "Les URIs 'file://' sont maintenant correctement traités.",
+        "description": "'file://' URIs are now correctly handled."
+    },
+    "releaseNotes@enhancements@3_2_1@2": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "Top level domains list is updated."
+    },
+
     "releaseNotes@new_features@3_2_0@1": {
         "message": "La génération du champ d'en-tête 'HTTP referrer' peut maintenant être contrôlée. Par défaut, celui-ci n'est pas généré.", 
         "description": "The generation of the 'HTTP referrer' header field can now be controlled. By default, it is not generated."

@@ -84,10 +84,6 @@ function Configurator () {
                 {
                     pattern: "irc://",
                     term: "irc://"
-                },
-                {
-                    pattern: "file:///",
-                    term: "file:///"
                 }
             ], 
             subdomains: [
@@ -251,6 +247,14 @@ function Configurator () {
             for (let preference in defaultPreferences) {
                 if (!properties.hasOwnProperty(preference)) {
                     properties[preference] = defaultPreferences[preference];
+                } else {
+                    if (preference === 'protocols') {
+                        // remove 'file:///' protocol from protocols list, if any
+                        let index = properties[preference].findIndex(protocol => protocol.term === 'file:///');
+                        if (index != -1) {
+                            properties[preference].splice(index, 1);
+                        }
+                    }
                 }
             }
 
