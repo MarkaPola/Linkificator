@@ -392,8 +392,8 @@
         "desription": "Limitations"
     },
     "releaseNotes@enhancements@3_2_1@1": {
-        "message": "'file://' URIs are now correctly handled.",
-        "description": "'file://' URIs are now correctly handled."
+        "message": "Теперь 'file:\/\/' коды URI обрабатываются правильно.",
+        "description": "'file:\/\/' URIs are now correctly handled."
     },
     "releaseNotes@enhancements@3_2_1@2": {
         "message": "Обновлён список доменов верхнего уровня.",
