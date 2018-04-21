@@ -77,7 +77,6 @@ bofa
 bom
 bond
 booking
-boots
 bosch
 bostik
 bradesco
@@ -306,7 +305,6 @@ monster
 mopar
 msd
 mtn
-mtpc
 mutual
 mtr
 nab
