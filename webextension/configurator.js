@@ -19,10 +19,10 @@ function Configurator () {
         widgetMiddleClick: "toggle", 
         widgetRightClick: "none",
         hotKeys: {
-            toggle: "control-shift-y", 
-            manual: "control-shift-o", 
-            manage: "control-shift-x", 
-            parse: "control-shift-u"
+            Toggle: "default", 
+            Manual: "default", 
+            Manage: "default", 
+            Update: "default"
         },
         domains: {
             useRegExp: true, 
@@ -258,9 +258,16 @@ function Configurator () {
                 }
             }
 
+            // update shortcuts definitions if needed
+            for (let hotKey in properties.hotKeys) {
+                if (properties.hotKeys[hotKey] != 'default') {
+                    browser.commands.update({name: hotKey, shortcut: properties.hotKeys[hotKey]});
+                }
+            }
+            
             let settings = Object.assign({}, properties);
             delete settings.area;
-            delete settings.actiavted;
+            delete settings.activated;
             delete settings.sync;
             //let {area, activated, sync, ...settings} = properties;
             return browser.storage[properties.area].set(settings).then(() => {

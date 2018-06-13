@@ -6,10 +6,10 @@
 
 	<link rel="stylesheet" href="/resources/css/common.css">
 	<link rel="stylesheet" href="options.css">
-	
+
 	<link rel="license" href="http://mozilla.org/MPL/2.0/"/>
   </head>
-  <body>	
+  <body>
 	<form name="linkificator-settings" id="linkificator-settings">
 	  <div class="settings-entry">
 		<label for="activated" data-l10n-id="settings@activated">Activated</label>
@@ -27,6 +27,12 @@
 		<label for="context-menu" data-l10n-id="settings@contextMenuIntegration">Page context menu integration</label>
 		<input checked type="checkbox" name="context-menu" id="context-menu"/>
 	  </div>
+      <hr>
+      <div class="settings-entry">
+        <label data-l10n-id="settings@shortcuts@title">Shortcuts</label>
+      </div>
+      <div id="shortcuts">
+      </div>
 	  <hr>
 	  <div class="settings-entry">
 		<label for="use-regexp" data-l10n-id="settings@useRegularExpressions">Use regular expressions for domains</label>
@@ -71,10 +77,10 @@
 		<input type="image" id="reset-defaults" src="restart.svg" alt="">
 	  </div>
 	</form>
-	
+
 	<script src="/resources/js/DOMutils.js"></script>
 	<script src="/resources/js/localization.js"></script>
+	<script src="ShortcutCustomizeUI.js"></script>
 	<script src="options.js"></script>
   </body>
 </html>
-

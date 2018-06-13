@@ -19,6 +19,26 @@
         "message": "Интеграция в контекстное меню",
         "description": "Page context menu integration"
     },
+    "settings@shortcuts@title": {
+        "message": "Keyboard Shortcuts", 
+        "description": "Keyboard Shortcuts"
+    },
+    "settings@shortcuts@toggle": {
+        "message": "Переключить состояние Linkificator", 
+        "description": "Activate/Deactivate Linkificator"
+    },
+    "settings@shortcuts@manual": {
+        "message": "Переключить режим обработки (автоматический/ручной)", 
+        "description": "Toggle processing mode (automatic/manual)"
+    },
+    "settings@shortcuts@manage": {
+        "message": "Переключить обработку текущей страницы", 
+        "description": "Include/Exclude current page"
+    },
+    "settings@shortcuts@update": {
+        "message": "Обновить текущую страницу", 
+        "description": "Update current page"
+    },
     "settings@useRegularExpressions": {
         "message": "Регулярные выражения для доменов",
         "description": "Use regular expressions for domains filtering"
@@ -391,6 +411,10 @@
         "message": "Ограничения",
         "desription": "Limitations"
     },
+    "releaseNotes@new_features@3_3_0@1": {
+        "message": "Keyboard shortcuts are now supported.",
+        "description": "Keyboard shortcuts are now supported."
+    },    
     "releaseNotes@enhancements@3_2_1@1": {
         "message": "Теперь 'file:\/\/' коды URI обрабатываются правильно.",
         "description": "'file:\/\/' URIs are now correctly handled."

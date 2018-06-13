@@ -35,3 +35,11 @@ form > hr {
 	border: none;
 	width: 100%;
 }
+
+input[type="image"] {
+    height: 25px;
+}
+
+.key-combination input, .key-combination button {
+	vertical-align: top;
+}

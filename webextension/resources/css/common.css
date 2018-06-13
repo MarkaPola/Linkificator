@@ -100,7 +100,7 @@ button::-moz-focus-inner {
     margin-right: 0;
 }
 
-.settings-entry input, select, button {
+.settings-entry input, .settings-entry select, .settings-entry button {
 	vertical-align: top;
 }
 

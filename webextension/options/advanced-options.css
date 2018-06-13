@@ -286,7 +286,7 @@ div.rules-commands button {
 	border-collapse: collapse;
 }
 
-.rules-table tr td div {
+.rules-table tr, .rules-table td, .rules-table div {
 	display: inline-block;
 	width: 100%;
 }

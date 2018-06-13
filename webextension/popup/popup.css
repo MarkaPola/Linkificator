@@ -11,7 +11,7 @@
 	background-color: #fbfbfb;
     box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.3);
     z-index: 1;
-    width: 150px;
+    width: 220px;
 }
 
 .popup-content > .popup-entry {
@@ -29,13 +29,19 @@
 	background-color: rgba(0, 149, 221, 0.25);
 }
 
-.popup-content label {
+.popup-content .entry-label {
 	vertical-align: top;
 	text-align: left;
 	min-width: 90px;
 	margin-left: 10px;
 	width: auto;
 	float: left;
+}
+
+.popup-content .entry-shortcut {
+	color: #808080;
+	text-align: right;
+    float: right;
 }
 
 .popup-content > hr {
@@ -59,7 +65,6 @@
 	height: 16px;
 }
 
-
 /* to manage disabled menu entries */
 .popup-entry-disabled {
 	color: #808080 !important;
@@ -68,6 +73,6 @@
 	background-color: #e7e7e7 !important;
 }
 
-.popup-entry-disabled input[type="image"] {
+.popup-entry-disabled input[type="image"], .popup-entry-disabled .entry-shortcut {
 	visibility: hidden;
 }

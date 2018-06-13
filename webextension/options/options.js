@@ -70,6 +70,14 @@ function initializePreferences () {
         properties.area = result.sync ? 'sync' : 'local';
         updatePreference('sync', result.sync);
         updatePreference('activated', result.activated);
+
+        ShortcutCustomizeUI.build().then(list => {
+            $('shortcuts').appendChild(list);
+            list.addEventListener('ShortcutChanged', event => {
+                properties.hotKeys[event.detail.name] = event.detail.key;
+                browser.storage[properties.area].set({hotKeys: properties.hotKeys}).catch(reason => console.error(reason));
+            });
+        });
         
         return browser.storage[properties.area].get().then(result => {
             for (let id in result)

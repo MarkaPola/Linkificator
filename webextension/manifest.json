@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Linkificator",
-    "version": "3.2.1",
+    "version": "3.3.0",
     "description": "__MSG_extensionDescription__",
     "icons": {
         "16": "resources/icons/link16-on.png", 
@@ -21,7 +21,7 @@
     "applications": {
         "gecko": {
             "id": "linkificator@markapola",
-            "strict_min_version": "55.0"
+            "strict_min_version": "60.0"
         }
     }, 
 
@@ -43,6 +43,33 @@
         },
         "default_title": "Linkificator",
         "default_popup": "popup/popup.html"
+    },
+
+    "commands": {
+        "Toggle": {
+            "suggested_key": {
+                "default": "Alt+Shift+O"
+            },
+            "description": "__MSG_settings@shortcuts@toggle__"
+        }, 
+        "Manual": {
+            "suggested_key": {
+                "default": "Alt+Shift+M"
+            },
+            "description": "__MSG_settings@shortcuts@manual__"
+        }, 
+        "Manage": {
+            "suggested_key": {
+                "default": "Alt+Shift+X"
+            },
+            "description": "__MSG_settings@shortcuts@manage__"
+        }, 
+        "Update": {
+            "suggested_key": {
+                "default": "Alt+Shift+U"
+            },
+            "description": "__MSG_settings@shortcuts@update__"
+        }
     },
     
     "background": {

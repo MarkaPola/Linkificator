@@ -20,6 +20,28 @@
         "message": "Intégration dans le menu contextuel de page",
         "description": "Page context menu integration"
     },
+    
+    "settings@shortcuts@title": {
+        "message": "Raccourcis clavier", 
+        "description": "Keyboard Shortcuts"
+    },
+    "settings@shortcuts@toggle": {
+        "message": "Changer l'état de Linkificator", 
+        "description": "Activate/Deactivate Linkificator"
+    },
+    "settings@shortcuts@manual": {
+        "message": "Mode de traitement automatique/manuel", 
+        "description": "Toggle processing mode (automatic/manual)"
+    },
+    "settings@shortcuts@manage": {
+        "message": "Inclure/Exclure la page courante", 
+        "description": "Include/Exclude current page"
+    },
+    "settings@shortcuts@update": {
+        "message": "Actualiser la page courante", 
+        "description": "Update current page"
+    },
+    
     "settings@useRegularExpressions": {
         "message": "Utiliser les expressions régulières pour les domaines",
         "description": "Use regular expressions for domains filtering"
@@ -398,6 +420,11 @@
         "desription": ""
     },
 
+    "releaseNotes@new_features@3_3_0@1": {
+        "message": "Les racourcis clavier sont maintenant supportés.",
+        "description": "Keyboard shortcuts are now supported."
+    },
+    
     "releaseNotes@enhancements@3_2_1@1": {
         "message": "Les URIs 'file://' sont maintenant correctement traités.",
         "description": "'file://' URIs are now correctly handled."

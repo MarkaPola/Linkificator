@@ -20,6 +20,28 @@
         "message": "Page context menu integration",
         "description": "Page context menu integration"
     },
+    
+    "settings@shortcuts@title": {
+        "message": "Keyboard Shortcuts", 
+        "description": "Keyboard Shortcuts"
+    },
+    "settings@shortcuts@toggle": {
+        "message": "Toggle linkificator state", 
+        "description": "Activate/Deactivate Linkificator"
+    },
+    "settings@shortcuts@manual": {
+        "message": "Toggle processing mode (automatic/manual)", 
+        "description": "Toggle processing mode (automatic/manual)"
+    },
+    "settings@shortcuts@manage": {
+        "message": "Toggle current page processing", 
+        "description": "Include/Exclude current page"
+    },
+    "settings@shortcuts@update": {
+        "message": "Update current page", 
+        "description": "Update current page"
+    },
+    
     "settings@useRegularExpressions": {
         "message": "Use regular expressions for domains",
         "description": "Use regular expressions for domains filtering"
@@ -397,6 +419,11 @@
     "releaseNotes@limitations": {
         "message": "Limitations",
         "desription": "Limitations"
+    },
+    
+    "releaseNotes@new_features@3_3_0@1": {
+        "message": "Keyboard shortcuts are now supported.",
+        "description": "Keyboard shortcuts are now supported."
     },
     
     "releaseNotes@enhancements@3_2_1@1": {

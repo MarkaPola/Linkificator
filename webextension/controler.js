@@ -386,6 +386,28 @@ function Controler (config) {
         }
     });
 
+    
+    // manage shortcuts
+    browser.commands.onCommand.addListener(command => {
+        if (command == 'Toggle') {
+            browser.storage.local.set({activated: !isActive()});
+        }
+        else if (command == 'Manual') {
+            browser.storage[properties.area].set({manual: !isManual()});
+        }
+        else if (command == 'Manage') {
+            browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+                manageURL({tab: tabs[0]});
+            });
+        }
+        else if (command == 'Update') {
+            browser.tabs.query({active: true, currentWindow: true}).then(tabs => {
+                updateListeners.every({action: 're-parse', tab: tabs[0]});
+            });
+        }
+    });
+
+    
     // handle preferences changes
     browser.storage.onChanged.addListener((changes,  area) => {
         if (area === 'local') {

@@ -30,12 +30,12 @@ function managePopup (context) {
     if (context.activated) {
         $('entry-activate').setAttribute('style', 'display: none');
         $('panel-deactivate').addEventListener('click', event => {
-            browser.storage[context.area].set({activated: false}).finally(() => window.close());
+            browser.storage.local.set({activated: false}).finally(() => window.close());
         });
     } else {
         $('entry-deactivate').setAttribute('style', 'display: none');
         $('panel-activate').addEventListener('click', event => {
-            browser.storage[context.area].set({activated: true}).finally(() => window.close());
+            browser.storage.local.set({activated: true}).finally(() => window.close());
         });
     }
 
@@ -64,6 +64,28 @@ function managePopup (context) {
     } else {
         $('entry-linkify').classList.add('popup-entry-disabled');
     }
+
+    // fill keyboard shortcuts
+    browser.commands.getAll().then(commands => {
+        for (let command of commands) {
+            switch(command.name) {
+            case 'Toggle':
+                $('shortcut-activate').textContent = command.shortcut;
+                $('shortcut-deactivate').textContent = command.shortcut;
+                break;
+            case 'Manual':
+                $('shortcut-manual').textContent = command.shortcut;
+                break;
+            case 'Manage':
+                $('shortcut-include').textContent = command.shortcut;
+                $('shortcut-exclude').textContent = command.shortcut;
+                break;
+            case 'Update':
+                $('shortcut-update').textContent = command.shortcut;
+                break;
+            }
+        }
+    });
 }
 
 
