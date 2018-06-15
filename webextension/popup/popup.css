@@ -7,11 +7,11 @@
  */
 
 .popup-content {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
 	background-color: #fbfbfb;
     box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.3);
     z-index: 1;
-    width: 220px;
 }
 
 .popup-content > .popup-entry {
@@ -41,6 +41,7 @@
 .popup-content .entry-shortcut {
 	color: #808080;
 	text-align: right;
+    margin-left: 8px;
     float: right;
 }
 
