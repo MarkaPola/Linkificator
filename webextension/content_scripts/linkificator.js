@@ -518,9 +518,18 @@ function Parser (properties) {
     pattern.compile();
 
     var requiredChars = properties.requiredCharacters;
+    var excludedTags = properties.predefinedRules.excludedElements.filter(item => item.match(/^[a-z0-9]+$/));
+    var excludedRules = properties.predefinedRules.excludedElements.filter(item => !excludedTags.includes(item));
     
-    var query =  "//text()[ancestor::*[local-name()='body'] and not(ancestor::*[local-name()='" + properties.predefinedRules.excludedElements.join("'] or ancestor::*[local-name()='")
-        + "']) and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]]) and (";
+    var query =  "//text()[ancestor::*[local-name()='body']";
+    if (excludedTags.length > 0) {
+        query += " and not(ancestor::*[local-name()='" + excludedTags.join("'] or ancestor::*[local-name()='") + "'])";
+    }
+    if (excludedRules.length > 0) {
+        query += " and not(ancestor::" + excludedRules.join(" or ancestor::") + ")";
+    }
+    query += " and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none') or contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display: none')]]) and (";
+
     if (properties.predefinedRules.support.standard.useSubdomains) {
         for (let index = 0; index < properties.predefinedRules.subdomains.length; ++index) {
             let sub_domain = properties.predefinedRules.subdomains[index].filter;
@@ -532,9 +541,15 @@ function Parser (properties) {
         requiredChars.indexOf('.') === -1 && requiredChars.push('.');
     }
     query += "contains(., '" + requiredChars.join("') or contains(., '") + "'))]";
-    
-    var query2 =  "(//*[local-name()='" + properties.extraFeatures.inlineElements.join("' or local-name()='") + "'])[ancestor::*[local-name()='body'] and not(..[local-name()='" + properties.extraFeatures.inlineElements.join("'] or ..[local-name()='") + "']) and not(ancestor::*[local-name()='" + properties.predefinedRules.excludedElements.join("'] or ancestor::*[local-name()='")
-        + "']) and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none')]])]/..";
+
+    var query2 =  "(//*[local-name()='" + properties.extraFeatures.inlineElements.join("' or local-name()='") + "'])[ancestor::*[local-name()='body'] and not(..[local-name()='" + properties.extraFeatures.inlineElements.join("'] or ..[local-name()='") + "'])";
+    if (excludedTags.length > 0) {
+        query2 += " and not(ancestor::*[local-name()='" + excludedTags.join("'] or ancestor::*[local-name()='") + "'])";
+    }
+    if (excludedRules.length > 0) {
+        query2 += " and not(ancestor::" + excludedRules.join(" or ancestor::") + ")";
+    }
+    query2 += " and not(ancestor::*[@style[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display:none') or contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'display: none')]])]/..";
 
     return {
         get requiredCharacters () {

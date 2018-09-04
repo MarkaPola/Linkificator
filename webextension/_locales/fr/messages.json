@@ -420,6 +420,11 @@
         "desription": ""
     },
 
+    "releaseNotes@enhancements@3_3_1@1": {
+        "message": "Corrige l'incompatibilité avec le module <a href=\"https://addons.mozilla.org/fr/firefox/addon/simple-form-fill\">'Simple Form Fill'</a>.",
+        "description": "Fix incompatibility with <a href=\"https://addons.mozilla.org/en-US/firefox/addon/simple-form-fill\">'Simple Form Fill'</a> add-on."
+    },
+    
     "releaseNotes@new_features@3_3_0@1": {
         "message": "Les racourcis clavier sont maintenant supportés.",
         "description": "Keyboard shortcuts are now supported."

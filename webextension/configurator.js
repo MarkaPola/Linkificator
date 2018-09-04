@@ -107,7 +107,8 @@ function Configurator () {
                 "a", "applet", "area", "audio", "embed", "frame", "frameset", "head",
                 "iframe", "img", "map", "meta", "noscript", "object", "option", "param",
                 "pre", "script", "select", "style", "textarea", "title", "video",
-                "*[@onclick]", "*[@onmousedown]", "*[@onmouseup]"
+                "*[boolean(@onclick)]", "*[boolean(@onmousedown)]", "*[boolean(@onmouseup)]",
+                "*[contains(@class,'simple-form-fill')]", "*[contains(@class,'ui-helper-hidden-accessible')]"
             ]
         }, 
         tldGenerics: {
