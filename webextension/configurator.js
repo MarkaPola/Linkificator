@@ -13,6 +13,7 @@
 function Configurator () {
     // Initialization of preferences
     let defaultPreferences = {
+        version: "3.3.1", 
         manual: false, 
         displayBadge: true, 
         contextMenuIntegration: true, 
@@ -197,6 +198,131 @@ function Configurator () {
                       activated: true};
 
 
+    let updaters = [
+        {
+            get name () {
+                return 'predefinedRules';
+            }, 
+            update: function (preference) {
+                // remove 'file:///' protocol from protocols list, if any
+                let index = preference.protocols.findIndex(protocol => protocol.term === 'file:///');
+                if (index != -1) {
+                    preference.protocols.splice(index, 1);
+                }
+
+                // update excluded elements
+                let excludedElements = preference.excludedElements.filter(item => !["*[@onclick]", "*[@onmousedown]", "*[@onmouseup]"].includes(item));
+                ["*[boolean(@onclick)]", "*[boolean(@onmousedown)]", "*[boolean(@onmouseup)]",
+                 "*[contains(@class,'simple-form-fill')]",
+                 "*[contains(@class,'ui-helper-hidden-accessible')]"].forEach(item => {
+                     if (!excludedElements.includes(item)) {
+                         excludedElements.push(item);
+                     }
+                 });
+                preference.excludedElements = excludedElements;
+
+                return preference;
+            }
+        },
+        {
+            get name () {
+                return 'tldGenerics';
+            }, 
+            update: function (preference) {
+                let domains = preference.domains.filter(item => !['allfinanz', 'mil', 'mortage'].includes(item));
+                
+                ['blog', 'box', 'cam', 'charity', 'condos', 'consulting', 'cruise', 'data', 'deal',
+                 'diy', 'food', 'foodnetwork', 'free', 'frontdoor', 'fun', 'games', 'grocery',
+                 'hair', 'hospital', 'hot', 'hotels', 'inc', 'ink', 'lawyer', 'lifestyle', 'llc',
+                 'maison', 'map', 'marketing', 'mobile', 'mortgage', 'moto', 'now', 'onion', 'ott',
+                 'passagens', 'pay', 'phd', 'phone', 'realestate', 'save', 'search', 'secure',
+                 'shopping', 'song', 'sport', 'spot', 'store', 'stream', 'talk', 'tunes', 'vuelos',
+                 'winners', 'wow', 'you', 'yun'].forEach(item => {
+                     if (!domains.includes(item)) {
+                         domains.push(item);
+                     }
+                 });
+                preference.domains = domains.sort();
+                
+                return preference;
+            }
+        }, 
+        {
+            get name () {
+                return 'tldGeographics';
+            }, 
+            update: function (preference) {
+                preference.domains  = preference.domains.filter(item => !['aquitaine', 'bzh', 'catalonia', 'roma'].includes(item));
+
+                return preference;
+            }
+        }, 
+        {
+            get name () {
+                return 'tldCommunities';
+            }, 
+            update: function (preference) {
+                let domains = preference.domains.filter(item => !['aco', 'android', 'corp', 'cpa', 'gay', 'gree', 'halal', 'hotel', 'immo', 'inc',
+                                                                  'islam', 'kids', 'llc', 'llp', 'med', 'music', 'ong', 'spa', 'sport', 'thai',
+                                                                  'versicherung', 'webs'].includes(item));
+                
+                ['agakhan', 'akdn', 'baseball', 'basketball', 'dds', 'doctor', 'imamat', 'latino',
+                 'rugby'].forEach(item => {
+                     if (!domains.includes(item)) {
+                         domains.push(item);
+                     }
+                 });
+                preference.domains = domains.sort();
+                
+                return preference;
+            }
+        }, 
+        {
+            get name () {
+                return 'tldBrands';
+            }, 
+            update: function (preference) {
+                let domains = preference.domains.filter(item => !['bbb', 'boots', 'chloe', 'doosan', 'edeka', 'flsmidth', 'iinet', 'kddi', 'merck',
+                                                                  'montblanc', 'mtpc', 'mutuelle', 'pamperedchef', 'sakura', 'telephonica'].includes(item));
+                
+                ['abarth', 'abbvie', 'abc', 'able', 'aetna', 'afamilycompany', 'aigo', 'airbus',
+                 'alfaromeo', 'allfinanz', 'allstate', 'ally', 'alstom', 'americanexpress',
+                 'americanfamily', 'amex', 'amfam', 'android', 'anquan', 'anz', 'aol', 'asda',
+                 'athleta', 'audible', 'auspost', 'avianca', 'aws', 'baby', 'banamex',
+                 'bananarepublic', 'barefoot', 'bbt', 'bcg', 'beauty', 'bestbuy', 'blanco',
+                 'blockbuster', 'bofa', 'booking', 'calvinklein', 'capitalone', 'case', 'caseih',
+                 'cbre', 'cbs', 'chase', 'chintai', 'chrysler', 'citadel', 'citi', 'comcast',
+                 'cookingchannel', 'coupon', 'dhl', 'discover', 'dish', 'dnp', 'dodge', 'dot',
+                 'dtv', 'duck', 'dunlop', 'duns', 'dupont', 'dvr', 'epost', 'ericsson', 'esurance',
+                 'etisalat', 'extraspace', 'farmers', 'fedex', 'ferrari', 'fiat', 'fidelity',
+                 'fido', 'fire', 'flickr', 'flir', 'ftr', 'fujitsu', 'fujixerox', 'gallo', 'gallup',
+                 'gap', 'george', 'glade', 'godaddy', 'goodhands', 'goodyear', 'guardian', 'hbo',
+                 'hdfc', 'hdfcbank', 'hgtv', 'hisamitsu', 'hkt', 'homegoods', 'homesense',
+                 'honeywell', 'hughes', 'hyatt', 'imdb', 'intel', 'intuit', 'itv', 'iveco', 'jcp',
+                 'jeep', 'jio', 'jnj', 'jpmorgan', 'juniper', 'kddi', 'kerryhotels',
+                 'kerrylogistics', 'kerryproperties', 'kindle', 'kosher', 'kpmg', 'kuokgroup',
+                 'ladbrokes', 'lamborghini', 'lancia', 'lancome', 'lefrak', 'lego', 'lilly',
+                 'lipsy', 'locker', 'locus', 'loft', 'lpl', 'lplfinancial', 'lundbeck', 'macys',
+                 'marshalls', 'maserati', 'mattel', 'mckinsey', 'merckmsd', 'metlife', 'mil',
+                 'mint', 'mit', 'mitsubishi', 'mlb', 'monster', 'mopar', 'msd', 'mutual', 'nab',
+                 'nationwide', 'natura', 'nba', 'netflix', 'newholland', 'next', 'nextdirect',
+                 'nfl', 'nike', 'nissay', 'northwesternmutual', 'nowtv', 'observer', 'off',
+                 'olayan', 'olayangroup', 'oldnavy', 'ollo', 'onyourside', 'open', 'panasonic',
+                 'pccw', 'pfizer', 'pioneer', 'pnc', 'politie', 'pramerica', 'prime', 'progressive',
+                 'pru', 'prudential', 'pwc', 'qvc', 'raid', 'reliance', 'richardli', 'rightathome',
+                 'ril', 'rmit', 'rogers', 'sakura', 'samsclub', 'sbi', 'scjohnson'].forEach(item => {
+                     if (!domains.includes(item)) {
+                         domains.push(item);
+                     }
+                 });
+                preference.domains = domains.sort();
+                
+                return preference;
+            }
+        }
+    ];
+    
+        
     class ConfiguratorManager {
         constructor () {
         }
@@ -243,22 +369,27 @@ function Configurator () {
             result.area = properties.area;
             result.activated = properties.activated;
             properties = result;
+
+            if (!properties.version) {
+                properties.version = '3.0.0';
+            }
             
             // initialized undefined preferences
             for (let preference in defaultPreferences) {
                 if (!properties.hasOwnProperty(preference)) {
                     properties[preference] = defaultPreferences[preference];
-                } else {
-                    if (preference === 'protocols') {
-                        // remove 'file:///' protocol from protocols list, if any
-                        let index = properties[preference].findIndex(protocol => protocol.term === 'file:///');
-                        if (index != -1) {
-                            properties[preference].splice(index, 1);
-                        }
-                    }
                 }
             }
 
+            // update preferences, if required
+            if (properties.version !== defaultPreferences.version) {
+                for (let updater of updaters) {
+                    let name = updater.name;
+                    properties[name] = updater.update(properties[name]);
+                }
+                properties.version = defaultPreferences.version;
+            }
+            
             // update shortcuts definitions if needed
             for (let hotKey in properties.hotKeys) {
                 if (properties.hotKeys[hotKey] != 'default') {
