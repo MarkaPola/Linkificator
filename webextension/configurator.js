@@ -13,7 +13,7 @@
 function Configurator () {
     // Initialization of preferences
     let defaultPreferences = {
-        version: "3.3.1", 
+        version: "3.3.3", 
         manual: false, 
         displayBadge: true, 
         contextMenuIntegration: true, 
@@ -105,8 +105,8 @@ function Configurator () {
                 }
             ], 
             excludedElements: [
-                "a", "applet", "area", "audio", "embed", "frame", "frameset", "head",
-                "iframe", "img", "map", "meta", "noscript", "object", "option", "param",
+                "a", "applet", "area", "audio", "button", "embed", "frame", "frameset", "head",
+                "iframe", "img", "input", "map", "meta", "noscript", "object", "option", "param",
                 "pre", "script", "select", "style", "textarea", "title", "video",
                 "*[boolean(@onclick)]", "*[boolean(@onmousedown)]", "*[boolean(@onmouseup)]",
                 "*[contains(@class,'simple-form-fill')]", "*[contains(@class,'ui-helper-hidden-accessible')]"
@@ -219,8 +219,13 @@ function Configurator () {
                          excludedElements.push(item);
                      }
                  });
+                ["button", "input"].forEach(item => {
+                    if (!excludedElements.includes(item)) {
+                         excludedElements.push(item);
+                    }
+                });
                 preference.excludedElements = excludedElements;
-
+                
                 return preference;
             }
         },

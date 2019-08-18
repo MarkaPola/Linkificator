@@ -411,6 +411,10 @@
         "message": "Ограничения",
         "desription": "Limitations"
     },
+    "releaseNotes@enhancements@3_3_3@1": {
+        "message": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements.",
+        "description": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
+    },    
     "releaseNotes@enhancements@3_3_1@1": {
         "message": "исправить несогласие с дополнение <a href=\"https://addons.mozilla.org/ru/firefox/addon/simple-form-fill\">'Simple Form Fill'</a>.",
         "description": "Fix incompatibility with <a href=\"https://addons.mozilla.org/en-US/firefox/addon/simple-form-fill\">'Simple Form Fill'</a> add-on."
