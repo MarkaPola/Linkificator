@@ -425,6 +425,10 @@
         "message": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements.",
         "description": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
     },
+    "releaseNotes@enhancements@3_3_3@2": {
+        "message": "Update keyboard shortcuts customization module.",
+        "description": "Update keyboard shortcuts customization module."
+    },
     
     "releaseNotes@enhancements@3_3_1@1": {
         "message": "Fix incompatibility with <a href=\"https://addons.mozilla.org/en-US/firefox/addon/simple-form-fill\">'Simple Form Fill'</a> add-on.",

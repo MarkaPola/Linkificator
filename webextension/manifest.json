@@ -47,33 +47,25 @@
 
     "commands": {
         "Toggle": {
-            "suggested_key": {
-                "default": "Alt+Shift+O"
-            },
-            "description": "__MSG_settings@shortcuts@toggle__"
+            "description": "__MSG_settings@shortcuts@toggle__ (Alt+Shift+O)"
         }, 
         "Manual": {
-            "suggested_key": {
-                "default": "Alt+Shift+M"
-            },
-            "description": "__MSG_settings@shortcuts@manual__"
+            "description": "__MSG_settings@shortcuts@manual__ (Alt+Shift+M)"
         }, 
         "Manage": {
-            "suggested_key": {
-                "default": "Alt+Shift+X"
-            },
-            "description": "__MSG_settings@shortcuts@manage__"
+            "description": "__MSG_settings@shortcuts@manage__ (Alt+Shift+X)"
         }, 
         "Update": {
-            "suggested_key": {
-                "default": "Alt+Shift+U"
-            },
-            "description": "__MSG_settings@shortcuts@update__"
+            "description": "__MSG_settings@shortcuts@update__ (Alt+Shift+U)"
         }
     },
     
     "background": {
-        "scripts" : ["configurator.js", "controler.js", "main.js"]
+        "scripts" : [
+            "options/ShortcutCustomizeUI.js", 
+            "configurator.js",
+            "controler.js",
+            "main.js"]
     },
     "content_scripts": [
         {

@@ -72,6 +72,10 @@ function initializePreferences () {
         updatePreference('activated', result.activated);
 
         ShortcutCustomizeUI.build().then(list => {
+            // remove any current shortcuts list
+            let shortcuts = $('shortcuts');
+            shortcuts.parentNode.replaceChild(shortcuts.cloneNode(false), shortcuts);
+            // insert new list
             $('shortcuts').appendChild(list);
             list.addEventListener('ShortcutChanged', event => {
                 properties.hotKeys[event.detail.name] = event.detail.key;

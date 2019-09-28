@@ -412,9 +412,19 @@ function Configurator () {
             });
         });
     }
+
+    function initializeShortcuts () {
+        const SHORTCUTS_VERSION = 1;
+        return browser.storage.local.get({ shortcutCustomizeUIVersion: 0 }).then(result => {
+            switch (result.shortcutCustomizeUIVersion) {
+            case 0: // on initial startup
+                ShortcutCustomizeUI.setDefaultShortcuts();
+            }
+            return browser.storage.local.set({ shortcutCustomizeUIVersion: SHORTCUTS_VERSION });
+        });
+    }
     
-    function initializePreferences ()
-    {
+    function initializePreferences () {
         return setPreferences().then(properties => {
             // can now attach handle to manage preferences changes
             browser.storage.onChanged.addListener((changes, area) => {
@@ -514,6 +524,8 @@ function Configurator () {
             browser.storage.local.set({activated: properties.activated}).catch(reason => console.error(reason));
         }
         
-        return initializePreferences();
+        return initializeShortcuts().then(() => {
+            return initializePreferences();
+        }).catch(reason => console.error(reason));
     });
 }
