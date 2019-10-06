@@ -428,6 +428,10 @@
         "message": "Mise à jour du module de personalisation des raccourcis clavier.",
         "description": "Update keyboard shortcuts customization module."
     },
+    "releaseNotes@enhancements@3_3_3@3": {
+        "message": "La liste des domaines de premier niveau a été mise à jour.",
+        "description": "Top level domains list is updated."
+    },
     
     "releaseNotes@enhancements@3_3_1@1": {
         "message": "Corrige l'incompatibilité avec le module <a href=\"https://addons.mozilla.org/fr/firefox/addon/simple-form-fill\">'Simple Form Fill'</a>.",

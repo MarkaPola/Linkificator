@@ -1,3 +1,4 @@
+# version 2019100600, last updated sun oct  6 07:07:01 2019 utc
 aaa
 aarp
 abarth
@@ -14,7 +15,6 @@ accenture
 accountant
 accountants
 aco
-active
 actor
 ad
 adac
@@ -144,7 +144,6 @@ biz
 bj
 black
 blackfriday
-blanco
 blockbuster
 blog
 bloomberg
@@ -153,7 +152,6 @@ bm
 bms
 bmw
 bn
-bnl
 bnpparibas
 bo
 boats
@@ -297,6 +295,7 @@ country
 coupon
 coupons
 courses
+cpa
 cr
 credit
 creditcard
@@ -360,7 +359,6 @@ docs
 doctor
 dodge
 dog
-doha
 domains
 dot
 download
@@ -369,7 +367,6 @@ dtv
 dubai
 duck
 dunlop
-duns
 dupont
 durban
 dvag
@@ -390,7 +387,6 @@ energy
 engineer
 engineering
 enterprises
-epost
 epson
 equipment
 er
@@ -486,6 +482,7 @@ game
 games
 gap
 garden
+gay
 gb
 gbiz
 gd
@@ -521,7 +518,6 @@ gold
 goldpoint
 golf
 goo
-goodhands
 goodyear
 goog
 google
@@ -579,7 +575,6 @@ homegoods
 homes
 homesense
 honda
-honeywell
 horse
 hospital
 host
@@ -633,7 +628,6 @@ iq
 ir
 irish
 is
-iselect
 ismaili
 ist
 istanbul
@@ -641,7 +635,6 @@ it
 itau
 itv
 iveco
-iwc
 jaguar
 java
 jcb
@@ -651,7 +644,6 @@ jeep
 jetzt
 jewelry
 jio
-jlc
 jll
 jm
 jmp
@@ -799,7 +791,6 @@ meme
 memorial
 men
 menu
-meo
 merckmsd
 metlife
 mg
@@ -821,7 +812,6 @@ mn
 mo
 mobi
 mobile
-mobily
 moda
 moe
 moi
@@ -918,7 +908,6 @@ om
 omega
 one
 ong
-onion
 onl
 online
 onyourside
@@ -936,7 +925,6 @@ ovh
 pa
 page
 panasonic
-panerai
 paris
 pars
 partners
@@ -1075,7 +1063,6 @@ sandvik
 sandvikcoromant
 sanofi
 sap
-sapo
 sarl
 sas
 save
@@ -1157,21 +1144,19 @@ song
 sony
 soy
 space
-spiegel
 sport
 spot
 spreadbetting
 sr
 srl
 srt
+ss
 st
 stada
 staples
 star
-starhub
 statebank
 statefarm
-statoil
 stc
 stcgroup
 stockholm
@@ -1217,7 +1202,6 @@ team
 tech
 technology
 tel
-telecity
 telefonica
 temasek
 tennis
@@ -1312,7 +1296,6 @@ vip
 virgin
 visa
 vision
-vista
 vistaprint
 viva
 vivo
@@ -1368,7 +1351,6 @@ xerox
 xfinity
 xihuan
 xin
-xperia
 xxx
 xyz
 yachts
@@ -1388,7 +1370,6 @@ zappos
 zara
 zero
 zip
-zippo
 zm
 zone
 zuerich
