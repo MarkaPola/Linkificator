@@ -416,9 +416,22 @@ function Configurator () {
             }
             
             // update shortcuts definitions if needed
+            if (properties.hotKeys.hasOwnProperty('toggle')) {
+                // clean-up properties coming from legacy
+                delete properties.hotKeys.toggle;
+                delete properties.hotKeys.manual;
+                delete properties.hotKeys.manage;
+                delete properties.hotKeys.parse;
+            }
             for (let hotKey in properties.hotKeys) {
                 if (properties.hotKeys[hotKey] != 'default') {
-                    browser.commands.update({name: hotKey, shortcut: properties.hotKeys[hotKey]});
+                    try {
+                        browser.commands.update({name: hotKey, shortcut: properties.hotKeys[hotKey]});
+                    } catch(error) {
+                        // shortcut is invalid, fallback to default
+                        ShortcutCustomizeUI.setDefaultShortcut(hotKey);
+                        properties.hotKeys[hotKey] = 'default';
+                    }
                 }
             }
             
