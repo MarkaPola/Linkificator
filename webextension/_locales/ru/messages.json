@@ -412,11 +412,11 @@
         "desription": "Limitations"
     },
     "releaseNotes@enhancements@3_3_3@1": {
-        "message": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements.",
-        "description": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
+        "message": "Добавьте теги &lt;button&gt; и &lt;input&gt; к исключенным элементам.",
+        "description": "Add the tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
     },    
     "releaseNotes@enhancements@3_3_3@2": {
-        "message": "Update keyboard shortcuts customization module.",
+        "message": "Обновление модуля настройки сочетаний клавиш.",
         "description": "Update keyboard shortcuts customization module."
     },
     "releaseNotes@enhancements@3_3_3@3": {

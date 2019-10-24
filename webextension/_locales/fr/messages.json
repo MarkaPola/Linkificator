@@ -422,7 +422,7 @@
 
     "releaseNotes@enhancements@3_3_3@1": {
         "message": "Ajout des tags &lt;button&gt; et &lt;input&gt; à la liste des éléments exclus.",
-        "description": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
+        "description": "Add the tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
     },
     "releaseNotes@enhancements@3_3_3@2": {
         "message": "Mise à jour du module de personalisation des raccourcis clavier.",

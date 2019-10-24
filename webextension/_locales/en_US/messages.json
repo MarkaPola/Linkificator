@@ -422,8 +422,8 @@
     },
     
     "releaseNotes@enhancements@3_3_3@1": {
-        "message": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements.",
-        "description": "Add tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
+        "message": "Add the tags &lt;button&gt; and &lt;input&gt; to the excluded elements.",
+        "description": "Add the tags &lt;button&gt; and &lt;input&gt; to the excluded elements."
     },
     "releaseNotes@enhancements@3_3_3@2": {
         "message": "Update keyboard shortcuts customization module.",
